@@ -371,7 +371,10 @@ export default function TemplatesGridSection() {
       : templates.filter((t) => t.type === "premium");
 
   return (
-    <section className="w-full max-w-7xl mx-auto px-6 sm:px-10 lg:px-14 py-16 sm:py-20">
+    <section
+      id="templates"
+      className="w-full max-w-7xl mx-auto px-6 sm:px-10 lg:px-14 py-16 sm:py-20"
+    >
       {/* Header Row */}
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
         {/* Left Headline & Subtitle */}
