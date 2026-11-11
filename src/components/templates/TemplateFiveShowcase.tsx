@@ -527,12 +527,52 @@ const STORY_POLAROIDS = [
   },
 ];
 
+const OPTIC_FAQS = [
+  {
+    id: "services",
+    question: "What services does the studio provide?",
+    answer:
+      "We offer photography, creative direction, campaigns, and post-production for brands.",
+  },
+  {
+    id: "turnaround",
+    question: "How long is project turnaround?",
+    answer:
+      "Most editorial and campaign commissions are delivered within 10 to 14 business days from wrap, with priority press selects available within 48 hours.",
+  },
+  {
+    id: "international",
+    question: "Do you work with international clients?",
+    answer:
+      "Yes. While our primary studios operate out of Berlin and Tokyo, we produce commissions on location across Europe, North America, and Asia.",
+  },
+  {
+    id: "direction",
+    question: "Is creative direction included?",
+    answer:
+      "Every engagement begins with collaborative art direction covering casting, lighting treatments, location scouting, and cohesive visual pacing.",
+  },
+  {
+    id: "kickoff",
+    question: "How do projects typically begin?",
+    answer:
+      "Once you submit an inquiry, we schedule a brief discovery call to align on visual goals, usage rights, schedule, and production scope.",
+  },
+  {
+    id: "custom",
+    question: "Can services be customized per project?",
+    answer:
+      "Completely. Each brief receives a bespoke production proposal tailored to your deliverables, timeline, and distribution channels.",
+  },
+];
+
 export default function TemplateFiveShowcase() {
   const [activeModal, setActiveModal] = useState<OpticModal>(null);
   const [activeProject, setActiveProject] = useState<StudioLensProject | null>(
     null
   );
   const [activeService, setActiveService] = useState<OpticService | null>(null);
+  const [openFaqId, setOpenFaqId] = useState<string | null>("services");
   const [contactSubmitted, setContactSubmitted] = useState(false);
   const [deckOffset, setDeckOffset] = useState(0);
   const [stackMotion, setStackMotion] = useState({ x: 0, y: 0, active: false });
@@ -1586,6 +1626,332 @@ export default function TemplateFiveShowcase() {
           </div>
         </div>
       </section>
+
+      {/* Section 8: FAQs / Framed Answers */}
+      <section
+        id="optic-faqs"
+        aria-label="Framed answers"
+        className="w-full bg-white text-[#0d0d0f] pt-20 sm:pt-28 pb-16 sm:pb-20 px-4 sm:px-8"
+      >
+        {/* Centered Header Block */}
+        <div className="max-w-[740px] mx-auto flex flex-col items-center text-center">
+          <p className="text-[10px] font-bold uppercase tracking-[0.06em] text-[#b43c32]">
+            FAQS
+          </p>
+
+          <h2 className="mt-2 font-optic-display font-bold uppercase text-[42px] sm:text-[56px] md:text-[64px] lg:text-[70px] leading-[0.94] tracking-[0.005em] text-[#0d0d0f]">
+            FRAMED ANSWERS
+          </h2>
+
+          <p className="mt-4 max-w-[445px] mx-auto text-[12px] sm:text-[13px] leading-[1.58] text-[#8c8c94]">
+            Everything you need to know about working with the studio, from
+            planning and production to final delivery.
+          </p>
+        </div>
+
+        {/* 2-Column Editorial Portrait + Interactive Accordion */}
+        <div className="mt-10 sm:mt-12 w-full max-w-[1060px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-5 sm:gap-6 items-stretch">
+          {/* Left Viewfinder Framed Portrait with Centered Studio Watermark */}
+          <div className="lg:col-span-6 relative min-h-[380px] sm:min-h-[450px] lg:min-h-[470px] rounded-[6px] overflow-hidden bg-[#1e1d1a] select-none">
+            <SafeOpticImage
+              src="/images/optic-card-3.jpg"
+              fallbackSrc="https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&w=900&q=85"
+              alt="Optic Studio floral editorial portrait"
+              sizes="(max-width: 1024px) 100vw, 520px"
+              className="object-cover object-[50%_20%] brightness-[0.8] contrast-[1.06]"
+            />
+            <div
+              aria-hidden="true"
+              className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/35 via-black/10 to-black/20"
+            />
+
+            {/* 4 Corner Viewfinder Reticles */}
+            <span
+              aria-hidden="true"
+              className="pointer-events-none absolute top-3 left-3 w-2 h-2 border-t border-l border-white/80"
+            />
+            <span
+              aria-hidden="true"
+              className="pointer-events-none absolute top-3 right-3 w-2 h-2 border-t border-r border-white/80"
+            />
+            <span
+              aria-hidden="true"
+              className="pointer-events-none absolute bottom-3 left-3 w-2 h-2 border-b border-l border-white/80"
+            />
+            <span
+              aria-hidden="true"
+              className="pointer-events-none absolute bottom-3 right-3 w-2 h-2 border-b border-r border-white/80"
+            />
+
+            {/* Centered Copyright Stamp */}
+            <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
+              <span className="text-[11px] sm:text-[12px] font-semibold tracking-[-0.01em] text-white/95 drop-shadow-sm">
+                © optic studio
+              </span>
+            </div>
+          </div>
+
+          {/* Right Expandable FAQ Accordion */}
+          <div className="lg:col-span-6 flex flex-col justify-between gap-2.5 sm:gap-3">
+            {OPTIC_FAQS.map((faq) => {
+              const isOpen = openFaqId === faq.id;
+              return (
+                <div
+                  key={faq.id}
+                  className="bg-[#f4f4f7] border border-[#ebebef] border-b-[#e2e2e8] rounded-[6px] transition-colors duration-200 hover:border-[#d6d6e0]"
+                >
+                  <button
+                    type="button"
+                    aria-expanded={isOpen}
+                    onClick={() =>
+                      setOpenFaqId((prev) => (prev === faq.id ? null : faq.id))
+                    }
+                    className="w-full px-5 py-4 flex items-center justify-between gap-4 text-left cursor-pointer"
+                  >
+                    <span className="text-[13px] sm:text-[13.5px] font-semibold tracking-[-0.01em] text-[#0d0d0f]">
+                      {faq.question}
+                    </span>
+
+                    <span
+                      aria-hidden="true"
+                      className="w-7 h-7 rounded-[4px] bg-white border border-[#e6e6ec] shadow-[0_1px_2px_rgba(0,0,0,0.03)] flex items-center justify-center shrink-0 text-[#c24b3f]"
+                    >
+                      {isOpen ? (
+                        <svg
+                          className="w-3 h-3"
+                          viewBox="0 0 14 14"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth="1.6"
+                          strokeLinecap="round"
+                        >
+                          <path d="M3 3l8 8M11 3l-8 8" />
+                        </svg>
+                      ) : (
+                        <svg
+                          className="w-3 h-3"
+                          viewBox="0 0 14 14"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth="1.6"
+                          strokeLinecap="round"
+                        >
+                          <path d="M7 2.5v9M2.5 7h9" />
+                        </svg>
+                      )}
+                    </span>
+                  </button>
+
+                  {isOpen && (
+                    <div className="px-5 pb-4 pt-0 text-[12px] leading-[1.55] text-[#7b7b82] max-w-[92%]">
+                      {faq.answer}
+                    </div>
+                  )}
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* Optic Studio Editorial Full-Bleed Compact Footer */}
+      <footer
+        aria-label="Optic Studio footer"
+        className="relative w-full min-h-[420px] sm:min-h-[450px] lg:min-h-[480px] overflow-hidden bg-[#16100e] text-white flex flex-col justify-between px-6 sm:px-10 lg:px-14 pt-8 sm:pt-10 pb-6 sm:pb-7"
+      >
+        {/* Background Sun-Dappled Portrait with Coral Hibiscus Blossoms */}
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-0 select-none"
+        >
+          <SafeOpticImage
+            src="/images/optic-lens-3.jpg"
+            fallbackSrc="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=1800&q=85"
+            alt="Sun-dappled editorial portrait framed by coral blossoms"
+            sizes="100vw"
+            className="object-cover object-[50%_38%] brightness-[0.86] contrast-[1.06]"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-black/55 via-black/15 to-black/55" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-transparent to-black/35" />
+        </div>
+
+        {/* Upper Row: Condensed Title + White Geometric Square (Left) & Stacked Socials (Right) */}
+        <div className="relative z-10 w-full flex flex-col sm:flex-row sm:items-start justify-between gap-6">
+          {/* Top-Left Title + Offset Square Control */}
+          <div>
+            <a
+              href="#optic-top"
+              className="inline-block font-optic-display font-bold uppercase text-white text-[56px] sm:text-[72px] lg:text-[84px] leading-[0.87] tracking-[0.005em] hover:opacity-90 transition-opacity select-none"
+            >
+              OPTIC
+              <br />
+              STUDIO.
+            </a>
+            <div className="mt-3 sm:mt-4 ml-11 sm:ml-14">
+              <a
+                href="#optic-top"
+                aria-label="Scroll back to top"
+                className="inline-block w-3.5 h-3.5 sm:w-4 sm:h-4 bg-white hover:scale-110 transition-transform shadow-sm"
+              />
+            </div>
+          </div>
+
+          {/* Mid-Right Stacked Uppercase Social Links */}
+          <nav
+            aria-label="Optic Studio social links"
+            className="flex flex-col items-start sm:items-end justify-end sm:pt-14 font-optic-display font-bold uppercase text-white text-[24px] sm:text-[28px] lg:text-[32px] leading-[0.98] tracking-[0.01em]"
+          >
+            <a
+              href="#optic-top"
+              className="hover:text-white/75 transition-colors"
+            >
+              INSTAGRAM.
+            </a>
+            <a
+              href="#optic-studio-lens"
+              className="hover:text-white/75 transition-colors"
+            >
+              YOUTUBE.
+            </a>
+            <a
+              href="#optic-testimonials"
+              className="hover:text-white/75 transition-colors"
+            >
+              TWITTER.
+            </a>
+          </nav>
+        </div>
+
+        {/* Bottom Row: Statement & Viewfinder CTA (Left) + Navigation & Information Columns (Right) */}
+        <div className="relative z-10 mt-10 sm:mt-14 w-full flex flex-col md:flex-row md:items-end justify-between gap-8">
+          {/* Bottom-Left Studio Statement + Viewfinder CONTACT US Button */}
+          <div className="max-w-[300px]">
+            <p className="text-[11px] sm:text-[11.5px] leading-[1.48] text-white/92">
+              We document moments as they unfold, preserving emotion, atmosphere,
+              and authenticity through thoughtful composition and restrained visual
+              storytelling.
+            </p>
+
+            <button
+              type="button"
+              onClick={() => {
+                setContactSubmitted(false);
+                setActiveModal("contact");
+              }}
+              className="mt-4 relative inline-flex items-center justify-center bg-white hover:bg-neutral-100 text-[#0d0d0f] px-8 py-3 text-[9.5px] sm:text-[10px] font-semibold uppercase tracking-[0.06em] shadow-[0_8px_22px_rgba(0,0,0,0.3)] transition-all cursor-pointer group"
+            >
+              <span
+                aria-hidden="true"
+                className="pointer-events-none absolute top-1 left-1 w-1.5 h-1.5 border-t border-l border-[#0d0d0f]/75 group-hover:border-[#0d0d0f]"
+              />
+              <span
+                aria-hidden="true"
+                className="pointer-events-none absolute top-1 right-1 w-1.5 h-1.5 border-t border-r border-[#0d0d0f]/75 group-hover:border-[#0d0d0f]"
+              />
+              <span
+                aria-hidden="true"
+                className="pointer-events-none absolute bottom-1 left-1 w-1.5 h-1.5 border-b border-l border-[#0d0d0f]/75 group-hover:border-[#0d0d0f]"
+              />
+              <span
+                aria-hidden="true"
+                className="pointer-events-none absolute bottom-1 right-1 w-1.5 h-1.5 border-b border-r border-[#0d0d0f]/75 group-hover:border-[#0d0d0f]"
+              />
+              <span>CONTACT US</span>
+            </button>
+          </div>
+
+          {/* Bottom-Right Navigation & Information Columns (cleared cleanly left of Framer badge) */}
+          <div className="flex items-start gap-12 sm:gap-16 md:pr-28 lg:pr-36 text-[11px]">
+            <div>
+              <p className="font-semibold text-white mb-2.5">Navigation</p>
+              <ul className="space-y-1.5 text-white/80">
+                <li>
+                  <a
+                    href="#optic-top"
+                    className="hover:text-white transition-colors"
+                  >
+                    Home
+                  </a>
+                </li>
+                <li>
+                  <button
+                    type="button"
+                    onClick={() => setActiveModal("portfolio")}
+                    className="hover:text-white transition-colors cursor-pointer"
+                  >
+                    Portfolio
+                  </button>
+                </li>
+                <li>
+                  <button
+                    type="button"
+                    onClick={() => setActiveModal("blog")}
+                    className="hover:text-white transition-colors cursor-pointer"
+                  >
+                    Blog
+                  </button>
+                </li>
+                <li>
+                  <button
+                    type="button"
+                    onClick={() => setActiveModal("about")}
+                    className="hover:text-white transition-colors cursor-pointer"
+                  >
+                    About us
+                  </button>
+                </li>
+              </ul>
+            </div>
+
+            <div>
+              <p className="font-semibold text-white mb-2.5">Information</p>
+              <ul className="space-y-1.5 text-white/80">
+                <li>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setContactSubmitted(false);
+                      setActiveModal("contact");
+                    }}
+                    className="hover:text-white transition-colors cursor-pointer"
+                  >
+                    Contact us
+                  </button>
+                </li>
+                <li>
+                  <a
+                    href="#optic-faqs"
+                    className="hover:text-white transition-colors"
+                  >
+                    Privacy policy
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#optic-services"
+                    className="hover:text-white transition-colors"
+                  >
+                    Terms &amp; Conditions
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#optic-vision"
+                    className="hover:text-white transition-colors"
+                  >
+                    404
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        {/* Bottom Center Attribution */}
+        <p className="relative z-10 mt-6 md:mt-0 md:absolute md:bottom-3 md:left-1/2 md:-translate-x-1/2 text-center text-[10px] tracking-[0.02em] text-white/80">
+          Made by <span className="font-bold tracking-wider">OPTIC</span>
+        </p>
+      </footer>
 
       {/* Interactive Viewfinder Modal (Portfolio / Blog / About / Contact) */}
       {activeModal && (
