@@ -403,6 +403,14 @@ export default function TemplateTwoShowcase() {
     useState<JournalArticle | null>(null);
   const [bookingOpen, setBookingOpen] = useState(false);
   const [bookingSubmitted, setBookingSubmitted] = useState(false);
+  const [contactSubmitted, setContactSubmitted] = useState(false);
+  const [contactName, setContactName] = useState("");
+  const [contactEmail, setContactEmail] = useState("");
+  const [contactService, setContactService] = useState("Portraits");
+  const [contactDate, setContactDate] = useState("");
+  const [contactLocation, setContactLocation] = useState("");
+  const [contactBudget, setContactBudget] = useState("");
+  const [contactPlans, setContactPlans] = useState("");
   const [openFaqIdx, setOpenFaqIdx] = useState<number | null>(null);
   const [newsletterEmail, setNewsletterEmail] = useState("");
   const [newsletterSubscribed, setNewsletterSubscribed] = useState(false);
@@ -437,11 +445,12 @@ export default function TemplateTwoShowcase() {
     const wasDedicatedTab =
       activeNav === "Portfolio" ||
       activeNav === "Journal" ||
-      activeNav === "About";
+      activeNav === "About" ||
+      activeNav === "Contact";
     setActiveNav(item);
     if (item === "Contact") {
-      setBookingSubmitted(false);
-      setBookingOpen(true);
+      setContactSubmitted(false);
+      window.scrollTo({ top: 0, behavior: "smooth" });
     } else if (item === "About" || wasDedicatedTab) {
       window.scrollTo({ top: 0, behavior: "smooth" });
     }
@@ -595,10 +604,7 @@ export default function TemplateTwoShowcase() {
 
             <button
               type="button"
-              onClick={() => {
-                setBookingSubmitted(false);
-                setBookingOpen(true);
-              }}
+              onClick={() => handleNavClick("Contact")}
               className="mt-6 inline-flex items-center gap-3 rounded-full bg-[#faf8f4] hover:bg-white text-[#2c221b] pl-5 pr-1.5 py-1.5 text-[12px] font-medium transition-all cursor-pointer group"
             >
               <span>Start an Inquiry</span>
@@ -920,10 +926,7 @@ export default function TemplateTwoShowcase() {
 
               <button
                 type="button"
-                onClick={() => {
-                  setBookingSubmitted(false);
-                  setBookingOpen(true);
-                }}
+                onClick={() => handleNavClick("Contact")}
                 className="mt-7 inline-flex items-center gap-3.5 rounded-full bg-[#faf8f4] hover:bg-white text-[#2a1f19] pl-5 pr-1.5 py-1.5 text-[12px] sm:text-[12.5px] font-medium shadow-md transition-all cursor-pointer group"
               >
                 <span>Let&apos;s Talk About Your Shoot</span>
@@ -1046,10 +1049,7 @@ export default function TemplateTwoShowcase() {
 
               <button
                 type="button"
-                onClick={() => {
-                  setBookingSubmitted(false);
-                  setBookingOpen(true);
-                }}
+                onClick={() => handleNavClick("Contact")}
                 className="mt-7 inline-flex items-center gap-3.5 rounded-full bg-[#faf8f4] hover:bg-white text-[#2a1f19] pl-5 pr-1.5 py-1.5 text-[12px] sm:text-[12.5px] font-medium shadow-md transition-all cursor-pointer group"
               >
                 <span>Get in Touch</span>
@@ -1090,10 +1090,7 @@ export default function TemplateTwoShowcase() {
 
                 <button
                   type="button"
-                  onClick={() => {
-                    setBookingSubmitted(false);
-                    setBookingOpen(true);
-                  }}
+                  onClick={() => handleNavClick("Contact")}
                   className="mt-7 inline-flex items-center gap-3.5 rounded-full bg-[#2c221b] hover:bg-[#1e1712] text-white pl-5 pr-1.5 py-1.5 text-[12px] sm:text-[12.5px] font-medium shadow-sm transition-all cursor-pointer group"
                 >
                   <span>Tell Me What You&apos;re Planning</span>
@@ -1285,6 +1282,379 @@ export default function TemplateTwoShowcase() {
               </div>
             </div>
           </section>
+
+          {renderPixenoraFooter()}
+        </div>
+      ) : activeNav === "Contact" ? (
+        <div className="flex-1 flex flex-col bg-[#f8f6f2]">
+          {/* Top Pixenora Pill Navbar */}
+          {renderPixenoraNavbar("light")}
+
+          {/* Contact Inquiry Header & 2-Column Layout */}
+          <main className="flex-1 w-full max-w-[1000px] mx-auto px-5 sm:px-8 lg:px-10 pt-12 sm:pt-16 pb-20 sm:pb-24">
+            {/* Centered Editorial Header */}
+            <div className="text-center max-w-xl mx-auto">
+              <div className="inline-flex items-center gap-2.5 text-[10px] sm:text-[10.5px] font-medium tracking-[0.18em] uppercase text-[#7b6c61]">
+                <span className="w-5 h-px bg-[#b8aba0] inline-block" />
+                <span>LET&apos;S CONNECT</span>
+              </div>
+
+              <h1 className="mt-3 font-serif font-normal text-[42px] sm:text-[52px] lg:text-[60px] leading-[1.02] tracking-[-0.025em] text-[#2a211b]">
+                Tell me what you&apos;re
+                <br />
+                dreaming up.
+              </h1>
+
+              <p className="mt-4 text-[13px] sm:text-[14px] leading-[1.6] text-[#6d6157] max-w-md mx-auto">
+                Planning a wedding, a portrait session, or a creative project?
+                Share a few details below and I&apos;ll get back to you as soon
+                as I can.
+              </p>
+            </div>
+
+            {/* 2-Column Studio Info + Inquiry Form */}
+            <div className="mt-12 grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-7 items-start">
+              {/* Left Column: Floral Photo + Direct Contact Pills */}
+              <div className="lg:col-span-4 space-y-3">
+                <div className="relative aspect-[16/10.5] w-full rounded-2xl overflow-hidden bg-neutral-200 shadow-xs">
+                  <SafePhoto
+                    src={HERO_IMAGE}
+                    fallbackSrc={HERO_FALLBACK}
+                    alt="Bride holding autumn pastel floral bouquet"
+                    sizes="(max-width: 1024px) 100vw, 330px"
+                    className="object-cover object-center"
+                  />
+                </div>
+
+                {/* Email Card */}
+                <a
+                  href="mailto:hello@pixenora.example"
+                  className="flex items-center gap-3.5 rounded-2xl bg-[#efeae2] border border-[#e3dcd0] hover:border-[#cfc4b5] px-4 py-3.5 transition-colors group"
+                >
+                  <span className="w-8 h-8 rounded-full bg-[#2c221b] text-white flex items-center justify-center shrink-0">
+                    <svg
+                      className="w-3.5 h-3.5"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="1.8"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      aria-hidden="true"
+                    >
+                      <rect x="2" y="4" width="20" height="16" rx="3" />
+                      <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+                    </svg>
+                  </span>
+                  <div className="min-w-0">
+                    <p className="text-[9px] font-semibold tracking-[0.16em] uppercase text-[#7b6c61]">
+                      EMAIL
+                    </p>
+                    <p className="text-[12.5px] font-medium text-[#2a211b] truncate group-hover:underline">
+                      hello@pixenora.example
+                    </p>
+                  </div>
+                </a>
+
+                {/* Phone Card */}
+                <a
+                  href="tel:+15550148270"
+                  className="flex items-center gap-3.5 rounded-2xl bg-[#efeae2] border border-[#e3dcd0] hover:border-[#cfc4b5] px-4 py-3.5 transition-colors group"
+                >
+                  <span className="w-8 h-8 rounded-full bg-[#2c221b] text-white flex items-center justify-center shrink-0">
+                    <svg
+                      className="w-3.5 h-3.5"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="1.8"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      aria-hidden="true"
+                    >
+                      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+                    </svg>
+                  </span>
+                  <div className="min-w-0">
+                    <p className="text-[9px] font-semibold tracking-[0.16em] uppercase text-[#7b6c61]">
+                      PHONE
+                    </p>
+                    <p className="text-[12.5px] font-medium text-[#2a211b] group-hover:underline">
+                      +1 (555) 014-8270
+                    </p>
+                  </div>
+                </a>
+
+                {/* Studio Card */}
+                <div className="flex items-center gap-3.5 rounded-2xl bg-[#efeae2] border border-[#e3dcd0] px-4 py-3.5">
+                  <span className="w-8 h-8 rounded-full bg-[#2c221b] text-white flex items-center justify-center shrink-0">
+                    <svg
+                      className="w-3.5 h-3.5"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="1.8"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      aria-hidden="true"
+                    >
+                      <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
+                      <circle cx="12" cy="10" r="3" />
+                    </svg>
+                  </span>
+                  <div className="min-w-0">
+                    <p className="text-[9px] font-semibold tracking-[0.16em] uppercase text-[#7b6c61]">
+                      STUDIO
+                    </p>
+                    <p className="text-[12px] leading-[1.45] font-medium text-[#2a211b]">
+                      Brooklyn, New York, USA · Available for selected travel
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Right Column: Elevated Cream Inquiry Form Card */}
+              <div className="lg:col-span-8 rounded-2xl sm:rounded-3xl bg-[#faf8f4] border border-[#e7dfd4] shadow-[0_12px_36px_rgba(38,28,20,0.05)] p-6 sm:p-8 lg:p-9">
+                <h2 className="font-serif font-normal text-[23px] sm:text-[26px] tracking-[-0.015em] text-[#2a211b]">
+                  Start an inquiry
+                </h2>
+
+                {contactSubmitted ? (
+                  <div className="mt-6 rounded-2xl bg-[#efeae2]/70 border border-[#e3dcd0] p-6 sm:p-8 space-y-4">
+                    <p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-[#7b6c61]">
+                      INQUIRY RECEIVED
+                    </p>
+                    <h3 className="font-serif text-2xl font-normal text-[#2a211b]">
+                      Thank you{contactName ? `, ${contactName}` : ""}.
+                    </h3>
+                    <p className="text-[13.5px] leading-[1.65] text-[#5c5046] max-w-lg">
+                      Your note regarding{" "}
+                      <span className="font-medium text-[#2a211b]">
+                        {contactService}
+                      </span>{" "}
+                      has been sent to Alex Morgan. Expect a personal response
+                      with availability and next steps within two business days.
+                    </p>
+                    <div className="pt-2 flex flex-wrap items-center gap-3">
+                      <button
+                        type="button"
+                        onClick={() => {
+                          setContactSubmitted(false);
+                          setContactName("");
+                          setContactEmail("");
+                          setContactDate("");
+                          setContactLocation("");
+                          setContactBudget("");
+                          setContactPlans("");
+                        }}
+                        className="inline-flex items-center gap-3 rounded-full bg-[#2c221b] hover:bg-[#1e1712] text-white pl-5 pr-1.5 py-1.5 text-[12px] font-medium transition-colors cursor-pointer group"
+                      >
+                        <span>Send Another Inquiry</span>
+                        <span className="w-7 h-7 rounded-full bg-white text-[#2c221b] flex items-center justify-center group-hover:rotate-45 transition-transform duration-300">
+                          <ApertureIcon className="w-3.5 h-3.5" />
+                        </span>
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => handleNavClick("Home")}
+                        className="rounded-full border border-[#cbbeb0] hover:border-[#2c221b] px-5 py-2 text-[12px] font-medium text-[#2c221b] transition-colors cursor-pointer"
+                      >
+                        Return Home
+                      </button>
+                    </div>
+                  </div>
+                ) : (
+                  <form
+                    onSubmit={(e) => {
+                      e.preventDefault();
+                      setContactSubmitted(true);
+                    }}
+                    className="mt-5 space-y-4"
+                  >
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                      <div>
+                        <label
+                          htmlFor="pixenora-contact-name"
+                          className="block text-[11px] font-medium text-[#4c4037] mb-1.5"
+                        >
+                          Full Name
+                        </label>
+                        <input
+                          id="pixenora-contact-name"
+                          type="text"
+                          required
+                          value={contactName}
+                          onChange={(e) => setContactName(e.target.value)}
+                          placeholder="Jane Doe"
+                          className="w-full rounded-xl bg-[#f4f1eb] border border-[#e4ddd2] px-3.5 py-2.5 text-[13px] text-[#2a211b] placeholder:text-[#a2968b] focus:outline-none focus:border-[#2c221b]/45 focus:bg-white transition-colors"
+                        />
+                      </div>
+
+                      <div>
+                        <label
+                          htmlFor="pixenora-contact-email"
+                          className="block text-[11px] font-medium text-[#4c4037] mb-1.5"
+                        >
+                          Email Address
+                        </label>
+                        <input
+                          id="pixenora-contact-email"
+                          type="email"
+                          required
+                          value={contactEmail}
+                          onChange={(e) => setContactEmail(e.target.value)}
+                          placeholder="jane@example.com"
+                          className="w-full rounded-xl bg-[#f4f1eb] border border-[#e4ddd2] px-3.5 py-2.5 text-[13px] text-[#2a211b] placeholder:text-[#a2968b] focus:outline-none focus:border-[#2c221b]/45 focus:bg-white transition-colors"
+                        />
+                      </div>
+
+                      <div>
+                        <label
+                          htmlFor="pixenora-contact-service"
+                          className="block text-[11px] font-medium text-[#4c4037] mb-1.5"
+                        >
+                          What are you interested in?
+                        </label>
+                        <div className="relative">
+                          <select
+                            id="pixenora-contact-service"
+                            value={contactService}
+                            onChange={(e) => setContactService(e.target.value)}
+                            className="w-full appearance-none rounded-xl bg-[#f4f1eb] border border-[#e4ddd2] px-3.5 py-2.5 pr-9 text-[13px] text-[#2a211b] focus:outline-none focus:border-[#2c221b]/45 focus:bg-white transition-colors cursor-pointer"
+                          >
+                            <option value="Portraits">Portraits</option>
+                            <option value="Weddings">Weddings</option>
+                            <option value="Lifestyle & Families">
+                              Lifestyle &amp; Families
+                            </option>
+                            <option value="Editorial & Campaigns">
+                              Editorial &amp; Campaigns
+                            </option>
+                            <option value="Personal Branding">
+                              Personal Branding
+                            </option>
+                          </select>
+                          <svg
+                            className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-[#6d6157]"
+                            viewBox="0 0 16 16"
+                            fill="none"
+                            stroke="currentColor"
+                            strokeWidth="1.6"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            aria-hidden="true"
+                          >
+                            <path d="m4 6 4 4 4-4" />
+                          </svg>
+                        </div>
+                      </div>
+
+                      <div>
+                        <label
+                          htmlFor="pixenora-contact-date"
+                          className="block text-[11px] font-medium text-[#4c4037] mb-1.5"
+                        >
+                          Preferred Date
+                        </label>
+                        <input
+                          id="pixenora-contact-date"
+                          type="text"
+                          value={contactDate}
+                          onChange={(e) => setContactDate(e.target.value)}
+                          placeholder="mm/dd/yyyy"
+                          className="w-full rounded-xl bg-[#f4f1eb] border border-[#e4ddd2] px-3.5 py-2.5 text-[13px] text-[#2a211b] placeholder:text-[#a2968b] focus:outline-none focus:border-[#2c221b]/45 focus:bg-white transition-colors"
+                        />
+                      </div>
+
+                      <div>
+                        <label
+                          htmlFor="pixenora-contact-location"
+                          className="block text-[11px] font-medium text-[#4c4037] mb-1.5"
+                        >
+                          Location
+                        </label>
+                        <input
+                          id="pixenora-contact-location"
+                          type="text"
+                          value={contactLocation}
+                          onChange={(e) => setContactLocation(e.target.value)}
+                          placeholder="City or venue"
+                          className="w-full rounded-xl bg-[#f4f1eb] border border-[#e4ddd2] px-3.5 py-2.5 text-[13px] text-[#2a211b] placeholder:text-[#a2968b] focus:outline-none focus:border-[#2c221b]/45 focus:bg-white transition-colors"
+                        />
+                      </div>
+
+                      <div>
+                        <label
+                          htmlFor="pixenora-contact-budget"
+                          className="block text-[11px] font-medium text-[#4c4037] mb-1.5"
+                        >
+                          Estimated Budget
+                        </label>
+                        <input
+                          id="pixenora-contact-budget"
+                          type="text"
+                          value={contactBudget}
+                          onChange={(e) => setContactBudget(e.target.value)}
+                          placeholder="e.g. $2,000–$3,500"
+                          className="w-full rounded-xl bg-[#f4f1eb] border border-[#e4ddd2] px-3.5 py-2.5 text-[13px] text-[#2a211b] placeholder:text-[#a2968b] focus:outline-none focus:border-[#2c221b]/45 focus:bg-white transition-colors"
+                        />
+                      </div>
+                    </div>
+
+                    <div>
+                      <label
+                        htmlFor="pixenora-contact-plans"
+                        className="block text-[11px] font-medium text-[#4c4037] mb-1.5"
+                      >
+                        Tell me a little about your plans
+                      </label>
+                      <textarea
+                        id="pixenora-contact-plans"
+                        rows={4}
+                        required
+                        value={contactPlans}
+                        onChange={(e) => setContactPlans(e.target.value)}
+                        placeholder="Who, where, and what you have in mind..."
+                        className="w-full rounded-xl bg-[#f4f1eb] border border-[#e4ddd2] px-3.5 py-3 text-[13px] text-[#2a211b] placeholder:text-[#a2968b] focus:outline-none focus:border-[#2c221b]/45 focus:bg-white transition-colors resize-none"
+                      />
+                    </div>
+
+                    <div className="pt-2 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                      <p className="inline-flex items-center gap-1.5 text-[10.5px] text-[#8a7c70]">
+                        <svg
+                          className="w-3 h-3 shrink-0"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth="1.8"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          aria-hidden="true"
+                        >
+                          <rect x="3" y="11" width="18" height="11" rx="2" />
+                          <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+                        </svg>
+                        <span>
+                          Your details will only be used to respond to your
+                          inquiry.
+                        </span>
+                      </p>
+
+                      <button
+                        type="submit"
+                        className="inline-flex items-center justify-center gap-4 rounded-full bg-[#2c221b] hover:bg-[#1e1712] text-white pl-6 pr-1.5 py-1.5 text-[12px] sm:text-[12.5px] font-medium shadow-sm transition-all cursor-pointer shrink-0 group"
+                      >
+                        <span>Send Inquiry</span>
+                        <span className="w-7 h-7 rounded-full bg-white text-[#2c221b] flex items-center justify-center group-hover:rotate-45 transition-transform duration-300">
+                          <ApertureIcon className="w-3.5 h-3.5" />
+                        </span>
+                      </button>
+                    </div>
+                  </form>
+                )}
+              </div>
+            </div>
+          </main>
 
           {renderPixenoraFooter()}
         </div>
@@ -2026,10 +2396,7 @@ export default function TemplateTwoShowcase() {
               <li>
                 <button
                   type="button"
-                  onClick={() => {
-                    setBookingSubmitted(false);
-                    setBookingOpen(true);
-                  }}
+                  onClick={() => handleNavClick("Contact")}
                   className="hover:text-[#111113] transition-colors cursor-pointer"
                 >
                   Contact
