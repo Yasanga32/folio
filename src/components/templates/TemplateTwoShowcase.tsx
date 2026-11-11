@@ -435,12 +435,14 @@ export default function TemplateTwoShowcase() {
       return;
     }
     const wasDedicatedTab =
-      activeNav === "Portfolio" || activeNav === "Journal";
+      activeNav === "Portfolio" ||
+      activeNav === "Journal" ||
+      activeNav === "About";
     setActiveNav(item);
     if (item === "Contact") {
       setBookingSubmitted(false);
       setBookingOpen(true);
-    } else if (wasDedicatedTab) {
+    } else if (item === "About" || wasDedicatedTab) {
       window.scrollTo({ top: 0, behavior: "smooth" });
     }
   };
@@ -1002,7 +1004,11 @@ export default function TemplateTwoShowcase() {
                       fallbackSrc={article.fallbackSrc}
                       alt={article.title}
                       sizes="(max-width: 768px) 100vw, 490px"
-                      className="object-cover object-center group-hover:scale-[1.035] transition-transform duration-500 ease-out"
+                      className={`${
+                        article.id === "planning-personal-branding-shoot"
+                          ? "object-cover object-top"
+                          : "object-cover object-center"
+                      } group-hover:scale-[1.035] transition-transform duration-500 ease-out`}
                     />
                   </div>
 
@@ -1056,6 +1062,232 @@ export default function TemplateTwoShowcase() {
 
           {renderPixenoraFooter()}
         </div>
+      ) : activeNav === "About" ? (
+        <div className="flex-1 flex flex-col bg-[#f8f6f2]">
+          {/* Top Pixenora Pill Navbar */}
+          {renderPixenoraNavbar("light")}
+
+          {/* Band 1: The Person Behind the Camera */}
+          <section className="w-full bg-[#f8f6f2] pt-10 sm:pt-14 pb-20 sm:pb-24 px-5 sm:px-8 lg:px-10">
+            <div className="max-w-[1040px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+              {/* Left Intro Copy */}
+              <div className="lg:col-span-6">
+                <div className="inline-flex items-center gap-2.5 text-[10px] font-medium tracking-[0.18em] uppercase text-[#7b6c61]">
+                  <span className="w-5 h-px bg-[#b8aba0] inline-block" />
+                  <span>THE PERSON BEHIND THE CAMERA</span>
+                </div>
+
+                <h1 className="mt-3 font-serif font-normal text-[44px] sm:text-[52px] lg:text-[58px] leading-[1.02] tracking-[-0.025em] text-[#2a211b]">
+                  I notice the
+                  <br />
+                  little things.
+                </h1>
+
+                <p className="mt-4 text-[13.5px] sm:text-[14.5px] leading-[1.6] text-[#6d6157] max-w-md">
+                  I&apos;m Alex Morgan, a photographer drawn to honest emotion,
+                  natural light, and the stories people carry with them.
+                </p>
+
+                <button
+                  type="button"
+                  onClick={() => {
+                    setBookingSubmitted(false);
+                    setBookingOpen(true);
+                  }}
+                  className="mt-7 inline-flex items-center gap-3.5 rounded-full bg-[#2c221b] hover:bg-[#1e1712] text-white pl-5 pr-1.5 py-1.5 text-[12px] sm:text-[12.5px] font-medium shadow-sm transition-all cursor-pointer group"
+                >
+                  <span>Tell Me What You&apos;re Planning</span>
+                  <span className="w-7 h-7 rounded-full bg-white text-[#2c221b] flex items-center justify-center group-hover:rotate-45 transition-transform duration-300">
+                    <ApertureIcon className="w-3.5 h-3.5" />
+                  </span>
+                </button>
+              </div>
+
+              {/* Right Photographer Portrait Card with Location Pill */}
+              <div className="lg:col-span-6">
+                <div className="relative aspect-[4/4.2] w-full max-w-[460px] lg:ml-auto rounded-2xl overflow-hidden bg-neutral-200 shadow-[0_14px_38px_rgba(32,24,18,0.08)]">
+                  <SafePhoto
+                    src="https://images.unsplash.com/photo-1452587925148-ce544e77e70d?auto=format&fit=crop&w=900&q=85"
+                    fallbackSrc="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=900&q=85"
+                    alt="Alex Morgan photographing behind DSLR camera"
+                    sizes="(max-width: 1024px) 100vw, 460px"
+                    className="object-cover object-center"
+                  />
+
+                  <div className="absolute bottom-4 left-4 rounded-full bg-[#faf8f4]/95 backdrop-blur-xs border border-white/75 pl-1.5 pr-3.5 py-1.5 flex items-center gap-2.5 shadow-md">
+                    <span className="w-6 h-6 rounded-full bg-[#2c221b] text-white flex items-center justify-center shrink-0">
+                      <ApertureIcon className="w-3 h-3" />
+                    </span>
+                    <span className="text-[11px] font-medium text-[#2a211b]">
+                      Brooklyn, New York · Available for travel
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* Band 2: My Story (Sand Surface + Overlapping Dual Photo Collage) */}
+          <section className="w-full bg-[#efeae2] py-20 sm:py-24 px-5 sm:px-8 lg:px-10">
+            <div className="max-w-[1040px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+              {/* Left Asymmetric Overlapping Collage */}
+              <div className="lg:col-span-6 relative px-1 sm:px-4 lg:px-0">
+                <div className="relative w-[68%] aspect-[1/1.05] rounded-2xl overflow-hidden bg-neutral-900 shadow-md">
+                  <SafePhoto
+                    src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&w=800&q=85"
+                    fallbackSrc="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=800&q=85"
+                    alt="Vintage rangefinder film camera on wooden surface"
+                    sizes="(max-width: 1024px) 65vw, 350px"
+                    className="object-cover"
+                  />
+                </div>
+
+                <div className="relative z-10 w-[56%] aspect-[4/3.6] ml-auto -mt-20 sm:-mt-28 rounded-2xl overflow-hidden bg-neutral-200 border-[5px] border-[#efeae2] shadow-[0_22px_48px_rgba(32,24,18,0.16)]">
+                  <SafePhoto
+                    src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=85"
+                    fallbackSrc="https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=800&q=85"
+                    alt="Golden sunlight streaming through studio loft windows"
+                    sizes="(max-width: 1024px) 55vw, 300px"
+                    className="object-cover"
+                  />
+                </div>
+              </div>
+
+              {/* Right My Story Copy */}
+              <div className="lg:col-span-6 lg:pl-4">
+                <div className="inline-flex items-center gap-2.5 text-[10px] font-medium tracking-[0.18em] uppercase text-[#7b6c61]">
+                  <span className="w-5 h-px bg-[#b8aba0] inline-block" />
+                  <span>MY STORY</span>
+                </div>
+
+                <h2 className="mt-3 font-serif font-normal text-[34px] sm:text-[42px] lg:text-[46px] leading-[1.08] tracking-[-0.02em] text-[#2a211b]">
+                  Photography, with
+                  <br />
+                  room to be yourself.
+                </h2>
+
+                <p className="mt-4 text-[13.5px] sm:text-[14.5px] leading-[1.68] text-[#5e5147] max-w-lg">
+                  Pixenora grew from a simple belief: photographs should do
+                  more than show what something looked like. They should help
+                  you remember how it felt. My work blends gentle direction
+                  with documentary observation, giving each session structure
+                  without making it feel staged. Whether I&apos;m photographing
+                  a wedding, a family, or a creative brand, I&apos;m looking for
+                  the details that make the story yours.
+                </p>
+              </div>
+            </div>
+          </section>
+
+          {/* Band 3: My Approach (Centered Intro + 3 Horizontal Process Cards) */}
+          <section className="w-full bg-[#f8f6f2] py-20 sm:py-24 px-5 sm:px-8 lg:px-10">
+            <div className="max-w-[1040px] mx-auto">
+              <div className="text-center max-w-xl mx-auto">
+                <div className="inline-flex items-center gap-2.5 text-[10px] font-medium tracking-[0.18em] uppercase text-[#7b6c61]">
+                  <span className="w-5 h-px bg-[#b8aba0] inline-block" />
+                  <span>MY APPROACH</span>
+                </div>
+
+                <h2 className="mt-3 font-serif font-normal text-[34px] sm:text-[42px] lg:text-[46px] leading-[1.08] tracking-[-0.02em] text-[#2a211b]">
+                  A thoughtful process,
+                  <br />
+                  never a performance.
+                </h2>
+
+                <p className="mt-4 text-[13px] sm:text-[14px] leading-[1.65] text-[#6d6157]">
+                  Before we meet, we&apos;ll talk about what matters to you and
+                  what you want the photographs to communicate. On the day,
+                  I&apos;ll help with the practical details while keeping the
+                  atmosphere relaxed. Afterward, I&apos;ll curate and edit the
+                  images into a gallery that feels cohesive and personal.
+                </p>
+              </div>
+
+              {/* 3 Horizontal Step Cards */}
+              <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-5">
+                {/* Step 1 */}
+                <div className="rounded-2xl bg-[#efeae2]/85 border border-[#e3dcd0] p-6 sm:p-7 shadow-[0_4px_18px_rgba(38,28,20,0.03)]">
+                  <div className="w-8 h-8 rounded-full bg-[#2c221b] text-white flex items-center justify-center mb-4">
+                    <svg
+                      className="w-3.5 h-3.5"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="1.8"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      aria-hidden="true"
+                    >
+                      <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />
+                    </svg>
+                  </div>
+                  <h3 className="font-serif text-[19px] font-normal text-[#2a211b]">
+                    Before we meet
+                  </h3>
+                  <p className="mt-2 text-[12.5px] leading-[1.6] text-[#6a5d53]">
+                    We talk about what matters to you and what you want the
+                    photographs to say.
+                  </p>
+                </div>
+
+                {/* Step 2 */}
+                <div className="rounded-2xl bg-[#efeae2]/85 border border-[#e3dcd0] p-6 sm:p-7 shadow-[0_4px_18px_rgba(38,28,20,0.03)]">
+                  <div className="w-8 h-8 rounded-full bg-[#2c221b] text-white flex items-center justify-center mb-4">
+                    <svg
+                      className="w-3.5 h-3.5"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="1.8"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      aria-hidden="true"
+                    >
+                      <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z" />
+                      <circle cx="12" cy="13" r="4" />
+                    </svg>
+                  </div>
+                  <h3 className="font-serif text-[19px] font-normal text-[#2a211b]">
+                    On the day
+                  </h3>
+                  <p className="mt-2 text-[12.5px] leading-[1.6] text-[#6a5d53]">
+                    I take care of the practical details so you can relax and
+                    simply be present.
+                  </p>
+                </div>
+
+                {/* Step 3 */}
+                <div className="rounded-2xl bg-[#efeae2]/85 border border-[#e3dcd0] p-6 sm:p-7 shadow-[0_4px_18px_rgba(38,28,20,0.03)]">
+                  <div className="w-8 h-8 rounded-full bg-[#2c221b] text-white flex items-center justify-center mb-4">
+                    <svg
+                      className="w-3.5 h-3.5"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="1.8"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      aria-hidden="true"
+                    >
+                      <rect x="3" y="3" width="18" height="18" rx="3" />
+                      <circle cx="8.5" cy="8.5" r="1.5" />
+                      <path d="m21 15-5-5L5 21" />
+                    </svg>
+                  </div>
+                  <h3 className="font-serif text-[19px] font-normal text-[#2a211b]">
+                    Afterward
+                  </h3>
+                  <p className="mt-2 text-[12.5px] leading-[1.6] text-[#6a5d53]">
+                    Your images are curated and edited into a gallery that feels
+                    cohesive and personal.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {renderPixenoraFooter()}
+        </div>
       ) : (
         <>
           {/* Pixenora Full-Bleed Hero Showcase */}
@@ -1082,32 +1314,7 @@ export default function TemplateTwoShowcase() {
             {/* Floating Cream Pill Navbar inside Template */}
             {renderPixenoraNavbar("hero")}
 
-            {/* Optional Info Drawer when About is clicked */}
-            {activeNav === "About" && (
-          <div className="relative z-20 max-w-[1240px] mx-auto w-full px-5 sm:px-8 lg:px-10 mt-6">
-            <div className="max-w-lg rounded-2xl bg-[#faf8f4]/92 backdrop-blur-md border border-white/70 p-5 sm:p-6 text-[#2c221b] shadow-xl">
-              <div className="flex items-center justify-between gap-4 mb-2">
-                <span className="text-[10px] font-semibold uppercase tracking-[0.16em] text-[#7a6657]">
-                  ABOUT PIXENORA STUDIO
-                </span>
-                <button
-                  type="button"
-                  onClick={() => setActiveNav("Home")}
-                  className="text-xs text-[#6a584b] hover:text-[#2c221b] cursor-pointer"
-                >
-                  ✕
-                </button>
-              </div>
-              <p className="text-sm leading-relaxed text-[#43362d]">
-                Founded on honest storytelling and natural light, Pixenora pairs
-                timeless editorial portraiture with documentary wedding coverage
-                worldwide.
-              </p>
-            </div>
-          </div>
-        )}
-
-        {/* Bottom Hero Copy & Frosted Thumbnail Card */}
+            {/* Bottom Hero Copy & Frosted Thumbnail Card */}
         <div className="relative z-20 w-full max-w-[1240px] mx-auto px-5 sm:px-8 lg:px-10 pt-20 sm:pt-28 pb-8 sm:pb-12 flex flex-col lg:flex-row lg:items-end justify-between gap-10">
           {/* Left Hero Typography & Dual CTAs */}
           <div className="max-w-2xl">
@@ -1782,12 +1989,13 @@ export default function TemplateTwoShowcase() {
                 </a>
               </li>
               <li>
-                <a
-                  href="#pixenora-about"
-                  className="hover:text-[#111113] transition-colors"
+                <button
+                  type="button"
+                  onClick={() => handleNavClick("About")}
+                  className="hover:text-[#111113] transition-colors cursor-pointer"
                 >
                   About
-                </a>
+                </button>
               </li>
               <li>
                 <button
@@ -1807,12 +2015,13 @@ export default function TemplateTwoShowcase() {
                 </a>
               </li>
               <li>
-                <a
-                  href="#pixenora-faq"
-                  className="hover:text-[#111113] transition-colors"
+                <button
+                  type="button"
+                  onClick={() => openJournalTab("All Stories")}
+                  className="hover:text-[#111113] transition-colors cursor-pointer"
                 >
                   Journal
-                </a>
+                </button>
               </li>
               <li>
                 <button
@@ -1957,6 +2166,75 @@ export default function TemplateTwoShowcase() {
                   <ApertureIcon className="w-3.5 h-3.5" />
                 </span>
               </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Journal Article Reader Modal */}
+      {selectedArticle && (
+        <div
+          className="fixed inset-0 z-50 bg-black/70 backdrop-blur-xs flex items-center justify-center p-4 sm:p-6"
+          onClick={() => setSelectedArticle(null)}
+        >
+          <div
+            className="w-full max-w-2xl max-h-[88vh] overflow-y-auto rounded-3xl bg-[#faf8f4] text-[#2c221b] border border-white shadow-2xl"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="relative aspect-[16/9] w-full bg-neutral-900">
+              <SafePhoto
+                key={selectedArticle.id}
+                src={selectedArticle.src}
+                fallbackSrc={selectedArticle.fallbackSrc}
+                alt={selectedArticle.title}
+                sizes="(max-width: 768px) 100vw, 680px"
+                className="object-cover object-center"
+              />
+              <button
+                type="button"
+                onClick={() => setSelectedArticle(null)}
+                aria-label="Close journal article"
+                className="absolute top-4 right-4 w-9 h-9 rounded-full bg-[#faf8f4]/95 hover:bg-white text-[#2c221b] flex items-center justify-center text-sm shadow-sm cursor-pointer"
+              >
+                ✕
+              </button>
+            </div>
+
+            <div className="p-6 sm:p-8 space-y-4">
+              <p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-[#7a6657]">
+                {selectedArticle.categoryLabel} · {selectedArticle.readTime} ·{" "}
+                {selectedArticle.date}
+              </p>
+
+              <h2 className="font-serif text-2xl sm:text-3xl font-normal text-[#2a211b] leading-snug">
+                {selectedArticle.title}
+              </h2>
+
+              <div className="space-y-3 text-sm sm:text-[15px] leading-[1.7] text-[#4c4037]">
+                {selectedArticle.body.map((para, idx) => (
+                  <p key={idx}>{para}</p>
+                ))}
+              </div>
+
+              <div className="pt-4 border-t border-[#e5ded3] flex flex-wrap items-center justify-between gap-4">
+                <span className="text-xs text-[#7a6657]">
+                  Written by Alex Morgan · Pixenora Journal
+                </span>
+                <button
+                  type="button"
+                  onClick={() => {
+                    setSelectedArticle(null);
+                    setBookingSubmitted(false);
+                    setBookingOpen(true);
+                  }}
+                  className="inline-flex items-center gap-3 rounded-full bg-[#2c221b] hover:bg-[#1e1712] text-white pl-5 pr-1.5 py-1.5 text-[12px] font-medium transition-colors cursor-pointer group"
+                >
+                  <span>Book a Session</span>
+                  <span className="w-7 h-7 rounded-full bg-white text-[#2c221b] flex items-center justify-center group-hover:rotate-45 transition-transform duration-300">
+                    <ApertureIcon className="w-3.5 h-3.5" />
+                  </span>
+                </button>
+              </div>
             </div>
           </div>
         </div>
