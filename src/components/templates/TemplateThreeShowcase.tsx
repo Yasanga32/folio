@@ -95,7 +95,31 @@ const FOCAL_SERIES: FocalSeriesItem[] = [
     fallbackSrc:
       "https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&w=700&q=85",
   },
+  {
+    id: "soho-after-rain",
+    title: "Soho after rain",
+    year: "2025",
+    location: "Soho, London",
+    category: "Night Street Portrait",
+    src: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=700&q=85",
+    fallbackSrc:
+      "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=700&q=85",
+  },
 ];
+
+const SEASON_FEATURED_IDS = [
+  "nova-ray-album",
+  "theo-at-home",
+  "atelier-vane-ss26",
+  "lume-cosmetics",
+  "sam-furniture-maker",
+] as const;
+
+const SEASON_BOTTOM_IDS = [
+  "soho-after-rain",
+  "martha-late-august",
+  "holden-partners",
+] as const;
 
 function SafeMonoImage({
   src,
@@ -270,6 +294,113 @@ export default function TemplateThreeShowcase() {
                 ))}
               </div>
             ))}
+          </div>
+        </section>
+
+        {/* Selected Work / This Season Asymmetric Bento Showcase */}
+        <section
+          id="focal-season"
+          aria-label="Selected work this season"
+          className="w-full max-w-5xl mx-auto px-6 sm:px-10 pt-12 sm:pt-16 pb-20 sm:pb-24"
+        >
+          {/* Section Header Row */}
+          <div className="border-t border-white/15 pt-7 mb-10 sm:mb-12 flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+            <div>
+              <p className="font-mono text-[10px] tracking-[0.2em] uppercase text-neutral-400 mb-2">
+                SELECTED WORK
+              </p>
+              <h2 className="font-serif font-normal text-[34px] sm:text-[42px] lg:text-[46px] leading-[1.05] tracking-[-0.02em] text-white">
+                This season
+              </h2>
+            </div>
+
+            <p className="text-[12px] leading-[1.6] text-neutral-400 max-w-[260px]">
+              Recent portrait, editorial and brand work, shot in natural light
+              across London and beyond.
+            </p>
+          </div>
+
+          {/* Upper Asymmetric Bento (Left 2-Row Portrait + Right 2x2 Stack) */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+            {SEASON_FEATURED_IDS.map((seriesId, index) => {
+              const item = FOCAL_SERIES.find((s) => s.id === seriesId);
+              if (!item) return null;
+
+              const isLeadFeature = index === 0;
+              const isUpperPair = index === 1 || index === 2;
+
+              return (
+                <button
+                  key={item.id}
+                  type="button"
+                  onClick={() => setSelectedItem(item)}
+                  className={`relative w-full rounded-[4px] overflow-hidden bg-neutral-900 group cursor-pointer focus:outline-none text-left ${
+                    isLeadFeature
+                      ? "md:row-span-2 aspect-[4/4.6] md:aspect-auto md:h-full min-h-[300px]"
+                      : isUpperPair
+                      ? "aspect-[1/0.86]"
+                      : "aspect-[1/1.05]"
+                  }`}
+                >
+                  <SafeMonoImage
+                    src={item.src}
+                    fallbackSrc={item.fallbackSrc}
+                    alt={item.title}
+                    sizes={
+                      isLeadFeature
+                        ? "(max-width: 768px) 100vw, 340px"
+                        : "(max-width: 768px) 100vw, 320px"
+                    }
+                    className="object-cover object-top grayscale contrast-125 brightness-95 group-hover:scale-[1.03] group-hover:brightness-105 transition-all duration-500 ease-out"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                    <div>
+                      <p className="font-serif text-base text-white leading-tight">
+                        {item.title}
+                      </p>
+                      <p className="font-mono text-[10px] tracking-wider uppercase text-neutral-300 mt-0.5">
+                        {item.location} · {item.year}
+                      </p>
+                    </div>
+                  </div>
+                </button>
+              );
+            })}
+          </div>
+
+          {/* Bottom 3-Column Equal Editorial Portraits Row */}
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mt-3">
+            {SEASON_BOTTOM_IDS.map((seriesId) => {
+              const item = FOCAL_SERIES.find((s) => s.id === seriesId);
+              if (!item) return null;
+
+              return (
+                <button
+                  key={item.id}
+                  type="button"
+                  onClick={() => setSelectedItem(item)}
+                  className="relative w-full aspect-[4/4.9] rounded-[4px] overflow-hidden bg-neutral-900 group cursor-pointer focus:outline-none text-left"
+                >
+                  <SafeMonoImage
+                    src={item.src}
+                    fallbackSrc={item.fallbackSrc}
+                    alt={item.title}
+                    sizes="(max-width: 640px) 100vw, 340px"
+                    className="object-cover object-top grayscale contrast-125 brightness-95 group-hover:scale-[1.03] group-hover:brightness-105 transition-all duration-500 ease-out"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                    <div>
+                      <p className="font-serif text-base text-white leading-tight">
+                        {item.title}
+                      </p>
+                      <p className="font-mono text-[10px] tracking-wider uppercase text-neutral-300 mt-0.5">
+                        {item.location} · {item.year}
+                      </p>
+                    </div>
+                  </div>
+                </button>
+              );
+            })}
           </div>
         </section>
       </main>
