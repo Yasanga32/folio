@@ -121,6 +121,154 @@ const SEASON_BOTTOM_IDS = [
   "holden-partners",
 ] as const;
 
+interface SessionTypeItem {
+  number: string;
+  title: string;
+  description: string;
+  duration: string;
+  location: string;
+  delivery: string;
+  priceFrom: string;
+  src: string;
+  fallbackSrc: string;
+}
+
+const SESSION_TYPES: SessionTypeItem[] = [
+  {
+    number: "01",
+    title: "Portrait",
+    description:
+      "Intimate sessions that show the person behind the image. For individuals, couples and creatives who want depth over decoration.",
+    duration: "1 to 2 hours",
+    location: "Studio or outdoors",
+    delivery: "Online gallery",
+    priceFrom: "$400",
+    src: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=800&q=85",
+    fallbackSrc:
+      "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=800&q=85",
+  },
+  {
+    number: "02",
+    title: "Editorial",
+    description:
+      "Story-led commissions for magazines, independent print journals, music releases and cultural essays shaped around natural daylight.",
+    duration: "Half or full day",
+    location: "Location or studio",
+    delivery: "Print-ready set",
+    priceFrom: "$950",
+    src: "https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&w=800&q=85",
+    fallbackSrc:
+      "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=800&q=85",
+  },
+  {
+    number: "03",
+    title: "Brand",
+    description:
+      "Unhurried founder portraits, craftsperson documentaries and tactile campaign imagery tailored for thoughtful independent labels.",
+    duration: "Half day",
+    location: "On-site or London",
+    delivery: "Licensed archive",
+    priceFrom: "$1,200",
+    src: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=800&q=85",
+    fallbackSrc:
+      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=800&q=85",
+  },
+  {
+    number: "04",
+    title: "Beauty",
+    description:
+      "Luminous skin-first macro portraiture and tactile product still life crafted for skincare launches, lookbooks and calm beauty stories.",
+    duration: "3 to 4 hours",
+    location: "Hackney daylight",
+    delivery: "High-res plates",
+    priceFrom: "$850",
+    src: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=800&q=85",
+    fallbackSrc:
+      "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=800&q=85",
+  },
+];
+
+const SEASON_FEATURED_IDS = [
+  "nova-ray-album",
+  "theo-at-home",
+  "atelier-vane-ss26",
+  "lume-cosmetics",
+  "sam-furniture-maker",
+] as const;
+
+const SEASON_BOTTOM_IDS = [
+  "soho-after-rain",
+  "martha-late-august",
+  "holden-partners",
+] as const;
+
+interface SessionTypeItem {
+  number: string;
+  title: string;
+  description: string;
+  duration: string;
+  location: string;
+  delivery: string;
+  priceFrom: string;
+  src: string;
+  fallbackSrc: string;
+}
+
+const SESSION_TYPES: SessionTypeItem[] = [
+  {
+    number: "01",
+    title: "Portrait",
+    description:
+      "Intimate sessions that show the person behind the image. For individuals, couples and creatives who want depth over decoration.",
+    duration: "1 to 2 hours",
+    location: "Studio or outdoors",
+    delivery: "Online gallery",
+    priceFrom: "$400",
+    src: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=800&q=85",
+    fallbackSrc:
+      "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=800&q=85",
+  },
+  {
+    number: "02",
+    title: "Editorial",
+    description:
+      "Story-led commissions for magazines, independent print journals, music releases and cultural essays shaped around natural daylight.",
+    duration: "Half or full day",
+    location: "Location or studio",
+    delivery: "Print-ready set",
+    priceFrom: "$950",
+    src: "https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&w=800&q=85",
+    fallbackSrc:
+      "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=800&q=85",
+  },
+  {
+    number: "03",
+    title: "Brand",
+    description:
+      "Unhurried founder portraits, craftsperson documentaries and tactile campaign imagery tailored for thoughtful independent labels.",
+    duration: "Half day",
+    location: "On-site or London",
+    delivery: "Licensed archive",
+    priceFrom: "$1,200",
+    src: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=800&q=85",
+    fallbackSrc:
+      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=800&q=85",
+  },
+  {
+    number: "04",
+    title: "Beauty",
+    description:
+      "Luminous skin-first macro portraiture and tactile product still life crafted for skincare launches, lookbooks and calm beauty stories.",
+    duration: "3 to 4 hours",
+    location: "Hackney daylight",
+    delivery: "High-res plates",
+    priceFrom: "$850",
+    src: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=800&q=85",
+    fallbackSrc:
+      "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=800&q=85",
+  },
+];
+
 function SafeMonoImage({
   src,
   fallbackSrc,
@@ -159,6 +307,7 @@ export default function TemplateThreeShowcase() {
   const [bookingOpen, setBookingOpen] = useState(false);
   const [aboutOpen, setAboutOpen] = useState(false);
   const [bookingSent, setBookingSent] = useState(false);
+  const [expandedSession, setExpandedSession] = useState<string | null>("01");
 
   const selectedIndex = selectedItem
     ? FOCAL_SERIES.findIndex((i) => i.id === selectedItem.id)
@@ -398,6 +547,453 @@ export default function TemplateThreeShowcase() {
                       </p>
                     </div>
                   </div>
+                </button>
+              );
+            })}
+          </div>
+        </section>
+
+        {/* What We Do / Four Kinds of Sessions Accordion */}
+        <section
+          id="focal-sessions"
+          aria-label="Four kinds of photography sessions"
+          className="w-full max-w-5xl mx-auto px-6 sm:px-10 pt-4 sm:pt-8 pb-20 sm:pb-24"
+        >
+          {/* Section Header Row */}
+          <div className="border-t border-white/15 pt-7 mb-10 sm:mb-12 flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+            <div>
+              <p className="font-mono text-[10px] tracking-[0.2em] uppercase text-neutral-400 mb-2">
+                WHAT WE DO
+              </p>
+              <h2 className="font-serif font-normal text-[34px] sm:text-[42px] lg:text-[46px] leading-[1.05] tracking-[-0.02em] text-white">
+                Four kinds of sessions
+              </h2>
+            </div>
+
+            <p className="text-[12px] leading-[1.6] text-neutral-400 max-w-[270px]">
+              Every session starts with a short call and ends with an edited
+              online gallery, never a folder of raw files.
+            </p>
+          </div>
+
+          {/* 4 Interactive Session Rows */}
+          <div className="space-y-1">
+            {SESSION_TYPES.map((session) => {
+              const isOpen = expandedSession === session.number;
+
+              if (isOpen) {
+                return (
+                  <div
+                    key={session.number}
+                    className="rounded-xl bg-[#0c0c0e] border border-white/12 p-6 sm:p-8 lg:p-9 my-2 transition-all"
+                  >
+                    {/* Expanded Top Header Row */}
+                    <div className="flex items-center justify-between gap-4">
+                      <div className="flex items-center gap-6 sm:gap-8">
+                        <span className="font-mono text-[11px] tracking-[0.16em] text-neutral-500">
+                          {session.number}
+                        </span>
+                        <h3 className="font-serif font-normal text-[28px] sm:text-[32px] leading-none text-white">
+                          {session.title}
+                        </h3>
+                      </div>
+
+                      <button
+                        type="button"
+                        aria-label={`Collapse ${session.title}`}
+                        onClick={() => setExpandedSession(null)}
+                        className="w-9 h-9 rounded-full bg-white text-black flex items-center justify-center shrink-0 hover:scale-105 transition-transform cursor-pointer"
+                      >
+                        <svg
+                          className="w-3.5 h-3.5"
+                          viewBox="0 0 16 16"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth="1.8"
+                          strokeLinecap="round"
+                        >
+                          <path d="M4.5 4.5l7 7M11.5 4.5l-7 7" />
+                        </svg>
+                      </button>
+                    </div>
+
+                    {/* Expanded Details + Color Editorial Photo */}
+                    <div className="mt-6 sm:pl-12 grid grid-cols-1 lg:grid-cols-12 gap-7 items-center">
+                      <div className="lg:col-span-7 space-y-6">
+                        <p className="text-[13.5px] leading-[1.65] text-neutral-400 max-w-md">
+                          {session.description}
+                        </p>
+
+                        <div className="border-t border-white/10 pt-4 grid grid-cols-2 sm:grid-cols-4 gap-4">
+                          <div>
+                            <div className="font-mono text-[9.5px] tracking-[0.16em] uppercase text-neutral-500">
+                              DURATION
+                            </div>
+                            <div className="text-[12px] font-medium text-neutral-200 mt-1">
+                              {session.duration}
+                            </div>
+                          </div>
+                          <div>
+                            <div className="font-mono text-[9.5px] tracking-[0.16em] uppercase text-neutral-500">
+                              LOCATION
+                            </div>
+                            <div className="text-[12px] font-medium text-neutral-200 mt-1">
+                              {session.location}
+                            </div>
+                          </div>
+                          <div>
+                            <div className="font-mono text-[9.5px] tracking-[0.16em] uppercase text-neutral-500">
+                              DELIVERY
+                            </div>
+                            <div className="text-[12px] font-medium text-neutral-200 mt-1">
+                              {session.delivery}
+                            </div>
+                          </div>
+                          <div>
+                            <div className="font-mono text-[9.5px] tracking-[0.16em] uppercase text-neutral-500">
+                              FROM
+                            </div>
+                            <div className="text-[12px] font-medium text-neutral-200 mt-1">
+                              {session.priceFrom}
+                            </div>
+                          </div>
+                        </div>
+
+                        <button
+                          type="button"
+                          onClick={() => {
+                            setBookingSent(false);
+                            setBookingOpen(true);
+                          }}
+                          className="inline-flex items-center gap-2 rounded-full border border-white/25 hover:border-white hover:bg-white hover:text-black px-5 py-2.5 text-[10px] font-mono font-medium tracking-[0.16em] uppercase text-white transition-all cursor-pointer"
+                        >
+                          <span>BOOK THIS SESSION</span>
+                          <span aria-hidden="true">↗</span>
+                        </button>
+                      </div>
+
+                      <div className="lg:col-span-5">
+                        <div className="relative aspect-[16/10.5] w-full rounded-lg overflow-hidden bg-neutral-900 shadow-lg">
+                          <SafeMonoImage
+                            src={session.src}
+                            fallbackSrc={session.fallbackSrc}
+                            alt={`${session.title} photography preview`}
+                            sizes="(max-width: 1024px) 100vw, 380px"
+                            className="object-cover object-top"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                );
+              }
+
+              return (
+                <button
+                  key={session.number}
+                  type="button"
+                  aria-expanded={false}
+                  onClick={() => setExpandedSession(session.number)}
+                  className="w-full border-b border-white/12 py-6 sm:py-7 px-2 sm:px-4 flex items-center justify-between gap-4 text-left cursor-pointer group hover:border-white/25 transition-colors"
+                >
+                  <div className="flex items-center gap-6 sm:gap-8">
+                    <span className="font-mono text-[11px] tracking-[0.16em] text-neutral-500">
+                      {session.number}
+                    </span>
+                    <span className="font-serif font-normal text-[28px] sm:text-[32px] leading-none text-white group-hover:text-neutral-200 transition-colors">
+                      {session.title}
+                    </span>
+                  </div>
+
+                  <span className="w-9 h-9 rounded-full border border-white/20 text-neutral-300 group-hover:border-white/50 group-hover:text-white flex items-center justify-center shrink-0 transition-colors">
+                    <svg
+                      className="w-3.5 h-3.5"
+                      viewBox="0 0 16 16"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="1.6"
+                      strokeLinecap="round"
+                    >
+                      <path d="M8 3.5v9M3.5 8h9" />
+                    </svg>
+                  </span>
+                </button>
+              );
+            })}
+          </div>
+        </section>
+
+        {/* Selected Work / This Season Asymmetric Bento Showcase */}
+        <section
+          id="focal-season"
+          aria-label="Selected work this season"
+          className="w-full max-w-5xl mx-auto px-6 sm:px-10 pt-12 sm:pt-16 pb-20 sm:pb-24"
+        >
+          {/* Section Header Row */}
+          <div className="border-t border-white/15 pt-7 mb-10 sm:mb-12 flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+            <div>
+              <p className="font-mono text-[10px] tracking-[0.2em] uppercase text-neutral-400 mb-2">
+                SELECTED WORK
+              </p>
+              <h2 className="font-serif font-normal text-[34px] sm:text-[42px] lg:text-[46px] leading-[1.05] tracking-[-0.02em] text-white">
+                This season
+              </h2>
+            </div>
+
+            <p className="text-[12px] leading-[1.6] text-neutral-400 max-w-[260px]">
+              Recent portrait, editorial and brand work, shot in natural light
+              across London and beyond.
+            </p>
+          </div>
+
+          {/* Upper Asymmetric Bento (Left 2-Row Portrait + Right 2x2 Stack) */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+            {SEASON_FEATURED_IDS.map((seriesId, index) => {
+              const item = FOCAL_SERIES.find((s) => s.id === seriesId);
+              if (!item) return null;
+
+              const isLeadFeature = index === 0;
+              const isUpperPair = index === 1 || index === 2;
+
+              return (
+                <button
+                  key={item.id}
+                  type="button"
+                  onClick={() => setSelectedItem(item)}
+                  className={`relative w-full rounded-[4px] overflow-hidden bg-neutral-900 group cursor-pointer focus:outline-none text-left ${
+                    isLeadFeature
+                      ? "md:row-span-2 aspect-[4/4.6] md:aspect-auto md:h-full min-h-[300px]"
+                      : isUpperPair
+                      ? "aspect-[1/0.86]"
+                      : "aspect-[1/1.05]"
+                  }`}
+                >
+                  <SafeMonoImage
+                    src={item.src}
+                    fallbackSrc={item.fallbackSrc}
+                    alt={item.title}
+                    sizes={
+                      isLeadFeature
+                        ? "(max-width: 768px) 100vw, 340px"
+                        : "(max-width: 768px) 100vw, 320px"
+                    }
+                    className="object-cover object-top grayscale contrast-125 brightness-95 group-hover:scale-[1.03] group-hover:brightness-105 transition-all duration-500 ease-out"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                    <div>
+                      <p className="font-serif text-base text-white leading-tight">
+                        {item.title}
+                      </p>
+                      <p className="font-mono text-[10px] tracking-wider uppercase text-neutral-300 mt-0.5">
+                        {item.location} · {item.year}
+                      </p>
+                    </div>
+                  </div>
+                </button>
+              );
+            })}
+          </div>
+
+          {/* Bottom 3-Column Equal Editorial Portraits Row */}
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mt-3">
+            {SEASON_BOTTOM_IDS.map((seriesId) => {
+              const item = FOCAL_SERIES.find((s) => s.id === seriesId);
+              if (!item) return null;
+
+              return (
+                <button
+                  key={item.id}
+                  type="button"
+                  onClick={() => setSelectedItem(item)}
+                  className="relative w-full aspect-[4/4.9] rounded-[4px] overflow-hidden bg-neutral-900 group cursor-pointer focus:outline-none text-left"
+                >
+                  <SafeMonoImage
+                    src={item.src}
+                    fallbackSrc={item.fallbackSrc}
+                    alt={item.title}
+                    sizes="(max-width: 640px) 100vw, 340px"
+                    className="object-cover object-top grayscale contrast-125 brightness-95 group-hover:scale-[1.03] group-hover:brightness-105 transition-all duration-500 ease-out"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                    <div>
+                      <p className="font-serif text-base text-white leading-tight">
+                        {item.title}
+                      </p>
+                      <p className="font-mono text-[10px] tracking-wider uppercase text-neutral-300 mt-0.5">
+                        {item.location} · {item.year}
+                      </p>
+                    </div>
+                  </div>
+                </button>
+              );
+            })}
+          </div>
+        </section>
+
+        {/* What We Do / Four Kinds of Sessions Accordion */}
+        <section
+          id="focal-sessions"
+          aria-label="Four kinds of photography sessions"
+          className="w-full max-w-5xl mx-auto px-6 sm:px-10 pt-4 sm:pt-8 pb-20 sm:pb-24"
+        >
+          {/* Section Header Row */}
+          <div className="border-t border-white/15 pt-7 mb-10 sm:mb-12 flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+            <div>
+              <p className="font-mono text-[10px] tracking-[0.2em] uppercase text-neutral-400 mb-2">
+                WHAT WE DO
+              </p>
+              <h2 className="font-serif font-normal text-[34px] sm:text-[42px] lg:text-[46px] leading-[1.05] tracking-[-0.02em] text-white">
+                Four kinds of sessions
+              </h2>
+            </div>
+
+            <p className="text-[12px] leading-[1.6] text-neutral-400 max-w-[270px]">
+              Every session starts with a short call and ends with an edited
+              online gallery, never a folder of raw files.
+            </p>
+          </div>
+
+          {/* 4 Interactive Session Rows */}
+          <div className="space-y-1">
+            {SESSION_TYPES.map((session) => {
+              const isOpen = expandedSession === session.number;
+
+              if (isOpen) {
+                return (
+                  <div
+                    key={session.number}
+                    className="rounded-xl bg-[#0c0c0e] border border-white/12 p-6 sm:p-8 lg:p-9 my-2 transition-all"
+                  >
+                    {/* Expanded Top Header Row */}
+                    <div className="flex items-center justify-between gap-4">
+                      <div className="flex items-center gap-6 sm:gap-8">
+                        <span className="font-mono text-[11px] tracking-[0.16em] text-neutral-500">
+                          {session.number}
+                        </span>
+                        <h3 className="font-serif font-normal text-[28px] sm:text-[32px] leading-none text-white">
+                          {session.title}
+                        </h3>
+                      </div>
+
+                      <button
+                        type="button"
+                        aria-label={`Collapse ${session.title}`}
+                        onClick={() => setExpandedSession(null)}
+                        className="w-9 h-9 rounded-full bg-white text-black flex items-center justify-center shrink-0 hover:scale-105 transition-transform cursor-pointer"
+                      >
+                        <svg
+                          className="w-3.5 h-3.5"
+                          viewBox="0 0 16 16"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth="1.8"
+                          strokeLinecap="round"
+                        >
+                          <path d="M4.5 4.5l7 7M11.5 4.5l-7 7" />
+                        </svg>
+                      </button>
+                    </div>
+
+                    {/* Expanded Details + Color Editorial Photo */}
+                    <div className="mt-6 sm:pl-12 grid grid-cols-1 lg:grid-cols-12 gap-7 items-center">
+                      <div className="lg:col-span-7 space-y-6">
+                        <p className="text-[13.5px] leading-[1.65] text-neutral-400 max-w-md">
+                          {session.description}
+                        </p>
+
+                        <div className="border-t border-white/10 pt-4 grid grid-cols-2 sm:grid-cols-4 gap-4">
+                          <div>
+                            <div className="font-mono text-[9.5px] tracking-[0.16em] uppercase text-neutral-500">
+                              DURATION
+                            </div>
+                            <div className="text-[12px] font-medium text-neutral-200 mt-1">
+                              {session.duration}
+                            </div>
+                          </div>
+                          <div>
+                            <div className="font-mono text-[9.5px] tracking-[0.16em] uppercase text-neutral-500">
+                              LOCATION
+                            </div>
+                            <div className="text-[12px] font-medium text-neutral-200 mt-1">
+                              {session.location}
+                            </div>
+                          </div>
+                          <div>
+                            <div className="font-mono text-[9.5px] tracking-[0.16em] uppercase text-neutral-500">
+                              DELIVERY
+                            </div>
+                            <div className="text-[12px] font-medium text-neutral-200 mt-1">
+                              {session.delivery}
+                            </div>
+                          </div>
+                          <div>
+                            <div className="font-mono text-[9.5px] tracking-[0.16em] uppercase text-neutral-500">
+                              FROM
+                            </div>
+                            <div className="text-[12px] font-medium text-neutral-200 mt-1">
+                              {session.priceFrom}
+                            </div>
+                          </div>
+                        </div>
+
+                        <button
+                          type="button"
+                          onClick={() => {
+                            setBookingSent(false);
+                            setBookingOpen(true);
+                          }}
+                          className="inline-flex items-center gap-2 rounded-full border border-white/25 hover:border-white hover:bg-white hover:text-black px-5 py-2.5 text-[10px] font-mono font-medium tracking-[0.16em] uppercase text-white transition-all cursor-pointer"
+                        >
+                          <span>BOOK THIS SESSION</span>
+                          <span aria-hidden="true">↗</span>
+                        </button>
+                      </div>
+
+                      <div className="lg:col-span-5">
+                        <div className="relative aspect-[16/10.5] w-full rounded-lg overflow-hidden bg-neutral-900 shadow-lg">
+                          <SafeMonoImage
+                            src={session.src}
+                            fallbackSrc={session.fallbackSrc}
+                            alt={`${session.title} photography preview`}
+                            sizes="(max-width: 1024px) 100vw, 380px"
+                            className="object-cover object-top"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                );
+              }
+
+              return (
+                <button
+                  key={session.number}
+                  type="button"
+                  aria-expanded={false}
+                  onClick={() => setExpandedSession(session.number)}
+                  className="w-full border-b border-white/12 py-6 sm:py-7 px-2 sm:px-4 flex items-center justify-between gap-4 text-left cursor-pointer group hover:border-white/25 transition-colors"
+                >
+                  <div className="flex items-center gap-6 sm:gap-8">
+                    <span className="font-mono text-[11px] tracking-[0.16em] text-neutral-500">
+                      {session.number}
+                    </span>
+                    <span className="font-serif font-normal text-[28px] sm:text-[32px] leading-none text-white group-hover:text-neutral-200 transition-colors">
+                      {session.title}
+                    </span>
+                  </div>
+
+                  <span className="w-9 h-9 rounded-full border border-white/20 text-neutral-300 group-hover:border-white/50 group-hover:text-white flex items-center justify-center shrink-0 transition-colors">
+                    <svg
+                      className="w-3.5 h-3.5"
+                      viewBox="0 0 16 16"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="1.6"
+                      strokeLinecap="round"
+                    >
+                      <path d="M8 3.5v9M3.5 8h9" />
+                    </svg>
+                  </span>
                 </button>
               );
             })}
