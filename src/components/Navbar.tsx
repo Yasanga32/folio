@@ -53,6 +53,7 @@ export default function Navbar({ dark = false }: { dark?: boolean }) {
     { label: "Home", href: "/" },
     { label: "Home#2", href: "/home2" },
     { label: "Home#3", href: "/home3" },
+    { label: "#4", href: "/home4" },
     { label: "Templates", href: "/templates" },
     { label: "Template", href: "/template", hasDropdown: true },
     { label: "Pricing", href: "/#pricing" },
@@ -87,7 +88,7 @@ export default function Navbar({ dark = false }: { dark?: boolean }) {
         </Link>
 
         {/* Center Nav Links - Desktop */}
-        <nav className="hidden md:flex items-center gap-4 lg:gap-6 xl:gap-8">
+        <nav className="hidden md:flex items-center gap-3.5 lg:gap-5 xl:gap-7">
           {navLinks.map((link) => {
             if (link.hasDropdown) {
               return (
