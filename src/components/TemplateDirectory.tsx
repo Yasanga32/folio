@@ -13,18 +13,18 @@ interface DirectoryTemplate {
 }
 
 const PROFESSIONS = [
-  "Architecture",
-  "Art",
-  "Design",
-  "Fashion",
-  "Illustration",
-  "Marketing",
-  "Model",
-  "Photography",
-  "Student",
-  "Video",
-  "Wedding",
-  "Writing",
+  "Photographers",
+  "Artists & Illustrators",
+  "Graphic Designers",
+  "UI/UX Designers",
+  "Developers & IT",
+  "AI/Software engineers",
+  "Engineers",
+  "Students & Graduates",
+  "Videographers & Filmmakers",
+  "Fashion Designers & Stylists",
+  "Models & Actors",
+  "Architects & Interior Designers",
 ];
 
 const GALLERIES = [
@@ -76,7 +76,7 @@ const TEMPLATES: DirectoryTemplate[] = [
   {
     id: "bloom",
     name: "Bloom",
-    professions: ["Art", "Illustration", "Design"],
+    professions: ["Artists & Illustrators", "Graphic Designers"],
     gallery: "Slideshow",
     description:
       "An atmospheric botanical portfolio template built for digital artists, illustrators, and expressive visual storytellers.",
@@ -104,7 +104,11 @@ const TEMPLATES: DirectoryTemplate[] = [
   {
     id: "reflex",
     name: "Reflex",
-    professions: ["Fashion", "Photography", "Model"],
+    professions: [
+      "Photographers",
+      "Fashion Designers & Stylists",
+      "Models & Actors",
+    ],
     gallery: "Tiled",
     description:
       "A sharp editorial masonry layout tailored for fashion photographers, stylists, models, and creative directors.",
@@ -196,7 +200,7 @@ const TEMPLATES: DirectoryTemplate[] = [
   {
     id: "symmetry",
     name: "Symmetry",
-    professions: ["Architecture", "Design"],
+    professions: ["Architects & Interior Designers", "Engineers"],
     gallery: "Horizontal Scroll",
     description:
       "Clean geometric spacing and wide architectural image bands designed for modern studios and spatial designers.",
@@ -244,7 +248,7 @@ const TEMPLATES: DirectoryTemplate[] = [
   {
     id: "retreat-co",
     name: "Retreat & Co",
-    professions: ["Architecture", "Marketing", "Design"],
+    professions: ["Architects & Interior Designers", "Graphic Designers"],
     gallery: "Vertical Scroll",
     description:
       "An inviting editorial showcase for interior architecture practices, hospitality spaces, and studio brands.",
@@ -314,7 +318,11 @@ const TEMPLATES: DirectoryTemplate[] = [
   {
     id: "amanda-smith",
     name: "Amanda Smith",
-    professions: ["Art", "Photography", "Student"],
+    professions: [
+      "Artists & Illustrators",
+      "Photographers",
+      "Students & Graduates",
+    ],
     gallery: "Tiled",
     description:
       "A split-sidebar showcase pairing minimalist index navigation with vivid full-bleed photography and textile art.",
@@ -359,7 +367,11 @@ const TEMPLATES: DirectoryTemplate[] = [
   {
     id: "hemetsberger",
     name: "Hemetsberger",
-    professions: ["Design", "Writing", "Marketing"],
+    professions: [
+      "Graphic Designers",
+      "UI/UX Designers",
+      "Artists & Illustrators",
+    ],
     gallery: "Tiled",
     description:
       "Bold editorial introduction statement paired with modular geometric artwork tiles for standout brand designers.",
@@ -417,7 +429,7 @@ const TEMPLATES: DirectoryTemplate[] = [
   {
     id: "veloce",
     name: "Veloce",
-    professions: ["Video", "Photography"],
+    professions: ["Videographers & Filmmakers", "Photographers"],
     gallery: "Horizontal Scroll",
     description:
       "Cinematic widescreen showcase tailored for film directors, DOPs, motion designers, and production houses.",
@@ -453,10 +465,15 @@ const TEMPLATES: DirectoryTemplate[] = [
   {
     id: "lumina",
     name: "Lumina",
-    professions: ["Wedding", "Photography"],
+    professions: [
+      "Photographers",
+      "Fashion Designers & Stylists",
+      "Models & Actors",
+      "Videographers & Filmmakers",
+    ],
     gallery: "Slideshow",
     description:
-      "Timeless light-filled gallery built for fine-art wedding photographers and intimate storytelling studios.",
+      "Timeless light-filled gallery built for editorial photographers, fashion stylists, models, and visual storytellers.",
     renderPreview: () => (
       <div className="w-full h-full bg-[#faf6f0] text-neutral-900 p-3 flex flex-col justify-between overflow-hidden">
         <div className="text-center text-[8px] font-serif italic text-neutral-700">
@@ -465,7 +482,7 @@ const TEMPLATES: DirectoryTemplate[] = [
         <div className="relative flex-1 my-1.5 rounded-sm overflow-hidden">
           <Image
             src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=600&q=80"
-            alt="Wedding Editorial"
+            alt="Editorial Gallery"
             fill
             className="object-cover"
             sizes="320px"
@@ -480,10 +497,14 @@ const TEMPLATES: DirectoryTemplate[] = [
   {
     id: "monograph",
     name: "Monograph",
-    professions: ["Writing", "Student", "Marketing"],
+    professions: [
+      "Students & Graduates",
+      "UI/UX Designers",
+      "Developers & IT",
+    ],
     gallery: "Vertical Scroll",
     description:
-      "Clean typographic editorial portfolio crafted for copywriters, journalists, authors, and content strategists.",
+      "Clean typographic editorial portfolio crafted for UX writers, students, graduates, and product thinkers.",
     renderPreview: () => (
       <div className="w-full h-full bg-[#f7f5f0] text-neutral-900 p-4 flex flex-col justify-between overflow-hidden">
         <div className="flex items-center justify-between text-[7px] text-neutral-400 border-b border-neutral-200 pb-1">
@@ -492,14 +513,148 @@ const TEMPLATES: DirectoryTemplate[] = [
         </div>
         <div className="my-auto space-y-1.5">
           <h4 className="font-serif text-sm font-bold text-neutral-950 leading-tight">
-            Words that shape products & culture.
+            Systems that shape products &amp; culture.
           </h4>
           <p className="text-[7px] text-neutral-500 leading-relaxed">
-            Selected brand voice systems, UX writing, and long-form editorial articles for modern tech teams.
+            Selected UX research case studies, technical write-ups, and graduate capstone projects for modern teams.
           </p>
         </div>
         <div className="text-[7px] text-neutral-700 font-semibold">
           Read Featured Case Study →
+        </div>
+      </div>
+    ),
+  },
+  {
+    id: "kinetix-ux",
+    name: "Kinetix UI",
+    professions: [
+      "UI/UX Designers",
+      "Graphic Designers",
+      "Developers & IT",
+    ],
+    gallery: "Tiled",
+    description:
+      "Modular bento case-study layout built for UI/UX designers, product strategists, and front-end builders.",
+    renderPreview: (isMobile) => (
+      <div className="w-full h-full bg-[#0f1016] text-white p-3 flex flex-col justify-between overflow-hidden">
+        <div className="flex items-center justify-between text-[7px] text-neutral-400">
+          <span className="font-semibold text-white">KINETIX.DESIGN</span>
+          <span className="text-violet-400">● Open to Roles</span>
+        </div>
+        <div
+          className={`grid gap-1.5 flex-1 my-1.5 ${
+            isMobile ? "grid-cols-1" : "grid-cols-3"
+          }`}
+        >
+          <div className="col-span-2 rounded-sm bg-gradient-to-br from-[#2a2146] to-[#171424] border border-white/10 p-2.5 flex flex-col justify-between">
+            <span className="text-[6px] uppercase tracking-wider text-violet-300">
+              Case Study · 01
+            </span>
+            <div className="text-[9px] font-semibold leading-tight">
+              Design System &amp; Component Architecture
+            </div>
+          </div>
+          {!isMobile && (
+            <div className="rounded-sm bg-[#191b24] border border-white/10 p-2 flex flex-col justify-between">
+              <div className="w-4 h-4 rounded-full bg-emerald-400/20 border border-emerald-400/50" />
+              <div className="text-[7px] text-neutral-300 font-medium">
+                +42% Task Flow
+              </div>
+            </div>
+          )}
+        </div>
+        <div className="flex justify-between text-[6.5px] text-neutral-500">
+          <span>FIGMA · TOKENS · PROTOTYPES</span>
+          <span>2026</span>
+        </div>
+      </div>
+    ),
+  },
+  {
+    id: "terminal-ai",
+    name: "Tensor Grid",
+    professions: [
+      "AI/Software engineers",
+      "Developers & IT",
+      "Students & Graduates",
+    ],
+    gallery: "Vertical Scroll",
+    description:
+      "Sleek technical showcase highlighting ML pipelines, system benchmarks, open-source repos, and developer docs.",
+    renderPreview: () => (
+      <div className="w-full h-full bg-[#0c1118] text-emerald-300 p-3 flex flex-col justify-between font-mono overflow-hidden">
+        <div className="flex items-center justify-between text-[6.5px] text-slate-400 border-b border-slate-800 pb-1">
+          <span>~/portfolio/inference</span>
+          <span className="text-emerald-400">v2.4.0</span>
+        </div>
+        <div className="my-auto space-y-1.5">
+          <div className="text-[9px] font-bold text-white leading-tight">
+            &gt; Distributed LLM Router &amp; Eval Suite
+          </div>
+          <div className="flex gap-1.5 text-[6px]">
+            <span className="px-1.5 py-0.5 rounded bg-emerald-500/15 text-emerald-300 border border-emerald-500/30">
+              PyTorch
+            </span>
+            <span className="px-1.5 py-0.5 rounded bg-sky-500/15 text-sky-300 border border-sky-500/30">
+              TypeScript
+            </span>
+            <span className="px-1.5 py-0.5 rounded bg-violet-500/15 text-violet-300 border border-violet-500/30">
+              CUDA
+            </span>
+          </div>
+        </div>
+        <div className="flex justify-between text-[6.5px] text-slate-500">
+          <span>GITHUB · PAPERS · DEMOS</span>
+          <span>1.4k ★</span>
+        </div>
+      </div>
+    ),
+  },
+  {
+    id: "cadence-eng",
+    name: "Cadence Lab",
+    professions: [
+      "Engineers",
+      "AI/Software engineers",
+      "Developers & IT",
+    ],
+    gallery: "Horizontal Scroll",
+    description:
+      "Structured blueprint layout tailored for mechanical, hardware, robotics, and systems engineers.",
+    renderPreview: (isMobile) => (
+      <div className="w-full h-full bg-[#f2f4f7] text-neutral-900 p-3 flex flex-col justify-between overflow-hidden">
+        <div className="flex items-center justify-between text-[7px] font-mono text-neutral-500">
+          <span className="font-bold text-neutral-900">CADENCE // R&amp;D</span>
+          <span>SPEC-09</span>
+        </div>
+        <div
+          className={`grid gap-1.5 flex-1 my-1.5 ${
+            isMobile ? "grid-cols-1" : "grid-cols-2"
+          }`}
+        >
+          <div className="bg-white border border-neutral-200 rounded-xs p-2 flex flex-col justify-between">
+            <span className="text-[6px] font-mono text-blue-600 uppercase">
+              Kinematics
+            </span>
+            <div className="text-[8px] font-semibold text-neutral-900">
+              6-DOF Actuator Rig
+            </div>
+          </div>
+          {!isMobile && (
+            <div className="bg-[#182235] text-white rounded-xs p-2 flex flex-col justify-between">
+              <span className="text-[6px] font-mono text-sky-300 uppercase">
+                Telemetry
+              </span>
+              <div className="text-[8px] font-semibold">
+                99.4% Loop Precision
+              </div>
+            </div>
+          )}
+        </div>
+        <div className="text-[6.5px] font-mono text-neutral-500 flex justify-between">
+          <span>CAD · EMBEDDED · CONTROL</span>
+          <span>PATENTED</span>
         </div>
       </div>
     ),
@@ -544,7 +699,7 @@ export default function TemplateDirectory() {
   return (
     <div className="flex-1 flex flex-col lg:flex-row bg-[#1b1726] text-white min-h-[calc(100vh-76px)]">
       {/* Left Sidebar Filters */}
-      <aside className="w-full lg:w-64 xl:w-72 bg-[#16121f] border-b lg:border-b-0 lg:border-r border-[#2b2438] p-6 sm:p-7 flex-shrink-0">
+      <aside className="w-full lg:w-72 bg-[#16121f] border-b lg:border-b-0 lg:border-r border-[#2b2438] p-6 sm:p-7 flex-shrink-0">
         {/* All Templates Header Link */}
         <div className="pb-3.5 border-b border-[#2b2438]">
           <button
@@ -563,7 +718,7 @@ export default function TemplateDirectory() {
           <h2 className="text-[11px] font-bold tracking-[0.14em] text-neutral-400 uppercase mb-3.5">
             Professions
           </h2>
-          <ul className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-1 gap-y-2.5 gap-x-3">
+          <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-y-2.5 gap-x-4">
             {PROFESSIONS.map((prof) => {
               const active = selectedProfession === prof;
               return (
@@ -571,14 +726,14 @@ export default function TemplateDirectory() {
                   <button
                     type="button"
                     onClick={() => toggleProfession(prof)}
-                    className={`flex items-center gap-2.5 text-[13px] transition-colors cursor-pointer ${
+                    className={`flex items-center gap-2.5 text-left text-[13px] leading-snug transition-colors cursor-pointer ${
                       active
                         ? "text-white font-semibold"
                         : "text-neutral-300 hover:text-white"
                     }`}
                   >
                     <span
-                      className={`w-1.5 h-1.5 rounded-full transition-colors ${
+                      className={`w-1.5 h-1.5 rounded-full shrink-0 transition-colors ${
                         active ? "bg-[#8868fa]" : "bg-neutral-400"
                       }`}
                     />
