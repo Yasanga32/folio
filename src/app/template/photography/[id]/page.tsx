@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import Navbar from "@/components/Navbar";
 import FramerBadge from "@/components/FramerBadge";
 import TemplateOneShowcase from "@/components/templates/TemplateOneShowcase";
+import TemplateTwoShowcase from "@/components/templates/TemplateTwoShowcase";
 
 const TEMPLATE_IDS = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"];
 
@@ -24,6 +25,10 @@ export default async function PhotographyTemplatePage({
 
   if (id === "1") {
     return <TemplateOneShowcase />;
+  }
+
+  if (id === "2") {
+    return <TemplateTwoShowcase />;
   }
 
   return (
