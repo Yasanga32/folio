@@ -307,6 +307,7 @@ export default function TemplateFourShowcase() {
   const [reviewsModalOpen, setReviewsModalOpen] = useState(false);
   const [workModalOpen, setWorkModalOpen] = useState(false);
   const [inquirySent, setInquirySent] = useState(false);
+  const [showAllArchive, setShowAllArchive] = useState(false);
   const [activeCategory, setActiveCategory] = useState<
     "All" | "Street" | "Portrait" | "Editorial"
   >("All");
@@ -647,17 +648,22 @@ export default function TemplateFourShowcase() {
               authentic stories captured with intention.
             </p>
 
-            <a
-              href="#finnegan-gallery"
-              onClick={() => setActiveCategory("All")}
-              className="inline-flex items-center gap-2 rounded-full border border-[#c8432b] hover:bg-[#c8432b] text-[#c8432b] hover:text-white px-5 py-2.5 text-[10px] font-bold tracking-[0.14em] uppercase transition-colors shrink-0 self-start sm:self-auto"
+            <button
+              type="button"
+              onClick={() => {
+                setActiveCategory("All");
+                setShowAllArchive((prev) => !prev);
+              }}
+              className="inline-flex items-center gap-2 rounded-full border border-[#c8432b] hover:bg-[#c8432b] text-[#c8432b] hover:text-white px-5 py-2.5 text-[10px] font-bold tracking-[0.14em] uppercase transition-colors shrink-0 self-start sm:self-auto cursor-pointer"
             >
               <span
                 className="w-1.5 h-1.5 rounded-full bg-current"
                 aria-hidden="true"
               />
-              <span>EXPLORE ALL PROJECTS</span>
-            </a>
+              <span>
+                {showAllArchive ? "HIDE ARCHIVE" : "EXPLORE ALL PROJECTS"}
+              </span>
+            </button>
           </div>
 
           <div className="mt-10 sm:mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
@@ -719,6 +725,77 @@ export default function TemplateFourShowcase() {
               );
             })}
           </div>
+
+          {showAllArchive && (
+            <div
+              id="finnegan-gallery"
+              className="mt-16 pt-14 border-t border-black/15"
+            >
+              <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10">
+                <div>
+                  <p className="text-[10.5px] font-mono uppercase tracking-[0.18em] text-[#c8432b] mb-2">
+                    NEW YORK · STREET &amp; EDITORIAL ARCHIVE
+                  </p>
+                  <h3 className="text-2xl sm:text-4xl font-medium tracking-[-0.03em] text-[#141312]">
+                    Selected Frames
+                  </h3>
+                </div>
+
+                <div className="flex flex-wrap items-center gap-2">
+                  {(["All", "Street", "Portrait", "Editorial"] as const).map(
+                    (cat) => (
+                      <button
+                        key={cat}
+                        type="button"
+                        onClick={() => setActiveCategory(cat)}
+                        className={`px-4 py-1.5 text-[11px] font-mono uppercase tracking-[0.12em] border transition-colors cursor-pointer ${
+                          activeCategory === cat
+                            ? "border-[#141312] bg-[#141312] text-white"
+                            : "border-neutral-300 text-neutral-700 hover:border-[#141312]"
+                        }`}
+                      >
+                        {cat}
+                      </button>
+                    )
+                  )}
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-7">
+                {visibleFrames.map((frame) => (
+                  <button
+                    key={frame.id}
+                    type="button"
+                    onClick={() => setSelectedFrame(frame)}
+                    className="group text-left cursor-pointer focus:outline-none"
+                  >
+                    <div className="relative aspect-[4/4.8] w-full bg-neutral-200 overflow-hidden rounded-lg">
+                      <SafeGrayImage
+                        src={frame.src}
+                        fallbackSrc={frame.fallbackSrc}
+                        alt={frame.title}
+                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 400px"
+                        className="object-cover object-top grayscale contrast-125 group-hover:scale-[1.03] transition-transform duration-500 ease-out"
+                      />
+                    </div>
+                    <div className="mt-3 flex items-baseline justify-between gap-3 border-t border-neutral-300 pt-2.5">
+                      <div>
+                        <span className="text-[10.5px] font-mono text-neutral-500 mr-2.5">
+                          {frame.frameNumber}
+                        </span>
+                        <span className="text-sm font-medium tracking-tight text-neutral-950 group-hover:underline">
+                          {frame.title}
+                        </span>
+                      </div>
+                      <span className="text-[10.5px] font-mono uppercase tracking-[0.12em] text-neutral-500 shrink-0">
+                        {frame.location}
+                      </span>
+                    </div>
+                  </button>
+                ))}
+              </div>
+            </div>
+          )}
         </div>
       </section>
 
@@ -858,104 +935,222 @@ export default function TemplateFourShowcase() {
         </div>
       </section>
 
-      {/* Editorial Monochrome Portfolio Archive Section Below Hero */}
-      <main id="finnegan-gallery" className="bg-[#f4f4f2] text-neutral-950">
-        <section className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-14 py-20 sm:py-24">
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-neutral-300 pb-8 mb-12">
-            <div>
-              <p className="text-[11px] font-mono uppercase tracking-[0.18em] text-neutral-500 mb-2">
-                NEW YORK · STREET & EDITORIAL ARCHIVE
-              </p>
-              <h2 className="text-3xl sm:text-5xl font-medium tracking-[-0.03em] text-neutral-950">
-                Selected Frames
-              </h2>
-            </div>
+      {/* Closing Terracotta Camera Aperture CTA & Studio Footer */}
+      <section
+        id="finnegan-contact"
+        aria-label="Contact Finnegan and studio footer"
+        className="w-full bg-[#df7444] text-[#0c0c0c] pt-24 sm:pt-32 lg:pt-36 flex flex-col justify-between"
+      >
+        <div className="max-w-5xl mx-auto w-full px-6 sm:px-10 pb-20 sm:pb-24 lg:pb-28 flex flex-col items-center text-center">
+          {/* Interactive 6-Blade Black Camera Aperture Button */}
+          <button
+            type="button"
+            onClick={() => {
+              setInquirySent(false);
+              setWorkModalOpen(true);
+            }}
+            aria-label="Open booking inquiry dialog — Let's Talk"
+            className="relative group w-[176px] h-[176px] sm:w-[208px] sm:h-[208px] flex items-center justify-center cursor-pointer focus:outline-none"
+          >
+            <svg
+              viewBox="0 0 200 200"
+              aria-hidden="true"
+              className="w-full h-full overflow-visible transition-transform duration-500 ease-out group-hover:rotate-[24deg] group-hover:scale-[0.97]"
+            >
+              {[0, 60, 120, 180, 240, 300].map((deg) => (
+                <path
+                  key={deg}
+                  d="M 125 56.7 L 176.6 56.7 A 88 88 0 0 1 175.8 144.7 Z"
+                  transform={`rotate(${deg} 100 100)`}
+                  fill="#080808"
+                  stroke="#fdf6f2"
+                  strokeWidth="2.1"
+                  strokeLinejoin="round"
+                />
+              ))}
+              <circle
+                cx="100"
+                cy="100"
+                r="88"
+                fill="none"
+                stroke="#fdf6f2"
+                strokeWidth="2.1"
+              />
+              <circle
+                cx="100"
+                cy="100"
+                r="95"
+                fill="none"
+                stroke="rgba(255,255,255,0.62)"
+                strokeWidth="1.05"
+              />
+            </svg>
 
-            <div className="flex flex-wrap items-center gap-2">
-              {(["All", "Street", "Portrait", "Editorial"] as const).map(
-                (cat) => (
-                  <button
-                    key={cat}
-                    type="button"
-                    onClick={() => setActiveCategory(cat)}
-                    className={`px-4 py-1.5 text-[11px] font-mono uppercase tracking-[0.12em] border transition-colors cursor-pointer ${
-                      activeCategory === cat
-                        ? "border-neutral-950 bg-neutral-950 text-white"
-                        : "border-neutral-300 text-neutral-700 hover:border-neutral-950"
-                    }`}
-                  >
-                    {cat}
-                  </button>
-                )
-              )}
-            </div>
-          </div>
+            <span className="relative z-10 text-[10.5px] sm:text-[11.5px] font-medium uppercase tracking-[0.06em] text-[#0c0c0c] transition-transform duration-300 group-hover:scale-105">
+              LET&apos;S TALK
+            </span>
+          </button>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-7">
-            {visibleFrames.map((frame) => (
-              <button
-                key={frame.id}
-                type="button"
-                onClick={() => setSelectedFrame(frame)}
-                className="group text-left cursor-pointer focus:outline-none"
+          {/* Oversized Email CTA */}
+          <button
+            type="button"
+            onClick={() => {
+              setInquirySent(false);
+              setWorkModalOpen(true);
+            }}
+            className="mt-10 sm:mt-12 text-[28px] sm:text-[42px] lg:text-[50px] font-bold tracking-[-0.045em] leading-none text-[#0c0c0c] hover:opacity-75 transition-opacity cursor-pointer"
+          >
+            finnegan@email.com
+          </button>
+
+          {/* Social Links Strip */}
+          <div className="mt-6 sm:mt-7 flex flex-wrap items-center justify-center gap-x-6 sm:gap-x-7 gap-y-3 text-[12px] sm:text-[12.5px] font-medium text-[#0c0c0c]">
+            <a
+              href="https://www.instagram.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 hover:opacity-65 transition-opacity"
+            >
+              <svg
+                className="w-3.5 h-3.5"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.8"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                aria-hidden="true"
               >
-                <div className="relative aspect-[4/4.8] w-full bg-neutral-200 overflow-hidden">
-                  <SafeGrayImage
-                    src={frame.src}
-                    fallbackSrc={frame.fallbackSrc}
-                    alt={frame.title}
-                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 400px"
-                    className="object-cover object-top grayscale contrast-125 group-hover:scale-[1.03] transition-transform duration-500 ease-out"
-                  />
-                </div>
-                <div className="mt-3 flex items-baseline justify-between gap-3 border-t border-neutral-300 pt-2.5">
-                  <div>
-                    <span className="text-[10.5px] font-mono text-neutral-500 mr-2.5">
-                      {frame.frameNumber}
-                    </span>
-                    <span className="text-sm font-medium tracking-tight text-neutral-950 group-hover:underline">
-                      {frame.title}
-                    </span>
-                  </div>
-                  <span className="text-[10.5px] font-mono uppercase tracking-[0.12em] text-neutral-500 shrink-0">
-                    {frame.location}
-                  </span>
-                </div>
-              </button>
-            ))}
-          </div>
-        </section>
+                <rect x="3" y="3" width="18" height="18" rx="5" />
+                <circle cx="12" cy="12" r="4" />
+                <circle cx="17.5" cy="6.5" r="0.9" fill="currentColor" />
+              </svg>
+              <span>Instagram</span>
+            </a>
 
-        {/* Minimal Finnegan Footer */}
-        <footer className="border-t border-neutral-300 bg-[#ededeb]">
-          <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-14 py-10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
-            <div>
-              <div className="text-lg font-medium tracking-[-0.03em] text-neutral-950">
-                Finnegan Monroe
-              </div>
-              <p className="text-xs text-neutral-600 mt-1">
-                Freelance street & editorial photographer based in New York City.
-              </p>
+            <a
+              href="https://www.facebook.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 hover:opacity-65 transition-opacity"
+            >
+              <svg
+                className="w-3.5 h-3.5"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.8"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                aria-hidden="true"
+              >
+                <circle cx="12" cy="12" r="9.5" />
+                <path d="M13.5 8h-1.3a1.7 1.7 0 0 0-1.7 1.7V18" />
+                <path d="M9.5 12.5H13.5" />
+              </svg>
+              <span>Facebook</span>
+            </a>
+
+            <a
+              href="https://x.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 hover:opacity-65 transition-opacity"
+            >
+              <svg
+                className="w-3 h-3"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2.1"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M5 5l14 14M19 5L5 19" />
+              </svg>
+              <span>Twitter</span>
+            </a>
+
+            <a
+              href="https://www.linkedin.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 hover:opacity-65 transition-opacity"
+            >
+              <svg
+                className="w-3.5 h-3.5"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.8"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                aria-hidden="true"
+              >
+                <rect x="3" y="3" width="18" height="18" rx="3.5" />
+                <path d="M8 11v5.5M8 7.5v.1M12 16.5v-3.2a2.1 2.1 0 0 1 4.2 0v3.2" />
+              </svg>
+              <span>LinkedIn</span>
+            </a>
+          </div>
+        </div>
+
+        {/* Minimal Terracotta Bottom Studio Footer */}
+        <footer className="w-full border-t border-black/15 px-6 sm:px-10 lg:px-14 pt-6 pb-20 sm:py-7">
+          <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4 sm:pr-36 lg:pr-44 text-[11px] text-black/75">
+            <div className="flex flex-wrap items-center justify-center md:justify-start gap-x-4 gap-y-1">
+              <a
+                href="#top"
+                className="text-[15px] font-medium tracking-[-0.03em] text-[#0c0c0c] hover:opacity-70 transition-opacity"
+              >
+                Finnegan
+              </a>
+              <span className="text-black/65">
+                © 2026 Finnegan Monroe Studio
+              </span>
             </div>
 
-            <div className="flex flex-wrap items-center gap-4">
+            <nav
+              aria-label="Footer navigation"
+              className="flex flex-wrap items-center justify-center gap-x-5 gap-y-1.5 text-[10.5px] font-mono uppercase tracking-[0.12em] text-[#0c0c0c]/85"
+            >
+              <a
+                href="#finnegan-about"
+                className="hover:text-black transition-colors"
+              >
+                About
+              </a>
+              <a
+                href="#finnegan-lens"
+                className="hover:text-black transition-colors"
+              >
+                Selected Work
+              </a>
+              <a
+                href="#finnegan-clients"
+                className="hover:text-black transition-colors"
+              >
+                Reviews
+              </a>
               <button
                 type="button"
                 onClick={() => {
                   setInquirySent(false);
                   setWorkModalOpen(true);
                 }}
-                className="inline-flex items-stretch border border-neutral-950 text-neutral-950 hover:bg-neutral-950 hover:text-white transition-colors cursor-pointer"
+                className="hover:text-black transition-colors uppercase cursor-pointer"
               >
-                <span className="px-4 py-2 text-[10.5px] font-medium uppercase tracking-[0.12em] border-r border-neutral-950">
-                  BOOK FINNEGAN
-                </span>
-                <span className="px-3 py-2 text-xs">→</span>
+                Book Shoot
               </button>
-            </div>
+            </nav>
+
+            <span className="font-mono text-[10px] uppercase tracking-[0.14em] text-black/70">
+              New York City · Available Worldwide
+            </span>
           </div>
         </footer>
-      </main>
+      </section>
 
       {/* Studio Slide-Over Navigation Drawer */}
       {drawerOpen && (
@@ -980,34 +1175,41 @@ export default function TemplateFourShowcase() {
               </button>
             </div>
 
-            <nav className="space-y-6 my-auto">
+            <nav className="space-y-5 my-auto">
               <a
                 href="#top"
                 onClick={() => setDrawerOpen(false)}
-                className="block text-3xl font-medium tracking-tight hover:text-neutral-400 transition-colors"
+                className="block text-2xl sm:text-3xl font-medium tracking-tight hover:text-neutral-400 transition-colors"
               >
                 01. Video Reel Hero
               </a>
               <a
                 href="#finnegan-stats"
                 onClick={() => setDrawerOpen(false)}
-                className="block text-3xl font-medium tracking-tight hover:text-neutral-400 transition-colors"
+                className="block text-2xl sm:text-3xl font-medium tracking-tight hover:text-neutral-400 transition-colors"
               >
                 02. Stats &amp; Overview
               </a>
               <a
                 href="#finnegan-about"
                 onClick={() => setDrawerOpen(false)}
-                className="block text-3xl font-medium tracking-tight hover:text-neutral-400 transition-colors"
+                className="block text-2xl sm:text-3xl font-medium tracking-tight hover:text-neutral-400 transition-colors"
               >
                 03. About Finnegan
               </a>
               <a
-                href="#finnegan-gallery"
+                href="#finnegan-lens"
                 onClick={() => setDrawerOpen(false)}
-                className="block text-3xl font-medium tracking-tight hover:text-neutral-400 transition-colors"
+                className="block text-2xl sm:text-3xl font-medium tracking-tight hover:text-neutral-400 transition-colors"
               >
-                04. Selected Frames
+                04. Through My Lens
+              </a>
+              <a
+                href="#finnegan-clients"
+                onClick={() => setDrawerOpen(false)}
+                className="block text-2xl sm:text-3xl font-medium tracking-tight hover:text-neutral-400 transition-colors"
+              >
+                05. Client Reviews
               </a>
               <button
                 type="button"
@@ -1016,14 +1218,14 @@ export default function TemplateFourShowcase() {
                   setInquirySent(false);
                   setWorkModalOpen(true);
                 }}
-                className="block text-3xl font-medium tracking-tight hover:text-neutral-400 transition-colors cursor-pointer text-left"
+                className="block text-2xl sm:text-3xl font-medium tracking-tight hover:text-neutral-400 transition-colors cursor-pointer text-left"
               >
-                05. Commission NY
+                06. Commission NY
               </button>
             </nav>
 
             <div className="border-t border-white/15 pt-5 flex items-center justify-between text-[11px] font-mono text-neutral-400">
-              <span>hello@finnegan.studio</span>
+              <span>finnegan@email.com</span>
               <span>NYC · E 74°</span>
             </div>
           </div>

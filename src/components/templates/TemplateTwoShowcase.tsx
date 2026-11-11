@@ -56,6 +56,200 @@ const GALLERY_PREVIEWS = [
 
 type NavSection = "Home" | "Portfolio" | "Journal" | "About" | "Contact";
 
+type PortfolioCategory =
+  | "All Work"
+  | "Portraits"
+  | "Weddings"
+  | "Lifestyle"
+  | "Editorial";
+
+interface PortfolioStory {
+  id: string;
+  badge: string;
+  title: string;
+  description: string;
+  category: Exclude<PortfolioCategory, "All Work">;
+  location: string;
+  year: string;
+  src: string;
+  fallbackSrc: string;
+}
+
+const FOOTER_BACKDROP =
+  "https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=1800&q=85";
+const FOOTER_BACKDROP_FALLBACK =
+  "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1800&q=85";
+
+const PORTFOLIO_STORIES: PortfolioStory[] = [
+  {
+    id: "summer-to-remember",
+    badge: "WEDDING",
+    title: "A Summer to Remember",
+    description:
+      "An intimate garden wedding filled with sunlight, movement, and small meaningful moments.",
+    category: "Weddings",
+    location: "The Cotswolds, UK",
+    year: "2026",
+    src: "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=900&q=85",
+    fallbackSrc:
+      "https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=900&q=85",
+  },
+  {
+    id: "in-their-element",
+    badge: "PORTRAIT",
+    title: "In Their Element",
+    description:
+      "A portrait series celebrating individuality, character, and quiet confidence.",
+    category: "Portraits",
+    location: "Brooklyn, NY",
+    year: "2026",
+    src: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=900&q=85",
+    fallbackSrc:
+      "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=900&q=85",
+  },
+  {
+    id: "the-everyday-edit",
+    badge: "LIFESTYLE",
+    title: "The Everyday Edit",
+    description:
+      "A lifestyle story about home, connection, and the beauty of ordinary days.",
+    category: "Lifestyle",
+    location: "Hudson Valley, NY",
+    year: "2026",
+    src: "https://images.unsplash.com/photo-1511895426328-dc8714191300?auto=format&fit=crop&w=900&q=85",
+    fallbackSrc:
+      "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=900&q=85",
+  },
+  {
+    id: "form-and-feeling",
+    badge: "EDITORIAL & CAMPAIGN",
+    title: "Form & Feeling",
+    description:
+      "A visual story for an independent label, built on texture, movement, and soft neutral tones.",
+    category: "Editorial",
+    location: "Copenhagen, Denmark",
+    year: "2026",
+    src: "https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&w=900&q=85",
+    fallbackSrc:
+      "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=900&q=85",
+  },
+  {
+    id: "golden-hour-vows",
+    badge: "WEDDING",
+    title: "Golden Hour Vows",
+    description:
+      "Two people, one meadow, and the last hour of light on an October evening.",
+    category: "Weddings",
+    location: "Upstate New York",
+    year: "2025",
+    src: "https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=900&q=85",
+    fallbackSrc:
+      "https://images.unsplash.com/photo-1522673607200-164d1b6ce486?auto=format&fit=crop&w=1800&q=85",
+  },
+  {
+    id: "quiet-confidence",
+    badge: "PERSONAL BRANDING",
+    title: "Quiet Confidence",
+    description:
+      "A personal branding session that feels like the person behind the business.",
+    category: "Portraits",
+    location: "SoHo, New York",
+    year: "2025",
+    src: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=900&q=85",
+    fallbackSrc:
+      "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=900&q=85",
+  },
+];
+
+type JournalCategory =
+  | "All Stories"
+  | "Behind the Scenes"
+  | "Tips & Guides"
+  | "Recent Sessions";
+
+interface JournalArticle {
+  id: string;
+  categoryLabel: string;
+  readTime: string;
+  category: Exclude<JournalCategory, "All Stories">;
+  title: string;
+  excerpt: string;
+  date: string;
+  body: string[];
+  src: string;
+  fallbackSrc: string;
+}
+
+const JOURNAL_ARTICLES: JournalArticle[] = [
+  {
+    id: "comfortable-front-of-camera",
+    categoryLabel: "TIPS & GUIDES",
+    readTime: "6 MIN READ",
+    category: "Tips & Guides",
+    title: "How to Feel Comfortable in Front of the Camera",
+    excerpt:
+      "A few simple ways to settle in and let your personality show.",
+    date: "October 18, 2026",
+    body: [
+      "Almost everyone starts a portrait session saying the same thing: they feel stiff when a lens points their way. That reaction is completely normal — the trick isn't learning twenty rigid poses, it's giving your hands and attention somewhere natural to go.",
+      "During a Pixenora session we begin with slow walking frames, quiet conversation, and soft window light before picking up the pace. Wearing clothes you can move freely in and choosing a familiar setting dissolves 90% of camera self-consciousness within the first ten minutes.",
+    ],
+    src: "https://images.unsplash.com/photo-1452587925148-ce544e77e70d?auto=format&fit=crop&w=900&q=85",
+    fallbackSrc:
+      "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&w=900&q=85",
+  },
+  {
+    id: "timeless-wedding-gallery",
+    categoryLabel: "RECENT SESSIONS",
+    readTime: "5 MIN READ",
+    category: "Recent Sessions",
+    title: "What Makes a Wedding Gallery Feel Timeless?",
+    excerpt: "Looking beyond trends to the moments that matter most.",
+    date: "October 4, 2026",
+    body: [
+      "Editing trends shift every season, yet the wedding photographs couples frame twenty years later almost always share the same traits: true skin tones, unhurried framing, and fleeting human expressions captured between formal milestones.",
+      "From clasped hands during vows to grandparents laughing across dinner candlelight, our focus stays on preserving emotional continuity rather than forcing theatrical compositions.",
+    ],
+    src: "https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=900&q=85",
+    fallbackSrc:
+      "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=900&q=85",
+  },
+  {
+    id: "planning-personal-branding-shoot",
+    categoryLabel: "TIPS & GUIDES",
+    readTime: "7 MIN READ",
+    category: "Tips & Guides",
+    title: "A Simple Guide to Planning a Personal Branding Shoot",
+    excerpt:
+      "Build a visual story that feels consistent, useful, and true to your work.",
+    date: "September 22, 2026",
+    body: [
+      "Strong founder photography isn't about looking corporate — it's about helping future clients recognize your pace, taste, and temperament before they even send an email.",
+      "Start by listing five contexts where your imagery will live: website header, about bio, speaking decks, newsletter notes, and social portraits. Pairing two neutral tailored looks with one relaxed workspace scene gives you months of cohesive editorial visuals.",
+    ],
+    src: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=900&q=85",
+    fallbackSrc:
+      "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=900&q=85",
+  },
+  {
+    id: "finding-light-everyday-places",
+    categoryLabel: "BEHIND THE SCENES",
+    readTime: "4 MIN READ",
+    category: "Behind the Scenes",
+    title: "Finding Beautiful Light in Everyday Places",
+    excerpt:
+      "How thoughtful timing and observation can transform a familiar setting.",
+    date: "September 9, 2026",
+    body: [
+      "A North-facing apartment window at 4:30 PM or a warm sandstone doorway after rain often outshines elaborate studio lighting. Light reveals character best when it brushes gently across a room rather than flooding every shadow.",
+      "Whenever we scout a home lifestyle or intimate shoot, the first five minutes are spent with the camera lowered, watching how light moves across linen curtains, timber floors, and quiet corners.",
+    ],
+    src: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=900&q=85",
+    fallbackSrc:
+      "https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?auto=format&fit=crop&w=900&q=85",
+  },
+];
+
 interface ServiceCategory {
   number: string;
   title: string;
@@ -198,8 +392,16 @@ export default function TemplateTwoShowcase() {
   const [thumbSrc, setThumbSrc] = useState(GALLERY_PREVIEWS[0].src);
   const [previewIdx, setPreviewIdx] = useState(0);
   const [activeNav, setActiveNav] = useState<NavSection>("Home");
+  const [portfolioCategory, setPortfolioCategory] =
+    useState<PortfolioCategory>("All Work");
+  const [selectedStory, setSelectedStory] = useState<PortfolioStory | null>(
+    null
+  );
+  const [journalCategory, setJournalCategory] =
+    useState<JournalCategory>("All Stories");
+  const [selectedArticle, setSelectedArticle] =
+    useState<JournalArticle | null>(null);
   const [bookingOpen, setBookingOpen] = useState(false);
-  const [portfolioOpen, setPortfolioOpen] = useState(false);
   const [bookingSubmitted, setBookingSubmitted] = useState(false);
   const [openFaqIdx, setOpenFaqIdx] = useState<number | null>(null);
   const [newsletterEmail, setNewsletterEmail] = useState("");
@@ -211,82 +413,508 @@ export default function TemplateTwoShowcase() {
     setThumbSrc(GALLERY_PREVIEWS[next].src);
   };
 
+  const openPortfolioTab = (category: PortfolioCategory = "All Work") => {
+    setPortfolioCategory(category);
+    setActiveNav("Portfolio");
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
+  const openJournalTab = (category: JournalCategory = "All Stories") => {
+    setJournalCategory(category);
+    setActiveNav("Journal");
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
   const handleNavClick = (item: NavSection) => {
-    setActiveNav(item);
     if (item === "Portfolio") {
-      setPortfolioOpen(true);
-    } else if (item === "Contact") {
+      openPortfolioTab("All Work");
+      return;
+    }
+    if (item === "Journal") {
+      openJournalTab("All Stories");
+      return;
+    }
+    const wasDedicatedTab =
+      activeNav === "Portfolio" || activeNav === "Journal";
+    setActiveNav(item);
+    if (item === "Contact") {
       setBookingSubmitted(false);
       setBookingOpen(true);
+    } else if (wasDedicatedTab) {
+      window.scrollTo({ top: 0, behavior: "smooth" });
     }
   };
 
-  return (
-    <div className="min-h-screen flex flex-col bg-[#f5f3ef] text-neutral-900 relative">
-      {/* Main Site Navbar */}
-      <Navbar />
+  const visibleStories =
+    portfolioCategory === "All Work"
+      ? PORTFOLIO_STORIES
+      : PORTFOLIO_STORIES.filter((s) => s.category === portfolioCategory);
 
-      {/* Pixenora Full-Bleed Hero Showcase */}
-      <section className="relative flex-1 min-h-[calc(100vh-77px)] w-full overflow-hidden flex flex-col justify-between">
-        {/* Background Editorial Photography */}
-        <Image
-          src={heroSrc}
-          alt="Bride holding pastel floral bouquet in soft natural light"
-          fill
-          priority
-          sizes="100vw"
-          onError={() => {
-            if (heroSrc !== HERO_FALLBACK) {
-              setHeroSrc(HERO_FALLBACK);
-            }
-          }}
-          className="object-cover object-center scale-[1.01]"
-        />
+  const visibleArticles =
+    journalCategory === "All Stories"
+      ? JOURNAL_ARTICLES
+      : JOURNAL_ARTICLES.filter((a) => a.category === journalCategory);
 
-        {/* Atmospheric Readability Gradients */}
-        <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-[#241c17]/60 via-[#241c17]/25 to-transparent" />
-        <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#1a1410]/65 via-transparent to-black/15" />
+  const renderPixenoraNavbar = (variant: "hero" | "light") => (
+    <div className="relative z-20 w-full max-w-[1240px] mx-auto px-5 sm:px-8 lg:px-10 pt-5 sm:pt-7">
+      <div
+        className={`w-full rounded-full backdrop-blur-md pl-2.5 sm:pl-3 pr-1.5 sm:pr-2 py-1.5 flex items-center justify-between gap-4 ${
+          variant === "hero"
+            ? "bg-[#faf8f4]/92 border border-white/60 shadow-[0_14px_38px_rgba(24,18,14,0.14)]"
+            : "bg-white/95 border border-[#e7dfd4] shadow-[0_10px_28px_rgba(32,24,18,0.06)]"
+        }`}
+      >
+        {/* Brand Logo */}
+        <button
+          type="button"
+          onClick={() => handleNavClick("Home")}
+          className="flex items-center gap-2.5 cursor-pointer group"
+        >
+          <span className="w-8 h-8 rounded-full bg-[#2c221b] text-white flex items-center justify-center group-hover:scale-105 transition-transform">
+            <ApertureIcon className="w-4 h-4" />
+          </span>
+          <span className="font-serif text-[19px] font-normal tracking-tight text-[#2a211b]">
+            Pixenora
+          </span>
+        </button>
 
-        {/* Floating Cream Pill Navbar inside Template */}
-        <div className="relative z-20 w-full max-w-[1240px] mx-auto px-5 sm:px-8 lg:px-10 pt-5 sm:pt-7">
-          <div className="w-full rounded-full bg-[#faf8f4]/92 backdrop-blur-md border border-white/60 shadow-[0_14px_38px_rgba(24,18,14,0.14)] pl-2.5 sm:pl-3 pr-1.5 sm:pr-2 py-1.5 flex items-center justify-between gap-4">
-            {/* Brand Logo */}
+        {/* Right Links + CTA */}
+        <div className="flex items-center gap-5 lg:gap-7">
+          <nav className="hidden md:flex items-center gap-6 lg:gap-7">
+            {(["Home", "Portfolio", "Journal", "About", "Contact"] as const).map(
+              (item) => {
+                const isActive = activeNav === item;
+                return (
+                  <button
+                    key={item}
+                    type="button"
+                    onClick={() => handleNavClick(item)}
+                    className={`text-[13px] transition-colors cursor-pointer ${
+                      isActive
+                        ? "text-[#221a14] font-medium underline underline-offset-4 decoration-[#2c221b]/80"
+                        : "text-[#4c4037] hover:text-[#221a14]"
+                    }`}
+                  >
+                    {item}
+                  </button>
+                );
+              }
+            )}
+          </nav>
+
+          <button
+            type="button"
+            onClick={() => {
+              setBookingSubmitted(false);
+              setBookingOpen(true);
+            }}
+            className="inline-flex items-center gap-3 rounded-full bg-[#2c221b] hover:bg-[#1e1712] text-white pl-4 pr-1.5 py-1.5 text-[12.5px] font-medium transition-colors cursor-pointer shrink-0 group"
+          >
+            <span>Book a Session</span>
+            <span className="w-7 h-7 rounded-full bg-white text-[#2c221b] flex items-center justify-center group-hover:rotate-45 transition-transform duration-300">
+              <ApertureIcon className="w-3.5 h-3.5" />
+            </span>
+          </button>
+        </div>
+      </div>
+
+      {/* Compact Mobile Tab Strip */}
+      <nav
+        aria-label="Pixenora mobile navigation"
+        className={`flex md:hidden mt-3 items-center justify-center gap-3.5 rounded-full backdrop-blur-md px-4 py-2 ${
+          variant === "hero"
+            ? "bg-[#faf8f4]/90 border border-white/60 shadow-sm"
+            : "bg-white/95 border border-[#e7dfd4] shadow-xs"
+        }`}
+      >
+        {(["Home", "Portfolio", "Journal", "About", "Contact"] as const).map(
+          (item) => {
+            const isActive = activeNav === item;
+            return (
+              <button
+                key={item}
+                type="button"
+                onClick={() => handleNavClick(item)}
+                className={`text-[12px] transition-colors cursor-pointer ${
+                  isActive
+                    ? "text-[#221a14] font-medium underline underline-offset-4 decoration-[#2c221b]/80"
+                    : "text-[#4c4037] hover:text-[#221a14]"
+                }`}
+              >
+                {item}
+              </button>
+            );
+          }
+        )}
+      </nav>
+    </div>
+  );
+
+  const renderPixenoraFooter = () => (
+    <footer className="relative w-full overflow-hidden bg-[#2b1e14] text-white pt-14 sm:pt-20 pb-2 sm:pb-4 px-5 sm:px-8 lg:px-10">
+      <SafePhoto
+        src={FOOTER_BACKDROP}
+        fallbackSrc={FOOTER_BACKDROP_FALLBACK}
+        alt="Golden hour atmospheric nature backdrop"
+        sizes="100vw"
+        className="object-cover object-center opacity-70 scale-105"
+      />
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 bg-gradient-to-b from-[#5d442b]/45 via-[#39291b]/70 to-[#1f150e]/95"
+      />
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(235,176,84,0.28),transparent_55%)]"
+      />
+
+      {/* Frosted-Glass Footer Directory Card */}
+      <div className="relative z-10 max-w-[1140px] mx-auto rounded-2xl sm:rounded-3xl bg-[#3c3027]/45 backdrop-blur-lg border border-white/20 p-7 sm:p-10 lg:p-12 shadow-[0_24px_60px_rgba(0,0,0,0.28)]">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-9 lg:gap-8">
+          {/* Brand Column */}
+          <div className="lg:col-span-4">
             <button
               type="button"
-              onClick={() => setActiveNav("Home")}
-              className="flex items-center gap-2.5 cursor-pointer group"
+              onClick={() => handleNavClick("Home")}
+              className="inline-flex items-center gap-2.5 cursor-pointer group"
             >
-              <span className="w-8 h-8 rounded-full bg-[#2c221b] text-white flex items-center justify-center group-hover:scale-105 transition-transform">
+              <span className="w-8 h-8 rounded-full bg-white text-[#2c221b] flex items-center justify-center group-hover:scale-105 transition-transform">
                 <ApertureIcon className="w-4 h-4" />
               </span>
-              <span className="font-serif text-[19px] font-normal tracking-tight text-[#2a211b]">
+              <span className="font-serif text-[21px] font-normal tracking-tight text-white">
                 Pixenora
               </span>
             </button>
 
-            {/* Right Links + CTA */}
-            <div className="flex items-center gap-5 lg:gap-7">
-              <nav className="hidden md:flex items-center gap-6 lg:gap-7">
+            <p className="mt-4 text-[12.5px] leading-[1.6] text-white/80 max-w-[235px]">
+              Relaxed, story-led photography for people and brands who want
+              images with feeling.
+            </p>
+
+            <button
+              type="button"
+              onClick={() => {
+                setBookingSubmitted(false);
+                setBookingOpen(true);
+              }}
+              className="mt-6 inline-flex items-center gap-3 rounded-full bg-[#faf8f4] hover:bg-white text-[#2c221b] pl-5 pr-1.5 py-1.5 text-[12px] font-medium transition-all cursor-pointer group"
+            >
+              <span>Start an Inquiry</span>
+              <span className="w-7 h-7 rounded-full bg-[#2c221b] text-white flex items-center justify-center group-hover:rotate-45 transition-transform duration-300">
+                <ApertureIcon className="w-3.5 h-3.5" />
+              </span>
+            </button>
+          </div>
+
+          {/* EXPLORE */}
+          <div className="lg:col-span-2">
+            <h3 className="text-[10px] font-semibold tracking-[0.16em] uppercase text-white/60 mb-4">
+              EXPLORE
+            </h3>
+            <ul className="space-y-2.5 text-[12.5px] text-white/85">
+              <li>
+                <button
+                  type="button"
+                  onClick={() => handleNavClick("Home")}
+                  className="hover:text-white transition-colors cursor-pointer"
+                >
+                  Home
+                </button>
+              </li>
+              <li>
+                <button
+                  type="button"
+                  onClick={() => openPortfolioTab("All Work")}
+                  className="hover:text-white transition-colors cursor-pointer"
+                >
+                  Portfolio
+                </button>
+              </li>
+              <li>
+                <button
+                  type="button"
+                  onClick={() => openJournalTab("All Stories")}
+                  className="hover:text-white transition-colors cursor-pointer"
+                >
+                  Journal
+                </button>
+              </li>
+              <li>
+                <button
+                  type="button"
+                  onClick={() => handleNavClick("About")}
+                  className="hover:text-white transition-colors cursor-pointer"
+                >
+                  About
+                </button>
+              </li>
+              <li>
+                <button
+                  type="button"
+                  onClick={() => handleNavClick("Contact")}
+                  className="hover:text-white transition-colors cursor-pointer"
+                >
+                  Contact
+                </button>
+              </li>
+            </ul>
+          </div>
+
+          {/* SERVICES */}
+          <div className="lg:col-span-2">
+            <h3 className="text-[10px] font-semibold tracking-[0.16em] uppercase text-white/60 mb-4">
+              SERVICES
+            </h3>
+            <ul className="space-y-2.5 text-[12.5px] text-white/85">
+              <li>
+                <button
+                  type="button"
+                  onClick={() => openPortfolioTab("Portraits")}
+                  className="hover:text-white transition-colors cursor-pointer"
+                >
+                  Portraits
+                </button>
+              </li>
+              <li>
+                <button
+                  type="button"
+                  onClick={() => openPortfolioTab("Weddings")}
+                  className="hover:text-white transition-colors cursor-pointer"
+                >
+                  Weddings
+                </button>
+              </li>
+              <li>
+                <button
+                  type="button"
+                  onClick={() => openPortfolioTab("Lifestyle")}
+                  className="hover:text-white transition-colors cursor-pointer text-left"
+                >
+                  Lifestyle &amp; Families
+                </button>
+              </li>
+              <li>
+                <button
+                  type="button"
+                  onClick={() => openPortfolioTab("Editorial")}
+                  className="hover:text-white transition-colors cursor-pointer"
+                >
+                  Editorial
+                </button>
+              </li>
+            </ul>
+          </div>
+
+          {/* FOLLOW */}
+          <div className="lg:col-span-2">
+            <h3 className="text-[10px] font-semibold tracking-[0.16em] uppercase text-white/60 mb-4">
+              FOLLOW
+            </h3>
+            <ul className="space-y-2.5 text-[12.5px] text-white/85">
+              <li>
+                <a
+                  href="https://www.instagram.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-white transition-colors"
+                >
+                  Instagram
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://www.pinterest.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-white transition-colors"
+                >
+                  Pinterest
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://www.behance.net"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-white transition-colors"
+                >
+                  Behance
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          {/* SAY HELLO */}
+          <div className="lg:col-span-2">
+            <h3 className="text-[10px] font-semibold tracking-[0.16em] uppercase text-white/60 mb-4">
+              SAY HELLO
+            </h3>
+            <ul className="space-y-2.5 text-[12.5px] text-white/85">
+              <li>
+                <button
+                  type="button"
+                  onClick={() => {
+                    setBookingSubmitted(false);
+                    setBookingOpen(true);
+                  }}
+                  className="hover:text-white transition-colors cursor-pointer text-left break-all"
+                >
+                  hello@pixenora.example
+                </button>
+              </li>
+              <li>+1 (555) 014-8270</li>
+              <li>Brooklyn, New York, USA</li>
+            </ul>
+          </div>
+        </div>
+
+        {/* Divider + Legal Bottom Line */}
+        <div className="mt-10 pt-5 border-t border-white/15 flex flex-col sm:flex-row items-center justify-between gap-3 text-[11px] text-white/70">
+          <p>© 2026 Pixenora. All rights reserved.</p>
+          <div className="flex items-center gap-3">
+            <button
+              type="button"
+              onClick={() => {
+                setBookingSubmitted(false);
+                setBookingOpen(true);
+              }}
+              className="hover:text-white transition-colors cursor-pointer"
+            >
+              Privacy Policy
+            </button>
+            <span aria-hidden="true">·</span>
+            <button
+              type="button"
+              onClick={() => {
+                setBookingSubmitted(false);
+                setBookingOpen(true);
+              }}
+              className="hover:text-white transition-colors cursor-pointer"
+            >
+              Terms of Service
+            </button>
+          </div>
+        </div>
+      </div>
+
+      {/* Oversized Monumental Cream PIXENORA Display Wordmark */}
+      <div className="relative z-10 max-w-[1140px] mx-auto mt-6 sm:mt-8 overflow-hidden text-center">
+        <div
+          aria-hidden="true"
+          className="font-serif font-normal uppercase text-[#f6f0e9] leading-[0.82] tracking-[0.02em] text-[clamp(3.25rem,13.2vw,10.5rem)] select-none"
+        >
+          PIXENORA
+        </div>
+      </div>
+    </footer>
+  );
+
+  return (
+    <div
+      id="pixenora-top"
+      className="min-h-screen flex flex-col bg-[#f5f3ef] text-neutral-900 relative"
+    >
+      {/* Main Site Navbar */}
+      <Navbar />
+
+      {activeNav === "Portfolio" ? (
+        <div className="flex-1 flex flex-col bg-[#f8f6f2]">
+          {/* Top Pixenora Pill Navbar */}
+          {renderPixenoraNavbar("light")}
+
+          {/* Portfolio Page Header & Filterable Stories Grid */}
+          <main className="flex-1 w-full max-w-[1040px] mx-auto px-5 sm:px-8 lg:px-10 pt-12 sm:pt-16 pb-20 sm:pb-24">
+            {/* Centered Header */}
+            <div className="text-center max-w-xl mx-auto">
+              <div className="inline-flex items-center gap-2.5 text-[10px] sm:text-[10.5px] font-medium tracking-[0.18em] uppercase text-[#7b6c61]">
+                <span className="w-5 h-px bg-[#b8aba0] inline-block" />
+                <span>SELECTED STORIES</span>
+              </div>
+
+              <h1 className="mt-3 font-serif font-normal text-[42px] sm:text-[52px] lg:text-[60px] leading-[1.02] tracking-[-0.025em] text-[#2a211b]">
+                Photographs
+                <br />
+                with a feeling.
+              </h1>
+
+              <p className="mt-4 text-[13.5px] sm:text-[14.5px] leading-[1.6] text-[#6d6157]">
+                A collection of people, places, and moments captured with
+                curiosity and care.
+              </p>
+
+              {/* Category Filter Pills */}
+              <div className="mt-7 flex flex-wrap items-center justify-center gap-2">
                 {(
-                  ["Home", "Portfolio", "Journal", "About", "Contact"] as const
-                ).map((item) => {
-                  const isActive = activeNav === item;
+                  [
+                    "All Work",
+                    "Portraits",
+                    "Weddings",
+                    "Lifestyle",
+                    "Editorial",
+                  ] as const
+                ).map((cat) => {
+                  const isSelected = portfolioCategory === cat;
                   return (
                     <button
-                      key={item}
+                      key={cat}
                       type="button"
-                      onClick={() => handleNavClick(item)}
-                      className={`text-[13px] transition-colors cursor-pointer ${
-                        isActive
-                          ? "text-[#221a14] font-medium underline underline-offset-4 decoration-[#2c221b]/80"
-                          : "text-[#4c4037] hover:text-[#221a14]"
+                      onClick={() => setPortfolioCategory(cat)}
+                      className={`rounded-full px-4 py-1.5 text-[11.5px] sm:text-[12px] font-medium border transition-colors cursor-pointer ${
+                        isSelected
+                          ? "bg-[#2b2019] text-white border-[#2b2019] shadow-xs"
+                          : "bg-[#faf8f4] text-[#5c5046] border-[#ddd5ca] hover:border-[#2b2019] hover:text-[#2a211b]"
                       }`}
                     >
-                      {item}
+                      {cat}
                     </button>
                   );
                 })}
-              </nav>
+              </div>
+            </div>
+
+            {/* 3x2 Story Cards Grid */}
+            <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-10">
+              {visibleStories.map((story) => (
+                <button
+                  key={story.id}
+                  type="button"
+                  onClick={() => setSelectedStory(story)}
+                  className="group text-left cursor-pointer focus:outline-none flex flex-col"
+                >
+                  <div className="relative aspect-[4/4.65] w-full rounded-2xl overflow-hidden bg-neutral-200 shadow-xs">
+                    <SafePhoto
+                      src={story.src}
+                      fallbackSrc={story.fallbackSrc}
+                      alt={story.title}
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 330px"
+                      className="object-cover object-top group-hover:scale-[1.04] transition-transform duration-500 ease-out"
+                    />
+                    <span className="absolute top-3 left-3 rounded-full bg-[#faf8f4]/95 backdrop-blur-xs px-3 py-1 text-[9px] font-semibold uppercase tracking-[0.12em] text-[#43362d] shadow-xs">
+                      {story.badge}
+                    </span>
+                  </div>
+
+                  <h2 className="mt-4 font-serif text-[21px] sm:text-[22px] font-normal tracking-[-0.015em] text-[#2a211b] group-hover:text-[#7a5841] transition-colors">
+                    {story.title}
+                  </h2>
+
+                  <p className="mt-1.5 text-[12px] sm:text-[12.5px] leading-[1.55] text-[#6d6157]">
+                    {story.description}
+                  </p>
+                </button>
+              ))}
+            </div>
+
+            {/* Dark Espresso CTA Banner ("Your story could be next.") */}
+            <div className="mt-16 sm:mt-20 rounded-2xl sm:rounded-3xl bg-[radial-gradient(ellipse_at_top,#4d392d_0%,#2b1f18_58%,#221711_100%)] text-white px-6 py-14 sm:py-16 text-center shadow-[0_18px_45px_rgba(32,22,16,0.14)]">
+              <div className="inline-flex items-center gap-2.5 text-[10px] font-medium uppercase tracking-[0.18em] text-[#cbbeb3]">
+                <span className="w-5 h-px bg-[#8f7b6d] inline-block" />
+                <span>LET&apos;S TALK</span>
+              </div>
+
+              <h2 className="mt-3 font-serif font-normal text-[30px] sm:text-[38px] lg:text-[42px] leading-[1.08] tracking-[-0.02em] text-white">
+                Your story could be next.
+              </h2>
 
               <button
                 type="button"
@@ -294,26 +922,173 @@ export default function TemplateTwoShowcase() {
                   setBookingSubmitted(false);
                   setBookingOpen(true);
                 }}
-                className="inline-flex items-center gap-3 rounded-full bg-[#2c221b] hover:bg-[#1e1712] text-white pl-4 pr-1.5 py-1.5 text-[12.5px] font-medium transition-colors cursor-pointer shrink-0 group"
+                className="mt-7 inline-flex items-center gap-3.5 rounded-full bg-[#faf8f4] hover:bg-white text-[#2a1f19] pl-5 pr-1.5 py-1.5 text-[12px] sm:text-[12.5px] font-medium shadow-md transition-all cursor-pointer group"
               >
-                <span>Book a Session</span>
-                <span className="w-7 h-7 rounded-full bg-white text-[#2c221b] flex items-center justify-center group-hover:rotate-45 transition-transform duration-300">
+                <span>Let&apos;s Talk About Your Shoot</span>
+                <span className="w-7 h-7 rounded-full bg-[#2c221b] text-white flex items-center justify-center group-hover:rotate-45 transition-transform duration-300">
                   <ApertureIcon className="w-3.5 h-3.5" />
                 </span>
               </button>
             </div>
-          </div>
-        </div>
+          </main>
 
-        {/* Optional Info Drawer when Journal or About is clicked */}
-        {(activeNav === "Journal" || activeNav === "About") && (
+          {renderPixenoraFooter()}
+        </div>
+      ) : activeNav === "Journal" ? (
+        <div className="flex-1 flex flex-col bg-[#f8f6f2]">
+          {/* Top Pixenora Pill Navbar */}
+          {renderPixenoraNavbar("light")}
+
+          {/* Journal Page Header & 2x2 Editorial Grid */}
+          <main className="flex-1 w-full max-w-[1040px] mx-auto px-5 sm:px-8 lg:px-10 pt-12 sm:pt-16 pb-20 sm:pb-24">
+            {/* Centered Header */}
+            <div className="text-center max-w-xl mx-auto">
+              <div className="inline-flex items-center gap-2.5 text-[10px] sm:text-[10.5px] font-medium tracking-[0.18em] uppercase text-[#7b6c61]">
+                <span className="w-5 h-px bg-[#b8aba0] inline-block" />
+                <span>NOTES FROM BEHIND THE LENS</span>
+              </div>
+
+              <h1 className="mt-3 font-serif font-normal text-[42px] sm:text-[52px] lg:text-[60px] leading-[1.02] tracking-[-0.025em] text-[#2a211b]">
+                Stories, ideas, and
+                <br />
+                things worth noticing.
+              </h1>
+
+              <p className="mt-4 text-[13.5px] sm:text-[14.5px] leading-[1.6] text-[#6d6157] max-w-md mx-auto">
+                A journal of recent sessions, practical photography advice, and
+                the small details that make a story memorable.
+              </p>
+
+              {/* Journal Filter Pills */}
+              <div className="mt-7 flex flex-wrap items-center justify-center gap-2">
+                {(
+                  [
+                    "All Stories",
+                    "Behind the Scenes",
+                    "Tips & Guides",
+                    "Recent Sessions",
+                  ] as const
+                ).map((cat) => {
+                  const isSelected = journalCategory === cat;
+                  return (
+                    <button
+                      key={cat}
+                      type="button"
+                      onClick={() => setJournalCategory(cat)}
+                      className={`rounded-full px-4 py-1.5 text-[11.5px] sm:text-[12px] font-medium border transition-colors cursor-pointer ${
+                        isSelected
+                          ? "bg-[#2b2019] text-white border-[#2b2019] shadow-xs"
+                          : "bg-[#faf8f4] text-[#5c5046] border-[#ddd5ca] hover:border-[#2b2019] hover:text-[#2a211b]"
+                      }`}
+                    >
+                      {cat}
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+
+            {/* 2x2 Journal Article Grid */}
+            <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-x-7 gap-y-11">
+              {visibleArticles.map((article) => (
+                <article
+                  key={article.id}
+                  onClick={() => setSelectedArticle(article)}
+                  className="group text-left cursor-pointer flex flex-col"
+                >
+                  <div className="relative aspect-[4/2.95] w-full rounded-2xl overflow-hidden bg-neutral-200 shadow-xs">
+                    <SafePhoto
+                      src={article.src}
+                      fallbackSrc={article.fallbackSrc}
+                      alt={article.title}
+                      sizes="(max-width: 768px) 100vw, 490px"
+                      className="object-cover object-center group-hover:scale-[1.035] transition-transform duration-500 ease-out"
+                    />
+                  </div>
+
+                  <p className="mt-4 text-[9.5px] font-semibold uppercase tracking-[0.14em] text-[#847569]">
+                    {article.categoryLabel} · {article.readTime}
+                  </p>
+
+                  <h2 className="mt-2 font-serif text-[21px] sm:text-[23px] leading-[1.2] font-normal tracking-[-0.015em] text-[#2a211b] group-hover:text-[#7a5841] transition-colors">
+                    {article.title}
+                  </h2>
+
+                  <p className="mt-1.5 text-[12.5px] sm:text-[13px] leading-[1.55] text-[#6d6157]">
+                    {article.excerpt}
+                  </p>
+
+                  <span className="mt-3.5 inline-block self-start text-[12px] font-medium text-[#2a211b] underline underline-offset-4 decoration-[#2a211b]/65 group-hover:opacity-70 transition-opacity">
+                    Read the story
+                  </span>
+                </article>
+              ))}
+            </div>
+
+            {/* Dark Espresso Ask Me Anything CTA Banner */}
+            <div className="mt-16 sm:mt-20 rounded-2xl sm:rounded-3xl bg-[radial-gradient(ellipse_at_top,#4d392d_0%,#2b1f18_58%,#221711_100%)] text-white px-6 py-14 sm:py-16 text-center shadow-[0_18px_45px_rgba(32,22,16,0.14)]">
+              <div className="inline-flex items-center gap-2.5 text-[10px] font-medium uppercase tracking-[0.18em] text-[#cbbeb3]">
+                <span className="w-5 h-px bg-[#8f7b6d] inline-block" />
+                <span>ASK ME ANYTHING</span>
+              </div>
+
+              <h2 className="mt-3 font-serif font-normal text-[30px] sm:text-[38px] lg:text-[42px] leading-[1.08] tracking-[-0.02em] text-white">
+                Have a question for the
+                <br />
+                journal? Get in touch.
+              </h2>
+
+              <button
+                type="button"
+                onClick={() => {
+                  setBookingSubmitted(false);
+                  setBookingOpen(true);
+                }}
+                className="mt-7 inline-flex items-center gap-3.5 rounded-full bg-[#faf8f4] hover:bg-white text-[#2a1f19] pl-5 pr-1.5 py-1.5 text-[12px] sm:text-[12.5px] font-medium shadow-md transition-all cursor-pointer group"
+              >
+                <span>Get in Touch</span>
+                <span className="w-7 h-7 rounded-full bg-[#2c221b] text-white flex items-center justify-center group-hover:rotate-45 transition-transform duration-300">
+                  <ApertureIcon className="w-3.5 h-3.5" />
+                </span>
+              </button>
+            </div>
+          </main>
+
+          {renderPixenoraFooter()}
+        </div>
+      ) : (
+        <>
+          {/* Pixenora Full-Bleed Hero Showcase */}
+          <section className="relative flex-1 min-h-[calc(100vh-77px)] w-full overflow-hidden flex flex-col justify-between">
+            {/* Background Editorial Photography */}
+            <Image
+              src={heroSrc}
+              alt="Bride holding pastel floral bouquet in soft natural light"
+              fill
+              priority
+              sizes="100vw"
+              onError={() => {
+                if (heroSrc !== HERO_FALLBACK) {
+                  setHeroSrc(HERO_FALLBACK);
+                }
+              }}
+              className="object-cover object-center scale-[1.01]"
+            />
+
+            {/* Atmospheric Readability Gradients */}
+            <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-[#241c17]/60 via-[#241c17]/25 to-transparent" />
+            <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#1a1410]/65 via-transparent to-black/15" />
+
+            {/* Floating Cream Pill Navbar inside Template */}
+            {renderPixenoraNavbar("hero")}
+
+            {/* Optional Info Drawer when About is clicked */}
+            {activeNav === "About" && (
           <div className="relative z-20 max-w-[1240px] mx-auto w-full px-5 sm:px-8 lg:px-10 mt-6">
             <div className="max-w-lg rounded-2xl bg-[#faf8f4]/92 backdrop-blur-md border border-white/70 p-5 sm:p-6 text-[#2c221b] shadow-xl">
               <div className="flex items-center justify-between gap-4 mb-2">
                 <span className="text-[10px] font-semibold uppercase tracking-[0.16em] text-[#7a6657]">
-                  {activeNav === "Journal"
-                    ? "RECENT FIELD NOTES"
-                    : "ABOUT PIXENORA STUDIO"}
+                  ABOUT PIXENORA STUDIO
                 </span>
                 <button
                   type="button"
@@ -323,19 +1098,11 @@ export default function TemplateTwoShowcase() {
                   ✕
                 </button>
               </div>
-              {activeNav === "Journal" ? (
-                <p className="text-sm leading-relaxed text-[#43362d]">
-                  <em>Morning Mist in Amalfi</em> — Notes on shooting 120mm
-                  medium-format film during an intimate sunrise ceremony by the
-                  sea.
-                </p>
-              ) : (
-                <p className="text-sm leading-relaxed text-[#43362d]">
-                  Founded on honest storytelling and natural light, Pixenora
-                  pairs timeless editorial portraiture with documentary wedding
-                  coverage worldwide.
-                </p>
-              )}
+              <p className="text-sm leading-relaxed text-[#43362d]">
+                Founded on honest storytelling and natural light, Pixenora pairs
+                timeless editorial portraiture with documentary wedding coverage
+                worldwide.
+              </p>
             </div>
           </div>
         )}
@@ -369,7 +1136,7 @@ export default function TemplateTwoShowcase() {
             <div className="mt-7 flex flex-wrap items-center gap-3.5">
               <button
                 type="button"
-                onClick={() => setPortfolioOpen(true)}
+                onClick={() => openPortfolioTab("All Work")}
                 className="inline-flex items-center gap-3.5 rounded-full bg-[#faf8f4] hover:bg-white text-[#2c221b] pl-5 pr-1.5 py-1.5 text-[13px] font-medium shadow-md transition-all cursor-pointer group"
               >
                 <span>Explore the Portfolio</span>
@@ -539,12 +1306,22 @@ export default function TemplateTwoShowcase() {
 
           {/* 4-Column Portrait Cards Grid */}
           <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5">
-            {SERVICE_CATEGORIES.map((service) => (
-              <div
-                key={service.number}
-                onClick={() => setPortfolioOpen(true)}
-                className="group relative aspect-[3/4.2] rounded-2xl overflow-hidden bg-neutral-900 shadow-sm cursor-pointer"
-              >
+            {SERVICE_CATEGORIES.map((service) => {
+              const targetCategory: PortfolioCategory =
+                service.number === "01"
+                  ? "Portraits"
+                  : service.number === "02"
+                  ? "Weddings"
+                  : service.number === "03"
+                  ? "Lifestyle"
+                  : "Editorial";
+
+              return (
+                <div
+                  key={service.number}
+                  onClick={() => openPortfolioTab(targetCategory)}
+                  className="group relative aspect-[3/4.2] rounded-2xl overflow-hidden bg-neutral-900 shadow-sm cursor-pointer"
+                >
                 <SafePhoto
                   src={service.src}
                   fallbackSrc={service.fallbackSrc}
@@ -568,7 +1345,8 @@ export default function TemplateTwoShowcase() {
                   </p>
                 </div>
               </div>
-            ))}
+              );
+            })}
           </div>
 
           {/* View All Services Pill CTA */}
@@ -1014,7 +1792,7 @@ export default function TemplateTwoShowcase() {
               <li>
                 <button
                   type="button"
-                  onClick={() => setPortfolioOpen(true)}
+                  onClick={() => openPortfolioTab("All Work")}
                   className="hover:text-[#111113] transition-colors cursor-pointer"
                 >
                   Portfolio
@@ -1117,58 +1895,68 @@ export default function TemplateTwoShowcase() {
           </div>
         </div>
       </footer>
+        </>
+      )}
 
-      {/* Portfolio Lightbox Drawer / Modal */}
-      {portfolioOpen && (
+      {/* Portfolio Story Lightbox Modal */}
+      {selectedStory && (
         <div
-          className="fixed inset-0 z-50 bg-black/65 backdrop-blur-xs flex items-center justify-center p-4 sm:p-6"
-          onClick={() => setPortfolioOpen(false)}
+          className="fixed inset-0 z-50 bg-black/70 backdrop-blur-xs flex items-center justify-center p-4 sm:p-6"
+          onClick={() => setSelectedStory(null)}
         >
           <div
-            className="w-full max-w-3xl rounded-3xl bg-[#faf8f4] text-[#2c221b] border border-white p-6 sm:p-8 shadow-2xl"
+            className="w-full max-w-2xl rounded-3xl bg-[#faf8f4] text-[#2c221b] border border-white overflow-hidden shadow-2xl"
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="flex items-center justify-between gap-4 mb-6">
-              <div>
-                <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-[#7a6657]">
-                  PIXENORA PORTFOLIO
-                </p>
-                <h2 className="font-serif text-2xl sm:text-3xl font-normal mt-1">
-                  Selected Series
-                </h2>
-              </div>
+            <div className="relative aspect-[16/10] w-full bg-neutral-900">
+              <SafePhoto
+                key={selectedStory.id}
+                src={selectedStory.src}
+                fallbackSrc={selectedStory.fallbackSrc}
+                alt={selectedStory.title}
+                sizes="(max-width: 768px) 100vw, 680px"
+                className="object-cover object-top"
+              />
+              <span className="absolute top-4 left-4 rounded-full bg-[#faf8f4]/95 px-3 py-1 text-[9.5px] font-semibold uppercase tracking-[0.14em] text-[#43362d]">
+                {selectedStory.badge}
+              </span>
               <button
                 type="button"
-                onClick={() => setPortfolioOpen(false)}
-                className="w-9 h-9 rounded-full border border-[#2c221b]/15 hover:border-[#2c221b]/40 flex items-center justify-center text-sm cursor-pointer"
+                onClick={() => setSelectedStory(null)}
+                aria-label="Close story preview"
+                className="absolute top-4 right-4 w-9 h-9 rounded-full bg-[#faf8f4]/95 hover:bg-white text-[#2c221b] flex items-center justify-center text-sm shadow-sm cursor-pointer"
               >
                 ✕
               </button>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              {GALLERY_PREVIEWS.map((item) => (
-                <div
-                  key={item.label}
-                  className="group rounded-2xl overflow-hidden bg-white border border-[#2c221b]/10"
-                >
-                  <div className="relative aspect-[16/10] w-full bg-neutral-100 overflow-hidden">
-                    <Image
-                      src={item.src}
-                      alt={item.title}
-                      fill
-                      sizes="360px"
-                      className="object-cover group-hover:scale-105 transition-transform duration-500"
-                    />
-                  </div>
-                  <div className="p-3.5 flex items-center justify-between">
-                    <span className="font-serif text-base">{item.title}</span>
-                    <span className="text-[11px] uppercase tracking-wider text-[#7a6657]">
-                      {item.label}
-                    </span>
-                  </div>
-                </div>
-              ))}
+            <div className="p-6 sm:p-8 flex flex-col sm:flex-row sm:items-center justify-between gap-5">
+              <div>
+                <p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-[#7a6657]">
+                  {selectedStory.location} · {selectedStory.year}
+                </p>
+                <h2 className="font-serif text-2xl sm:text-3xl font-normal text-[#2a211b] mt-1">
+                  {selectedStory.title}
+                </h2>
+                <p className="mt-2 text-sm text-[#5e5147] leading-relaxed max-w-md">
+                  {selectedStory.description}
+                </p>
+              </div>
+
+              <button
+                type="button"
+                onClick={() => {
+                  setSelectedStory(null);
+                  setBookingSubmitted(false);
+                  setBookingOpen(true);
+                }}
+                className="inline-flex items-center gap-3 rounded-full bg-[#2c221b] hover:bg-[#1e1712] text-white pl-5 pr-1.5 py-1.5 text-[12px] font-medium transition-colors cursor-pointer shrink-0 self-start sm:self-center group"
+              >
+                <span>Book Similar Shoot</span>
+                <span className="w-7 h-7 rounded-full bg-white text-[#2c221b] flex items-center justify-center group-hover:rotate-45 transition-transform duration-300">
+                  <ApertureIcon className="w-3.5 h-3.5" />
+                </span>
+              </button>
             </div>
           </div>
         </div>
