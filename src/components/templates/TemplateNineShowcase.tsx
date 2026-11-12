@@ -90,15 +90,41 @@ const ABOUT_COLLAGE = {
 };
 
 const SELECTED_WORKS: GalleryFrame[] = [
-  HERO_POLAROIDS[1],
-  HERO_POLAROIDS[0],
+  {
+    id: "proj-togetherness",
+    badge: "WEDDING PHOTOGRAPHY",
+    projectNum: "PROJECT 01",
+    title: "THE ART OF TOGETHERNESS",
+    caption:
+      "Honest emotions, intimate details, and the beauty of two lives becoming one.",
+    category: "Wedding",
+    stock: "Kodak Portra 800 · 35mm",
+    location: "Hudson Meadow, New York",
+    src: "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=800&q=85",
+    fallbackSrc:
+      "https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=800&q=85",
+  },
+  {
+    id: "proj-in-her-own-light",
+    badge: "PORTRAIT PHOTOGRAPHY",
+    projectNum: "PROJECT 02",
+    title: "IN HER OWN LIGHT",
+    caption:
+      "Expressive portraits celebrating individuality, confidence, and quiet beauty.",
+    category: "Portrait",
+    stock: "Kodak Portra 400 · 120mm",
+    location: "West Village, New York",
+    src: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=800&q=85",
+    fallbackSrc:
+      "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=800&q=85",
+  },
   {
     id: "work-modern-muse",
     badge: "FASHION & EDITORIAL",
     projectNum: "PROJECT 03",
     title: "THE MODERN MUSE",
     caption:
-      "Movement, tailored linen silhouette, and soft studio skylight.",
+      "Artful imagery shaped by movement, texture, light, and contemporary style.",
     category: "Editorial",
     stock: "Ilford Delta 400 · Medium Format",
     location: "Tribeca Loft, New York",
@@ -108,17 +134,73 @@ const SELECTED_WORKS: GalleryFrame[] = [
   },
   {
     id: "work-everyday-poetry",
-    badge: "LIFESTYLE",
+    badge: "LIFESTYLE PHOTOGRAPHY",
     projectNum: "PROJECT 04",
     title: "EVERYDAY POETRY",
     caption:
-      "Warm neighborhood facades and quiet morning rituals caught between moments.",
+      "The little moments that often mean the most, captured as they naturally unfold.",
     category: "Lifestyle",
     stock: "Cinestill 400D · 35mm",
     location: "Copenhagen & New York",
     src: "https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?auto=format&fit=crop&w=800&q=85",
     fallbackSrc:
       "https://images.unsplash.com/photo-1528164344705-47542687000d?auto=format&fit=crop&w=800&q=85",
+  },
+  {
+    id: "work-stoneware-forms",
+    badge: "BRAND PHOTOGRAPHY",
+    projectNum: "PROJECT 05",
+    title: "FORMS IN DAYLIGHT",
+    caption:
+      "Tactile ceramics and sculptural vessels illuminated by north-facing studio glass.",
+    category: "Brand",
+    stock: "Mamiya 7II · Portra 160",
+    location: "SoHo Atelier, New York",
+    src: "https://images.unsplash.com/photo-1578749556568-bc2c40e68b61?auto=format&fit=crop&w=800&q=85",
+    fallbackSrc:
+      "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=800&q=85",
+  },
+  {
+    id: "work-evening-conservatory",
+    badge: "WEDDING PHOTOGRAPHY",
+    projectNum: "PROJECT 06",
+    title: "CONSERVATORY VOWS",
+    caption:
+      "Golden foliage reflections and unscripted promises inside historic glasshouses.",
+    category: "Wedding",
+    stock: "Contax G2 · Portra 400",
+    location: "Brooklyn Botanic Garden",
+    src: "https://images.unsplash.com/photo-1522673607200-164d1b6ce486?auto=format&fit=crop&w=800&q=85",
+    fallbackSrc:
+      "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=800&q=85",
+  },
+  {
+    id: "work-sunday-knit",
+    badge: "PORTRAIT PHOTOGRAPHY",
+    projectNum: "PROJECT 07",
+    title: "SUNDAY GOLDEN HOUR",
+    caption:
+      "Soft amber backlight and spontaneous movement across cobblestone terraces.",
+    category: "Portrait",
+    stock: "Kodak Gold 200 · 35mm",
+    location: "Williamsburg, New York",
+    src: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=800&q=85",
+    fallbackSrc:
+      "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=800&q=85",
+  },
+  {
+    id: "work-alpine-morning",
+    badge: "TRAVEL & LIFESTYLE",
+    projectNum: "PROJECT 08",
+    title: "MORNING IN SHIMOYOSHIDA",
+    caption:
+      "Quiet mountain horizons and film-toned street scenes exposed at dawn.",
+    category: "Travel",
+    stock: "Portra 160 · 120mm",
+    location: "Fujiyoshida, Japan",
+    src: "https://images.unsplash.com/photo-1528164344705-47542687000d?auto=format&fit=crop&w=800&q=85",
+    fallbackSrc:
+      "https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?auto=format&fit=crop&w=800&q=85",
   },
 ];
 
@@ -198,6 +280,7 @@ function SafeLumeveImage({
 
 export default function TemplateNineShowcase() {
   const [activeNav, setActiveNav] = useState("lumeve-home");
+  const [showAllProjects, setShowAllProjects] = useState(false);
   const [storyModalOpen, setStoryModalOpen] = useState(false);
   const [lightboxFrame, setLightboxFrame] = useState<GalleryFrame | null>(null);
   const [bookingOpen, setBookingOpen] = useState(false);
@@ -480,39 +563,59 @@ export default function TemplateNineShowcase() {
       </section>
 
       {/* ================================================================= */}
-      {/* 3. WORK: SELECTED STORIES                                         */}
+      {/* 3. WORK: SELECTED STORIES + HONEST / TIMELESS SILHOUETTE BANNER   */}
       {/* ================================================================= */}
       <section
         id="lumeve-work"
         className="scroll-mt-14 w-full bg-[#f4f1ec] py-16 sm:py-24"
       >
         <div className="max-w-5xl mx-auto px-5 sm:px-8 lg:px-10">
-          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6">
             <div>
               <p className="text-[10px] font-semibold tracking-[0.16em] uppercase text-[#c4553d]">
                 SELECTED WORK
               </p>
+
               <h2 className="mt-1 flex flex-wrap items-baseline gap-x-2.5">
                 <span className="font-serif italic text-[24px] sm:text-[30px] leading-none text-[#c4553d]">
                   through my
                 </span>
-                <span className="font-optic-display font-bold uppercase text-[44px] sm:text-[54px] leading-[0.86] text-[#141416]">
+                <span className="font-optic-display font-bold uppercase text-[46px] sm:text-[58px] leading-[0.86] tracking-[-0.015em] text-[#141416]">
                   LENS.
                 </span>
               </h2>
+
+              <p className="mt-3 max-w-[375px] text-[12px] sm:text-[12.5px] leading-[1.5] text-[#73737a]">
+                A collection of meaningful moments, beautiful places, and
+                authentic stories captured with intention.
+              </p>
             </div>
 
-            <span className="text-[10px] font-semibold tracking-[0.12em] uppercase text-[#73737a]">
-              CURATED 2025–2026 ARCHIVE
-            </span>
+            <button
+              type="button"
+              onClick={() => setShowAllProjects((prev) => !prev)}
+              className="w-fit inline-flex items-center gap-2 rounded-full border border-[#c4553d]/80 px-4 py-1.5 text-[10px] font-semibold tracking-[0.12em] uppercase text-[#c4553d] hover:bg-[#c4553d] hover:text-white transition-colors cursor-pointer group"
+            >
+              <span
+                aria-hidden="true"
+                className="w-1.5 h-1.5 rounded-full bg-current transition-transform group-hover:scale-125"
+              />
+              <span>
+                {showAllProjects ? "SHOW FEATURED 4" : "EXPLORE ALL PROJECTS"}
+              </span>
+            </button>
           </div>
 
           <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-            {SELECTED_WORKS.map((work) => (
+            {(showAllProjects
+              ? SELECTED_WORKS
+              : SELECTED_WORKS.slice(0, 4)
+            ).map((work) => (
               <article key={work.id} className="group">
                 <button
                   type="button"
                   onClick={() => setLightboxFrame(work)}
+                  aria-label={`Inspect ${work.title}`}
                   className="block w-full text-left cursor-pointer focus:outline-none"
                 >
                   <div className="relative aspect-[3/3.65] w-full rounded-[6px] overflow-hidden bg-neutral-200 shadow-xs">
@@ -520,22 +623,76 @@ export default function TemplateNineShowcase() {
                       src={work.src}
                       fallbackSrc={work.fallbackSrc}
                       alt={work.title}
-                      sizes="(max-width: 640px) 100vw, 250px"
-                      className="object-cover transition-transform duration-700 group-hover:scale-[1.04]"
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 250px"
+                      className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04]"
                     />
                     <span className="pointer-events-none absolute top-2.5 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-full bg-white/95 px-2.5 py-0.5 text-[8.5px] font-semibold tracking-[0.08em] uppercase text-[#141416] shadow-xs">
                       {work.badge}
                     </span>
                   </div>
-                  <h3 className="mt-3 font-optic-display font-bold uppercase text-[20px] leading-[1.04] text-[#141416] group-hover:text-[#c4553d] transition-colors">
+
+                  <h3 className="mt-3 font-optic-display font-bold uppercase text-[20px] leading-[1.04] tracking-[-0.01em] text-[#141416] group-hover:text-[#c4553d] transition-colors">
                     {work.title}
                   </h3>
+
                   <div className="mt-1 text-[9.5px] font-semibold tracking-[0.12em] uppercase text-[#8c8c94]">
                     {work.projectNum}
                   </div>
+
+                  <p className="mt-1.5 text-[11px] leading-[1.45] text-[#73737a]">
+                    {work.caption}
+                  </p>
                 </button>
               </article>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ================================================================= */}
+      {/* 3B. FULL-BLEED CRIMSON MANIFESTO BAND: "HONEST / TIMELESS"        */}
+      {/* ================================================================= */}
+      <section
+        aria-label="Honest and Timeless Photography Manifesto"
+        className="relative w-full min-h-[430px] sm:min-h-[500px] overflow-hidden bg-gradient-to-br from-[#c93f24] via-[#9c2413] to-[#6f140a] text-white flex flex-col justify-between py-10 sm:py-12"
+      >
+        {/* Soft Atmospheric Profile Silhouette Layer */}
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 overflow-hidden pointer-events-none select-none"
+        >
+          <div className="relative w-full h-full scale-105 opacity-45 mix-blend-multiply">
+            <SafeLumeveImage
+              src={ABOUT_COLLAGE.insetPortrait.src}
+              fallbackSrc={ABOUT_COLLAGE.insetPortrait.fallbackSrc}
+              alt=""
+              sizes="100vw"
+              className="object-cover object-center grayscale brightness-[0.28] contrast-[1.55] blur-[2px]"
+            />
+          </div>
+          <div className="absolute inset-0 bg-gradient-to-t from-[#6b1209]/70 via-transparent to-[#b5321a]/45" />
+        </div>
+
+        {/* Top Left "HONEST" + Supporting Caption */}
+        <div className="relative z-10 w-full max-w-5xl mx-auto px-5 sm:px-8 lg:px-10 flex flex-col sm:flex-row items-start gap-5 sm:gap-8">
+          <div className="font-optic-display font-bold uppercase text-[64px] sm:text-[90px] lg:text-[106px] leading-[0.82] tracking-[-0.02em] text-white">
+            HONEST
+          </div>
+
+          <p className="max-w-[235px] pt-1 sm:pt-2 text-[11px] sm:text-[11.5px] font-medium leading-[1.48] text-white/90">
+            Natural light, thoughtful composition, and an editorial eye.
+            Photography that feels as good as the moment itself.
+          </p>
+        </div>
+
+        {/* Bottom Right Micro Specialties + "TIMELESS" */}
+        <div className="relative z-10 w-full max-w-5xl mx-auto px-5 sm:px-8 lg:px-10 flex flex-col sm:flex-row items-start sm:items-end justify-end gap-5 sm:gap-8 mt-24 sm:mt-28">
+          <div className="sm:text-right max-w-[235px] pb-1 text-[8.5px] sm:text-[9px] font-semibold tracking-[0.12em] uppercase leading-[1.5] text-white/85">
+            WEDDINGS · PORTRAITS · EDITORIAL · BRAND · EVENTS · TRAVEL
+          </div>
+
+          <div className="font-optic-display font-bold uppercase text-[64px] sm:text-[90px] lg:text-[106px] leading-[0.82] tracking-[-0.02em] text-white">
+            TIMELESS
           </div>
         </div>
       </section>
