@@ -516,6 +516,17 @@ export default function TemplateNineShowcase() {
   const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(null);
   const [newsletterEmail, setNewsletterEmail] = useState("");
   const [newsletterSubscribed, setNewsletterSubscribed] = useState(false);
+  const [contactSubmitted, setContactSubmitted] = useState(false);
+  const [contactForm, setContactForm] = useState({
+    fullName: "",
+    email: "",
+    phone: "",
+    lookingFor: "Wedding Photography",
+    preferredDate: "",
+    location: "",
+    budget: "",
+    projectDetails: "",
+  });
   const [bookingForm, setBookingForm] = useState({
     name: "",
     email: "",
@@ -1361,12 +1372,380 @@ export default function TemplateNineShowcase() {
       </section>
 
       {/* ================================================================= */}
-      {/* 9. TERRACOTTA NEWSLETTER BANNER + STAY WITH US + STUDIO FOOTER    */}
+      {/* 9. CONTACT INFORMATION + INQUIRY FORM ("ABOUT YOUR STORY.")       */}
       {/* ================================================================= */}
-      <footer
+      <section
         id="lumeve-contact"
-        className="scroll-mt-14 w-full bg-white pt-14 sm:pt-20 pb-20 sm:pb-14"
+        className="scroll-mt-14 w-full bg-white py-16 sm:py-24 border-b border-[#ececf0]"
       >
+        <div className="max-w-5xl mx-auto px-5 sm:px-8 lg:px-10 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-start">
+          {/* Left Column: Contact Information Stack + Ruby Portrait */}
+          <div className="lg:col-span-4">
+            <p className="text-[9.5px] font-semibold tracking-[0.16em] uppercase text-[#c4553d] mb-3.5">
+              CONTACT INFORMATION
+            </p>
+
+            <div className="space-y-3">
+              <a
+                href="mailto:hello@lumeve.example"
+                className="block rounded-[8px] bg-[#c4452b] hover:bg-[#ad3a22] text-white px-5 py-4 transition-colors shadow-[0_12px_26px_rgba(160,52,28,0.16)]"
+              >
+                <span className="block text-[8.5px] font-semibold tracking-[0.14em] uppercase text-white/85">
+                  EMAIL
+                </span>
+                <span className="mt-0.5 block font-optic-display font-bold text-[19px] sm:text-[21px] tracking-[0.01em] leading-tight">
+                  hello@lumeve.example
+                </span>
+              </a>
+
+              <a
+                href="tel:+12125550148"
+                className="block rounded-[8px] bg-[#f4f1ec] hover:bg-[#ebe6dd] text-[#141416] px-5 py-4 transition-colors"
+              >
+                <span className="block text-[8.5px] font-semibold tracking-[0.14em] uppercase text-[#8c8c94]">
+                  PHONE
+                </span>
+                <span className="mt-0.5 block font-optic-display font-bold text-[19px] sm:text-[21px] leading-tight">
+                  +1 (212) 555-0148
+                </span>
+              </a>
+
+              <div className="rounded-[8px] bg-[#f4f1ec] text-[#141416] px-5 py-4">
+                <span className="block text-[8.5px] font-semibold tracking-[0.14em] uppercase text-[#8c8c94]">
+                  LOCATION
+                </span>
+                <span className="mt-0.5 block font-optic-display font-bold text-[19px] sm:text-[21px] leading-tight">
+                  New York, USA
+                </span>
+              </div>
+
+              <div className="rounded-[8px] bg-[#f4f1ec] text-[#141416] px-5 py-4">
+                <span className="block text-[8.5px] font-semibold tracking-[0.14em] uppercase text-[#8c8c94]">
+                  AVAILABILITY
+                </span>
+                <span className="mt-0.5 block font-optic-display font-bold text-[18px] sm:text-[20px] leading-tight">
+                  Worldwide inquiries welcome
+                </span>
+              </div>
+            </div>
+
+            <p className="mt-4 text-[8.5px] leading-[1.45] tracking-[0.08em] uppercase text-[#8c8c94]">
+              THE CONTACT DETAILS ABOVE ARE PLACEHOLDERS FOR THE TEMPLATE DEMO.
+            </p>
+
+            <div className="mt-5 relative w-full aspect-[16/11] rounded-[8px] overflow-hidden bg-neutral-900 shadow-sm">
+              <SafeLumeveImage
+                src={ABOUT_COLLAGE.insetPortrait.src}
+                fallbackSrc={ABOUT_COLLAGE.insetPortrait.fallbackSrc}
+                alt={ABOUT_COLLAGE.insetPortrait.alt}
+                sizes="(max-width: 1024px) 90vw, 320px"
+                className="object-cover object-top contrast-110"
+              />
+              <div
+                aria-hidden="true"
+                className="absolute inset-0 bg-gradient-to-tr from-[#5c1208]/45 via-transparent to-black/25 pointer-events-none"
+              />
+            </div>
+          </div>
+
+          {/* Right Column: Detailed Inquiry Form Card */}
+          <div className="lg:col-span-8 rounded-[12px] bg-[#f4f1ec] p-6 sm:p-9 lg:p-11">
+            <p className="text-[9.5px] font-semibold tracking-[0.16em] uppercase text-[#c4553d]">
+              INQUIRY FORM
+            </p>
+
+            <h2 className="mt-2">
+              <span className="block font-serif italic text-[22px] sm:text-[26px] leading-[1.08] text-[#c4553d]">
+                tell me a little
+              </span>
+              <span className="block font-optic-display font-bold uppercase text-[42px] sm:text-[52px] leading-[0.86] tracking-[-0.015em] text-[#141416] mt-0.5">
+                ABOUT YOUR
+                <br />
+                STORY.
+              </span>
+            </h2>
+
+            <p className="mt-3 max-w-[435px] text-[11.5px] sm:text-[12px] leading-[1.55] text-[#66666d]">
+              The more I know about your plans, the better I can understand your
+              needs and prepare a thoughtful response.
+            </p>
+
+            {contactSubmitted ? (
+              <div className="mt-8 rounded-[10px] bg-white border border-[#e3dfd8] p-7 sm:p-8 text-left">
+                <p className="text-[9.5px] font-semibold tracking-[0.16em] uppercase text-[#c4553d]">
+                  INQUIRY RECEIVED
+                </p>
+                <h3 className="mt-2 font-optic-display font-bold uppercase text-2xl sm:text-3xl text-[#141416]">
+                  THANK YOU, {contactForm.fullName || "FRIEND"}.
+                </h3>
+                <p className="mt-2.5 text-xs sm:text-sm leading-relaxed text-[#66666d]">
+                  We received your{" "}
+                  <span className="font-medium text-[#141416]">
+                    {contactForm.lookingFor}
+                  </span>{" "}
+                  note and will reply to{" "}
+                  <span className="font-medium text-[#141416]">
+                    {contactForm.email || "your inbox"}
+                  </span>{" "}
+                  within 24 hours.
+                </p>
+                <button
+                  type="button"
+                  onClick={() => {
+                    setContactSubmitted(false);
+                    setContactForm({
+                      fullName: "",
+                      email: "",
+                      phone: "",
+                      lookingFor: "Wedding Photography",
+                      preferredDate: "",
+                      location: "",
+                      budget: "",
+                      projectDetails: "",
+                    });
+                  }}
+                  className="mt-5 inline-flex items-center gap-2 rounded-full bg-[#c4452b] hover:bg-[#ad3a22] text-white px-5 py-2 text-[9.5px] font-semibold tracking-[0.12em] uppercase transition-colors cursor-pointer"
+                >
+                  <span>SEND ANOTHER INQUIRY</span>
+                </button>
+              </div>
+            ) : (
+              <form
+                onSubmit={(event) => {
+                  event.preventDefault();
+                  setContactSubmitted(true);
+                }}
+                className="mt-7 space-y-4"
+              >
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div>
+                    <label
+                      htmlFor="contact-full-name"
+                      className="block text-[8.5px] font-semibold tracking-[0.12em] uppercase text-[#55555c] mb-1.5"
+                    >
+                      FULL NAME
+                    </label>
+                    <input
+                      id="contact-full-name"
+                      type="text"
+                      required
+                      value={contactForm.fullName}
+                      onChange={(e) =>
+                        setContactForm({
+                          ...contactForm,
+                          fullName: e.target.value,
+                        })
+                      }
+                      placeholder="Your full name"
+                      className="w-full rounded-[6px] bg-white border border-[#e3dfd8] px-3.5 py-2.5 text-xs text-[#141416] placeholder:text-[#9c9ca4] focus:outline-none focus:border-[#c4553d]"
+                    />
+                  </div>
+
+                  <div>
+                    <label
+                      htmlFor="contact-email"
+                      className="block text-[8.5px] font-semibold tracking-[0.12em] uppercase text-[#55555c] mb-1.5"
+                    >
+                      EMAIL ADDRESS
+                    </label>
+                    <input
+                      id="contact-email"
+                      type="email"
+                      required
+                      value={contactForm.email}
+                      onChange={(e) =>
+                        setContactForm({
+                          ...contactForm,
+                          email: e.target.value,
+                        })
+                      }
+                      placeholder="you@example.com"
+                      className="w-full rounded-[6px] bg-white border border-[#e3dfd8] px-3.5 py-2.5 text-xs text-[#141416] placeholder:text-[#9c9ca4] focus:outline-none focus:border-[#c4553d]"
+                    />
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div>
+                    <label
+                      htmlFor="contact-phone"
+                      className="block text-[8.5px] font-semibold tracking-[0.12em] uppercase text-[#55555c] mb-1.5"
+                    >
+                      PHONE NUMBER (OPTIONAL)
+                    </label>
+                    <input
+                      id="contact-phone"
+                      type="tel"
+                      value={contactForm.phone}
+                      onChange={(e) =>
+                        setContactForm({
+                          ...contactForm,
+                          phone: e.target.value,
+                        })
+                      }
+                      placeholder="+1 (000) 000-0000"
+                      className="w-full rounded-[6px] bg-white border border-[#e3dfd8] px-3.5 py-2.5 text-xs text-[#141416] placeholder:text-[#9c9ca4] focus:outline-none focus:border-[#c4553d]"
+                    />
+                  </div>
+
+                  <div>
+                    <label
+                      htmlFor="contact-service"
+                      className="block text-[8.5px] font-semibold tracking-[0.12em] uppercase text-[#55555c] mb-1.5"
+                    >
+                      WHAT ARE YOU LOOKING FOR?
+                    </label>
+                    <select
+                      id="contact-service"
+                      value={contactForm.lookingFor}
+                      onChange={(e) =>
+                        setContactForm({
+                          ...contactForm,
+                          lookingFor: e.target.value,
+                        })
+                      }
+                      className="w-full rounded-[6px] bg-white border border-[#e3dfd8] px-3.5 py-2.5 text-xs text-[#141416] focus:outline-none focus:border-[#c4553d]"
+                    >
+                      <option value="Wedding Photography">
+                        Wedding Photography
+                      </option>
+                      <option value="Portrait Photography">
+                        Portrait Photography
+                      </option>
+                      <option value="Fashion & Editorial">
+                        Fashion &amp; Editorial
+                      </option>
+                      <option value="Brand & Commercial">
+                        Brand &amp; Commercial
+                      </option>
+                      <option value="Events & Celebrations">
+                        Events &amp; Celebrations
+                      </option>
+                      <option value="Travel & Lifestyle">
+                        Travel &amp; Lifestyle
+                      </option>
+                    </select>
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div>
+                    <label
+                      htmlFor="contact-date"
+                      className="block text-[8.5px] font-semibold tracking-[0.12em] uppercase text-[#55555c] mb-1.5"
+                    >
+                      PREFERRED DATE
+                    </label>
+                    <input
+                      id="contact-date"
+                      type="text"
+                      value={contactForm.preferredDate}
+                      onChange={(e) =>
+                        setContactForm({
+                          ...contactForm,
+                          preferredDate: e.target.value,
+                        })
+                      }
+                      placeholder="mm/dd/yyyy"
+                      className="w-full rounded-[6px] bg-white border border-[#e3dfd8] px-3.5 py-2.5 text-xs text-[#141416] placeholder:text-[#9c9ca4] focus:outline-none focus:border-[#c4553d]"
+                    />
+                  </div>
+
+                  <div>
+                    <label
+                      htmlFor="contact-location"
+                      className="block text-[8.5px] font-semibold tracking-[0.12em] uppercase text-[#55555c] mb-1.5"
+                    >
+                      EVENT OR SHOOT LOCATION
+                    </label>
+                    <input
+                      id="contact-location"
+                      type="text"
+                      value={contactForm.location}
+                      onChange={(e) =>
+                        setContactForm({
+                          ...contactForm,
+                          location: e.target.value,
+                        })
+                      }
+                      placeholder="City, venue, or region"
+                      className="w-full rounded-[6px] bg-white border border-[#e3dfd8] px-3.5 py-2.5 text-xs text-[#141416] placeholder:text-[#9c9ca4] focus:outline-none focus:border-[#c4553d]"
+                    />
+                  </div>
+                </div>
+
+                <div>
+                  <label
+                    htmlFor="contact-budget"
+                    className="block text-[8.5px] font-semibold tracking-[0.12em] uppercase text-[#55555c] mb-1.5"
+                  >
+                    ESTIMATED BUDGET
+                  </label>
+                  <input
+                    id="contact-budget"
+                    type="text"
+                    value={contactForm.budget}
+                    onChange={(e) =>
+                      setContactForm({
+                        ...contactForm,
+                        budget: e.target.value,
+                      })
+                    }
+                    placeholder="e.g. $1,500 – $3,000"
+                    className="w-full rounded-[6px] bg-white border border-[#e3dfd8] px-3.5 py-2.5 text-xs text-[#141416] placeholder:text-[#9c9ca4] focus:outline-none focus:border-[#c4553d]"
+                  />
+                </div>
+
+                <div>
+                  <label
+                    htmlFor="contact-details"
+                    className="block text-[8.5px] font-semibold tracking-[0.12em] uppercase text-[#55555c] mb-1.5"
+                  >
+                    TELL ME ABOUT YOUR PROJECT
+                  </label>
+                  <textarea
+                    id="contact-details"
+                    rows={4}
+                    required
+                    value={contactForm.projectDetails}
+                    onChange={(e) =>
+                      setContactForm({
+                        ...contactForm,
+                        projectDetails: e.target.value,
+                      })
+                    }
+                    placeholder="Share your ideas, the mood you love, and anything I should know..."
+                    className="w-full rounded-[6px] bg-white border border-[#e3dfd8] px-3.5 py-2.5 text-xs text-[#141416] placeholder:text-[#9c9ca4] focus:outline-none focus:border-[#c4553d] resize-none"
+                  />
+                </div>
+
+                <div className="pt-2 flex flex-col sm:flex-row sm:items-center gap-4">
+                  <button
+                    type="submit"
+                    className="inline-flex items-center justify-center gap-2 rounded-full bg-[#c4452b] hover:bg-[#ad3a22] text-white px-6 py-2.5 text-[9.5px] font-semibold tracking-[0.12em] uppercase transition-colors cursor-pointer shrink-0 shadow-xs"
+                  >
+                    <span
+                      aria-hidden="true"
+                      className="w-1.5 h-1.5 rounded-full bg-white"
+                    />
+                    <span>SEND YOUR INQUIRY</span>
+                  </button>
+
+                  <p className="text-[8.5px] leading-[1.4] tracking-[0.08em] uppercase text-[#8c8c94]">
+                    YOUR INFORMATION WILL ONLY BE USED TO RESPOND TO YOUR
+                    INQUIRY.
+                  </p>
+                </div>
+              </form>
+            )}
+          </div>
+        </div>
+      </section>
+
+      {/* ================================================================= */}
+      {/* 10. TERRACOTTA NEWSLETTER BANNER + STAY WITH US + STUDIO FOOTER   */}
+      {/* ================================================================= */}
+      <footer className="w-full bg-white pt-14 sm:pt-20 pb-20 sm:pb-14">
         <div className="max-w-5xl mx-auto px-5 sm:px-8 lg:px-10">
           {/* Terracotta Gradient Newsletter Card */}
           <div className="rounded-[10px] bg-gradient-to-r from-[#d45f42] via-[#b83f26] to-[#872512] text-white px-7 py-8 sm:px-11 sm:py-10 flex flex-col lg:flex-row lg:items-center justify-between gap-7 shadow-[0_16px_38px_rgba(140,42,24,0.16)]">
