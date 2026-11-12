@@ -1,8 +1,12 @@
-@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@600;700&family=Antonio:wght@700&family=Bebas+Neue&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Oswald:wght@600;700&family=Antonio:wght@700&family=Bebas+Neue&display=swap");
 @import "tailwindcss";
 
 .font-optic-display {
   font-family: "Oswald", "Antonio", "Bebas Neue", "Impact", "Haettenschweiler", "Arial Narrow Bold", sans-serif;
+}
+
+.font-evermore-serif {
+  font-family: "Cormorant Garamond", Georgia, "Times New Roman", serif;
 }
 
 :root {
@@ -92,6 +96,22 @@ body {
 
 .animate-orbit-wheel {
   animation: orbitWheel 72s linear infinite;
+}
+
+@keyframes kenBurnsSlow {
+  0% {
+    transform: scale(1) translate3d(0, 0, 0);
+  }
+  50% {
+    transform: scale(1.08) translate3d(-1.4%, -0.8%, 0);
+  }
+  100% {
+    transform: scale(1) translate3d(0, 0, 0);
+  }
+}
+
+.animate-ken-burns {
+  animation: kenBurnsSlow 22s ease-in-out infinite;
 }
 
 /* Pause animation on hover */

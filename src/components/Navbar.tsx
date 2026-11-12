@@ -19,7 +19,8 @@ export default function Navbar({ dark = false }: { dark?: boolean }) {
     pathname === "/home3" ||
     pathname === "/template/photography/1" ||
     pathname === "/template/photography/3" ||
-    pathname === "/template/photography/5";
+    pathname === "/template/photography/5" ||
+    pathname === "/template/photography/8";
   const isTemplateRoute =
     pathname === "/template" || pathname.startsWith("/template/");
 
