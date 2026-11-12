@@ -9,6 +9,7 @@ import TemplateThreeShowcase from "@/components/templates/TemplateThreeShowcase"
 import TemplateFourShowcase from "@/components/templates/TemplateFourShowcase";
 import TemplateFiveShowcase from "@/components/templates/TemplateFiveShowcase";
 import TemplateSixShowcase from "@/components/templates/TemplateSixShowcase";
+import TemplateSevenShowcase from "@/components/templates/TemplateSevenShowcase";
 
 const TEMPLATE_IDS = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"];
 
@@ -49,6 +50,10 @@ export default async function PhotographyTemplatePage({
 
   if (id === "6") {
     return <TemplateSixShowcase />;
+  }
+
+  if (id === "7") {
+    return <TemplateSevenShowcase />;
   }
 
   return (

@@ -81,12 +81,26 @@ body {
   animation: scrollLeft 28s linear infinite;
 }
 
+@keyframes orbitWheel {
+  0% {
+    transform: translate(-50%, 0) rotate(0deg);
+  }
+  100% {
+    transform: translate(-50%, 0) rotate(-360deg);
+  }
+}
+
+.animate-orbit-wheel {
+  animation: orbitWheel 72s linear infinite;
+}
+
 /* Pause animation on hover */
 .scroll-container:hover .animate-scroll-up,
 .scroll-container:hover .animate-scroll-down,
 .scroll-container:hover .animate-scroll-left,
 .scroll-container:hover .animate-scroll-right,
-.scroll-container:hover .animate-scroll-left-fast {
+.scroll-container:hover .animate-scroll-left-fast,
+.scroll-container:hover .animate-orbit-wheel {
   animation-play-state: paused;
 }
 
