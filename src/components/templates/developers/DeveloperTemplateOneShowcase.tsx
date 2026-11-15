@@ -191,14 +191,316 @@ const FAQ_ITEMS: FaqItem[] = [
   },
 ];
 
+/* --- Experience Dataset (Matching Reference Image media_1794762684143_ef53a6da.jpg) --- */
+interface ExperienceItem {
+  role: string;
+  company: string;
+  period: string;
+  badge: "product" | "ux" | "lead" | "senior" | "uiux";
+}
+
+const EXPERIENCE_ITEMS: ExperienceItem[] = [
+  {
+    role: "Product Designer",
+    company: "hyperfolio.framer.website",
+    period: "2023 - Present",
+    badge: "product",
+  },
+  {
+    role: "UX Designer",
+    company: "codot.framer.website",
+    period: "2019 - 2023",
+    badge: "ux",
+  },
+  {
+    role: "Lead Product Designer",
+    company: "pentaclay.com",
+    period: "2016 - 2018",
+    badge: "lead",
+  },
+  {
+    role: "Senior Product Designer",
+    company: "greenspire.framer.website",
+    period: "2015 - 2016",
+    badge: "senior",
+  },
+  {
+    role: "UI/UX Designer",
+    company: "kalry.framer.website",
+    period: "2014 - 2015",
+    badge: "uiux",
+  },
+];
+
+/* --- Awards Dataset (Matching Reference Image media_1794762684143_ef53a6da.jpg) --- */
+interface AwardItem {
+  platform: string;
+  title: string;
+  year: string;
+}
+
+const AWARDS_ITEMS: AwardItem[] = [
+  {
+    platform: "Dribbble",
+    title: "Elegant pixels for refined web artistry",
+    year: "2016",
+  },
+  {
+    platform: "Awwwards",
+    title: "Digital dreamscapes for immersive experiences",
+    year: "2019",
+  },
+  {
+    platform: "Behance",
+    title: "Innovative interfaces for modern applications",
+    year: "2022",
+  },
+];
+
+function ExperienceBadgeIcon({ badge }: { badge: ExperienceItem["badge"] }) {
+  if (badge === "product") {
+    return (
+      <div className="w-8 h-8 rounded-full bg-rose-500/15 text-rose-500 flex items-center justify-center shrink-0">
+        <svg viewBox="0 0 24 24" className="w-4 h-4" fill="currentColor">
+          <circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" strokeWidth="2.5" />
+          <circle cx="12" cy="12" r="4" />
+        </svg>
+      </div>
+    );
+  }
+  if (badge === "ux") {
+    return (
+      <div className="w-8 h-8 rounded-lg bg-amber-500/15 text-amber-500 flex items-center justify-center shrink-0">
+        <svg viewBox="0 0 24 24" className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2.5">
+          <rect x="4" y="4" width="16" height="16" rx="3" />
+          <path d="M8 8h8v8H8z" />
+        </svg>
+      </div>
+    );
+  }
+  if (badge === "lead") {
+    return (
+      <div className="w-8 h-8 rounded-full bg-teal-500/15 text-teal-400 flex items-center justify-center shrink-0">
+        <svg viewBox="0 0 24 24" className="w-4 h-4" fill="currentColor">
+          <circle cx="8" cy="8" r="3.5" />
+          <circle cx="16" cy="8" r="3.5" />
+          <circle cx="8" cy="16" r="3.5" />
+          <circle cx="16" cy="16" r="3.5" />
+        </svg>
+      </div>
+    );
+  }
+  if (badge === "senior") {
+    return (
+      <div className="w-8 h-8 rounded-full bg-white/15 text-white flex items-center justify-center shrink-0">
+        <svg viewBox="0 0 24 24" className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2">
+          <circle cx="8" cy="12" r="4.5" />
+          <circle cx="16" cy="12" r="4.5" />
+        </svg>
+      </div>
+    );
+  }
+  return (
+    <div className="w-8 h-8 rounded-lg bg-red-600/15 text-red-400 flex items-center justify-center shrink-0">
+      <svg viewBox="0 0 24 24" className="w-4 h-4" fill="currentColor">
+        <polygon points="12 2 22 12 12 22 2 12" />
+      </svg>
+    </div>
+  );
+}
+
+const BRAND_LOGOS = [
+  {
+    name: "Grid",
+    icon: (
+      <svg viewBox="0 0 24 24" className="w-6 h-6" fill="currentColor">
+        <rect x="3" y="3" width="7" height="7" rx="1.5" />
+        <rect x="14" y="3" width="7" height="7" rx="1.5" />
+        <rect x="3" y="14" width="7" height="7" rx="1.5" />
+        <rect x="14" y="14" width="7" height="7" rx="1.5" />
+      </svg>
+    ),
+  },
+  {
+    name: "Asterisk",
+    icon: (
+      <svg viewBox="0 0 24 24" className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round">
+        <line x1="12" y1="2" x2="12" y2="22" />
+        <line x1="4.93" y1="4.93" x2="19.07" y2="19.07" />
+        <line x1="2" y1="12" x2="22" y2="12" />
+        <line x1="4.93" y1="19.07" x2="19.07" y2="4.93" />
+      </svg>
+    ),
+  },
+  {
+    name: "Arch",
+    icon: (
+      <svg viewBox="0 0 24 24" className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2.2">
+        <path d="M4 21V10a8 8 0 0 1 16 0v11" />
+        <path d="M8 21v-7a4 4 0 0 1 8 0v7" />
+      </svg>
+    ),
+  },
+  {
+    name: "Infinity",
+    icon: (
+      <svg viewBox="0 0 24 24" className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2.2">
+        <path d="M18.178 8c5.096 0 5.096 8 0 8-5.095 0-7.261-8-12.356-8-5.096 0-5.096 8 0 8 5.095 0 7.261-8 12.356-8z" />
+      </svg>
+    ),
+  },
+  {
+    name: "Rings",
+    icon: (
+      <svg viewBox="0 0 24 24" className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2">
+        <circle cx="9" cy="12" r="5" />
+        <circle cx="15" cy="12" r="5" />
+      </svg>
+    ),
+  },
+  {
+    name: "Flower",
+    icon: (
+      <svg viewBox="0 0 24 24" className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2">
+        <circle cx="12" cy="12" r="3" />
+        <circle cx="12" cy="5" r="2.5" />
+        <circle cx="12" cy="19" r="2.5" />
+        <circle cx="5" cy="12" r="2.5" />
+        <circle cx="19" cy="12" r="2.5" />
+      </svg>
+    ),
+  },
+  {
+    name: "Target",
+    icon: (
+      <svg viewBox="0 0 24 24" className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2">
+        <circle cx="12" cy="12" r="9" />
+        <circle cx="12" cy="12" r="3.5" />
+        <line x1="12" y1="1" x2="12" y2="4" />
+        <line x1="12" y1="20" x2="12" y2="23" />
+        <line x1="1" y1="12" x2="4" y2="12" />
+        <line x1="20" y1="12" x2="23" y2="12" />
+      </svg>
+    ),
+  },
+  {
+    name: "Clover",
+    icon: (
+      <svg viewBox="0 0 24 24" className="w-6 h-6" fill="currentColor">
+        <rect x="4" y="4" width="7" height="7" rx="3.5" />
+        <rect x="13" y="4" width="7" height="7" rx="3.5" />
+        <rect x="4" y="13" width="7" height="7" rx="3.5" />
+        <rect x="13" y="13" width="7" height="7" rx="3.5" />
+      </svg>
+    ),
+  },
+  {
+    name: "SlantedBars",
+    icon: (
+      <svg viewBox="0 0 24 24" className="w-6 h-6" fill="currentColor">
+        <polygon points="5 20 9 4 12 4 8 20" />
+        <polygon points="12 20 16 4 19 4 15 20" />
+      </svg>
+    ),
+  },
+];
+
+/* --- Blog Page Dataset (Matching Reference Image media_1794762714793_ac96528c.jpg) --- */
+interface BlogPostItem {
+  id: string;
+  title: string;
+  image: string;
+  alt: string;
+}
+
+const FEATURED_BLOG_POST = {
+  date: "Aug 14, 2024",
+  title: "14 common design misconceptions",
+  excerpt:
+    "Security weaknesses are critical in a network security system. Fuzzing is a common and dangerous vulnerability...",
+  image:
+    "https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?auto=format&fit=crop&w=1600&q=80",
+  alt: "Yellow and blue pencils flatlay on yellow and cyan background",
+};
+
+const BLOG_GRID_POSTS: BlogPostItem[] = [
+  {
+    id: "freelance-agency",
+    title: "How to move from freelance design agency",
+    image:
+      "https://images.unsplash.com/photo-1517649763962-0c623266ddc0?auto=format&fit=crop&w=800&q=80",
+    alt: "Cyclist speeding through modern city streets with motion blur",
+  },
+  {
+    id: "web-designer-truths",
+    title: "10 things nobody told you a web designer",
+    image:
+      "https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?auto=format&fit=crop&w=800&q=80",
+    alt: "Minimalist audio synthesizer rotary dial and slider knob",
+  },
+  {
+    id: "design-blogs-reading",
+    title: "5 web design blogs you should be reading",
+    image:
+      "https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?auto=format&fit=crop&w=800&q=80",
+    alt: "Sleek matte black product design with red indicator light",
+  },
+  {
+    id: "creativity-efficiency",
+    title: "Balancing design creativity with efficiency",
+    image:
+      "https://images.unsplash.com/photo-1531403009284-440f080d1e12?auto=format&fit=crop&w=800&q=80",
+    alt: "Two designers working together at studio desks with moodboard",
+  },
+  {
+    id: "design-freelancing",
+    title: "Find all everything from design to freelancing",
+    image: "/images/developers/news-pastel-cube.jpg",
+    alt: "Pastel 3D cube render representing design to freelancing",
+  },
+  {
+    id: "webflow-to-agency",
+    title: "Webflow freelancer to agency owner path",
+    image: "/images/developers/news-sneakers.jpg",
+    alt: "Sneakers splashing in water puddle representing career path",
+  },
+];
+
 export default function DeveloperTemplateOneShowcase() {
+  const [activeTab, setActiveTab] = useState<"home" | "about" | "blog">("home");
   const [activeNav, setActiveNav] = useState<string>("home");
   const [expandedService, setExpandedService] = useState<string>("creative-design");
   const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(0);
+  const [moreBlogsLoaded, setMoreBlogsLoaded] = useState(false);
   const [contactModalOpen, setContactModalOpen] = useState(false);
   const [copiedEmail, setCopiedEmail] = useState(false);
 
   useEffect(() => {
+    const onHash = () => {
+      if (window.location.hash === "#about") {
+        setActiveTab("about");
+        setActiveNav("about");
+      } else if (window.location.hash === "#blog") {
+        setActiveTab("blog");
+        setActiveNav("blog");
+      } else if (window.location.hash === "#home" || window.location.hash === "") {
+        setActiveTab("home");
+        setActiveNav("home");
+      }
+    };
+
+    window.addEventListener("hashchange", onHash);
+    const timer = setTimeout(onHash, 0);
+
+    return () => {
+      window.removeEventListener("hashchange", onHash);
+      clearTimeout(timer);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (activeTab !== "home") return;
+
     const handleScroll = () => {
       const sectionIds = ["home", "about", "services", "blog", "faq", "contact"];
       const scrollPosition = window.scrollY + 180;
@@ -218,16 +520,55 @@ export default function DeveloperTemplateOneShowcase() {
     window.addEventListener("scroll", handleScroll, { passive: true });
     handleScroll();
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [activeTab]);
+
+  const handleNavAction = (e: React.MouseEvent, target: string) => {
+    e.preventDefault();
+    if (target === "about") {
+      setActiveTab("about");
+      setActiveNav("about");
+      window.history.pushState(null, "", "#about");
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      return;
+    }
+
+    if (target === "blog") {
+      setActiveTab("blog");
+      setActiveNav("blog");
+      window.history.pushState(null, "", "#blog");
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      return;
+    }
+
+    if (target === "home") {
+      setActiveTab("home");
+      setActiveNav("home");
+      window.history.pushState(null, "", "#home");
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      return;
+    }
+
+    // target is "services" (Portfolio)
+    if (activeTab !== "home") {
+      setActiveTab("home");
+      window.history.pushState(null, "", `#${target}`);
+      setTimeout(() => {
+        const el = document.getElementById(target);
+        el?.scrollIntoView({ behavior: "smooth" });
+        setActiveNav(target);
+      }, 60);
+    } else {
+      const el = document.getElementById(target);
+      if (el) {
+        el.scrollIntoView({ behavior: "smooth" });
+        window.history.pushState(null, "", `#${target}`);
+        setActiveNav(target);
+      }
+    }
+  };
 
   const scrollToSection = (e: React.MouseEvent, id: string) => {
-    e.preventDefault();
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-      window.history.pushState(null, "", `#${id}`);
-      setActiveNav(id);
-    }
+    handleNavAction(e, id);
   };
 
   const handleCopyEmail = () => {
@@ -278,6 +619,765 @@ export default function DeveloperTemplateOneShowcase() {
       </div>
 
       {/* ========================================================================= */}
+      {/* ROUTED VIEW: HOME VS ABOUT (Matches Reference Image media_1794762684143)    */}
+      {/* ========================================================================= */}
+      {activeTab === "about" ? (
+        /* ========================================================================= */
+        /* ABOUT PAGE VIEW                                                           */
+        /* ========================================================================= */
+        <div className="bg-white text-neutral-950 min-h-screen selection:bg-[#c8f53c] selection:text-black animate-fadeIn">
+          {/* Top Floating Andro Pill Navigation Bar on Clean Canvas */}
+          <header className="relative z-30 pt-6 px-6 sm:px-10 lg:px-14">
+            <div className="max-w-7xl mx-auto flex items-center justify-between gap-4">
+              {/* Left: Brand Monogram Logo */}
+              <button
+                type="button"
+                onClick={(e) => handleNavAction(e, "home")}
+                className="flex items-center gap-2 group transition-transform active:scale-95 cursor-pointer"
+                aria-label="Andro Home"
+              >
+                <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-2xl bg-neutral-950 flex items-center justify-center p-2 shadow-sm">
+                  <AndroLogo className="w-6 h-6 text-[#c8f53c]" />
+                </div>
+              </button>
+
+              {/* Center: Rounded Pill Navigation Bar */}
+              <nav className="flex items-center bg-[#151518] border border-neutral-800 p-1 sm:p-1.5 rounded-full shadow-2xl">
+                <button
+                  type="button"
+                  onClick={(e) => handleNavAction(e, "home")}
+                  className="px-4 sm:px-6 py-1.5 sm:py-2 rounded-full text-xs sm:text-sm font-semibold transition-all text-neutral-300 hover:text-white cursor-pointer active:scale-95"
+                >
+                  Home
+                </button>
+                <button
+                  type="button"
+                  className="px-4 sm:px-6 py-1.5 sm:py-2 rounded-full text-xs sm:text-sm font-bold bg-[#c8f53c] text-black shadow-md scale-102 cursor-default"
+                >
+                  About
+                </button>
+                <button
+                  type="button"
+                  onClick={(e) => handleNavAction(e, "services")}
+                  className="px-4 sm:px-6 py-1.5 sm:py-2 rounded-full text-xs sm:text-sm font-semibold transition-all text-neutral-300 hover:text-white cursor-pointer active:scale-95"
+                >
+                  Portfolio
+                </button>
+                <button
+                  type="button"
+                  onClick={(e) => handleNavAction(e, "blog")}
+                  className="px-4 sm:px-6 py-1.5 sm:py-2 rounded-full text-xs sm:text-sm font-semibold transition-all text-neutral-300 hover:text-white cursor-pointer active:scale-95"
+                >
+                  Blog
+                </button>
+              </nav>
+
+              {/* Right: "Let's talk" Outline Pill Button */}
+              <div className="flex items-center">
+                <button
+                  type="button"
+                  onClick={() => setContactModalOpen(true)}
+                  className="px-4 sm:px-5 py-2 rounded-full border border-neutral-300 hover:border-neutral-500 bg-white text-xs sm:text-sm text-neutral-900 font-semibold transition-all flex items-center gap-2 cursor-pointer shadow-xs active:scale-95"
+                >
+                  <svg
+                    className="w-3.5 h-3.5 text-neutral-700"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+                  </svg>
+                  <span>Let&apos;s talk</span>
+                </button>
+              </div>
+            </div>
+          </header>
+
+          {/* Main About Page Body */}
+          <main className="max-w-6xl mx-auto px-6 sm:px-10 lg:px-12 pt-14 sm:pt-20 pb-16">
+            {/* 2-Column Hero: Photo on Left, Bio & Metrics on Right */}
+            <section className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+              {/* Left Column: Portrait Photo with rounded corners */}
+              <div className="lg:col-span-5 flex justify-center lg:justify-start">
+                <div className="relative w-full max-w-[420px] aspect-[4/5] rounded-[32px] sm:rounded-[40px] overflow-hidden shadow-2xl bg-neutral-950">
+                  <Image
+                    src="/images/developers/andro-portrait.jpg"
+                    alt="Andro - Web designer and developer"
+                    fill
+                    priority
+                    sizes="(max-width: 1024px) 100vw, 450px"
+                    className="object-cover object-center"
+                  />
+                </div>
+              </div>
+
+              {/* Right Column: Bio Headline, Subtitle, Metrics & Social buttons */}
+              <div className="lg:col-span-7 flex flex-col justify-center">
+                <h1 className="text-3xl sm:text-4xl lg:text-[46px] font-black text-neutral-950 tracking-tight leading-[1.14]">
+                  I&apos;m a web designer and developer in Manchester.
+                </h1>
+
+                <p className="mt-5 text-sm sm:text-base text-neutral-500 leading-relaxed max-w-xl">
+                  With over a decade of industry experience, I specialize in creating visually
+                  appealing and functional websites.
+                </p>
+
+                {/* Metrics with Underline Dividers */}
+                <div className="mt-8 space-y-5 max-w-lg">
+                  <div className="border-b border-neutral-200 pb-4">
+                    <div className="text-3xl sm:text-4xl font-extrabold text-neutral-950 tracking-tight">
+                      75+
+                    </div>
+                    <div className="text-xs text-neutral-500 font-medium tracking-tight mt-1">
+                      Projects done
+                    </div>
+                  </div>
+
+                  <div className="border-b border-neutral-200 pb-4">
+                    <div className="text-3xl sm:text-4xl font-extrabold text-neutral-950 tracking-tight">
+                      100%
+                    </div>
+                    <div className="text-xs text-neutral-500 font-medium tracking-tight mt-1">
+                      Positive reviews
+                    </div>
+                  </div>
+                </div>
+
+                {/* Action Buttons Row: Hire Me + 3 Social Icons */}
+                <div className="mt-8 flex items-center gap-3">
+                  <button
+                    type="button"
+                    onClick={() => setContactModalOpen(true)}
+                    className="px-6 py-2.5 rounded-full bg-neutral-950 hover:bg-neutral-800 text-white font-semibold text-xs sm:text-sm transition-all active:scale-95 shadow-sm cursor-pointer"
+                  >
+                    Hire Me
+                  </button>
+
+                  {/* Facebook */}
+                  <a
+                    href="https://facebook.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Facebook"
+                    className="w-9 h-9 rounded-full border border-neutral-300 text-neutral-700 flex items-center justify-center hover:border-neutral-500 hover:text-black transition-colors font-bold text-xs"
+                  >
+                    f
+                  </a>
+
+                  {/* YouTube */}
+                  <a
+                    href="https://youtube.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="YouTube"
+                    className="w-9 h-9 rounded-full border border-neutral-300 text-neutral-700 flex items-center justify-center hover:border-neutral-500 hover:text-black transition-colors"
+                  >
+                    <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.5 12 3.5 12 3.5s-7.505 0-9.377.55a3.016 3.016 0 0 0-2.122 2.136C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.55 9.376.55 9.376.55s7.505 0 9.377-.55a3.016 3.016 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+                    </svg>
+                  </a>
+
+                  {/* LinkedIn */}
+                  <a
+                    href="https://linkedin.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="LinkedIn"
+                    className="w-9 h-9 rounded-full border border-neutral-300 text-neutral-700 flex items-center justify-center hover:border-neutral-500 hover:text-black transition-colors font-bold text-xs"
+                  >
+                    in
+                  </a>
+                </div>
+              </div>
+            </section>
+
+            {/* Brand / Client Logos Row (Matches Reference Image) */}
+            <section className="py-14 sm:py-20 border-y border-neutral-200/80 my-16 sm:my-20">
+              <div className="flex items-center justify-between gap-6 sm:gap-10 overflow-x-auto text-neutral-400 py-2">
+                {BRAND_LOGOS.map((brand, idx) => (
+                  <div
+                    key={idx}
+                    className="shrink-0 hover:text-neutral-900 transition-colors flex items-center justify-center p-2"
+                    title={brand.name}
+                  >
+                    {brand.icon}
+                  </div>
+                ))}
+              </div>
+            </section>
+
+            {/* 10 Years of Experience Dark Card (Matches Reference Image) */}
+            <section className="rounded-[36px] sm:rounded-[48px] bg-[#0c0c0e] text-white p-8 sm:p-14 lg:p-16 shadow-2xl mb-20 sm:mb-28">
+              <h2 className="text-3xl sm:text-4xl lg:text-[42px] font-black text-center tracking-tight text-white mb-10 sm:mb-14">
+                10 years of experience
+              </h2>
+
+              <div className="space-y-3.5 max-w-4xl mx-auto">
+                {EXPERIENCE_ITEMS.map((exp, idx) => (
+                  <div
+                    key={idx}
+                    className="rounded-full border border-neutral-800/80 bg-[#121216]/70 hover:border-neutral-700 hover:bg-[#16161b] px-6 sm:px-8 py-4 sm:py-4.5 flex flex-col sm:flex-row sm:items-center justify-between gap-3 transition-colors"
+                  >
+                    {/* Left: Icon & Role */}
+                    <div className="flex items-center gap-3.5">
+                      <ExperienceBadgeIcon badge={exp.badge} />
+                      <span className="font-bold text-sm sm:text-base text-white tracking-tight">
+                        {exp.role}
+                      </span>
+                    </div>
+
+                    {/* Middle: Domain in lime/yellow */}
+                    <span className="text-xs sm:text-sm font-mono text-[#c8f53c] font-medium tracking-tight">
+                      {exp.company}
+                    </span>
+
+                    {/* Right: Year Range */}
+                    <span className="text-xs sm:text-sm font-mono text-neutral-400">
+                      {exp.period}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </section>
+
+            {/* Awards Section (Matches Reference Image) */}
+            <section className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center pb-20 sm:pb-28">
+              {/* Left: Silver Trophy Cup Photo */}
+              <div className="lg:col-span-5 flex justify-center lg:justify-start">
+                <div className="relative w-full max-w-[420px] aspect-[4/5] rounded-[32px] sm:rounded-[40px] overflow-hidden shadow-2xl bg-neutral-950">
+                  <Image
+                    src="/images/developers/awards-trophy.jpg"
+                    alt="Luxury silver trophy design award"
+                    fill
+                    sizes="(max-width: 1024px) 100vw, 450px"
+                    className="object-cover object-center"
+                  />
+                </div>
+              </div>
+
+              {/* Right: Awards Info & List */}
+              <div className="lg:col-span-7 flex flex-col justify-center">
+                <h2 className="text-3xl sm:text-4xl lg:text-[44px] font-black text-neutral-950 tracking-tight">
+                  Awards
+                </h2>
+
+                <p className="mt-4 text-xs sm:text-sm text-neutral-500 leading-relaxed max-w-xl">
+                  Recognized for excellence in digital design, responsive engineering, and
+                  human-centric user interface craftsmanship across global platforms.
+                </p>
+
+                <div className="mt-8 space-y-4 max-w-xl">
+                  {AWARDS_ITEMS.map((award, idx) => (
+                    <div
+                      key={idx}
+                      className="border-b border-neutral-200/90 pb-4 flex flex-col sm:flex-row sm:items-baseline justify-between gap-2"
+                    >
+                      <div>
+                        <span className="font-bold text-sm sm:text-base text-neutral-950 block">
+                          {award.platform}
+                        </span>
+                        <span className="text-xs sm:text-sm text-neutral-500 block mt-0.5">
+                          {award.title}
+                        </span>
+                      </div>
+                      <span className="font-mono text-xs sm:text-sm text-neutral-500 shrink-0">
+                        {award.year}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </section>
+
+            {/* Call to Action Banner on About page */}
+            <div className="pb-16 sm:pb-20">
+              <div className="rounded-[36px] sm:rounded-[48px] bg-[#0c0c0e] text-white p-12 sm:p-20 lg:p-24 text-center relative overflow-hidden shadow-2xl flex flex-col items-center">
+                <span className="text-xs sm:text-sm font-semibold text-[#c8f53c] tracking-tight block mb-4 sm:mb-6">
+                  Let&apos;s turn your ideas into a stunning reality.
+                </span>
+
+                <a
+                  href="mailto:hello.andro@gmail.com"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    handleCopyEmail();
+                  }}
+                  className="text-3xl sm:text-5xl md:text-6xl lg:text-[76px] font-black text-white hover:text-[#c8f53c] tracking-tight transition-colors cursor-pointer block leading-tight max-w-5xl"
+                >
+                  hello.andro@gmail.com
+                </a>
+
+                <p className="mt-3 text-xs text-neutral-400 font-mono">
+                  {copiedEmail ? "✓ Email copied to clipboard!" : "Click to copy email address"}
+                </p>
+
+                {/* Bottom Nav pill inside banner */}
+                <div className="mt-12 sm:mt-16 flex justify-center">
+                  <nav
+                    aria-label="About Page CTA Navigation"
+                    className="inline-flex items-center gap-1.5 p-1 rounded-full bg-[#18181d] border border-neutral-800"
+                  >
+                    <button
+                      type="button"
+                      onClick={(e) => handleNavAction(e, "home")}
+                      className="px-4 sm:px-5 py-1.5 rounded-full text-xs font-medium text-neutral-300 hover:text-white transition-all cursor-pointer"
+                    >
+                      Home
+                    </button>
+                    <button
+                      type="button"
+                      className="px-4 sm:px-5 py-1.5 rounded-full text-xs font-semibold bg-[#c8f53c] text-black transition-all cursor-default"
+                    >
+                      About
+                    </button>
+                    <button
+                      type="button"
+                      onClick={(e) => handleNavAction(e, "services")}
+                      className="px-4 sm:px-5 py-1.5 rounded-full text-xs font-medium text-neutral-300 hover:text-white transition-all cursor-pointer"
+                    >
+                      Portfolio
+                    </button>
+                    <button
+                      type="button"
+                      onClick={(e) => handleNavAction(e, "blog")}
+                      className="px-4 sm:px-5 py-1.5 rounded-full text-xs font-medium text-neutral-300 hover:text-white transition-all cursor-pointer"
+                    >
+                      Blog
+                    </button>
+                  </nav>
+                </div>
+              </div>
+            </div>
+
+            {/* Footer on About page */}
+            <footer className="w-full py-8 flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-neutral-200/80 text-xs text-neutral-500 font-medium">
+              <div>
+                <span>Theme created by </span>
+                <strong className="text-neutral-950 font-semibold">Pentaclay</strong>
+              </div>
+
+              <div>
+                <button
+                  type="button"
+                  onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+                  className="font-semibold text-neutral-800 hover:text-neutral-950 flex items-center gap-1.5 transition-colors cursor-pointer"
+                >
+                  <span>Back to Top</span>
+                  <span>&uarr;</span>
+                </button>
+              </div>
+
+              <div className="flex items-center gap-2">
+                <a
+                  href="https://dribbble.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Website or Dribbble"
+                  className="w-8 h-8 rounded-full border border-neutral-300 text-neutral-600 flex items-center justify-center hover:border-neutral-500 hover:text-neutral-900 transition-colors"
+                >
+                  <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <circle cx="12" cy="12" r="10" />
+                    <line x1="2" y1="12" x2="22" y2="12" />
+                    <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+                  </svg>
+                </a>
+                <a
+                  href="https://producthunt.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Product Hunt"
+                  className="w-8 h-8 rounded-full border border-neutral-300 text-neutral-600 flex items-center justify-center hover:border-neutral-500 hover:text-neutral-900 transition-colors"
+                >
+                  <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor">
+                    <circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" strokeWidth="2" />
+                    <path d="M11 8h2.8c1.2 0 2.2 1 2.2 2.2s-1 2.2-2.2 2.2H11V8zm-2-2v12h2v-4h2.8c2.3 0 4.2-1.9 4.2-4.2S16.1 6 13.8 6H9z" />
+                  </svg>
+                </a>
+                <a
+                  href="https://linkedin.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="LinkedIn"
+                  className="w-8 h-8 rounded-full border border-neutral-300 text-neutral-600 flex items-center justify-center hover:border-neutral-500 hover:text-neutral-900 transition-colors font-bold text-[11px]"
+                >
+                  in
+                </a>
+                <a
+                  href="https://facebook.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Facebook"
+                  className="w-8 h-8 rounded-full border border-neutral-300 text-neutral-600 flex items-center justify-center hover:border-neutral-500 hover:text-neutral-900 transition-colors font-bold text-[12px]"
+                >
+                  f
+                </a>
+                <a
+                  href="https://youtube.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="YouTube"
+                  className="w-8 h-8 rounded-full border border-neutral-300 text-neutral-600 flex items-center justify-center hover:border-neutral-500 hover:text-neutral-900 transition-colors"
+                >
+                  <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.5 12 3.5 12 3.5s-7.505 0-9.377.55a3.016 3.016 0 0 0-2.122 2.136C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.55 9.376.55 9.376.55s7.505 0 9.377-.55a3.016 3.016 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+                  </svg>
+                </a>
+              </div>
+            </footer>
+          </main>
+        </div>
+      ) : activeTab === "blog" ? (
+        /* ========================================================================= */
+        /* BLOG PAGE VIEW (Matches Reference Image media_1794762714793_ac96528c.jpg)  */
+        /* ========================================================================= */
+        <div className="bg-white text-neutral-950 min-h-screen selection:bg-[#c8f53c] selection:text-black animate-fadeIn">
+          {/* Top Floating Andro Pill Navigation Bar on Clean Canvas */}
+          <header className="relative z-30 pt-6 px-6 sm:px-10 lg:px-14">
+            <div className="max-w-7xl mx-auto flex items-center justify-between gap-4">
+              {/* Left: Brand Monogram Logo */}
+              <button
+                type="button"
+                onClick={(e) => handleNavAction(e, "home")}
+                className="flex items-center gap-2 group transition-transform active:scale-95 cursor-pointer"
+                aria-label="Andro Home"
+              >
+                <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-2xl bg-neutral-950 flex items-center justify-center p-2 shadow-sm">
+                  <AndroLogo className="w-6 h-6 text-[#c8f53c]" />
+                </div>
+              </button>
+
+              {/* Center: Rounded Pill Navigation Bar */}
+              <nav className="flex items-center bg-[#151518] border border-neutral-800 p-1 sm:p-1.5 rounded-full shadow-2xl">
+                <button
+                  type="button"
+                  onClick={(e) => handleNavAction(e, "home")}
+                  className="px-4 sm:px-6 py-1.5 sm:py-2 rounded-full text-xs sm:text-sm font-semibold transition-all text-neutral-300 hover:text-white cursor-pointer active:scale-95"
+                >
+                  Home
+                </button>
+                <button
+                  type="button"
+                  onClick={(e) => handleNavAction(e, "about")}
+                  className="px-4 sm:px-6 py-1.5 sm:py-2 rounded-full text-xs sm:text-sm font-semibold transition-all text-neutral-300 hover:text-white cursor-pointer active:scale-95"
+                >
+                  About
+                </button>
+                <button
+                  type="button"
+                  onClick={(e) => handleNavAction(e, "services")}
+                  className="px-4 sm:px-6 py-1.5 sm:py-2 rounded-full text-xs sm:text-sm font-semibold transition-all text-neutral-300 hover:text-white cursor-pointer active:scale-95"
+                >
+                  Portfolio
+                </button>
+                <button
+                  type="button"
+                  className="px-4 sm:px-6 py-1.5 sm:py-2 rounded-full text-xs sm:text-sm font-bold bg-[#c8f53c] text-black shadow-md scale-102 cursor-default"
+                >
+                  Blog
+                </button>
+              </nav>
+
+              {/* Right: "Let's talk" Outline Pill Button */}
+              <div className="flex items-center">
+                <button
+                  type="button"
+                  onClick={() => setContactModalOpen(true)}
+                  className="px-4 sm:px-5 py-2 rounded-full border border-neutral-300 hover:border-neutral-500 bg-white text-xs sm:text-sm text-neutral-900 font-semibold transition-all flex items-center gap-2 cursor-pointer shadow-xs active:scale-95"
+                >
+                  <svg
+                    className="w-3.5 h-3.5 text-neutral-700"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+                  </svg>
+                  <span>Let&apos;s talk</span>
+                </button>
+              </div>
+            </div>
+          </header>
+
+          {/* Main Blog Body */}
+          <main className="max-w-6xl mx-auto px-6 sm:px-10 lg:px-12 pt-8 sm:pt-14 pb-16">
+            {/* Centered Large Header */}
+            <h1 className="text-3xl sm:text-5xl lg:text-[54px] font-black text-neutral-950 text-center tracking-tight mb-8 sm:mb-12">
+              News And Insight
+            </h1>
+
+            {/* Featured Wide Banner Card (Matches Top of Reference Screenshot) */}
+            <div className="relative w-full h-[360px] sm:h-[460px] lg:h-[500px] rounded-[32px] sm:rounded-[44px] overflow-hidden shadow-xl mb-8 sm:mb-10 group cursor-pointer bg-neutral-100">
+              <Image
+                src={FEATURED_BLOG_POST.image}
+                alt={FEATURED_BLOG_POST.alt}
+                fill
+                priority
+                sizes="(max-width: 1200px) 100vw, 1150px"
+                className="object-cover object-center group-hover:scale-103 transition-transform duration-700 ease-out"
+              />
+
+              {/* Floating White Card on the Left */}
+              <div className="absolute top-5 left-5 bottom-5 sm:top-9 sm:left-9 sm:bottom-9 w-full max-w-[290px] sm:max-w-[380px] bg-white rounded-3xl sm:rounded-[32px] p-6 sm:p-8 flex flex-col justify-between shadow-2xl z-10">
+                <div>
+                  <span className="text-[11px] sm:text-xs font-mono text-neutral-400 font-medium block mb-2 sm:mb-3">
+                    {FEATURED_BLOG_POST.date}
+                  </span>
+                  <h2 className="text-xl sm:text-2xl lg:text-[26px] font-bold text-neutral-950 tracking-tight leading-snug">
+                    {FEATURED_BLOG_POST.title}
+                  </h2>
+                  <p className="mt-3 text-xs sm:text-sm text-neutral-500 leading-relaxed line-clamp-3 sm:line-clamp-4">
+                    {FEATURED_BLOG_POST.excerpt}
+                  </p>
+                </div>
+
+                <div className="pt-4">
+                  <span className="text-xs font-bold text-neutral-950 underline underline-offset-4 inline-flex items-center gap-1 group-hover:text-neutral-600 transition-colors">
+                    Read more ↗
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            {/* 6-Card Grid of Blog Posts (Matches Reference Image) */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-7">
+              {BLOG_GRID_POSTS.map((post) => (
+                <div
+                  key={post.id}
+                  className="relative h-[320px] sm:h-[380px] lg:h-[400px] rounded-[28px] sm:rounded-[34px] overflow-hidden shadow-md group cursor-pointer bg-neutral-900"
+                >
+                  <Image
+                    src={post.image}
+                    alt={post.alt}
+                    fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 380px"
+                    className="object-cover object-center group-hover:scale-105 transition-transform duration-500 ease-out"
+                  />
+                  {/* Bottom Gradient Scrim */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/35 to-transparent pointer-events-none" />
+
+                  {/* Title Overlay at Bottom */}
+                  <div className="absolute inset-x-0 bottom-0 p-6 sm:p-7 z-10">
+                    <h3 className="text-white font-bold text-lg sm:text-xl lg:text-[22px] leading-snug tracking-tight">
+                      {post.title}
+                    </h3>
+                  </div>
+                </div>
+              ))}
+
+              {/* Extra 3 Cards when "Load More" is clicked */}
+              {moreBlogsLoaded && (
+                <>
+                  <div className="relative h-[320px] sm:h-[380px] lg:h-[400px] rounded-[28px] sm:rounded-[34px] overflow-hidden shadow-md group cursor-pointer bg-neutral-900 animate-fadeIn">
+                    <Image
+                      src="/images/developers/news-camera-parts.jpg"
+                      alt="Disassembled vintage SLR camera parts knolling flatlay"
+                      fill
+                      sizes="(max-width: 768px) 100vw, 380px"
+                      className="object-cover object-center group-hover:scale-105 transition-transform duration-500 ease-out"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/35 to-transparent pointer-events-none" />
+                    <div className="absolute inset-x-0 bottom-0 p-6 sm:p-7 z-10">
+                      <h3 className="text-white font-bold text-lg sm:text-xl lg:text-[22px] leading-snug tracking-tight">
+                        Design trends you should follow for next project
+                      </h3>
+                    </div>
+                  </div>
+
+                  <div className="relative h-[320px] sm:h-[380px] lg:h-[400px] rounded-[28px] sm:rounded-[34px] overflow-hidden shadow-md group cursor-pointer bg-neutral-900 animate-fadeIn">
+                    <Image
+                      src="/images/developers/service-creative-design.jpg"
+                      alt="Creative design flatlay branding sketches"
+                      fill
+                      sizes="(max-width: 768px) 100vw, 380px"
+                      className="object-cover object-center group-hover:scale-105 transition-transform duration-500 ease-out"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/35 to-transparent pointer-events-none" />
+                    <div className="absolute inset-x-0 bottom-0 p-6 sm:p-7 z-10">
+                      <h3 className="text-white font-bold text-lg sm:text-xl lg:text-[22px] leading-snug tracking-tight">
+                        Modern design systems for fast-shipping products
+                      </h3>
+                    </div>
+                  </div>
+
+                  <div className="relative h-[320px] sm:h-[380px] lg:h-[400px] rounded-[28px] sm:rounded-[34px] overflow-hidden shadow-md group cursor-pointer bg-neutral-900 animate-fadeIn">
+                    <Image
+                      src="/images/developers/service-web-dev.jpg"
+                      alt="Developer workstation coding Next.js application"
+                      fill
+                      sizes="(max-width: 768px) 100vw, 380px"
+                      className="object-cover object-center group-hover:scale-105 transition-transform duration-500 ease-out"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/35 to-transparent pointer-events-none" />
+                    <div className="absolute inset-x-0 bottom-0 p-6 sm:p-7 z-10">
+                      <h3 className="text-white font-bold text-lg sm:text-xl lg:text-[22px] leading-snug tracking-tight">
+                        Scaling modern web apps to millions of users
+                      </h3>
+                    </div>
+                  </div>
+                </>
+              )}
+            </div>
+
+            {/* Load More Button */}
+            <div className="mt-12 sm:mt-16 flex justify-center">
+              <button
+                type="button"
+                onClick={() => setMoreBlogsLoaded((prev) => !prev)}
+                className="px-6 py-2.5 rounded-full bg-[#c8f53c] hover:bg-[#d8fb54] text-black font-semibold text-xs sm:text-sm shadow-md transition-all active:scale-95 cursor-pointer"
+              >
+                {moreBlogsLoaded ? "Show Less" : "Load More"}
+              </button>
+            </div>
+
+            {/* Call to Action Banner on Blog Page */}
+            <div className="pt-16 sm:pt-24 pb-16 sm:pb-20">
+              <div className="rounded-[36px] sm:rounded-[48px] bg-[#0c0c0e] text-white p-12 sm:p-20 lg:p-24 text-center relative overflow-hidden shadow-2xl flex flex-col items-center">
+                <span className="text-xs sm:text-sm font-semibold text-[#c8f53c] tracking-tight block mb-4 sm:mb-6">
+                  Let&apos;s turn your ideas into a stunning reality.
+                </span>
+
+                <a
+                  href="mailto:hello.andro@gmail.com"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    handleCopyEmail();
+                  }}
+                  className="text-3xl sm:text-5xl md:text-6xl lg:text-[76px] font-black text-white hover:text-[#c8f53c] tracking-tight transition-colors cursor-pointer block leading-tight max-w-5xl"
+                >
+                  hello.andro@gmail.com
+                </a>
+
+                <p className="mt-3 text-xs text-neutral-400 font-mono">
+                  {copiedEmail ? "✓ Email copied to clipboard!" : "Click to copy email address"}
+                </p>
+
+                {/* Bottom Nav inside CTA banner with Blog active */}
+                <div className="mt-12 sm:mt-16 flex justify-center">
+                  <nav
+                    aria-label="Blog Page CTA Navigation"
+                    className="inline-flex items-center gap-1.5 p-1 rounded-full bg-[#18181d] border border-neutral-800"
+                  >
+                    <button
+                      type="button"
+                      onClick={(e) => handleNavAction(e, "home")}
+                      className="px-4 sm:px-5 py-1.5 rounded-full text-xs font-medium text-neutral-300 hover:text-white transition-all cursor-pointer"
+                    >
+                      Home
+                    </button>
+                    <button
+                      type="button"
+                      onClick={(e) => handleNavAction(e, "about")}
+                      className="px-4 sm:px-5 py-1.5 rounded-full text-xs font-medium text-neutral-300 hover:text-white transition-all cursor-pointer"
+                    >
+                      About
+                    </button>
+                    <button
+                      type="button"
+                      onClick={(e) => handleNavAction(e, "services")}
+                      className="px-4 sm:px-5 py-1.5 rounded-full text-xs font-medium text-neutral-300 hover:text-white transition-all cursor-pointer"
+                    >
+                      Portfolio
+                    </button>
+                    <button
+                      type="button"
+                      className="px-4 sm:px-5 py-1.5 rounded-full text-xs font-semibold bg-[#c8f53c] text-black transition-all cursor-default"
+                    >
+                      Blog
+                    </button>
+                  </nav>
+                </div>
+              </div>
+            </div>
+
+            {/* Footer on Blog Page */}
+            <footer className="w-full py-8 flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-neutral-200/80 text-xs text-neutral-500 font-medium">
+              <div>
+                <span>Theme created by </span>
+                <strong className="text-neutral-950 font-semibold">Pentaclay</strong>
+              </div>
+
+              <div>
+                <button
+                  type="button"
+                  onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+                  className="font-semibold text-neutral-800 hover:text-neutral-950 flex items-center gap-1.5 transition-colors cursor-pointer"
+                >
+                  <span>Back to Top</span>
+                  <span>&uarr;</span>
+                </button>
+              </div>
+
+              <div className="flex items-center gap-2">
+                <a
+                  href="https://dribbble.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Website or Dribbble"
+                  className="w-8 h-8 rounded-full border border-neutral-300 text-neutral-600 flex items-center justify-center hover:border-neutral-500 hover:text-neutral-900 transition-colors"
+                >
+                  <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <circle cx="12" cy="12" r="10" />
+                    <line x1="2" y1="12" x2="22" y2="12" />
+                    <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+                  </svg>
+                </a>
+                <a
+                  href="https://producthunt.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Product Hunt"
+                  className="w-8 h-8 rounded-full border border-neutral-300 text-neutral-600 flex items-center justify-center hover:border-neutral-500 hover:text-neutral-900 transition-colors"
+                >
+                  <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor">
+                    <circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" strokeWidth="2" />
+                    <path d="M11 8h2.8c1.2 0 2.2 1 2.2 2.2s-1 2.2-2.2 2.2H11V8zm-2-2v12h2v-4h2.8c2.3 0 4.2-1.9 4.2-4.2S16.1 6 13.8 6H9z" />
+                  </svg>
+                </a>
+                <a
+                  href="https://linkedin.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="LinkedIn"
+                  className="w-8 h-8 rounded-full border border-neutral-300 text-neutral-600 flex items-center justify-center hover:border-neutral-500 hover:text-neutral-900 transition-colors font-bold text-[11px]"
+                >
+                  in
+                </a>
+                <a
+                  href="https://facebook.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Facebook"
+                  className="w-8 h-8 rounded-full border border-neutral-300 text-neutral-600 flex items-center justify-center hover:border-neutral-500 hover:text-neutral-900 transition-colors font-bold text-[12px]"
+                >
+                  f
+                </a>
+                <a
+                  href="https://youtube.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="YouTube"
+                  className="w-8 h-8 rounded-full border border-neutral-300 text-neutral-600 flex items-center justify-center hover:border-neutral-500 hover:text-neutral-900 transition-colors"
+                >
+                  <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.5 12 3.5 12 3.5s-7.505 0-9.377.55a3.016 3.016 0 0 0-2.122 2.136C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.55 9.376.55 9.376.55s7.505 0 9.377-.55a3.016 3.016 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+                  </svg>
+                </a>
+              </div>
+            </footer>
+          </main>
+        </div>
+      ) : (
+        /* ========================================================================= */
+        /* HOME PAGE VIEW                                                            */
+        /* ========================================================================= */
+        <div className="animate-fadeIn">
+      {/* ========================================================================= */}
       {/* HERO SECTION (Matches Reference Image 1)                                */}
       {/* ========================================================================= */}
       <section
@@ -290,7 +1390,7 @@ export default function DeveloperTemplateOneShowcase() {
             {/* Left: Brand Monogram Logo */}
             <a
               href="#home"
-              onClick={(e) => scrollToSection(e, "home")}
+              onClick={(e) => handleNavAction(e, "home")}
               className="flex items-center gap-2 group transition-transform active:scale-95"
               aria-label="Andro Home"
             >
@@ -307,10 +1407,10 @@ export default function DeveloperTemplateOneShowcase() {
               ].map((item) => {
                 const isActive = activeNav === item.id;
                 return (
-                  <a
+                  <button
                     key={item.id}
-                    href={`#${item.id}`}
-                    onClick={(e) => scrollToSection(e, item.id)}
+                    type="button"
+                    onClick={(e) => handleNavAction(e, item.id)}
                     className={`px-4 sm:px-6 py-1.5 sm:py-2 rounded-full text-xs sm:text-sm font-semibold transition-all cursor-pointer ${
                       isActive
                         ? "bg-[#c8f53c] text-black shadow-md scale-102"
@@ -318,7 +1418,7 @@ export default function DeveloperTemplateOneShowcase() {
                     }`}
                   >
                     {item.label}
-                  </a>
+                  </button>
                 );
               })}
             </nav>
@@ -744,50 +1844,50 @@ export default function DeveloperTemplateOneShowcase() {
                 aria-label="Footer CTA Navigation"
                 className="inline-flex items-center gap-1.5 p-1 rounded-full bg-[#18181d] border border-neutral-800"
               >
-                <a
-                  href="#home"
-                  onClick={(e) => scrollToSection(e, "home")}
-                  className={`px-4 sm:px-5 py-1.5 rounded-full text-xs font-semibold transition-all ${
+                <button
+                  type="button"
+                  onClick={(e) => handleNavAction(e, "home")}
+                  className={`px-4 sm:px-5 py-1.5 rounded-full text-xs font-semibold transition-all cursor-pointer ${
                     activeNav === "home"
                       ? "bg-[#c8f53c] text-black"
                       : "text-neutral-300 hover:text-white"
                   }`}
                 >
                   Home
-                </a>
-                <a
-                  href="#about"
-                  onClick={(e) => scrollToSection(e, "about")}
-                  className={`px-4 sm:px-5 py-1.5 rounded-full text-xs font-medium transition-all ${
+                </button>
+                <button
+                  type="button"
+                  onClick={(e) => handleNavAction(e, "about")}
+                  className={`px-4 sm:px-5 py-1.5 rounded-full text-xs font-medium transition-all cursor-pointer ${
                     activeNav === "about"
                       ? "bg-[#c8f53c] text-black font-semibold"
                       : "text-neutral-300 hover:text-white"
                   }`}
                 >
                   About
-                </a>
-                <a
-                  href="#services"
-                  onClick={(e) => scrollToSection(e, "services")}
-                  className={`px-4 sm:px-5 py-1.5 rounded-full text-xs font-medium transition-all ${
+                </button>
+                <button
+                  type="button"
+                  onClick={(e) => handleNavAction(e, "services")}
+                  className={`px-4 sm:px-5 py-1.5 rounded-full text-xs font-medium transition-all cursor-pointer ${
                     activeNav === "services"
                       ? "bg-[#c8f53c] text-black font-semibold"
                       : "text-neutral-300 hover:text-white"
                   }`}
                 >
                   Portfolio
-                </a>
-                <a
-                  href="#blog"
-                  onClick={(e) => scrollToSection(e, "blog")}
-                  className={`px-4 sm:px-5 py-1.5 rounded-full text-xs font-medium transition-all ${
+                </button>
+                <button
+                  type="button"
+                  onClick={(e) => handleNavAction(e, "blog")}
+                  className={`px-4 sm:px-5 py-1.5 rounded-full text-xs font-medium transition-all cursor-pointer ${
                     activeNav === "blog"
                       ? "bg-[#c8f53c] text-black font-semibold"
                       : "text-neutral-300 hover:text-white"
                   }`}
                 >
                   Blog
-                </a>
+                </button>
               </nav>
             </div>
           </div>
@@ -805,7 +1905,7 @@ export default function DeveloperTemplateOneShowcase() {
           <div>
             <button
               type="button"
-              onClick={(e) => scrollToSection(e, "home")}
+              onClick={(e) => handleNavAction(e, "home")}
               className="font-semibold text-neutral-800 hover:text-neutral-950 flex items-center gap-1.5 transition-colors cursor-pointer"
             >
               <span>Back to Top</span>
@@ -880,6 +1980,8 @@ export default function DeveloperTemplateOneShowcase() {
           </div>
         </footer>
       </div>
+    </div>
+  )}
 
       {/* ========================================================================= */}
       {/* HIRE ME / CONTACT MODAL                                                  */}
