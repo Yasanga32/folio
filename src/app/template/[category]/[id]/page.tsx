@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import Navbar from "@/components/Navbar";
 import FramerBadge from "@/components/FramerBadge";
 import DeveloperTemplateOneShowcase from "@/components/templates/developers/DeveloperTemplateOneShowcase";
+import DeveloperTemplateThreeShowcase from "@/components/templates/developers/DeveloperTemplateThreeShowcase";
 
 const CATEGORY_NAMES: Record<string, string> = {
   "developers-it": "Developers & IT Professionals",
@@ -48,6 +49,10 @@ export default async function CategoryTemplatePage({
 
   if (category === "developers-it" && id === "1") {
     return <DeveloperTemplateOneShowcase />;
+  }
+
+  if (category === "developers-it" && id === "3") {
+    return <DeveloperTemplateThreeShowcase />;
   }
 
   return (
