@@ -9,88 +9,148 @@ const TEMPLATE_NUMBERS = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 interface TemplateCategory {
   id: string;
   name: string;
-  hasSubmenu?: boolean;
+  shortName: string;
+  slug: string;
   badge?: string;
   href: string;
+  hasSubmenu: boolean;
 }
 
 const TEMPLATE_CATEGORIES: TemplateCategory[] = [
   {
     id: "developers-it",
     name: "Developers & IT Professionals",
-    href: "/templates?profession=Developers+%26+IT+Professionals",
+    shortName: "Developers & IT",
+    slug: "developers-it",
+    badge: "10 Templates",
+    href: "/template/developers-it",
+    hasSubmenu: true,
   },
   {
     id: "students-graduates",
     name: "Students & Graduates",
-    href: "/templates?profession=Students+%26+Graduates",
+    shortName: "Students & Graduates",
+    slug: "students-graduates",
+    badge: "10 Templates",
+    href: "/template/students-graduates",
+    hasSubmenu: true,
   },
   {
     id: "photographers",
     name: "Photographers",
-    hasSubmenu: true,
+    shortName: "Photography",
+    slug: "photography",
     badge: "10 Templates",
     href: "/template/photography",
+    hasSubmenu: true,
   },
   {
     id: "graphic-designers",
     name: "Graphic Designers",
-    href: "/templates?profession=Graphic+Designers",
+    shortName: "Graphic Designers",
+    slug: "graphic-designers",
+    badge: "10 Templates",
+    href: "/template/graphic-designers",
+    hasSubmenu: true,
   },
   {
     id: "ui-ux-designers",
     name: "UI/UX Designers",
-    href: "/templates?profession=UI%2FUX+Designers",
+    shortName: "UI/UX Designers",
+    slug: "ui-ux-designers",
+    badge: "10 Templates",
+    href: "/template/ui-ux-designers",
+    hasSubmenu: true,
   },
   {
     id: "freelancers-consultants",
     name: "Freelancers & Consultants",
-    href: "/templates?profession=Freelancers+%26+Consultants",
+    shortName: "Freelancers & Consultants",
+    slug: "freelancers-consultants",
+    badge: "10 Templates",
+    href: "/template/freelancers-consultants",
+    hasSubmenu: true,
   },
   {
     id: "videographers-filmmakers",
     name: "Videographers & Filmmakers",
-    href: "/templates?profession=Videographers+%26+Filmmakers",
+    shortName: "Videographers & Filmmakers",
+    slug: "videographers-filmmakers",
+    badge: "10 Templates",
+    href: "/template/videographers-filmmakers",
+    hasSubmenu: true,
   },
   {
     id: "artists-illustrators",
     name: "Artists & Illustrators",
-    href: "/templates?profession=Artists+%26+Illustrators",
+    shortName: "Artists & Illustrators",
+    slug: "artists-illustrators",
+    badge: "10 Templates",
+    href: "/template/artists-illustrators",
+    hasSubmenu: true,
   },
   {
     id: "fashion-designers-stylists",
     name: "Fashion Designers & Stylists",
-    href: "/templates?profession=Fashion+Designers+%26+Stylists",
+    shortName: "Fashion Designers",
+    slug: "fashion-designers-stylists",
+    badge: "10 Templates",
+    href: "/template/fashion-designers-stylists",
+    hasSubmenu: true,
   },
   {
     id: "models-actors",
     name: "Models & Actors",
-    href: "/templates?profession=Models+%26+Actors",
+    shortName: "Models & Actors",
+    slug: "models-actors",
+    badge: "10 Templates",
+    href: "/template/models-actors",
+    hasSubmenu: true,
   },
   {
     id: "architects-interior-designers",
     name: "Architects & Interior Designers",
-    href: "/templates?profession=Architects+%26+Interior+Designers",
+    shortName: "Architects & Interior",
+    slug: "architects-interior-designers",
+    badge: "10 Templates",
+    href: "/template/architects-interior-designers",
+    hasSubmenu: true,
   },
   {
     id: "musicians-performers",
     name: "Musicians & Performers",
-    href: "/templates?profession=Musicians+%26+Performers",
+    shortName: "Musicians & Performers",
+    slug: "musicians-performers",
+    badge: "10 Templates",
+    href: "/template/musicians-performers",
+    hasSubmenu: true,
   },
   {
     id: "writers-authors",
     name: "Writers & Authors",
-    href: "/templates?profession=Writers+%26+Authors",
+    shortName: "Writers & Authors",
+    slug: "writers-authors",
+    badge: "10 Templates",
+    href: "/template/writers-authors",
+    hasSubmenu: true,
   },
   {
     id: "marketing-professionals",
     name: "Marketing Professionals",
-    href: "/templates?profession=Marketing+Professionals",
+    shortName: "Marketing Professionals",
+    slug: "marketing-professionals",
+    badge: "10 Templates",
+    href: "/template/marketing-professionals",
+    hasSubmenu: true,
   },
   {
     id: "teachers-coaches",
     name: "Teachers & Coaches",
-    href: "/templates?profession=Teachers+%26+Coaches",
+    shortName: "Teachers & Coaches",
+    slug: "teachers-coaches",
+    badge: "10 Templates",
+    href: "/template/teachers-coaches",
+    hasSubmenu: true,
   },
 ];
 
@@ -348,9 +408,9 @@ function CategoryIcon({
 export default function Navbar({ dark = false }: { dark?: boolean }) {
   const [mobileMenuPath, setMobileMenuPath] = useState<string | null>(null);
   const [dropdownPath, setDropdownPath] = useState<string | null>(null);
-  const [activeSubmenu, setActiveSubmenu] = useState<string | null>(null);
+  const [activeSubmenu, setActiveSubmenu] = useState<string | null>("photographers");
   const [mobileTemplateOpen, setMobileTemplateOpen] = useState(false);
-  const [mobilePhotographyOpen, setMobilePhotographyOpen] = useState(true);
+  const [mobileExpandedCat, setMobileExpandedCat] = useState<string | null>("photographers");
   const dropdownRef = useRef<HTMLDivElement>(null);
 
   const pathname = usePathname();
@@ -364,12 +424,18 @@ export default function Navbar({ dark = false }: { dark?: boolean }) {
     pathname === "/template/photography/8";
   const isTemplateRoute =
     pathname === "/template" || pathname.startsWith("/template/");
-  const isPhotographyRoute =
-    pathname === "/template/photography" ||
-    pathname.startsWith("/template/photography/");
 
   const mobileMenuOpen = mobileMenuPath === pathname;
   const templateDropdownOpen = dropdownPath === pathname;
+
+  const activeCategory =
+    TEMPLATE_CATEGORIES.find((c) => c.id === activeSubmenu) ||
+    TEMPLATE_CATEGORIES.find(
+      (c) =>
+        pathname === c.href ||
+        pathname.startsWith(`/template/${c.slug}/`)
+    ) ||
+    TEMPLATE_CATEGORIES[0];
 
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
@@ -448,6 +514,7 @@ export default function Navbar({ dark = false }: { dark?: boolean }) {
                   onMouseEnter={() => {
                     if (window.matchMedia("(hover: hover)").matches) {
                       setDropdownPath(pathname);
+                      setActiveSubmenu((prev) => prev || "photographers");
                     }
                   }}
                   onMouseLeave={() => {
@@ -462,9 +529,11 @@ export default function Navbar({ dark = false }: { dark?: boolean }) {
                     aria-expanded={templateDropdownOpen}
                     aria-haspopup="menu"
                     onClick={() => {
-                      setDropdownPath((prev) =>
-                        prev === pathname ? null : pathname
-                      );
+                      setDropdownPath((prev) => {
+                        if (prev === pathname) return null;
+                        setActiveSubmenu((sub) => sub || "photographers");
+                        return pathname;
+                      });
                     }}
                     className={`inline-flex items-center gap-1 text-[14px] lg:text-[15px] font-medium whitespace-nowrap transition-colors cursor-pointer ${
                       isDark
@@ -529,110 +598,33 @@ export default function Navbar({ dark = false }: { dark?: boolean }) {
                           <div className="max-h-[min(480px,calc(100vh-140px))] overflow-y-auto space-y-0.5 pr-0.5">
                             {TEMPLATE_CATEGORIES.map((cat) => {
                               const isCatActive =
-                                cat.id === "photographers"
-                                  ? isPhotographyRoute
-                                  : pathname === cat.href;
+                                pathname === cat.href ||
+                                pathname.startsWith(`/template/${cat.slug}/`);
                               const isSubOpen = activeSubmenu === cat.id;
-
-                              if (cat.hasSubmenu) {
-                                return (
-                                  <div
-                                    key={cat.id}
-                                    className="relative"
-                                    onMouseEnter={() =>
-                                      setActiveSubmenu(cat.id)
-                                    }
-                                  >
-                                    <button
-                                      type="button"
-                                      aria-haspopup="menu"
-                                      aria-expanded={isSubOpen}
-                                      onClick={() =>
-                                        setActiveSubmenu((prev) =>
-                                          prev === cat.id ? null : cat.id
-                                        )
-                                      }
-                                      className={`w-full flex items-center justify-between px-2.5 py-1.5 rounded-xl text-[13px] transition-colors cursor-pointer group ${
-                                        isCatActive
-                                          ? isDark
-                                            ? "bg-[#7c5dfa]/20 text-white font-semibold"
-                                            : "bg-neutral-100 text-neutral-950 font-semibold"
-                                          : isDark
-                                          ? isSubOpen
-                                            ? "bg-[#2a223b] text-white"
-                                            : "text-neutral-200 hover:bg-[#2a223b] hover:text-white"
-                                          : isSubOpen
-                                          ? "bg-neutral-100 text-neutral-950"
-                                          : "text-neutral-700 hover:bg-neutral-100 hover:text-neutral-950"
-                                      }`}
-                                    >
-                                      <div className="flex items-center gap-2.5 min-w-0">
-                                        <span
-                                          className={`w-6 h-6 rounded-lg flex items-center justify-center shrink-0 ${
-                                            isDark
-                                              ? "bg-[#2c2340] text-purple-300"
-                                              : "bg-neutral-100 text-neutral-700"
-                                          }`}
-                                        >
-                                          <CategoryIcon id={cat.id} />
-                                        </span>
-                                        <span className="font-medium text-[12.5px] truncate">
-                                          {cat.name}
-                                        </span>
-                                      </div>
-
-                                      <div className="flex items-center gap-1.5 shrink-0">
-                                        {cat.badge && (
-                                          <span
-                                            className={`text-[9.5px] px-1.5 py-0.5 rounded-full font-medium ${
-                                              isDark
-                                                ? "bg-purple-500/20 text-purple-300"
-                                                : "bg-neutral-200/70 text-neutral-700"
-                                            }`}
-                                          >
-                                            {cat.badge}
-                                          </span>
-                                        )}
-                                        <svg
-                                          className={`w-3.5 h-3.5 transition-transform duration-200 ${
-                                            isSubOpen
-                                              ? "translate-x-0.5 text-current"
-                                              : "text-neutral-400"
-                                          }`}
-                                          fill="none"
-                                          stroke="currentColor"
-                                          strokeWidth="2"
-                                          viewBox="0 0 24 24"
-                                        >
-                                          <path
-                                            strokeLinecap="round"
-                                            strokeLinejoin="round"
-                                            d="M9 5l7 7-7 7"
-                                          />
-                                        </svg>
-                                      </div>
-                                    </button>
-                                  </div>
-                                );
-                              }
 
                               return (
                                 <Link
                                   key={cat.id}
                                   href={cat.href}
                                   role="menuitem"
+                                  aria-haspopup="menu"
+                                  aria-expanded={isSubOpen}
                                   onClick={() => {
                                     setDropdownPath(null);
                                     setActiveSubmenu(null);
                                   }}
-                                  onMouseEnter={() => setActiveSubmenu(null)}
-                                  className={`flex items-center justify-between px-2.5 py-1.5 rounded-xl text-[13px] transition-colors ${
+                                  onMouseEnter={() => setActiveSubmenu(cat.id)}
+                                  className={`w-full flex items-center justify-between px-2.5 py-1.5 rounded-xl text-[13px] transition-colors cursor-pointer group ${
                                     isCatActive
                                       ? isDark
                                         ? "bg-[#7c5dfa]/20 text-white font-semibold"
                                         : "bg-neutral-100 text-neutral-950 font-semibold"
                                       : isDark
-                                      ? "text-neutral-200 hover:bg-[#2a223b] hover:text-white"
+                                      ? isSubOpen
+                                        ? "bg-[#2a223b] text-white"
+                                        : "text-neutral-200 hover:bg-[#2a223b] hover:text-white"
+                                      : isSubOpen
+                                      ? "bg-neutral-100 text-neutral-950"
                                       : "text-neutral-700 hover:bg-neutral-100 hover:text-neutral-950"
                                   }`}
                                 >
@@ -649,6 +641,35 @@ export default function Navbar({ dark = false }: { dark?: boolean }) {
                                     <span className="font-medium text-[12.5px] truncate">
                                       {cat.name}
                                     </span>
+                                  </div>
+
+                                  <div className="flex items-center gap-1.5 shrink-0">
+                                    <span
+                                      className={`text-[9.5px] px-1.5 py-0.5 rounded-full font-medium ${
+                                        isDark
+                                          ? "bg-purple-500/20 text-purple-300"
+                                          : "bg-neutral-200/70 text-neutral-700"
+                                      }`}
+                                    >
+                                      10
+                                    </span>
+                                    <svg
+                                      className={`w-3.5 h-3.5 transition-transform duration-200 ${
+                                        isSubOpen
+                                          ? "translate-x-0.5 text-current"
+                                          : "text-neutral-400"
+                                      }`}
+                                      fill="none"
+                                      stroke="currentColor"
+                                      strokeWidth="2"
+                                      viewBox="0 0 24 24"
+                                    >
+                                      <path
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                        d="M9 5l7 7-7 7"
+                                      />
+                                    </svg>
                                   </div>
                                 </Link>
                               );
@@ -713,17 +734,17 @@ export default function Navbar({ dark = false }: { dark?: boolean }) {
                           </div>
                         </div>
 
-                        {/* Level 2 Submenu: Photography (1 to 10) */}
-                        {activeSubmenu === "photographers" && (
+                        {/* Level 2 Submenu: Dynamic for whichever category is active/hovered (1 to 10) */}
+                        {activeSubmenu && activeCategory && (
                           <div
                             role="menu"
                             className="absolute left-full top-0 pl-2 z-50"
                             onMouseEnter={() =>
-                              setActiveSubmenu("photographers")
+                              setActiveSubmenu(activeCategory.id)
                             }
                           >
                             <div
-                              className={`w-64 max-h-[min(480px,calc(100vh-140px))] overflow-y-auto rounded-2xl border backdrop-blur-xl shadow-2xl p-1.5 ${
+                              className={`w-64 sm:w-72 max-h-[min(480px,calc(100vh-140px))] overflow-y-auto rounded-2xl border backdrop-blur-xl shadow-2xl p-1.5 ${
                                 isDark
                                   ? "bg-[#1c1729]/95 border-[#322947] text-neutral-200"
                                   : "bg-white/95 border-neutral-200/80 text-neutral-800"
@@ -731,21 +752,21 @@ export default function Navbar({ dark = false }: { dark?: boolean }) {
                             >
                               <div className="px-2.5 py-1.5 flex items-center justify-between border-b border-black/5 dark:border-white/5 mb-1">
                                 <span
-                                  className={`text-[10px] font-bold uppercase tracking-[0.14em] ${
+                                  className={`text-[10px] font-bold uppercase tracking-[0.14em] truncate pr-2 ${
                                     isDark
                                       ? "text-neutral-400"
                                       : "text-neutral-400"
                                   }`}
                                 >
-                                  Photography (1–10)
+                                  {activeCategory.shortName} (1–10)
                                 </span>
                                 <Link
-                                  href="/template/photography"
+                                  href={activeCategory.href}
                                   onClick={() => {
                                     setDropdownPath(null);
                                     setActiveSubmenu(null);
                                   }}
-                                  className={`text-[10px] font-semibold transition-colors hover:underline ${
+                                  className={`text-[10px] font-semibold transition-colors hover:underline shrink-0 ${
                                     isDark
                                       ? "text-purple-300 hover:text-white"
                                       : "text-neutral-600 hover:text-neutral-950"
@@ -757,7 +778,7 @@ export default function Navbar({ dark = false }: { dark?: boolean }) {
 
                               <div className="space-y-0.5">
                                 {TEMPLATE_NUMBERS.map((num) => {
-                                  const href = `/template/photography/${num}`;
+                                  const href = `/template/${activeCategory.slug}/${num}`;
                                   const isItemActive = pathname === href;
                                   return (
                                     <Link
@@ -805,7 +826,7 @@ export default function Navbar({ dark = false }: { dark?: boolean }) {
                                             : "text-neutral-400"
                                         }`}
                                       >
-                                        /photography/{num}
+                                        /{activeCategory.slug}/{num}
                                       </span>
                                     </Link>
                                   );
@@ -939,127 +960,110 @@ export default function Navbar({ dark = false }: { dark?: boolean }) {
 
                   {mobileTemplateOpen && (
                     <div className="pl-3 pr-1 pt-1 space-y-2 border-l-2 border-neutral-200/50 dark:border-neutral-800 ml-2 max-h-[60vh] overflow-y-auto">
-                      <div className="text-[10px] font-bold uppercase tracking-[0.14em] text-neutral-400 px-2">
-                        Categories ({TEMPLATE_CATEGORIES.length})
+                      <div className="text-[10px] font-bold uppercase tracking-[0.14em] text-neutral-400 px-2 flex items-center justify-between">
+                        <span>Categories ({TEMPLATE_CATEGORIES.length})</span>
+                        <Link
+                          href="/templates"
+                          onClick={() => setMobileMenuPath(null)}
+                          className="text-[10px] lowercase font-mono underline text-neutral-400 hover:text-neutral-600 dark:hover:text-neutral-200"
+                        >
+                          view all
+                        </Link>
                       </div>
 
                       {TEMPLATE_CATEGORIES.map((cat) => {
                         const isCatActive =
-                          cat.id === "photographers"
-                            ? isPhotographyRoute
-                            : pathname === cat.href;
-
-                        if (cat.hasSubmenu) {
-                          return (
-                            <div key={cat.id} className="space-y-1.5">
-                              <button
-                                type="button"
-                                onClick={() =>
-                                  setMobilePhotographyOpen((prev) => !prev)
-                                }
-                                className={`w-full flex items-center justify-between text-sm font-medium px-3 py-2 rounded-lg transition-colors cursor-pointer ${
-                                  isDark
-                                    ? isPhotographyRoute
-                                      ? "bg-[#2c253d] text-white font-semibold"
-                                      : "text-neutral-300 hover:text-white hover:bg-[#251f33]"
-                                    : isPhotographyRoute
-                                    ? "bg-neutral-100 text-neutral-950 font-semibold"
-                                    : "text-neutral-700 hover:text-neutral-950 hover:bg-neutral-50"
-                                }`}
-                              >
-                                <div className="flex items-center gap-2">
-                                  <span className="w-5 h-5 rounded-md flex items-center justify-center shrink-0">
-                                    <CategoryIcon id={cat.id} />
-                                  </span>
-                                  <span>{cat.name}</span>
-                                  <span className="text-[10px] px-1.5 py-0.5 rounded-full bg-neutral-200/60 dark:bg-neutral-800 text-neutral-600 dark:text-neutral-400 font-semibold">
-                                    10
-                                  </span>
-                                </div>
-                                <svg
-                                  className={`w-3.5 h-3.5 transition-transform duration-200 ${
-                                    mobilePhotographyOpen ? "rotate-180" : ""
-                                  }`}
-                                  fill="none"
-                                  stroke="currentColor"
-                                  strokeWidth="2"
-                                  viewBox="0 0 24 24"
-                                >
-                                  <path
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    d="M19 9l-7 7-7-7"
-                                  />
-                                </svg>
-                              </button>
-
-                              {/* Level 2 Items: 10 Photography Templates */}
-                              {mobilePhotographyOpen && (
-                                <div className="pl-2 pt-1 pb-1 space-y-2">
-                                  <div className="grid grid-cols-5 gap-1.5">
-                                    {TEMPLATE_NUMBERS.map((num) => {
-                                      const href = `/template/photography/${num}`;
-                                      const isItemActive = pathname === href;
-                                      return (
-                                        <Link
-                                          key={num}
-                                          href={href}
-                                          onClick={() =>
-                                            setMobileMenuPath(null)
-                                          }
-                                          className={`py-2 rounded-lg text-center text-xs font-semibold tabular-nums transition-colors ${
-                                            isDark
-                                              ? isItemActive
-                                                ? "bg-[#7c5dfa] text-white"
-                                                : "bg-[#282138] text-neutral-200 hover:bg-[#342b47]"
-                                              : isItemActive
-                                              ? "bg-neutral-900 text-white"
-                                              : "bg-neutral-100 text-neutral-800 hover:bg-neutral-200"
-                                          }`}
-                                        >
-                                          {num}
-                                        </Link>
-                                      );
-                                    })}
-                                  </div>
-
-                                  <Link
-                                    href="/template/photography"
-                                    onClick={() => setMobileMenuPath(null)}
-                                    className={`block text-xs py-1 px-1 transition-colors ${
-                                      isDark
-                                        ? "text-purple-300 hover:text-white"
-                                        : "text-neutral-600 hover:text-neutral-950"
-                                    }`}
-                                  >
-                                    All Photography Templates &rarr;
-                                  </Link>
-                                </div>
-                              )}
-                            </div>
-                          );
-                        }
+                          pathname === cat.href ||
+                          pathname.startsWith(`/template/${cat.slug}/`);
+                        const isExpanded = mobileExpandedCat === cat.id;
 
                         return (
-                          <Link
-                            key={cat.id}
-                            href={cat.href}
-                            onClick={() => setMobileMenuPath(null)}
-                            className={`flex items-center gap-2 text-sm font-medium px-3 py-1.5 rounded-lg transition-colors ${
-                              isCatActive
-                                ? isDark
-                                  ? "bg-[#2c253d] text-white font-semibold"
-                                  : "bg-neutral-100 text-neutral-950 font-semibold"
-                                : isDark
-                                ? "text-neutral-300 hover:text-white hover:bg-[#251f33]"
-                                : "text-neutral-700 hover:text-neutral-950 hover:bg-neutral-50"
-                            }`}
-                          >
-                            <span className="w-5 h-5 rounded-md flex items-center justify-center shrink-0">
-                              <CategoryIcon id={cat.id} />
-                            </span>
-                            <span className="truncate">{cat.name}</span>
-                          </Link>
+                          <div key={cat.id} className="space-y-1.5">
+                            <button
+                              type="button"
+                              onClick={() =>
+                                setMobileExpandedCat((prev) =>
+                                  prev === cat.id ? null : cat.id
+                                )
+                              }
+                              className={`w-full flex items-center justify-between text-sm font-medium px-3 py-2 rounded-lg transition-colors cursor-pointer ${
+                                isDark
+                                  ? isCatActive
+                                    ? "bg-[#2c253d] text-white font-semibold"
+                                    : "text-neutral-300 hover:text-white hover:bg-[#251f33]"
+                                  : isCatActive
+                                  ? "bg-neutral-100 text-neutral-950 font-semibold"
+                                  : "text-neutral-700 hover:text-neutral-950 hover:bg-neutral-50"
+                              }`}
+                            >
+                              <div className="flex items-center gap-2 min-w-0">
+                                <span className="w-5 h-5 rounded-md flex items-center justify-center shrink-0">
+                                  <CategoryIcon id={cat.id} />
+                                </span>
+                                <span className="truncate">{cat.name}</span>
+                                <span className="text-[10px] px-1.5 py-0.5 rounded-full bg-neutral-200/60 dark:bg-neutral-800 text-neutral-600 dark:text-neutral-400 font-semibold shrink-0">
+                                  10
+                                </span>
+                              </div>
+                              <svg
+                                className={`w-3.5 h-3.5 transition-transform duration-200 shrink-0 ${
+                                  isExpanded ? "rotate-180" : ""
+                                }`}
+                                fill="none"
+                                stroke="currentColor"
+                                strokeWidth="2"
+                                viewBox="0 0 24 24"
+                              >
+                                <path
+                                  strokeLinecap="round"
+                                  strokeLinejoin="round"
+                                  d="M19 9l-7 7-7-7"
+                                />
+                              </svg>
+                            </button>
+
+                            {/* Level 2 Items: 10 Templates */}
+                            {isExpanded && (
+                              <div className="pl-2 pt-1 pb-1 space-y-2">
+                                <div className="grid grid-cols-5 gap-1.5">
+                                  {TEMPLATE_NUMBERS.map((num) => {
+                                    const href = `/template/${cat.slug}/${num}`;
+                                    const isItemActive = pathname === href;
+                                    return (
+                                      <Link
+                                        key={num}
+                                        href={href}
+                                        onClick={() => setMobileMenuPath(null)}
+                                        className={`py-2 rounded-lg text-center text-xs font-semibold tabular-nums transition-colors ${
+                                          isDark
+                                            ? isItemActive
+                                              ? "bg-[#7c5dfa] text-white"
+                                              : "bg-[#282138] text-neutral-200 hover:bg-[#342b47]"
+                                            : isItemActive
+                                            ? "bg-neutral-900 text-white"
+                                            : "bg-neutral-100 text-neutral-800 hover:bg-neutral-200"
+                                        }`}
+                                      >
+                                        {num}
+                                      </Link>
+                                    );
+                                  })}
+                                </div>
+
+                                <Link
+                                  href={cat.href}
+                                  onClick={() => setMobileMenuPath(null)}
+                                  className={`block text-xs py-1 px-1 transition-colors ${
+                                    isDark
+                                      ? "text-purple-300 hover:text-white"
+                                      : "text-neutral-600 hover:text-neutral-950"
+                                  }`}
+                                >
+                                  All {cat.shortName} Templates &rarr;
+                                </Link>
+                              </div>
+                            )}
+                          </div>
                         );
                       })}
 
