@@ -140,130 +140,67 @@ const SERVICES_DATA: ServiceItem[] = [
   },
 ];
 
-/* --- Projects I've Shipped Dataset --- */
-const SHIPPED_PROJECTS = [
+/* --- News and Insight Dataset (Matching Reference Image 3) --- */
+const NEWS_ITEMS = [
   {
-    id: "clouddesk",
-    title: "CloudDesk",
-    description:
-      "A modern dashboard interface designed to help teams manage tasks, track progress, and collaborate seamlessly in real time.",
-    image: "/images/developers/project-clouddesk.jpg",
-    alt: "CloudDesk 3D tablet dashboard mockup",
-    sourceUrl: "https://github.com",
-    liveUrl: "#",
+    id: "design-to-freelancing",
+    title: "Find all everything from design to freelancing",
+    image: "/images/developers/news-pastel-cube.jpg",
+    alt: "Pastel cube 3D render representing design to freelancing",
   },
   {
-    id: "matcha-haven",
-    title: "Matcha Haven",
-    description:
-      "A clean, calming website for a matcha brand, designed to showcase products, tell the brand story, and create a smooth shopping experience.",
-    image: "/images/developers/project-matcha.jpg",
-    alt: "Matcha Haven glass mockup with iced latte",
-    sourceUrl: "https://github.com",
-    liveUrl: "#",
+    id: "freelancer-to-agency",
+    title: "Webflow freelancer to agency owner path",
+    image: "/images/developers/news-sneakers.jpg",
+    alt: "Sneaker puddle water splash representing career journey",
   },
   {
-    id: "finova",
-    title: "Finova",
-    description:
-      "A sleek fintech platform designed to simplify payments, track expenses, and give users clear insights into their financial activity.",
-    image: "/images/developers/project-finova.jpg",
-    alt: "Finova paper design brochure mockup with blue cone",
-    sourceUrl: "https://github.com",
-    liveUrl: "#",
-  },
-  {
-    id: "eventra",
-    title: "Eventra",
-    description:
-      "A modern event discovery platform that helps users find, explore, buy tickets, and stay updated on events happening around them.",
-    image: "/images/developers/project-eventra.jpg",
-    alt: "Eventra dual iPhone mobile event ticket app mockup",
-    sourceUrl: "https://github.com",
-    liveUrl: "#",
+    id: "design-trends",
+    title: "Design trends you should follow for next project",
+    image: "/images/developers/news-camera-parts.jpg",
+    alt: "Disassembled vintage SLR camera parts knolling flatlay",
   },
 ];
 
-/* --- Testimonials Dataset (Dual-Direction Motion) --- */
-const TESTIMONIALS_ROW_1 = [
-  {
-    name: "Michael Brown",
-    role: "UI/UX Designer, Adobe",
-    avatar:
-      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=120&q=80",
-    quote:
-      "He has a strong eye for design and knows how to bring ideas to life on the web. Collaboration with him is always easy and productive.",
-  },
-  {
-    name: "Emily Watson",
-    role: "Frontend Developer, Shopify",
-    avatar:
-      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=120&q=80",
-    quote:
-      "Andro writes some of the cleanest code I've seen. He's thoughtful, consistent, and always focused on performance and user experience.",
-  },
-  {
-    name: "Alex Rivera",
-    role: "Lead Designer, Webflow",
-    avatar:
-      "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=120&q=80",
-    quote:
-      "His attention to detail translates into interfaces that feel natural, fluid, and polished across every breakpoint.",
-  },
-  {
-    name: "David Chen",
-    role: "VP Engineering, Stripe",
-    avatar:
-      "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=120&q=80",
-    quote:
-      "Exceptional engineer who consistently delivers ahead of deadlines without ever compromising code quality or accessibility.",
-  },
-];
+/* --- Frequently Asked Questions Dataset (Matching Reference Image 3) --- */
+interface FaqItem {
+  question: string;
+  answer: string;
+}
 
-const TESTIMONIALS_ROW_2 = [
+const FAQ_ITEMS: FaqItem[] = [
   {
-    name: "Sarah Johnson",
-    role: "Software Engineer, Microsoft",
-    avatar:
-      "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=120&q=80",
-    quote:
-      "Andro is reliable and detail-oriented. He takes feedback well and continuously improves both the product and his workflow.",
+    question: "What services do you offer?",
+    answer:
+      "There are many types of services we offer, ranging from design and development to marketing and consulting, but each project is tailored individually, ensuring a unique solution that fits your needs perfectly.",
   },
   {
-    name: "James Wilson",
-    role: "Product Manager, Atlassian",
-    avatar:
-      "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=120&q=80",
-    quote:
-      "He understands product thinking, not just code. That makes a big difference when building features that actually matter to users.",
+    question: "How long does a project take?",
+    answer:
+      "Project timelines typically range from 2 to 6 weeks depending on project scope, complexity, and revisions required. Clear milestones and weekly check-ins keep everything on schedule.",
   },
   {
-    name: "Sophia Martinez",
-    role: "Design Director, Figma",
-    avatar:
-      "https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=120&q=80",
-    quote:
-      "The ideal engineering partner for any design team. He respects subtle motion nuance and builds robust design tokens.",
+    question: "What is your pricing model?",
+    answer:
+      "We offer both fixed project-based pricing and monthly retainer options. Each quote is tailored to the project deliverables, timeline, and value created for your business.",
   },
   {
-    name: "Daniel Lee",
-    role: "Tech Lead, Vercel",
-    avatar:
-      "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=120&q=80",
-    quote:
-      "An absolute master of modern Next.js patterns, hydration optimizations, and responsive layouts. Highly recommended.",
+    question: "Do you offer post-project support?",
+    answer:
+      "Yes, we provide 30 days of complimentary post-launch support and bug fixes, along with optional ongoing maintenance and optimization packages.",
   },
 ];
 
 export default function DeveloperTemplateOneShowcase() {
   const [activeNav, setActiveNav] = useState<string>("home");
   const [expandedService, setExpandedService] = useState<string>("creative-design");
+  const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(0);
   const [contactModalOpen, setContactModalOpen] = useState(false);
   const [copiedEmail, setCopiedEmail] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      const sectionIds = ["home", "about", "services", "portfolio", "testimonials", "contact"];
+      const sectionIds = ["home", "about", "services", "blog", "faq", "contact"];
       const scrollPosition = window.scrollY + 180;
 
       for (let i = sectionIds.length - 1; i >= 0; i--) {
@@ -294,9 +231,9 @@ export default function DeveloperTemplateOneShowcase() {
   };
 
   const handleCopyEmail = () => {
-    navigator.clipboard?.writeText("andro@example.com");
+    navigator.clipboard?.writeText("hello.andro@gmail.com");
     setCopiedEmail(true);
-    setTimeout(() => setCopiedEmail(false), 2000);
+    setTimeout(() => setCopiedEmail(false), 2500);
   };
 
   return (
@@ -365,8 +302,8 @@ export default function DeveloperTemplateOneShowcase() {
               {[
                 { label: "Home", id: "home" },
                 { label: "About", id: "about" },
-                { label: "Portfolio", id: "portfolio" },
-                { label: "Blog", id: "services" },
+                { label: "Portfolio", id: "services" },
+                { label: "Blog", id: "blog" },
               ].map((item) => {
                 const isActive = activeNav === item.id;
                 return (
@@ -570,8 +507,8 @@ export default function DeveloperTemplateOneShowcase() {
 
               <div className="mt-8">
                 <a
-                  href="#portfolio"
-                  onClick={(e) => scrollToSection(e, "portfolio")}
+                  href="#services"
+                  onClick={(e) => scrollToSection(e, "services")}
                   className="inline-flex items-center gap-2 text-sm sm:text-base font-semibold text-neutral-950 hover:text-neutral-600 transition-colors group cursor-pointer"
                 >
                   <span className="underline underline-offset-4">See my latest work</span>
@@ -687,291 +624,262 @@ export default function DeveloperTemplateOneShowcase() {
             })}
           </div>
         </section>
-      </div>
 
-      {/* ========================================================================= */}
-      {/* SHIPPED PROJECTS SECTION (Matches Portfolio Tab)                          */}
-      {/* ========================================================================= */}
-      <section
-        id="portfolio"
-        className="py-20 sm:py-28 border-t border-[#181820] max-w-6xl mx-auto px-6 sm:px-10 lg:px-12 scroll-mt-20"
-      >
-        <div className="flex flex-col items-center text-center mb-12 sm:mb-16">
-          <div className="inline-flex items-center px-3 py-1 rounded-full bg-[#131317] border border-[#23232c] text-[10.5px] font-mono uppercase tracking-[0.16em] text-[#c8f53c] shadow-xs mb-3">
-            <span>PORTFOLIO</span>
-          </div>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white">
-            Projects I&apos;ve Shipped
-          </h2>
-          <p className="mt-2.5 text-neutral-400 text-xs sm:text-sm max-w-md mx-auto leading-relaxed">
-            A range of projects demonstrating how I turn ideas into functional,
-            high-converting digital experiences
-          </p>
-        </div>
-
-        {/* 2x2 Clean Project Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10">
-          {SHIPPED_PROJECTS.map((proj) => (
-            <div
-              key={proj.id}
-              className="rounded-3xl bg-[#111114] border border-[#1f1f26] hover:border-neutral-600 transition-all p-5 sm:p-6 flex flex-col justify-between shadow-xl group"
+        {/* ========================================================================= */}
+        {/* NEWS AND INSIGHT SECTION (Matches Reference Image 3 Top)                   */}
+        {/* ========================================================================= */}
+        <section id="blog" className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-14 pb-24 sm:pb-32 scroll-mt-20">
+          <div className="flex items-center justify-between gap-4 mb-10 sm:mb-12">
+            <h3 className="text-3xl sm:text-4xl lg:text-[44px] font-black tracking-tight text-neutral-950">
+              News and Insight
+            </h3>
+            <button
+              type="button"
+              className="px-5 py-2 rounded-full border border-neutral-300 text-xs sm:text-sm font-semibold text-neutral-900 hover:bg-neutral-100 hover:border-neutral-400 transition-all cursor-pointer active:scale-95"
             >
-              <div className="relative w-full h-[220px] sm:h-[280px] rounded-2xl overflow-hidden mb-6 bg-[#1a1a20]">
+              View all post
+            </button>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-7">
+            {NEWS_ITEMS.map((item) => (
+              <div
+                key={item.id}
+                className="relative h-[340px] sm:h-[400px] lg:h-[440px] rounded-[28px] sm:rounded-[34px] overflow-hidden shadow-md group cursor-pointer"
+              >
                 <Image
-                  src={proj.image}
-                  alt={proj.alt}
+                  src={item.image}
+                  alt={item.alt}
                   fill
-                  sizes="(max-width: 768px) 100vw, 500px"
-                  className="object-cover object-center group-hover:scale-105 transition-transform duration-500"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 400px"
+                  className="object-cover object-center group-hover:scale-105 transition-transform duration-500 ease-out"
                 />
-              </div>
+                {/* Gradient scrim for readable text */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent pointer-events-none" />
 
-              <div>
-                <h3 className="text-xl sm:text-2xl font-bold text-white tracking-tight">
-                  {proj.title}
-                </h3>
-                <p className="mt-2 text-xs sm:text-sm text-neutral-400 leading-relaxed">
-                  {proj.description}
-                </p>
-              </div>
-
-              <div className="mt-6 pt-5 border-t border-[#1d1d24] flex items-center gap-3">
-                <a
-                  href={proj.sourceUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="px-4 py-2 rounded-full border border-neutral-700 bg-neutral-900/80 hover:bg-neutral-800 text-white font-medium text-xs transition-all active:scale-95"
-                >
-                  Source Code
-                </a>
-                <a
-                  href={proj.liveUrl}
-                  onClick={(e) => {
-                    e.preventDefault();
-                    setContactModalOpen(true);
-                  }}
-                  className="px-4 py-2 rounded-full bg-white hover:bg-neutral-200 text-black font-semibold text-xs inline-flex items-center gap-1.5 transition-all active:scale-95 cursor-pointer"
-                >
-                  <span>Live Website</span>
-                  <span>&rarr;</span>
-                </a>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* ========================================================================= */}
-      {/* TESTIMONIALS SECTION (Dual-Direction Motion Marquee)                       */}
-      {/* ========================================================================= */}
-      <section
-        id="testimonials"
-        className="py-20 sm:py-28 border-t border-[#181820] overflow-hidden scroll-mt-20"
-      >
-        <div className="flex flex-col items-center text-center mb-12 sm:mb-14 px-6">
-          <div className="inline-flex items-center px-3 py-1 rounded-full bg-[#131317] border border-[#23232c] text-[10.5px] font-mono uppercase tracking-[0.16em] text-neutral-400 shadow-xs mb-3">
-            <span>TESTIMONIALS</span>
-          </div>
-          <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-white">
-            Don&apos;t just take my words for it
-          </h2>
-          <p className="mt-2 text-neutral-400 text-xs sm:text-sm max-w-md mx-auto leading-relaxed">
-            Words from people who&apos;ve worked with me and experienced my process
-            and results firsthand
-          </p>
-        </div>
-
-        {/* Dual-Direction Motion Marquees */}
-        <div className="space-y-4 [mask-image:linear-gradient(to_right,transparent,black_8%,black_92%,transparent)]">
-          {/* Row 1: Moves Left */}
-          <div className="animate-marquee-left flex gap-4 py-1">
-            {[...TESTIMONIALS_ROW_1, ...TESTIMONIALS_ROW_1].map((t, idx) => (
-              <div
-                key={`row1-${idx}`}
-                className="w-[340px] sm:w-[380px] md:w-[420px] rounded-2xl sm:rounded-3xl bg-[#121217] border border-[#22222a] p-5 sm:p-6 shrink-0 flex flex-col justify-between shadow-md hover:border-neutral-500 hover:bg-[#15151c] transition-all"
-              >
-                <div className="flex items-start justify-between gap-3 mb-3">
-                  <div className="flex items-center gap-3">
-                    <div className="relative w-10 h-10 rounded-full overflow-hidden ring-1 ring-white/10 bg-[#1c1c24] shrink-0">
-                      <Image
-                        src={t.avatar}
-                        alt={t.name}
-                        fill
-                        sizes="40px"
-                        className="object-cover"
-                      />
-                    </div>
-                    <div>
-                      <h4 className="text-sm font-semibold text-white tracking-tight">
-                        {t.name}
-                      </h4>
-                      <p className="text-xs text-neutral-400 mt-0.5">{t.role}</p>
-                    </div>
-                  </div>
-                  <svg
-                    className="w-5 h-5 text-neutral-600 shrink-0"
-                    viewBox="0 0 24 24"
-                    fill="currentColor"
-                  >
-                    <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
-                  </svg>
+                {/* Card Title at bottom */}
+                <div className="absolute inset-x-0 bottom-0 p-6 sm:p-7 z-10">
+                  <h4 className="text-white font-bold text-lg sm:text-xl lg:text-[22px] leading-snug tracking-tight">
+                    {item.title}
+                  </h4>
                 </div>
-                <p className="text-xs sm:text-sm text-neutral-300 leading-relaxed mt-2">
-                  {t.quote}
-                </p>
               </div>
             ))}
           </div>
+        </section>
 
-          {/* Row 2: Moves Right */}
-          <div className="animate-marquee-right flex gap-4 py-1">
-            {[...TESTIMONIALS_ROW_2, ...TESTIMONIALS_ROW_2].map((t, idx) => (
-              <div
-                key={`row2-${idx}`}
-                className="w-[340px] sm:w-[380px] md:w-[420px] rounded-2xl sm:rounded-3xl bg-[#121217] border border-[#22222a] p-5 sm:p-6 shrink-0 flex flex-col justify-between shadow-md hover:border-neutral-500 hover:bg-[#15151c] transition-all"
-              >
-                <div className="flex items-start justify-between gap-3 mb-3">
-                  <div className="flex items-center gap-3">
-                    <div className="relative w-10 h-10 rounded-full overflow-hidden ring-1 ring-white/10 bg-[#1c1c24] shrink-0">
-                      <Image
-                        src={t.avatar}
-                        alt={t.name}
-                        fill
-                        sizes="40px"
-                        className="object-cover"
-                      />
-                    </div>
-                    <div>
-                      <h4 className="text-sm font-semibold text-white tracking-tight">
-                        {t.name}
-                      </h4>
-                      <p className="text-xs text-neutral-400 mt-0.5">{t.role}</p>
-                    </div>
-                  </div>
-                  <svg
-                    className="w-5 h-5 text-neutral-600 shrink-0"
-                    viewBox="0 0 24 24"
-                    fill="currentColor"
-                  >
-                    <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
-                  </svg>
-                </div>
-                <p className="text-xs sm:text-sm text-neutral-300 leading-relaxed mt-2">
-                  {t.quote}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
+        {/* ========================================================================= */}
+        {/* FREQUENTLY ASKED QUESTIONS SECTION (Matches Reference Image 3 Middle)      */}
+        {/* ========================================================================= */}
+        <section id="faq" className="max-w-4xl mx-auto px-6 sm:px-10 pb-24 sm:pb-32 scroll-mt-20">
+          <h3 className="text-3xl sm:text-4xl lg:text-[44px] font-black text-neutral-950 text-center tracking-tight mb-12 sm:mb-16">
+            Frequently asked Questions
+          </h3>
 
-        {/* Large Call to Action Banner ("Let's Build Something Great") */}
-        <div className="max-w-5xl mx-auto px-6 sm:px-10 lg:px-12 mt-20 sm:mt-24">
-          <div className="relative rounded-[28px] sm:rounded-[36px] overflow-hidden border border-[#23232c] shadow-2xl p-10 sm:p-16 lg:p-20 text-center min-h-[300px] sm:min-h-[380px] flex items-center justify-center">
-            <Image
-              src="/images/developers/collab-banner.jpg"
-              alt="Collaboration banner"
-              fill
-              sizes="(max-width: 1024px) 100vw, 1000px"
-              className="object-cover object-center"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/65 to-black/85" />
-            <div className="relative z-10 max-w-2xl mx-auto flex flex-col items-center">
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-white">
-                Let&apos;s Build Something Great
-              </h2>
-              <p className="mt-3 text-xs sm:text-sm text-neutral-300 max-w-md">
-                Let&apos;s bring your ideas to life with thoughtful design and code
-              </p>
-              <button
-                type="button"
-                onClick={() => setContactModalOpen(true)}
-                className="mt-7 px-8 py-3 rounded-full bg-[#c8f53c] hover:bg-[#d8fb54] text-black font-extrabold text-xs sm:text-sm inline-flex items-center gap-2 transition-all shadow-md active:scale-95 cursor-pointer"
-              >
-                <span>Hire Me</span>
-                <span className="text-base">&rarr;</span>
-              </button>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ========================================================================= */}
-      {/* FOOTER SECTION                                                           */}
-      {/* ========================================================================= */}
-      <footer id="contact" className="border-t border-[#181820] bg-[#070709] pt-14 pb-12 scroll-mt-20">
-        <div className="max-w-5xl mx-auto px-6 sm:px-10 lg:px-12">
-          <div className="flex flex-col md:flex-row justify-between items-start gap-8">
-            {/* Left: Bio + Social Links */}
-            <div>
-              <div className="flex items-center gap-2.5">
-                <AndroLogo className="w-6 h-6 text-[#c8f53c]" />
-                <span className="text-sm font-semibold text-white tracking-tight">
-                  Andro &mdash; Designer &amp; Developer
-                </span>
-              </div>
-              <p className="text-xs text-neutral-400 max-w-xs mt-3 leading-relaxed">
-                Lead product designer and developer based in Manchester. Building fast,
-                polished web experiences that deliver real value.
-              </p>
-              <div className="mt-4 flex items-center gap-2.5">
-                <button
-                  type="button"
-                  onClick={handleCopyEmail}
-                  className="px-3.5 py-1.5 rounded-full bg-[#17171d] border border-[#262633] text-xs text-neutral-300 hover:text-white transition-colors cursor-pointer"
+          <div className="space-y-4">
+            {FAQ_ITEMS.map((item, idx) => {
+              const isOpen = openFaqIndex === idx;
+              return (
+                <div
+                  key={idx}
+                  className={`rounded-2xl sm:rounded-3xl border transition-all duration-300 overflow-hidden ${
+                    isOpen
+                      ? "border-neutral-300 bg-white shadow-md"
+                      : "border-neutral-200/90 bg-white hover:border-neutral-300 shadow-xs"
+                  }`}
                 >
-                  {copiedEmail ? "Email Copied!" : "andro@example.com"}
-                </button>
-              </div>
-            </div>
-
-            {/* Right: Vertical Navigation links */}
-            <div className="flex flex-col sm:items-end gap-2.5 text-xs font-medium text-neutral-400">
-              <a
-                href="#home"
-                onClick={(e) => scrollToSection(e, "home")}
-                className="hover:text-white transition-colors cursor-pointer"
-              >
-                Home
-              </a>
-              <a
-                href="#about"
-                onClick={(e) => scrollToSection(e, "about")}
-                className="hover:text-white transition-colors cursor-pointer"
-              >
-                About
-              </a>
-              <a
-                href="#services"
-                onClick={(e) => scrollToSection(e, "services")}
-                className="hover:text-white transition-colors cursor-pointer"
-              >
-                Services
-              </a>
-              <a
-                href="#portfolio"
-                onClick={(e) => scrollToSection(e, "portfolio")}
-                className="hover:text-white transition-colors cursor-pointer"
-              >
-                Portfolio
-              </a>
-              <a
-                href="#testimonials"
-                onClick={(e) => scrollToSection(e, "testimonials")}
-                className="hover:text-white transition-colors cursor-pointer"
-              >
-                Testimonials
-              </a>
-            </div>
+                  <button
+                    type="button"
+                    onClick={() => setOpenFaqIndex((prev) => (prev === idx ? null : idx))}
+                    className="w-full px-6 sm:px-8 py-5 sm:py-6 flex items-center justify-between text-left cursor-pointer group"
+                    aria-expanded={isOpen}
+                  >
+                    <span className="text-base sm:text-lg font-bold text-neutral-900 group-hover:text-black tracking-tight pr-4">
+                      {item.question}
+                    </span>
+                    <span className="text-xl sm:text-2xl font-light text-neutral-400 group-hover:text-neutral-700 shrink-0 w-6 text-center select-none transition-colors">
+                      {isOpen ? "—" : "+"}
+                    </span>
+                  </button>
+                  {isOpen && (
+                    <div className="px-6 sm:px-8 pb-6 sm:pb-7 text-xs sm:text-sm text-neutral-600 leading-relaxed max-w-2xl border-t border-neutral-100 pt-3.5 animate-fadeIn">
+                      {item.answer}
+                    </div>
+                  )}
+                </div>
+              );
+            })}
           </div>
+        </section>
 
-          {/* Copyright notice at bottom */}
-          <div className="mt-12 pt-6 border-t border-[#181820]/80 text-center">
-            <p className="text-[11px] font-mono text-neutral-500">
-              &copy; {new Date().getFullYear()} Andro. All Rights reserved.
+        {/* ========================================================================= */}
+        {/* CALL TO ACTION BANNER (hello.andro@gmail.com)                              */}
+        {/* ========================================================================= */}
+        <div id="contact" className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-14 pb-20 sm:pb-28 scroll-mt-20">
+          <div className="rounded-[36px] sm:rounded-[48px] bg-[#0c0c0e] text-white p-12 sm:p-20 lg:p-24 text-center relative overflow-hidden shadow-2xl flex flex-col items-center">
+            {/* Subtitle in Neon Lime */}
+            <span className="text-xs sm:text-sm font-semibold text-[#c8f53c] tracking-tight block mb-4 sm:mb-6">
+              Let&apos;s turn your ideas into a stunning reality.
+            </span>
+
+            {/* Giant Email Link */}
+            <a
+              href="mailto:hello.andro@gmail.com"
+              onClick={(e) => {
+                e.preventDefault();
+                handleCopyEmail();
+              }}
+              className="text-3xl sm:text-5xl md:text-6xl lg:text-[76px] font-black text-white hover:text-[#c8f53c] tracking-tight transition-colors cursor-pointer block leading-tight max-w-5xl"
+            >
+              hello.andro@gmail.com
+            </a>
+
+            <p className="mt-3 text-xs text-neutral-400 font-mono">
+              {copiedEmail ? "✓ Email copied to clipboard!" : "Click to copy email address"}
             </p>
+
+            {/* Bottom Nav pill inside banner (Matches Reference Image 3) */}
+            <div className="mt-12 sm:mt-16 flex justify-center">
+              <nav
+                aria-label="Footer CTA Navigation"
+                className="inline-flex items-center gap-1.5 p-1 rounded-full bg-[#18181d] border border-neutral-800"
+              >
+                <a
+                  href="#home"
+                  onClick={(e) => scrollToSection(e, "home")}
+                  className={`px-4 sm:px-5 py-1.5 rounded-full text-xs font-semibold transition-all ${
+                    activeNav === "home"
+                      ? "bg-[#c8f53c] text-black"
+                      : "text-neutral-300 hover:text-white"
+                  }`}
+                >
+                  Home
+                </a>
+                <a
+                  href="#about"
+                  onClick={(e) => scrollToSection(e, "about")}
+                  className={`px-4 sm:px-5 py-1.5 rounded-full text-xs font-medium transition-all ${
+                    activeNav === "about"
+                      ? "bg-[#c8f53c] text-black font-semibold"
+                      : "text-neutral-300 hover:text-white"
+                  }`}
+                >
+                  About
+                </a>
+                <a
+                  href="#services"
+                  onClick={(e) => scrollToSection(e, "services")}
+                  className={`px-4 sm:px-5 py-1.5 rounded-full text-xs font-medium transition-all ${
+                    activeNav === "services"
+                      ? "bg-[#c8f53c] text-black font-semibold"
+                      : "text-neutral-300 hover:text-white"
+                  }`}
+                >
+                  Portfolio
+                </a>
+                <a
+                  href="#blog"
+                  onClick={(e) => scrollToSection(e, "blog")}
+                  className={`px-4 sm:px-5 py-1.5 rounded-full text-xs font-medium transition-all ${
+                    activeNav === "blog"
+                      ? "bg-[#c8f53c] text-black font-semibold"
+                      : "text-neutral-300 hover:text-white"
+                  }`}
+                >
+                  Blog
+                </a>
+              </nav>
+            </div>
           </div>
         </div>
-      </footer>
+
+        {/* ========================================================================= */}
+        {/* FOOTER BAR (Matches Reference Image 3 Bottom)                              */}
+        {/* ========================================================================= */}
+        <footer className="w-full max-w-7xl mx-auto px-6 sm:px-10 lg:px-14 py-8 flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-neutral-200/80 text-xs text-neutral-500 font-medium">
+          <div>
+            <span>Theme created by </span>
+            <strong className="text-neutral-950 font-semibold">Pentaclay</strong>
+          </div>
+
+          <div>
+            <button
+              type="button"
+              onClick={(e) => scrollToSection(e, "home")}
+              className="font-semibold text-neutral-800 hover:text-neutral-950 flex items-center gap-1.5 transition-colors cursor-pointer"
+            >
+              <span>Back to Top</span>
+              <span>&uarr;</span>
+            </button>
+          </div>
+
+          <div className="flex items-center gap-2">
+            {/* Globe / Website */}
+            <a
+              href="https://dribbble.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Website or Dribbble"
+              className="w-8 h-8 rounded-full border border-neutral-300 text-neutral-600 flex items-center justify-center hover:border-neutral-500 hover:text-neutral-900 transition-colors"
+            >
+              <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <circle cx="12" cy="12" r="10" />
+                <line x1="2" y1="12" x2="22" y2="12" />
+                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+              </svg>
+            </a>
+
+            {/* Product Hunt / Asterisk */}
+            <a
+              href="https://producthunt.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Product Hunt"
+              className="w-8 h-8 rounded-full border border-neutral-300 text-neutral-600 flex items-center justify-center hover:border-neutral-500 hover:text-neutral-900 transition-colors"
+            >
+              <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor">
+                <circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" strokeWidth="2" />
+                <path d="M11 8h2.8c1.2 0 2.2 1 2.2 2.2s-1 2.2-2.2 2.2H11V8zm-2-2v12h2v-4h2.8c2.3 0 4.2-1.9 4.2-4.2S16.1 6 13.8 6H9z" />
+              </svg>
+            </a>
+
+            {/* LinkedIn */}
+            <a
+              href="https://linkedin.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="LinkedIn"
+              className="w-8 h-8 rounded-full border border-neutral-300 text-neutral-600 flex items-center justify-center hover:border-neutral-500 hover:text-neutral-900 transition-colors font-bold text-[11px]"
+            >
+              in
+            </a>
+
+            {/* Facebook */}
+            <a
+              href="https://facebook.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Facebook"
+              className="w-8 h-8 rounded-full border border-neutral-300 text-neutral-600 flex items-center justify-center hover:border-neutral-500 hover:text-neutral-900 transition-colors font-bold text-[12px]"
+            >
+              f
+            </a>
+
+            {/* YouTube */}
+            <a
+              href="https://youtube.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="YouTube"
+              className="w-8 h-8 rounded-full border border-neutral-300 text-neutral-600 flex items-center justify-center hover:border-neutral-500 hover:text-neutral-900 transition-colors"
+            >
+              <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.5 12 3.5 12 3.5s-7.505 0-9.377.55a3.016 3.016 0 0 0-2.122 2.136C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.55 9.376.55 9.376.55s7.505 0 9.377-.55a3.016 3.016 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+              </svg>
+            </a>
+          </div>
+        </footer>
+      </div>
 
       {/* ========================================================================= */}
       {/* HIRE ME / CONTACT MODAL                                                  */}
@@ -1017,11 +925,11 @@ export default function DeveloperTemplateOneShowcase() {
                 onClick={handleCopyEmail}
                 className="w-full py-3 px-4 rounded-xl bg-[#c8f53c] hover:bg-[#d8fb54] text-black font-bold text-sm transition-all active:scale-98 flex items-center justify-center gap-2 cursor-pointer shadow-md"
               >
-                <span>{copiedEmail ? "✓ Email Copied!" : "Copy Email (andro@example.com)"}</span>
+                <span>{copiedEmail ? "✓ Email Copied!" : "Copy Email (hello.andro@gmail.com)"}</span>
               </button>
 
               <a
-                href="mailto:andro@example.com"
+                href="mailto:hello.andro@gmail.com"
                 className="w-full py-3 px-4 rounded-xl border border-neutral-700 bg-neutral-900/80 hover:bg-neutral-800 text-white font-medium text-sm transition-all flex items-center justify-center gap-2 text-center"
               >
                 Open Email Client &rarr;
