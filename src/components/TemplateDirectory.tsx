@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useSyncExternalStore } from "react";
 import Image from "next/image";
 
 interface DirectoryTemplate {
@@ -13,18 +13,23 @@ interface DirectoryTemplate {
 }
 
 const PROFESSIONS = [
+  "Developers & IT Professionals",
+  "Students & Graduates",
   "Photographers",
-  "Artists & Illustrators",
   "Graphic Designers",
   "UI/UX Designers",
-  "Developers & IT",
-  "AI/Software engineers",
-  "Engineers",
-  "Students & Graduates",
+  "Freelancers & Consultants",
   "Videographers & Filmmakers",
+  "Artists & Illustrators",
   "Fashion Designers & Stylists",
   "Models & Actors",
   "Architects & Interior Designers",
+  "Musicians & Performers",
+  "Writers & Authors",
+  "Marketing Professionals",
+  "Teachers & Coaches",
+  "AI/Software engineers",
+  "Engineers",
 ];
 
 const GALLERIES = [
@@ -662,20 +667,47 @@ const TEMPLATES: DirectoryTemplate[] = [
 ];
 
 export default function TemplateDirectory() {
-  const [selectedProfession, setSelectedProfession] = useState<string | null>(
-    null
+  const urlProfession = useSyncExternalStore(
+    (onStoreChange) => {
+      window.addEventListener("popstate", onStoreChange);
+      return () => window.removeEventListener("popstate", onStoreChange);
+    },
+    () => {
+      if (typeof window === "undefined") return null;
+      const param = new URLSearchParams(window.location.search).get("profession");
+      if (!param) return null;
+      const found = PROFESSIONS.find(
+        (p) => p.toLowerCase() === param.toLowerCase()
+      );
+      if (found) return found;
+      if (param.toLowerCase().includes("developer")) {
+        return "Developers & IT Professionals";
+      }
+      return null;
+    },
+    () => null
   );
+
+  const [userSelectedProfession, setUserSelectedProfession] = useState<
+    string | null | undefined
+  >(undefined);
   const [selectedGallery, setSelectedGallery] = useState<string | null>(null);
   const [deviceModes, setDeviceModes] = useState<Record<string, "desktop" | "mobile">>({});
   const [activeTemplate, setActiveTemplate] = useState<DirectoryTemplate | null>(null);
 
+  const selectedProfession =
+    userSelectedProfession !== undefined ? userSelectedProfession : urlProfession;
+
   const toggleAll = () => {
-    setSelectedProfession(null);
+    setUserSelectedProfession(null);
     setSelectedGallery(null);
   };
 
   const toggleProfession = (prof: string) => {
-    setSelectedProfession((prev) => (prev === prof ? null : prof));
+    setUserSelectedProfession((prev) => {
+      const current = prev !== undefined ? prev : urlProfession;
+      return current === prof ? null : prof;
+    });
   };
 
   const toggleGallery = (galleryName: string) => {
@@ -688,7 +720,10 @@ export default function TemplateDirectory() {
 
   const filteredTemplates = TEMPLATES.filter((t) => {
     const matchesProf =
-      !selectedProfession || t.professions.includes(selectedProfession);
+      !selectedProfession ||
+      t.professions.includes(selectedProfession) ||
+      (selectedProfession === "Developers & IT Professionals" &&
+        t.professions.some((p) => p.includes("Developers") || p.includes("IT")));
     const matchesGallery =
       !selectedGallery || t.gallery === selectedGallery;
     return matchesProf && matchesGallery;

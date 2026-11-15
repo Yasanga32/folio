@@ -6,6 +6,345 @@ import { usePathname } from "next/navigation";
 
 const TEMPLATE_NUMBERS = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
+interface TemplateCategory {
+  id: string;
+  name: string;
+  hasSubmenu?: boolean;
+  badge?: string;
+  href: string;
+}
+
+const TEMPLATE_CATEGORIES: TemplateCategory[] = [
+  {
+    id: "developers-it",
+    name: "Developers & IT Professionals",
+    href: "/templates?profession=Developers+%26+IT+Professionals",
+  },
+  {
+    id: "students-graduates",
+    name: "Students & Graduates",
+    href: "/templates?profession=Students+%26+Graduates",
+  },
+  {
+    id: "photographers",
+    name: "Photographers",
+    hasSubmenu: true,
+    badge: "10 Templates",
+    href: "/template/photography",
+  },
+  {
+    id: "graphic-designers",
+    name: "Graphic Designers",
+    href: "/templates?profession=Graphic+Designers",
+  },
+  {
+    id: "ui-ux-designers",
+    name: "UI/UX Designers",
+    href: "/templates?profession=UI%2FUX+Designers",
+  },
+  {
+    id: "freelancers-consultants",
+    name: "Freelancers & Consultants",
+    href: "/templates?profession=Freelancers+%26+Consultants",
+  },
+  {
+    id: "videographers-filmmakers",
+    name: "Videographers & Filmmakers",
+    href: "/templates?profession=Videographers+%26+Filmmakers",
+  },
+  {
+    id: "artists-illustrators",
+    name: "Artists & Illustrators",
+    href: "/templates?profession=Artists+%26+Illustrators",
+  },
+  {
+    id: "fashion-designers-stylists",
+    name: "Fashion Designers & Stylists",
+    href: "/templates?profession=Fashion+Designers+%26+Stylists",
+  },
+  {
+    id: "models-actors",
+    name: "Models & Actors",
+    href: "/templates?profession=Models+%26+Actors",
+  },
+  {
+    id: "architects-interior-designers",
+    name: "Architects & Interior Designers",
+    href: "/templates?profession=Architects+%26+Interior+Designers",
+  },
+  {
+    id: "musicians-performers",
+    name: "Musicians & Performers",
+    href: "/templates?profession=Musicians+%26+Performers",
+  },
+  {
+    id: "writers-authors",
+    name: "Writers & Authors",
+    href: "/templates?profession=Writers+%26+Authors",
+  },
+  {
+    id: "marketing-professionals",
+    name: "Marketing Professionals",
+    href: "/templates?profession=Marketing+Professionals",
+  },
+  {
+    id: "teachers-coaches",
+    name: "Teachers & Coaches",
+    href: "/templates?profession=Teachers+%26+Coaches",
+  },
+];
+
+function CategoryIcon({
+  id,
+  className = "w-3.5 h-3.5",
+}: {
+  id: string;
+  className?: string;
+}) {
+  switch (id) {
+    case "developers-it":
+      return (
+        <svg
+          className={className}
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        >
+          <polyline points="16 18 22 12 16 6" />
+          <polyline points="8 6 2 12 8 18" />
+        </svg>
+      );
+    case "students-graduates":
+      return (
+        <svg
+          className={className}
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        >
+          <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
+          <path d="M6 12v5c3 3 9 3 12 0v-5" />
+        </svg>
+      );
+    case "photographers":
+      return (
+        <svg
+          className={className}
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        >
+          <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z" />
+          <circle cx="12" cy="13" r="3" />
+        </svg>
+      );
+    case "graphic-designers":
+      return (
+        <svg
+          className={className}
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        >
+          <path d="m12 19 7-7 3 3-7 7-3-3z" />
+          <path d="m18 13-1.5-7.5L2 2l3.5 14.5L13 18l5-5z" />
+          <path d="m2 2 7.586 7.586" />
+          <circle cx="11" cy="11" r="2" />
+        </svg>
+      );
+    case "ui-ux-designers":
+      return (
+        <svg
+          className={className}
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        >
+          <rect x="3" y="3" width="18" height="18" rx="2" />
+          <path d="M3 9h18M9 21V9" />
+        </svg>
+      );
+    case "freelancers-consultants":
+      return (
+        <svg
+          className={className}
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        >
+          <rect x="2" y="7" width="20" height="14" rx="2" />
+          <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" />
+        </svg>
+      );
+    case "videographers-filmmakers":
+      return (
+        <svg
+          className={className}
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        >
+          <polygon points="23 7 16 12 23 17 23 7" />
+          <rect x="1" y="5" width="15" height="14" rx="2" />
+        </svg>
+      );
+    case "artists-illustrators":
+      return (
+        <svg
+          className={className}
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        >
+          <path d="m18 11-4-4L2 19v3h3z" />
+          <path d="m14 7 3-3a2.5 2.5 0 0 1 3.5 3.5L17.5 10.5" />
+        </svg>
+      );
+    case "fashion-designers-stylists":
+      return (
+        <svg
+          className={className}
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        >
+          <path d="M12 2a3 3 0 0 0-3 3c0 1.3.8 2.4 2 2.8V9L4 14v2h16v-2l-7-5V7.8c1.2-.4 2-1.5 2-2.8a3 3 0 0 0-3-3z" />
+        </svg>
+      );
+    case "models-actors":
+      return (
+        <svg
+          className={className}
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        >
+          <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+        </svg>
+      );
+    case "architects-interior-designers":
+      return (
+        <svg
+          className={className}
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        >
+          <path d="m2 22 10-20 10 20" />
+          <path d="M6 14h12" />
+        </svg>
+      );
+    case "musicians-performers":
+      return (
+        <svg
+          className={className}
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        >
+          <path d="M9 18V5l12-2v13" />
+          <circle cx="6" cy="18" r="3" />
+          <circle cx="18" cy="16" r="3" />
+        </svg>
+      );
+    case "writers-authors":
+      return (
+        <svg
+          className={className}
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        >
+          <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z" />
+          <path d="M6 6h10M6 10h10M6 14h6" />
+        </svg>
+      );
+    case "marketing-professionals":
+      return (
+        <svg
+          className={className}
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        >
+          <path d="m3 11 18-5v12L3 13v-2z" />
+          <path d="M11.6 16.8a3 3 0 1 1-5.8-1.6" />
+        </svg>
+      );
+    case "teachers-coaches":
+      return (
+        <svg
+          className={className}
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        >
+          <path d="M4 4h16v11H4z" />
+          <path d="M12 15v5M8 20h8" />
+        </svg>
+      );
+    default:
+      return (
+        <svg
+          className={className}
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        >
+          <circle cx="12" cy="12" r="10" />
+        </svg>
+      );
+  }
+}
+
 export default function Navbar({ dark = false }: { dark?: boolean }) {
   const [mobileMenuPath, setMobileMenuPath] = useState<string | null>(null);
   const [dropdownPath, setDropdownPath] = useState<string | null>(null);
@@ -109,7 +448,6 @@ export default function Navbar({ dark = false }: { dark?: boolean }) {
                   onMouseEnter={() => {
                     if (window.matchMedia("(hover: hover)").matches) {
                       setDropdownPath(pathname);
-                      setActiveSubmenu("photography");
                     }
                   }}
                   onMouseLeave={() => {
@@ -127,7 +465,6 @@ export default function Navbar({ dark = false }: { dark?: boolean }) {
                       setDropdownPath((prev) =>
                         prev === pathname ? null : pathname
                       );
-                      setActiveSubmenu("photography");
                     }}
                     className={`inline-flex items-center gap-1 text-[14px] lg:text-[15px] font-medium whitespace-nowrap transition-colors cursor-pointer ${
                       isDark
@@ -163,264 +500,320 @@ export default function Navbar({ dark = false }: { dark?: boolean }) {
                       role="menu"
                       className="absolute left-1/2 -translate-x-1/2 top-full pt-2.5 z-50"
                     >
-                      <div
-                        className={`w-60 rounded-2xl border backdrop-blur-xl shadow-2xl p-1.5 ${
-                          isDark
-                            ? "bg-[#1c1729]/95 border-[#322947] text-neutral-200"
-                            : "bg-white/95 border-neutral-200/80 text-neutral-800"
-                        }`}
-                      >
+                      <div className="relative">
+                        {/* Level 1: Categories Panel */}
                         <div
-                          className={`px-2.5 py-1.5 text-[10px] font-bold uppercase tracking-[0.14em] ${
-                            isDark ? "text-neutral-400" : "text-neutral-400"
+                          className={`w-72 sm:w-80 rounded-2xl border backdrop-blur-xl shadow-2xl p-1.5 ${
+                            isDark
+                              ? "bg-[#1c1729]/95 border-[#322947] text-neutral-200"
+                              : "bg-white/95 border-neutral-200/80 text-neutral-800"
                           }`}
                         >
-                          Categories
-                        </div>
+                          <div className="px-3 py-1.5 flex items-center justify-between text-[10px] font-bold uppercase tracking-[0.14em] text-neutral-400">
+                            <span>Categories ({TEMPLATE_CATEGORIES.length})</span>
+                            <Link
+                              href="/templates"
+                              onClick={() => {
+                                setDropdownPath(null);
+                                setActiveSubmenu(null);
+                              }}
+                              className={`hover:underline lowercase font-mono ${
+                                isDark ? "text-purple-300" : "text-neutral-600"
+                              }`}
+                            >
+                              view all
+                            </Link>
+                          </div>
 
-                        {/* First item of dropdown: Photography (opens Level 2: 1 to 10) */}
-                        <div
-                          className="relative"
-                          onMouseEnter={() => setActiveSubmenu("photography")}
-                        >
-                          <button
-                            type="button"
-                            aria-haspopup="menu"
-                            aria-expanded={activeSubmenu === "photography"}
-                            onClick={() =>
-                              setActiveSubmenu((prev) =>
-                                prev === "photography" ? null : "photography"
-                              )
-                            }
-                            className={`w-full flex items-center justify-between px-2.5 py-2 rounded-xl text-[13px] transition-colors cursor-pointer group ${
-                              isPhotographyRoute
-                                ? isDark
-                                  ? "bg-[#7c5dfa]/20 text-white font-semibold"
-                                  : "bg-neutral-100 text-neutral-950 font-semibold"
-                                : isDark
-                                ? activeSubmenu === "photography"
-                                  ? "bg-[#2a223b] text-white"
-                                  : "text-neutral-200 hover:bg-[#2a223b] hover:text-white"
-                                : activeSubmenu === "photography"
-                                ? "bg-neutral-100 text-neutral-950"
-                                : "text-neutral-700 hover:bg-neutral-100 hover:text-neutral-950"
-                            }`}
-                          >
-                            <div className="flex items-center gap-2.5">
+                          {/* Scrollable list of 15 categories */}
+                          <div className="max-h-[min(480px,calc(100vh-140px))] overflow-y-auto space-y-0.5 pr-0.5">
+                            {TEMPLATE_CATEGORIES.map((cat) => {
+                              const isCatActive =
+                                cat.id === "photographers"
+                                  ? isPhotographyRoute
+                                  : pathname === cat.href;
+                              const isSubOpen = activeSubmenu === cat.id;
+
+                              if (cat.hasSubmenu) {
+                                return (
+                                  <div
+                                    key={cat.id}
+                                    className="relative"
+                                    onMouseEnter={() =>
+                                      setActiveSubmenu(cat.id)
+                                    }
+                                  >
+                                    <button
+                                      type="button"
+                                      aria-haspopup="menu"
+                                      aria-expanded={isSubOpen}
+                                      onClick={() =>
+                                        setActiveSubmenu((prev) =>
+                                          prev === cat.id ? null : cat.id
+                                        )
+                                      }
+                                      className={`w-full flex items-center justify-between px-2.5 py-1.5 rounded-xl text-[13px] transition-colors cursor-pointer group ${
+                                        isCatActive
+                                          ? isDark
+                                            ? "bg-[#7c5dfa]/20 text-white font-semibold"
+                                            : "bg-neutral-100 text-neutral-950 font-semibold"
+                                          : isDark
+                                          ? isSubOpen
+                                            ? "bg-[#2a223b] text-white"
+                                            : "text-neutral-200 hover:bg-[#2a223b] hover:text-white"
+                                          : isSubOpen
+                                          ? "bg-neutral-100 text-neutral-950"
+                                          : "text-neutral-700 hover:bg-neutral-100 hover:text-neutral-950"
+                                      }`}
+                                    >
+                                      <div className="flex items-center gap-2.5 min-w-0">
+                                        <span
+                                          className={`w-6 h-6 rounded-lg flex items-center justify-center shrink-0 ${
+                                            isDark
+                                              ? "bg-[#2c2340] text-purple-300"
+                                              : "bg-neutral-100 text-neutral-700"
+                                          }`}
+                                        >
+                                          <CategoryIcon id={cat.id} />
+                                        </span>
+                                        <span className="font-medium text-[12.5px] truncate">
+                                          {cat.name}
+                                        </span>
+                                      </div>
+
+                                      <div className="flex items-center gap-1.5 shrink-0">
+                                        {cat.badge && (
+                                          <span
+                                            className={`text-[9.5px] px-1.5 py-0.5 rounded-full font-medium ${
+                                              isDark
+                                                ? "bg-purple-500/20 text-purple-300"
+                                                : "bg-neutral-200/70 text-neutral-700"
+                                            }`}
+                                          >
+                                            {cat.badge}
+                                          </span>
+                                        )}
+                                        <svg
+                                          className={`w-3.5 h-3.5 transition-transform duration-200 ${
+                                            isSubOpen
+                                              ? "translate-x-0.5 text-current"
+                                              : "text-neutral-400"
+                                          }`}
+                                          fill="none"
+                                          stroke="currentColor"
+                                          strokeWidth="2"
+                                          viewBox="0 0 24 24"
+                                        >
+                                          <path
+                                            strokeLinecap="round"
+                                            strokeLinejoin="round"
+                                            d="M9 5l7 7-7 7"
+                                          />
+                                        </svg>
+                                      </div>
+                                    </button>
+                                  </div>
+                                );
+                              }
+
+                              return (
+                                <Link
+                                  key={cat.id}
+                                  href={cat.href}
+                                  role="menuitem"
+                                  onClick={() => {
+                                    setDropdownPath(null);
+                                    setActiveSubmenu(null);
+                                  }}
+                                  onMouseEnter={() => setActiveSubmenu(null)}
+                                  className={`flex items-center justify-between px-2.5 py-1.5 rounded-xl text-[13px] transition-colors ${
+                                    isCatActive
+                                      ? isDark
+                                        ? "bg-[#7c5dfa]/20 text-white font-semibold"
+                                        : "bg-neutral-100 text-neutral-950 font-semibold"
+                                      : isDark
+                                      ? "text-neutral-200 hover:bg-[#2a223b] hover:text-white"
+                                      : "text-neutral-700 hover:bg-neutral-100 hover:text-neutral-950"
+                                  }`}
+                                >
+                                  <div className="flex items-center gap-2.5 min-w-0">
+                                    <span
+                                      className={`w-6 h-6 rounded-lg flex items-center justify-center shrink-0 ${
+                                        isDark
+                                          ? "bg-[#2c2340] text-purple-300"
+                                          : "bg-neutral-100 text-neutral-700"
+                                      }`}
+                                    >
+                                      <CategoryIcon id={cat.id} />
+                                    </span>
+                                    <span className="font-medium text-[12.5px] truncate">
+                                      {cat.name}
+                                    </span>
+                                  </div>
+                                </Link>
+                              );
+                            })}
+                          </div>
+
+                          {/* All Templates Directory Link */}
+                          <div className="mt-1 pt-1 border-t border-black/5 dark:border-white/5">
+                            <Link
+                              href="/templates"
+                              role="menuitem"
+                              onClick={() => {
+                                setDropdownPath(null);
+                                setActiveSubmenu(null);
+                              }}
+                              onMouseEnter={() => setActiveSubmenu(null)}
+                              className={`flex items-center justify-between px-2.5 py-1.5 rounded-xl text-[12.5px] transition-colors ${
+                                pathname === "/templates"
+                                  ? isDark
+                                    ? "bg-[#7c5dfa]/20 text-white font-semibold"
+                                    : "bg-neutral-100 text-neutral-950 font-semibold"
+                                  : isDark
+                                  ? "text-neutral-200 hover:bg-[#2a223b] hover:text-white"
+                                  : "text-neutral-700 hover:bg-neutral-100 hover:text-neutral-950"
+                              }`}
+                            >
+                              <div className="flex items-center gap-2.5">
+                                <span
+                                  className={`w-6 h-6 rounded-lg flex items-center justify-center shrink-0 ${
+                                    isDark
+                                      ? "bg-[#2c2340] text-purple-300"
+                                      : "bg-neutral-100 text-neutral-700"
+                                  }`}
+                                >
+                                  <svg
+                                    className="w-3.5 h-3.5"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    strokeWidth="2"
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                  >
+                                    <rect x="3" y="3" width="7" height="7" rx="1" />
+                                    <rect x="14" y="3" width="7" height="7" rx="1" />
+                                    <rect x="14" y="14" width="7" height="7" rx="1" />
+                                    <rect x="3" y="14" width="7" height="7" rx="1" />
+                                  </svg>
+                                </span>
+                                <span className="font-medium text-[12.5px]">
+                                  All Templates Directory
+                                </span>
+                              </div>
                               <span
-                                className={`w-7 h-7 rounded-lg flex items-center justify-center shrink-0 ${
-                                  isDark
-                                    ? "bg-[#2c2340] text-purple-300"
-                                    : "bg-neutral-100 text-neutral-700"
+                                className={`text-[10px] font-mono ${
+                                  isDark ? "text-neutral-400" : "text-neutral-400"
                                 }`}
                               >
-                                <svg
-                                  className="w-3.5 h-3.5"
-                                  viewBox="0 0 24 24"
-                                  fill="none"
-                                  stroke="currentColor"
-                                  strokeWidth="2"
-                                  strokeLinecap="round"
-                                  strokeLinejoin="round"
-                                >
-                                  <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z" />
-                                  <circle cx="12" cy="13" r="3" />
-                                </svg>
+                                /templates
                               </span>
-                              <div className="text-left">
-                                <span className="block font-medium text-[13px] leading-tight">
-                                  Photography
-                                </span>
+                            </Link>
+                          </div>
+                        </div>
+
+                        {/* Level 2 Submenu: Photography (1 to 10) */}
+                        {activeSubmenu === "photographers" && (
+                          <div
+                            role="menu"
+                            className="absolute left-full top-0 pl-2 z-50"
+                            onMouseEnter={() =>
+                              setActiveSubmenu("photographers")
+                            }
+                          >
+                            <div
+                              className={`w-64 max-h-[min(480px,calc(100vh-140px))] overflow-y-auto rounded-2xl border backdrop-blur-xl shadow-2xl p-1.5 ${
+                                isDark
+                                  ? "bg-[#1c1729]/95 border-[#322947] text-neutral-200"
+                                  : "bg-white/95 border-neutral-200/80 text-neutral-800"
+                              }`}
+                            >
+                              <div className="px-2.5 py-1.5 flex items-center justify-between border-b border-black/5 dark:border-white/5 mb-1">
                                 <span
-                                  className={`block text-[10px] ${
+                                  className={`text-[10px] font-bold uppercase tracking-[0.14em] ${
                                     isDark
                                       ? "text-neutral-400"
                                       : "text-neutral-400"
                                   }`}
                                 >
-                                  10 Templates
+                                  Photography (1–10)
                                 </span>
+                                <Link
+                                  href="/template/photography"
+                                  onClick={() => {
+                                    setDropdownPath(null);
+                                    setActiveSubmenu(null);
+                                  }}
+                                  className={`text-[10px] font-semibold transition-colors hover:underline ${
+                                    isDark
+                                      ? "text-purple-300 hover:text-white"
+                                      : "text-neutral-600 hover:text-neutral-950"
+                                  }`}
+                                >
+                                  All &rarr;
+                                </Link>
                               </div>
-                            </div>
 
-                            <svg
-                              className={`w-3.5 h-3.5 transition-transform duration-200 shrink-0 ${
-                                activeSubmenu === "photography"
-                                  ? "translate-x-0.5 text-current"
-                                  : "text-neutral-400"
-                              }`}
-                              fill="none"
-                              stroke="currentColor"
-                              strokeWidth="2"
-                              viewBox="0 0 24 24"
-                            >
-                              <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                d="M9 5l7 7-7 7"
-                              />
-                            </svg>
-                          </button>
-
-                          {/* Level 2 Submenu: Photography (1 to 10) */}
-                          {activeSubmenu === "photography" && (
-                            <div
-                              role="menu"
-                              className="absolute left-full top-0 pl-2 z-50"
-                              onMouseEnter={() =>
-                                setActiveSubmenu("photography")
-                              }
-                            >
-                              <div
-                                className={`w-64 max-h-[75vh] overflow-y-auto rounded-2xl border backdrop-blur-xl shadow-2xl p-1.5 ${
-                                  isDark
-                                    ? "bg-[#1c1729]/95 border-[#322947] text-neutral-200"
-                                    : "bg-white/95 border-neutral-200/80 text-neutral-800"
-                                }`}
-                              >
-                                <div className="px-2.5 py-1.5 flex items-center justify-between border-b border-black/5 dark:border-white/5 mb-1">
-                                  <span
-                                    className={`text-[10px] font-bold uppercase tracking-[0.14em] ${
-                                      isDark
-                                        ? "text-neutral-400"
-                                        : "text-neutral-400"
-                                    }`}
-                                  >
-                                    Photography (1–10)
-                                  </span>
-                                  <Link
-                                    href="/template/photography"
-                                    onClick={() => {
-                                      setDropdownPath(null);
-                                      setActiveSubmenu(null);
-                                    }}
-                                    className={`text-[10px] font-semibold transition-colors hover:underline ${
-                                      isDark
-                                        ? "text-purple-300 hover:text-white"
-                                        : "text-neutral-600 hover:text-neutral-950"
-                                    }`}
-                                  >
-                                    All &rarr;
-                                  </Link>
-                                </div>
-
-                                <div className="space-y-0.5">
-                                  {TEMPLATE_NUMBERS.map((num) => {
-                                    const href = `/template/photography/${num}`;
-                                    const isItemActive = pathname === href;
-                                    return (
-                                      <Link
-                                        key={num}
-                                        href={href}
-                                        role="menuitem"
-                                        onClick={() => {
-                                          setDropdownPath(null);
-                                          setActiveSubmenu(null);
-                                        }}
-                                        className={`flex items-center justify-between px-2.5 py-1.5 rounded-lg text-[13px] transition-colors ${
-                                          isDark
-                                            ? isItemActive
-                                              ? "bg-[#7c5dfa]/25 text-white font-semibold"
-                                              : "text-neutral-200 hover:bg-[#2a223b] hover:text-white"
-                                            : isItemActive
-                                            ? "bg-neutral-900 text-white font-semibold"
-                                            : "text-neutral-700 hover:bg-neutral-100 hover:text-neutral-950"
-                                        }`}
-                                      >
-                                        <div className="flex items-center gap-2">
-                                          <span
-                                            className={`w-5 h-5 rounded-md flex items-center justify-center text-[11px] font-bold tabular-nums shrink-0 border ${
-                                              isItemActive
-                                                ? "border-transparent bg-white/20 text-white"
-                                                : isDark
-                                                ? "border-[#322947] bg-[#221c33] text-neutral-300"
-                                                : "border-neutral-200 bg-neutral-100 text-neutral-700"
-                                            }`}
-                                          >
-                                            {num}
-                                          </span>
-                                          <span className="font-medium text-[12.5px]">
-                                            Template {num}
-                                          </span>
-                                        </div>
+                              <div className="space-y-0.5">
+                                {TEMPLATE_NUMBERS.map((num) => {
+                                  const href = `/template/photography/${num}`;
+                                  const isItemActive = pathname === href;
+                                  return (
+                                    <Link
+                                      key={num}
+                                      href={href}
+                                      role="menuitem"
+                                      onClick={() => {
+                                        setDropdownPath(null);
+                                        setActiveSubmenu(null);
+                                      }}
+                                      className={`flex items-center justify-between px-2.5 py-1.5 rounded-lg text-[13px] transition-colors ${
+                                        isDark
+                                          ? isItemActive
+                                            ? "bg-[#7c5dfa]/25 text-white font-semibold"
+                                            : "text-neutral-200 hover:bg-[#2a223b] hover:text-white"
+                                          : isItemActive
+                                          ? "bg-neutral-900 text-white font-semibold"
+                                          : "text-neutral-700 hover:bg-neutral-100 hover:text-neutral-950"
+                                      }`}
+                                    >
+                                      <div className="flex items-center gap-2">
                                         <span
-                                          className={`text-[10.5px] font-mono ${
+                                          className={`w-5 h-5 rounded-md flex items-center justify-center text-[11px] font-bold tabular-nums shrink-0 border ${
                                             isItemActive
-                                              ? isDark
-                                                ? "text-purple-200"
-                                                : "text-neutral-300"
+                                              ? "border-transparent bg-white/20 text-white"
                                               : isDark
-                                              ? "text-neutral-400"
-                                              : "text-neutral-400"
+                                              ? "border-[#322947] bg-[#221c33] text-neutral-300"
+                                              : "border-neutral-200 bg-neutral-100 text-neutral-700"
                                           }`}
                                         >
-                                          /photography/{num}
+                                          {num}
                                         </span>
-                                      </Link>
-                                    );
-                                  })}
-                                </div>
+                                        <span className="font-medium text-[12.5px]">
+                                          Template {num}
+                                        </span>
+                                      </div>
+                                      <span
+                                        className={`text-[10.5px] font-mono ${
+                                          isItemActive
+                                            ? isDark
+                                              ? "text-purple-200"
+                                              : "text-neutral-300"
+                                            : isDark
+                                            ? "text-neutral-400"
+                                            : "text-neutral-400"
+                                        }`}
+                                      >
+                                        /photography/{num}
+                                      </span>
+                                    </Link>
+                                  );
+                                })}
                               </div>
                             </div>
-                          )}
-                        </div>
-
-                        {/* All Templates Directory Link */}
-                        <div className="mt-1 pt-1 border-t border-black/5 dark:border-white/5">
-                          <Link
-                            href="/templates"
-                            role="menuitem"
-                            onClick={() => {
-                              setDropdownPath(null);
-                              setActiveSubmenu(null);
-                            }}
-                            onMouseEnter={() => setActiveSubmenu(null)}
-                            className={`flex items-center justify-between px-2.5 py-2 rounded-xl text-[13px] transition-colors ${
-                              pathname === "/templates"
-                                ? isDark
-                                  ? "bg-[#7c5dfa]/20 text-white font-semibold"
-                                  : "bg-neutral-100 text-neutral-950 font-semibold"
-                                : isDark
-                                ? "text-neutral-200 hover:bg-[#2a223b] hover:text-white"
-                                : "text-neutral-700 hover:bg-neutral-100 hover:text-neutral-950"
-                            }`}
-                          >
-                            <div className="flex items-center gap-2.5">
-                              <span
-                                className={`w-7 h-7 rounded-lg flex items-center justify-center shrink-0 ${
-                                  isDark
-                                    ? "bg-[#2c2340] text-purple-300"
-                                    : "bg-neutral-100 text-neutral-700"
-                                }`}
-                              >
-                                <svg
-                                  className="w-3.5 h-3.5"
-                                  viewBox="0 0 24 24"
-                                  fill="none"
-                                  stroke="currentColor"
-                                  strokeWidth="2"
-                                  strokeLinecap="round"
-                                  strokeLinejoin="round"
-                                >
-                                  <rect x="3" y="3" width="7" height="7" rx="1" />
-                                  <rect x="14" y="3" width="7" height="7" rx="1" />
-                                  <rect x="14" y="14" width="7" height="7" rx="1" />
-                                  <rect x="3" y="14" width="7" height="7" rx="1" />
-                                </svg>
-                              </span>
-                              <span className="font-medium text-[13px]">
-                                All Templates Directory
-                              </span>
-                            </div>
-                            <span
-                              className={`text-[10px] font-mono ${
-                                isDark ? "text-neutral-400" : "text-neutral-400"
-                              }`}
-                            >
-                              /templates
-                            </span>
-                          </Link>
-                        </div>
+                          </div>
+                        )}
                       </div>
                     </div>
                   )}
@@ -545,114 +938,145 @@ export default function Navbar({ dark = false }: { dark?: boolean }) {
                   </button>
 
                   {mobileTemplateOpen && (
-                    <div className="pl-3 pr-1 pt-1 space-y-2 border-l-2 border-neutral-200/50 dark:border-neutral-800 ml-2">
-                      {/* Level 1 Item: Photography */}
-                      <div className="space-y-1.5">
-                        <button
-                          type="button"
-                          onClick={() =>
-                            setMobilePhotographyOpen((prev) => !prev)
-                          }
-                          className={`w-full flex items-center justify-between text-sm font-medium px-3 py-2 rounded-lg transition-colors cursor-pointer ${
+                    <div className="pl-3 pr-1 pt-1 space-y-2 border-l-2 border-neutral-200/50 dark:border-neutral-800 ml-2 max-h-[60vh] overflow-y-auto">
+                      <div className="text-[10px] font-bold uppercase tracking-[0.14em] text-neutral-400 px-2">
+                        Categories ({TEMPLATE_CATEGORIES.length})
+                      </div>
+
+                      {TEMPLATE_CATEGORIES.map((cat) => {
+                        const isCatActive =
+                          cat.id === "photographers"
+                            ? isPhotographyRoute
+                            : pathname === cat.href;
+
+                        if (cat.hasSubmenu) {
+                          return (
+                            <div key={cat.id} className="space-y-1.5">
+                              <button
+                                type="button"
+                                onClick={() =>
+                                  setMobilePhotographyOpen((prev) => !prev)
+                                }
+                                className={`w-full flex items-center justify-between text-sm font-medium px-3 py-2 rounded-lg transition-colors cursor-pointer ${
+                                  isDark
+                                    ? isPhotographyRoute
+                                      ? "bg-[#2c253d] text-white font-semibold"
+                                      : "text-neutral-300 hover:text-white hover:bg-[#251f33]"
+                                    : isPhotographyRoute
+                                    ? "bg-neutral-100 text-neutral-950 font-semibold"
+                                    : "text-neutral-700 hover:text-neutral-950 hover:bg-neutral-50"
+                                }`}
+                              >
+                                <div className="flex items-center gap-2">
+                                  <span className="w-5 h-5 rounded-md flex items-center justify-center shrink-0">
+                                    <CategoryIcon id={cat.id} />
+                                  </span>
+                                  <span>{cat.name}</span>
+                                  <span className="text-[10px] px-1.5 py-0.5 rounded-full bg-neutral-200/60 dark:bg-neutral-800 text-neutral-600 dark:text-neutral-400 font-semibold">
+                                    10
+                                  </span>
+                                </div>
+                                <svg
+                                  className={`w-3.5 h-3.5 transition-transform duration-200 ${
+                                    mobilePhotographyOpen ? "rotate-180" : ""
+                                  }`}
+                                  fill="none"
+                                  stroke="currentColor"
+                                  strokeWidth="2"
+                                  viewBox="0 0 24 24"
+                                >
+                                  <path
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    d="M19 9l-7 7-7-7"
+                                  />
+                                </svg>
+                              </button>
+
+                              {/* Level 2 Items: 10 Photography Templates */}
+                              {mobilePhotographyOpen && (
+                                <div className="pl-2 pt-1 pb-1 space-y-2">
+                                  <div className="grid grid-cols-5 gap-1.5">
+                                    {TEMPLATE_NUMBERS.map((num) => {
+                                      const href = `/template/photography/${num}`;
+                                      const isItemActive = pathname === href;
+                                      return (
+                                        <Link
+                                          key={num}
+                                          href={href}
+                                          onClick={() =>
+                                            setMobileMenuPath(null)
+                                          }
+                                          className={`py-2 rounded-lg text-center text-xs font-semibold tabular-nums transition-colors ${
+                                            isDark
+                                              ? isItemActive
+                                                ? "bg-[#7c5dfa] text-white"
+                                                : "bg-[#282138] text-neutral-200 hover:bg-[#342b47]"
+                                              : isItemActive
+                                              ? "bg-neutral-900 text-white"
+                                              : "bg-neutral-100 text-neutral-800 hover:bg-neutral-200"
+                                          }`}
+                                        >
+                                          {num}
+                                        </Link>
+                                      );
+                                    })}
+                                  </div>
+
+                                  <Link
+                                    href="/template/photography"
+                                    onClick={() => setMobileMenuPath(null)}
+                                    className={`block text-xs py-1 px-1 transition-colors ${
+                                      isDark
+                                        ? "text-purple-300 hover:text-white"
+                                        : "text-neutral-600 hover:text-neutral-950"
+                                    }`}
+                                  >
+                                    All Photography Templates &rarr;
+                                  </Link>
+                                </div>
+                              )}
+                            </div>
+                          );
+                        }
+
+                        return (
+                          <Link
+                            key={cat.id}
+                            href={cat.href}
+                            onClick={() => setMobileMenuPath(null)}
+                            className={`flex items-center gap-2 text-sm font-medium px-3 py-1.5 rounded-lg transition-colors ${
+                              isCatActive
+                                ? isDark
+                                  ? "bg-[#2c253d] text-white font-semibold"
+                                  : "bg-neutral-100 text-neutral-950 font-semibold"
+                                : isDark
+                                ? "text-neutral-300 hover:text-white hover:bg-[#251f33]"
+                                : "text-neutral-700 hover:text-neutral-950 hover:bg-neutral-50"
+                            }`}
+                          >
+                            <span className="w-5 h-5 rounded-md flex items-center justify-center shrink-0">
+                              <CategoryIcon id={cat.id} />
+                            </span>
+                            <span className="truncate">{cat.name}</span>
+                          </Link>
+                        );
+                      })}
+
+                      {/* Level 1 Item: All Templates Directory */}
+                      <div className="pt-1 border-t border-neutral-200/50 dark:border-neutral-800">
+                        <Link
+                          href="/templates"
+                          onClick={() => setMobileMenuPath(null)}
+                          className={`block text-sm font-medium px-3 py-2 rounded-lg transition-colors ${
                             isDark
-                              ? isPhotographyRoute
-                                ? "bg-[#2c253d] text-white font-semibold"
-                                : "text-neutral-300 hover:text-white hover:bg-[#251f33]"
-                              : isPhotographyRoute
-                              ? "bg-neutral-100 text-neutral-950 font-semibold"
+                              ? "text-neutral-300 hover:text-white hover:bg-[#251f33]"
                               : "text-neutral-700 hover:text-neutral-950 hover:bg-neutral-50"
                           }`}
                         >
-                          <div className="flex items-center gap-2">
-                            <svg
-                              className="w-4 h-4 text-purple-400 shrink-0"
-                              viewBox="0 0 24 24"
-                              fill="none"
-                              stroke="currentColor"
-                              strokeWidth="2"
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                            >
-                              <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z" />
-                              <circle cx="12" cy="13" r="3" />
-                            </svg>
-                            <span>Photography</span>
-                            <span className="text-[10px] px-1.5 py-0.5 rounded-full bg-neutral-200/60 dark:bg-neutral-800 text-neutral-600 dark:text-neutral-400 font-semibold">
-                              10
-                            </span>
-                          </div>
-                          <svg
-                            className={`w-3.5 h-3.5 transition-transform duration-200 ${
-                              mobilePhotographyOpen ? "rotate-180" : ""
-                            }`}
-                            fill="none"
-                            stroke="currentColor"
-                            strokeWidth="2"
-                            viewBox="0 0 24 24"
-                          >
-                            <path
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              d="M19 9l-7 7-7-7"
-                            />
-                          </svg>
-                        </button>
-
-                        {/* Level 2 Items: 10 Photography Templates */}
-                        {mobilePhotographyOpen && (
-                          <div className="pl-2 pt-1 pb-1 space-y-2">
-                            <div className="grid grid-cols-5 gap-1.5">
-                              {TEMPLATE_NUMBERS.map((num) => {
-                                const href = `/template/photography/${num}`;
-                                const isItemActive = pathname === href;
-                                return (
-                                  <Link
-                                    key={num}
-                                    href={href}
-                                    onClick={() => setMobileMenuPath(null)}
-                                    className={`py-2 rounded-lg text-center text-xs font-semibold tabular-nums transition-colors ${
-                                      isDark
-                                        ? isItemActive
-                                          ? "bg-[#7c5dfa] text-white"
-                                          : "bg-[#282138] text-neutral-200 hover:bg-[#342b47]"
-                                        : isItemActive
-                                        ? "bg-neutral-900 text-white"
-                                        : "bg-neutral-100 text-neutral-800 hover:bg-neutral-200"
-                                    }`}
-                                  >
-                                    {num}
-                                  </Link>
-                                );
-                              })}
-                            </div>
-
-                            <Link
-                              href="/template/photography"
-                              onClick={() => setMobileMenuPath(null)}
-                              className={`block text-xs py-1 px-1 transition-colors ${
-                                isDark
-                                  ? "text-purple-300 hover:text-white"
-                                  : "text-neutral-600 hover:text-neutral-950"
-                              }`}
-                            >
-                              All Photography Templates &rarr;
-                            </Link>
-                          </div>
-                        )}
+                          All Templates Directory
+                        </Link>
                       </div>
-
-                      {/* Level 1 Item: All Templates Directory */}
-                      <Link
-                        href="/templates"
-                        onClick={() => setMobileMenuPath(null)}
-                        className={`block text-sm font-medium px-3 py-2 rounded-lg transition-colors ${
-                          isDark
-                            ? "text-neutral-300 hover:text-white hover:bg-[#251f33]"
-                            : "text-neutral-700 hover:text-neutral-950 hover:bg-neutral-50"
-                        }`}
-                      >
-                        All Templates Directory
-                      </Link>
                     </div>
                   )}
                 </div>
