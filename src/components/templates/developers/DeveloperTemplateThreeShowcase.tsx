@@ -79,6 +79,18 @@ function LinkedinIcon({ className = "w-5 h-5" }: { className?: string }) {
   );
 }
 
+function GithubIcon({ className = "w-5 h-5" }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" className={className} fill="currentColor">
+      <path
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"
+      />
+    </svg>
+  );
+}
+
 /* --- Tech Stack Icons Dataset with Motions --- */
 interface TechStackItem {
   name: string;
@@ -148,8 +160,8 @@ const TECH_STACK_ROW_1: TechStackItem[] = [
     category: "Database",
     icon: (
       <svg viewBox="0 0 24 24" className="w-4 h-4 text-[#336791]" fill="none" stroke="currentColor" strokeWidth="1.8">
-        <path d="M6 8a6 6 0 0 1 12 0c0 4-3 7-6 12-3-5-6-8-6-12z" />
-        <circle cx="12" cy="9" r="2.5" />
+        <path d="M12 3C7 3 4 6 4 11c0 6 5 10 8 10s8-4 8-10c0-5-3-8-8-8z" />
+        <path d="M12 8c-2 0-3 1.5-3 3.5s1 3.5 3 3.5 3-1.5 3-3.5S14 8 12 8z" />
       </svg>
     ),
   },
@@ -158,7 +170,7 @@ const TECH_STACK_ROW_1: TechStackItem[] = [
     category: "DevOps",
     icon: (
       <svg viewBox="0 0 24 24" className="w-4 h-4 text-[#2496ed]" fill="currentColor">
-        <path d="M22 13.5c-.5-.1-1.3-.1-1.8.2-.4-1.2-1.4-2.1-2.6-2.3l-.3-.6c-.3-.6-.8-1-1.4-1.3l-.6-.2c.2-.7 0-1.5-.5-2-.6-.6-1.5-.7-2.3-.4l-.2.1c-.2-.7-.9-1.2-1.7-1.2H2v10c0 3.3 2.7 6 6 6h8c3.3 0 6-2.7 6-6 0-.7-.1-1.4-.4-2-.1-.1 0-.2.4-.3zM4 9h2v2H4V9zm3 0h2v2H7V9zm3 0h2v2h-2V9zm3 0h2v2h-2V9zm-9 3h2v2H4v-2zm3 0h2v2H7v-2zm3 0h2v2h-2v-2zm3 0h2v2h-2v-2zm3 0h2v2h-2v-2z" />
+        <path d="M22.5 10.5c-.3 0-1.8.1-2.5.7-.3-.7-1.2-1.2-2.1-1.2h-.4c-.3-1.3-1.3-2.3-2.8-2.6l-.7-.1-.3.6c-.6 1.4-.4 2.8.2 4H2.4c-.6 0-1 .4-1 1 0 3.4 2.3 6.3 5.5 7 1.1.2 2.3.2 3.4 0 3.2-.7 5.7-3.2 6.4-6.4 1.7-.1 3.3-.9 4.3-2.2.6-.9.7-1.8.5-2.8v-.1h-1zm-15-5.5h2v2h-2zm3 0h2v2h-2zm3 0h2v2h-2zm-6 3h2v2h-2zm3 0h2v2h-2zm3 0h2v2h-2zm3 0h2v2h-2z" />
       </svg>
     ),
   },
@@ -170,7 +182,8 @@ const TECH_STACK_ROW_2: TechStackItem[] = [
     category: "Cloud",
     icon: (
       <svg viewBox="0 0 24 24" className="w-4 h-4 text-[#ff9900]" fill="currentColor">
-        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 14.5l-4-3 1.4-1.4 2.6 2 5.6-5.6 1.4 1.4-7 6.6z" />
+        <path d="M6.5 15.5c3.5 2.5 8.5 2.5 12 0 .4-.3.9.2.6.6-3.8 3.5-9.4 3.5-13.2 0-.4-.4.1-.9.6-.6zm12.3-1.2c-.3.4-1.5.3-2.1.2-.2 0-.3-.2-.1-.3.8-.6 2.1-.4 2.5.1.2.3-.1.5-.3.6z" />
+        <path d="M10 8.5v3.2c0 .9-.5 1.3-1.3 1.3-.9 0-1.3-.5-1.3-1.3V8.5H5.8v3.5c0 1.9 1.1 2.9 2.9 2.9 1.8 0 2.9-1 2.9-2.9V8.5H10z" />
       </svg>
     ),
   },
@@ -179,13 +192,13 @@ const TECH_STACK_ROW_2: TechStackItem[] = [
     category: "API",
     icon: (
       <svg viewBox="0 0 24 24" className="w-4 h-4 text-[#e10098]" fill="none" stroke="currentColor" strokeWidth="1.8">
-        <polygon points="12 2 21 7 21 17 12 22 3 17 3 7" />
-        <circle cx="12" cy="2" r="1.5" fill="currentColor" />
-        <circle cx="21" cy="7" r="1.5" fill="currentColor" />
-        <circle cx="21" cy="17" r="1.5" fill="currentColor" />
-        <circle cx="12" cy="22" r="1.5" fill="currentColor" />
-        <circle cx="3" cy="17" r="1.5" fill="currentColor" />
-        <circle cx="3" cy="7" r="1.5" fill="currentColor" />
+        <circle cx="12" cy="4" r="2" />
+        <circle cx="19" cy="8" r="2" />
+        <circle cx="19" cy="16" r="2" />
+        <circle cx="12" cy="20" r="2" />
+        <circle cx="5" cy="16" r="2" />
+        <circle cx="5" cy="8" r="2" />
+        <path d="M12 4L19 8v8l-7 4-7-4V8z" />
       </svg>
     ),
   },
@@ -193,8 +206,8 @@ const TECH_STACK_ROW_2: TechStackItem[] = [
     name: "Tailwind CSS",
     category: "Styling",
     icon: (
-      <svg viewBox="0 0 24 24" className="w-4 h-4 text-[#06b6d4]" fill="currentColor">
-        <path d="M12 6c-3 0-4.5 1.5-4.5 4.5 1-1.5 2.2-2 3.8-1.5 1 .3 1.8 1.1 2.6 2 1.3 1.3 2.7 2.8 6.1 2.8 3 0 4.5-1.5 4.5-4.5-1 1.5-2.2 2-3.8 1.5-1-.3-1.8-1.1-2.6-2-1.3-1.3-2.7-2.8-6.1-2.8zM4.5 13.5c-3 0-4.5 1.5-4.5 4.5 1-1.5 2.2-2 3.8-1.5 1 .3 1.8 1.1 2.6 2 1.3 1.3 2.7 2.8 6.1 2.8 3 0 4.5-1.5 4.5-4.5-1 1.5-2.2 2-3.8 1.5-1-.3-1.8-1.1-2.6-2-1.3-1.3-2.7-2.8-6.1-2.8z" />
+      <svg viewBox="0 0 24 24" className="w-4 h-4 text-[#38bdf8]" fill="currentColor">
+        <path d="M12 6c-2.7 0-4.4 1.3-5.1 4 1-1.3 2.2-1.8 3.6-1.4.8.2 1.4.8 2 1.5 1.1 1.1 2.3 2.4 5 2.4 2.7 0 4.4-1.3 5.1-4-1 1.3-2.2 1.8-3.6 1.4-.8-.2-1.4-.8-2-1.5-1.1-1.1-2.3-2.4-5-2.4zm-7.5 6c-2.7 0-4.4 1.3-5.1 4 1-1.3 2.2-1.8 3.6-1.4.8.2 1.4.8 2 1.5 1.1 1.1 2.3 2.4 5 2.4 2.7 0 4.4-1.3 5.1-4-1 1.3-2.2 1.8-3.6 1.4-.8-.2-1.4-.8-2-1.5-1.1-1.1-2.3-2.4-5-2.4z" />
       </svg>
     ),
   },
@@ -203,29 +216,26 @@ const TECH_STACK_ROW_2: TechStackItem[] = [
     category: "Cache",
     icon: (
       <svg viewBox="0 0 24 24" className="w-4 h-4 text-[#dc382d]" fill="currentColor">
-        <polygon points="12 2 22 7 12 12 2 7" />
-        <polygon points="12 8 22 13 12 18 2 13" />
-        <polygon points="12 14 22 19 12 24 2 19" />
+        <path d="M2.5 7.5L12 3l9.5 4.5v9L12 21l-9.5-4.5v-9zm9.5 7.5l6-3-6-3-6 3 6 3z" />
       </svg>
     ),
   },
   {
     name: "Kubernetes",
-    category: "Orchestration",
+    category: "DevOps",
     icon: (
       <svg viewBox="0 0 24 24" className="w-4 h-4 text-[#326ce5]" fill="none" stroke="currentColor" strokeWidth="1.8">
         <circle cx="12" cy="12" r="9" />
-        <polygon points="12 6 17 15 7 15" />
-        <circle cx="12" cy="12" r="2.5" fill="currentColor" />
+        <path d="M12 7l4 3v5l-4 3-4-3v-5z" />
       </svg>
     ),
   },
   {
     name: "Git",
-    category: "Version Control",
+    category: "VCS",
     icon: (
       <svg viewBox="0 0 24 24" className="w-4 h-4 text-[#f05032]" fill="currentColor">
-        <path d="M21.6 10.9L13.1 2.4c-.6-.6-1.5-.6-2.1 0L8.7 4.7l2.8 2.8c.6-.2 1.3 0 1.8.5.5.5.7 1.2.5 1.8l2.7 2.7c.6-.2 1.3 0 1.8.5.8.8.8 2 0 2.8s-2 .8-2.8 0c-.6-.6-.7-1.4-.4-2.1L12.5 11v4.8c.3.2.6.5.7.8.6.6.6 1.6 0 2.2-.6.6-1.6.6-2.2 0s-.6-1.6 0-2.2c.3-.3.6-.5.9-.6V11c-.3-.2-.5-.3-.7-.5-.6-.6-.7-1.4-.4-2.1L8.1 5.6 2.4 11.3c-.6.6-.6 1.5 0 2.1l8.5 8.5c.6.6 1.5.6 2.1 0l8.6-8.5c.6-.6.6-1.5 0-2.5z" />
+        <path d="M21.6 10.9L13.1 2.4c-.6-.6-1.5-.6-2.1 0L9 4.4l2.7 2.7c.6-.2 1.3 0 1.8.4.5.5.6 1.2.4 1.8l2.6 2.6c.6-.2 1.3 0 1.8.4.8.8.8 2.1 0 2.9-.8.8-2.1.8-2.9 0-.5-.5-.7-1.3-.4-1.9l-2.4-2.4v5.3c.2.2.4.4.5.7.6.8.5 2-.4 2.6-.8.6-2 .5-2.6-.4-.6-.8-.5-2 .4-2.6.3-.2.6-.3 1-.3v-5.4c-.3 0-.7-.2-1-.4-.6-.5-.7-1.3-.4-1.9L7.5 5.9 2.4 11c-.6.6-.6 1.5 0 2.1l8.5 8.5c.6.6 1.5.6 2.1 0l8.6-8.6c.6-.6.6-1.5 0-2.1z" />
       </svg>
     ),
   },
@@ -233,110 +243,382 @@ const TECH_STACK_ROW_2: TechStackItem[] = [
     name: "Linux",
     category: "OS",
     icon: (
-      <svg viewBox="0 0 24 24" className="w-4 h-4 text-neutral-800" fill="currentColor">
-        <circle cx="12" cy="8" r="4" />
-        <path d="M7 16c0-2.5 2.2-4 5-4s5 1.5 5 4v4H7v-4z" />
-        <circle cx="9" cy="21" r="1.5" />
-        <circle cx="15" cy="21" r="1.5" />
+      <svg viewBox="0 0 24 24" className="w-4 h-4 text-[#fcc624]" fill="currentColor">
+        <circle cx="12" cy="6" r="3" />
+        <ellipse cx="12" cy="14" rx="5" ry="6" />
+        <circle cx="9" cy="20" r="1.5" />
+        <circle cx="15" cy="20" r="1.5" />
       </svg>
     ),
   },
 ];
 
-/* --- Selected Work Dataset --- */
-const FEATURED_PROJECTS = [
+/* --- "My Tech Stack" 6 Pillars Dataset (Exact from Screenshot 1) --- */
+interface TechStackPillar {
+  title: string;
+  description: string;
+}
+
+const TECH_STACK_PILLARS: TechStackPillar[] = [
   {
-    title: "Nexus Distributed Engine",
+    title: "Full-Stack Development",
     description:
-      "A high-throughput distributed message broker processing 500k+ events/sec with sub-millisecond p99 latency.",
-    tags: ["Go", "Kubernetes", "AWS", "gRPC"],
-    link: "https://github.com",
-    metrics: "500k req/sec · 99.99% uptime",
+      "I build end-to-end web applications using modern frontend frameworks and robust backend technologies.",
   },
   {
-    title: "HyperScale DB",
+    title: "API Development",
     description:
-      "Custom columnar time-series storage engine with automatic partitioning, adaptive index compression, and SIMD queries.",
-    tags: ["Rust", "PostgreSQL", "SIMD", "C++"],
-    link: "https://github.com",
-    metrics: "10x query speedup · 65% memory reduction",
+      "I develop RESTful and GraphQL APIs that enable seamless communication between systems.",
   },
   {
-    title: "OmniFlow Cloud Platform",
+    title: "Database Management",
     description:
-      "Enterprise workflow automation platform enabling visual event-driven pipelines across third-party microservices.",
-    tags: ["Next.js", "TypeScript", "Tailwind", "GraphQL"],
-    link: "https://github.com",
-    metrics: "120 enterprise orgs · 4.9 rating",
+      "I design and optimize SQL and NoSQL databases for performance, reliability, and scalability.",
   },
   {
-    title: "Pulse Metrics Telemetry",
+    title: "Software Testing",
     description:
-      "Real-time observability platform aggregating traces, distributed logs, and anomaly detection alerts.",
-    tags: ["React", "Redis", "Docker", "Node.js"],
-    link: "https://github.com",
-    metrics: "2.4B events ingested daily",
+      "I can write automated and manual tests to ensure software quality, reliability, and maintainability.",
+  },
+  {
+    title: "Agile Development",
+    description:
+      "Collaborate in Agile teams to deliver high-quality software through iterative development and continuous improvement.",
+  },
+  {
+    title: "UI/UX Collaboration",
+    description:
+      "Work closely with designers to transform concepts into intuitive and engaging user experiences.",
   },
 ];
 
-/* --- Professional Journey Dataset --- */
-const WORK_EXPERIENCE = [
+/* --- "Professional Expertise" Badges (Exact from Screenshot 1) --- */
+interface ExpertiseBadge {
+  name: string;
+  icon: React.ReactNode;
+}
+
+const EXPERTISE_ROW_1: ExpertiseBadge[] = [
   {
-    role: "Staff Software Engineer",
-    company: "Vercel",
-    period: "2023 — Present",
-    description:
-      "Leading core infrastructure engineering for edge compute routing, cold-start latency reduction, and multi-region failover protocols.",
+    name: "React",
+    icon: (
+      <svg viewBox="0 0 24 24" className="w-4 h-4 text-[#61dafb]" fill="none" stroke="currentColor" strokeWidth="2">
+        <ellipse cx="12" cy="12" rx="10" ry="4.2" />
+        <ellipse cx="12" cy="12" rx="10" ry="4.2" transform="rotate(60 12 12)" />
+        <ellipse cx="12" cy="12" rx="10" ry="4.2" transform="rotate(120 12 12)" />
+        <circle cx="12" cy="12" r="1.8" fill="currentColor" />
+      </svg>
+    ),
   },
   {
-    role: "Senior Backend Engineer",
-    company: "Stripe",
-    period: "2020 — 2023",
-    description:
-      "Designed and scaled mission-critical payment ledgering services handling billions in global transaction volume with zero data loss.",
+    name: "Firebase",
+    icon: (
+      <svg viewBox="0 0 24 24" className="w-4 h-4 text-[#ffa000]" fill="currentColor">
+        <path d="M4.1 14.8l2.6-16.1c.1-.5.7-.7 1.1-.3l3.6 4.7-6.2 11.2c-.4.7-1.3.8-1.7.3l-.6-.8c-.3-.4-.2-1 .2-1.3l1-1.1v3.4zm15.8 0l-4.8-9.4c-.3-.5-1-.5-1.3 0l-3.2 6.1 6.8 11c.7.4 1.5-.2 1.5-1l1-6.7zM12 21.6l-8.6-4.8 6.5-11.7c.3-.5 1-.5 1.3 0l2 3.8 3.5-6.6c.3-.5 1-.5 1.3 0l6.4 12.2-12.4 7.1z" />
+      </svg>
+    ),
   },
   {
+    name: "TypeScript",
+    icon: (
+      <svg viewBox="0 0 24 24" className="w-4 h-4 text-[#3178c6]" fill="currentColor">
+        <rect width="24" height="24" rx="4" fill="#3178c6" />
+        <path
+          d="M6 10h4v2H8.5v6h-2v-6H5v-2h1zm7 0h4v2h-2.5v1h2a2 2 0 0 1 2 2v1a2 2 0 0 1-2 2h-4v-2h2.5v-1h-2a2 2 0 0 1-2-2v-1a2 2 0 0 1 2-2z"
+          fill="#fff"
+        />
+      </svg>
+    ),
+  },
+  {
+    name: "Node.JS",
+    icon: (
+      <svg viewBox="0 0 24 24" className="w-4 h-4 text-[#539e43]" fill="currentColor">
+        <path d="M12 2l9 5.2v10.4L12 23l-9-5.4V7.2L12 2zm0 2.3L4.8 8.5v7l7.2 4.3 7.2-4.3v-7L12 4.3z" />
+      </svg>
+    ),
+  },
+  {
+    name: "TailwindCSS",
+    icon: (
+      <svg viewBox="0 0 24 24" className="w-4 h-4 text-[#38bdf8]" fill="currentColor">
+        <path d="M12 6c-2.7 0-4.4 1.3-5.1 4 1-1.3 2.2-1.8 3.6-1.4.8.2 1.4.8 2 1.5 1.1 1.1 2.3 2.4 5 2.4 2.7 0 4.4-1.3 5.1-4-1 1.3-2.2 1.8-3.6 1.4-.8-.2-1.4-.8-2-1.5-1.1-1.1-2.3-2.4-5-2.4zm-7.5 6c-2.7 0-4.4 1.3-5.1 4 1-1.3 2.2-1.8 3.6-1.4.8.2 1.4.8 2 1.5 1.1 1.1 2.3 2.4 5 2.4 2.7 0 4.4-1.3 5.1-4-1 1.3-2.2 1.8-3.6 1.4-.8-.2-1.4-.8-2-1.5-1.1-1.1-2.3-2.4-5-2.4z" />
+      </svg>
+    ),
+  },
+  {
+    name: "JavaScript",
+    icon: (
+      <svg viewBox="0 0 24 24" className="w-4 h-4 text-[#f7df1e]" fill="currentColor">
+        <rect width="24" height="24" rx="4" fill="#f7df1e" />
+        <path
+          d="M7 16.5c.7.4 1.5.7 2.3.7 1.3 0 2.1-.6 2.1-1.6 0-1-.7-1.4-1.8-1.9l-.6-.3c-1.8-.8-2.9-1.8-2.9-3.6 0-2 1.6-3.5 4.1-3.5 1 0 1.9.2 2.6.6l-.7 1.8c-.6-.3-1.3-.5-2-.5-1.2 0-1.8.6-1.8 1.4 0 .9.6 1.3 1.6 1.8l.6.3c2 .9 3.1 1.9 3.1 3.8 0 2.2-1.7 3.8-4.4 3.8-1.2 0-2.3-.3-3.1-.7l.9-2.3z"
+          fill="#000"
+        />
+      </svg>
+    ),
+  },
+];
+
+const EXPERTISE_ROW_2: ExpertiseBadge[] = [
+  {
+    name: "GSAP",
+    icon: (
+      <svg viewBox="0 0 24 24" className="w-4 h-4 text-[#0ae448]" fill="currentColor">
+        <circle cx="12" cy="12" r="10" fill="#0ae448" />
+        <path d="M8 12l3 3 5-6" stroke="#000" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+      </svg>
+    ),
+  },
+  {
+    name: "Git",
+    icon: (
+      <svg viewBox="0 0 24 24" className="w-4 h-4 text-[#f05032]" fill="currentColor">
+        <path d="M21.6 10.9L13.1 2.4c-.6-.6-1.5-.6-2.1 0L9 4.4l2.7 2.7c.6-.2 1.3 0 1.8.4.5.5.6 1.2.4 1.8l2.6 2.6c.6-.2 1.3 0 1.8.4.8.8.8 2.1 0 2.9-.8.8-2.1.8-2.9 0-.5-.5-.7-1.3-.4-1.9l-2.4-2.4v5.3c.2.2.4.4.5.7.6.8.5 2-.4 2.6-.8.6-2 .5-2.6-.4-.6-.8-.5-2 .4-2.6.3-.2.6-.3 1-.3v-5.4c-.3 0-.7-.2-1-.4-.6-.5-.7-1.3-.4-1.9L7.5 5.9 2.4 11c-.6.6-.6 1.5 0 2.1l8.5 8.5c.6.6 1.5.6 2.1 0l8.6-8.6c.6-.6.6-1.5 0-2.1z" />
+      </svg>
+    ),
+  },
+];
+
+/* --- "Work History" Accordion Dataset (Exact from Screenshot 1) --- */
+interface WorkHistoryItem {
+  id: number;
+  role: string;
+  company: string;
+  period: string;
+  description: string;
+}
+
+const WORK_HISTORY_ITEMS: WorkHistoryItem[] = [
+  {
+    id: 1,
+    role: "Senior Software Engineer",
+    company: "TechNova Solutions",
+    period: "2024 — Present",
+    description:
+      "Lead the development of scalable web applications and backend services. Design system architecture, build REST APIs, optimize application performance, and mentor junior engineers. Collaborate with cross-functional teams to deliver reliable, high-quality software.",
+  },
+  {
+    id: 2,
     role: "Software Engineer",
-    company: "GitHub",
-    period: "2017 — 2020",
+    company: "CloudStack Technologies",
+    period: "2022 — 2024",
     description:
-      "Built resilient developer tooling, Git hook execution engines, and web-scale repository search APIs.",
+      "Architected high-throughput microservices and optimized PostgreSQL database queries, reducing API response times by 38%. Spearheaded migration from legacy monolith services to containerized Docker workloads on AWS.",
+  },
+  {
+    id: 3,
+    role: "Junior Software Engineer",
+    company: "ByteWorks Digital",
+    period: "2021",
+    description:
+      "Implemented core user interfaces and responsive web features using Next.js and Tailwind CSS. Built CI/CD pipelines with GitHub Actions for automated linting, test suites, and staging deploys.",
+  },
+  {
+    id: 4,
+    role: "Web Designer",
+    company: "Digital Agency Co.",
+    period: "2020",
+    description:
+      "Created wireframes, high-fidelity prototypes, and component libraries in Figma for client projects. Coordinated directly with front-end engineers to ensure pixel-perfect design handoffs and accessible interfaces.",
+  },
+  {
+    id: 5,
+    role: "Software Engineering Intern",
+    company: "Innovate Labs",
+    period: "2018 — 2019",
+    description:
+      "Contributed to internal developer tooling, automated regression testing scripts, and documentation pipelines across distributed engineering squads.",
+  },
+];
+
+/* --- "Projects" Accordion Dataset (Exact from Screenshot 2) --- */
+interface ProjectItem {
+  id: number;
+  title: string;
+  summary: string;
+  tech: string[];
+  metrics: string;
+  liveUrl?: string;
+  githubUrl?: string;
+}
+
+const PROJECTS_ITEMS: ProjectItem[] = [
+  {
+    id: 1,
+    title: "Enterprise CRM Platform",
+    summary:
+      "A multi-tenant cloud CRM platform designed for enterprise sales pipelines, real-time activity tracking, and automated revenue forecasting with automated lead scoring and team role access controls.",
+    tech: ["React", "TypeScript", "Node.js", "PostgreSQL", "Docker", "Redis"],
+    metrics: "4.9/5 Rating · 120k+ Daily Active Users",
+    liveUrl: "https://example.com/crm",
+    githubUrl: "https://github.com/johndoe/enterprise-crm",
+  },
+  {
+    id: 2,
+    title: "Developer Toolkit",
+    summary:
+      "An open-source CLI suite and developer portal offering zero-config code scaffolding, automated API mock generation, and performance audits for modern engineering teams.",
+    tech: ["TypeScript", "Rust", "Go", "GitHub Actions", "npm"],
+    metrics: "18.5k GitHub Stars · 1.2M+ Monthly Downloads",
+    liveUrl: "https://example.com/devkit",
+    githubUrl: "https://github.com/johndoe/developer-toolkit",
+  },
+  {
+    id: 3,
+    title: "E-Commerce Platform",
+    summary:
+      "High-conversion headless storefront built with Next.js App Router, featuring instant faceted search, Stripe Elements checkout, and sub-100ms edge cache hits.",
+    tech: ["Next.js", "TailwindCSS", "Stripe", "Redis", "Vercel"],
+    metrics: "99.99% Uptime · +34% Conversion Uplift",
+    liveUrl: "https://example.com/storefront",
+    githubUrl: "https://github.com/johndoe/ecommerce-storefront",
+  },
+  {
+    id: 4,
+    title: "API Development",
+    summary:
+      "Distributed API gateway orchestrating 45+ internal microservices with rate limiting, JWT token verification, dynamic routing, and Prometheus metrics telemetry.",
+    tech: ["Node.js", "Express", "GraphQL", "Redis", "Kubernetes"],
+    metrics: "42k Req/sec · 14ms Average Latency",
+    liveUrl: "https://example.com/api-gateway",
+    githubUrl: "https://github.com/johndoe/api-gateway-engine",
+  },
+  {
+    id: 5,
+    title: "Analytics Dashboard",
+    summary:
+      "Real-time streaming analytics engine processing IoT telemetry and user events with customizable visual charting widgets and anomaly alerts.",
+    tech: ["React", "D3.js", "TypeScript", "Apache Kafka", "ClickHouse"],
+    metrics: "5M+ Events/min · Sub-second Query Times",
+    liveUrl: "https://example.com/analytics",
+    githubUrl: "https://github.com/johndoe/realtime-analytics",
+  },
+  {
+    id: 6,
+    title: "Real-Time Chat Application",
+    summary:
+      "End-to-end encrypted collaborative chat system with presence detection, typing indicators, rich media attachments, and offline message queueing.",
+    tech: ["WebSockets", "React", "Node.js", "Firebase", "TailwindCSS"],
+    metrics: "250k Concurrent Conns · 10ms Latency",
+    liveUrl: "https://example.com/chat-app",
+    githubUrl: "https://github.com/johndoe/realtime-chat",
+  },
+  {
+    id: 7,
+    title: "Cloud Migration",
+    summary:
+      "Complete architectural overhaul transitioning legacy on-prem servers into scalable, fault-tolerant infrastructure with automated auto-scaling and zero-downtime cutover.",
+    tech: ["AWS", "Terraform", "Docker", "Kubernetes", "PostgreSQL"],
+    metrics: "62% Cloud Cost Savings · Zero Downtime Cutover",
+    liveUrl: "https://example.com/cloud-case-study",
+    githubUrl: "https://github.com/johndoe/cloud-migration-iac",
   },
 ];
 
 export default function DeveloperTemplateThreeShowcase() {
   const [downloadSuccess, setDownloadSuccess] = useState(false);
 
-  const handleDownloadCV = () => {
-    setDownloadSuccess(true);
-    // Trigger real download or simulated feedback
-    const blob = new Blob(
-      [
-        "JOHN DOE - Senior Software Engineer\n\nEmail: contact.johndoe@example.com\nSpecialization: Distributed Systems, Web Applications, Cloud Architecture\n\nExperience:\n- Staff Software Engineer at Vercel (2023 - Present)\n- Senior Backend Engineer at Stripe (2020 - 2023)\n- Software Engineer at GitHub (2017 - 2020)\n\nTech Stack:\nTypeScript, Next.js, React, Node.js, Go, Python, PostgreSQL, AWS, Docker, Kubernetes, GraphQL",
-      ],
-      { type: "text/plain" }
-    );
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = "John_Doe_Software_Engineer_CV.txt";
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-    URL.revokeObjectURL(url);
+  // Accordion state for Work History (Item 1 open by default as in screenshot)
+  const [openWorkHistory, setOpenWorkHistory] = useState<Record<number, boolean>>({
+    1: true,
+    2: false,
+    3: false,
+    4: false,
+    5: false,
+  });
 
-    setTimeout(() => {
-      setDownloadSuccess(false);
-    }, 3000);
+  // Accordion state for Projects
+  const [openProjects, setOpenProjects] = useState<Record<number, boolean>>({
+    1: false,
+    2: false,
+    3: false,
+    4: false,
+    5: false,
+    6: false,
+    7: false,
+  });
+
+  const toggleWorkHistory = (id: number) => {
+    setOpenWorkHistory((prev) => ({
+      ...prev,
+      [id]: !prev[id],
+    }));
+  };
+
+  const toggleProject = (id: number) => {
+    setOpenProjects((prev) => ({
+      ...prev,
+      [id]: !prev[id],
+    }));
+  };
+
+  const handleDownloadCV = () => {
+    try {
+      const cvText = `=======================================================
+JOHN DOE — SOFTWARE ENGINEER
+Senior Full-Stack & Systems Engineer
+Email: contact.johndoe@example.com | Portfolio: /developers-it/3
+=======================================================
+
+PROFESSIONAL SUMMARY:
+Software Engineer specializing in scalable software, modern web
+applications, and high-performance systems that deliver exceptional
+user experiences.
+
+CORE EXPERTISE:
+- Languages: TypeScript, JavaScript, Python, Go, SQL, Rust
+- Frontend: React, Next.js, Tailwind CSS, GSAP, State Architecture
+- Backend & Cloud: Node.js, Express, PostgreSQL, Redis, Docker, AWS, Kubernetes
+- Practices: Microservices, CI/CD, Agile/Scrum, Automated Testing
+
+WORK HISTORY:
+1. Senior Software Engineer — TechNova Solutions (2024 — Present)
+   - Lead development of scalable web apps and backend services.
+   - Design system architecture, build REST APIs, optimize latency.
+2. Software Engineer — CloudStack Technologies (2022 — 2024)
+   - Architected high-throughput microservices; reduced API response time by 38%.
+3. Junior Software Engineer — ByteWorks Digital (2021)
+   - Built core interfaces with Next.js & Tailwind; automated CI/CD pipelines.
+4. Web Designer — Digital Agency Co. (2020)
+   - Prototyped and built design systems for enterprise clients.
+5. Software Engineering Intern — Innovate Labs (2018 — 2019)
+   - Automated testing and internal developer tooling.
+
+SELECTED PROJECTS:
+- Enterprise CRM Platform (120k+ Daily Users)
+- Developer Toolkit (18.5k GitHub Stars)
+- E-Commerce Platform (99.99% Uptime)
+- High-Performance API Gateway (42k Req/sec, 14ms latency)
+=======================================================`;
+
+      const blob = new Blob([cvText], { type: "text/plain;charset=utf-8" });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = "John-Doe-Software-Engineer-CV.txt";
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      URL.revokeObjectURL(url);
+
+      setDownloadSuccess(true);
+      setTimeout(() => setDownloadSuccess(false), 5000);
+    } catch {
+      alert("Resume download started: John-Doe-Software-Engineer-CV.pdf");
+    }
   };
 
   return (
-    <div className="min-h-screen bg-white text-neutral-950 font-sans selection:bg-neutral-900 selection:text-white">
-      {/* Global CSS for Infinite Tech Marquee Motion */}
+    <div className="min-h-screen flex flex-col bg-white text-neutral-900 font-sans selection:bg-neutral-900 selection:text-white">
+      {/* Global Navbar */}
+      <Navbar />
+
+      {/* Embedded CSS Animations for Tech Stack Marquees */}
       <style jsx global>{`
         @keyframes techMarqueeLeft {
           0% {
-            transform: translateX(0%);
+            transform: translateX(0);
           }
           100% {
             transform: translateX(-50%);
@@ -347,18 +629,18 @@ export default function DeveloperTemplateThreeShowcase() {
             transform: translateX(-50%);
           }
           100% {
-            transform: translateX(0%);
+            transform: translateX(0);
           }
         }
         .animate-tech-left {
           display: flex;
           width: max-content;
-          animation: techMarqueeLeft 24s linear infinite;
+          animation: techMarqueeLeft 28s linear infinite;
         }
         .animate-tech-right {
           display: flex;
           width: max-content;
-          animation: techMarqueeRight 24s linear infinite;
+          animation: techMarqueeRight 28s linear infinite;
         }
         .animate-tech-left:hover,
         .animate-tech-right:hover {
@@ -366,39 +648,50 @@ export default function DeveloperTemplateThreeShowcase() {
         }
       `}</style>
 
-      {/* Top Workspace Navbar */}
-      <div className="bg-white border-b border-neutral-100">
-        <Navbar />
-      </div>
-
       {/* ========================================================================= */}
-      {/* MAIN TOP BAR (Matches Reference Screenshot Top)                           */}
+      {/* TOP HEADER BAR (Reference: Bold "John Doe" on left, "Download CV" on right) */}
       {/* ========================================================================= */}
-      <header className="w-full border-b border-neutral-200/80 sticky top-0 bg-white/95 backdrop-blur-md z-30 transition-all">
-        <div className="max-w-6xl mx-auto px-6 sm:px-10 lg:px-12 h-20 flex items-center justify-between">
-          {/* Left: Bold Wordmark */}
+      <header className="w-full border-b border-neutral-200/80 sticky top-0 z-30 bg-white/95 backdrop-blur-md">
+        <div className="max-w-6xl mx-auto px-6 sm:px-10 lg:px-12 h-16 sm:h-20 flex items-center justify-between">
           <Link
             href="/developers-it/3"
-            className="text-2xl sm:text-3xl font-black tracking-tight text-neutral-950 hover:opacity-80 transition-opacity"
+            className="text-2xl sm:text-3xl font-black tracking-tight text-neutral-950 hover:opacity-80 transition-opacity select-none font-sans"
           >
             John Doe
           </Link>
 
-          {/* Right: Black Pill Action Button */}
+          <nav className="hidden md:flex items-center gap-6 text-xs sm:text-sm font-medium text-neutral-600">
+            <a href="#tech-stack" className="hover:text-black transition-colors">
+              Tech Stack
+            </a>
+            <a href="#expertise" className="hover:text-black transition-colors">
+              Expertise
+            </a>
+            <a href="#work-history" className="hover:text-black transition-colors">
+              Work History
+            </a>
+            <a href="#projects" className="hover:text-black transition-colors">
+              Projects
+            </a>
+            <a href="#about-me" className="hover:text-black transition-colors">
+              About Me
+            </a>
+          </nav>
+
           <button
             type="button"
             onClick={handleDownloadCV}
-            className="px-5 sm:px-6 py-2 sm:py-2.5 rounded-full bg-neutral-950 hover:bg-neutral-800 text-white font-semibold text-xs sm:text-sm transition-all active:scale-95 shadow-sm cursor-pointer"
+            className="px-5 sm:px-6 py-2 sm:py-2.5 rounded-full bg-neutral-950 hover:bg-neutral-800 text-white font-semibold text-xs sm:text-sm transition-all active:scale-95 shadow-xs cursor-pointer"
           >
-            {downloadSuccess ? "Downloaded ✓" : "Download CV"}
+            {downloadSuccess ? "✓ Downloaded" : "Download CV"}
           </button>
         </div>
       </header>
 
       {/* ========================================================================= */}
-      {/* HERO SECTION (Matches Reference Screenshot Hero Area)                     */}
+      {/* HERO SECTION (Reference: Centered Circle Portrait + Giant Headline + Bio)  */}
       {/* ========================================================================= */}
-      <section className="pt-16 sm:pt-24 pb-16 sm:pb-20 text-center px-6 sm:px-10 max-w-4xl mx-auto flex flex-col items-center">
+      <section id="hero" className="pt-16 sm:pt-24 pb-14 sm:pb-20 text-center px-6 sm:px-10 max-w-4xl mx-auto flex flex-col items-center">
         {/* Circular Portrait Photo */}
         <div className="relative w-44 h-44 sm:w-56 sm:h-56 rounded-full overflow-hidden shadow-xl ring-2 ring-neutral-200/90 bg-neutral-900 group">
           <Image
@@ -482,21 +775,18 @@ export default function DeveloperTemplateThreeShowcase() {
       {/* ========================================================================= */}
       {/* TECH STACK ICONS WITH MOTIONS (User Explicit Request)                     */}
       {/* ========================================================================= */}
-      <section className="py-16 sm:py-24 border-y border-neutral-200/80 bg-neutral-50/70 overflow-hidden">
-        <div className="max-w-6xl mx-auto px-6 sm:px-10 mb-8 sm:mb-10 text-center">
-          <div className="inline-flex items-center px-3.5 py-1 rounded-full bg-white border border-neutral-200 text-xs font-mono uppercase tracking-[0.16em] text-neutral-600 shadow-xs mb-3">
-            <span>TECH STACK &amp; TOOLS</span>
+      <section className="py-12 sm:py-16 border-y border-neutral-200/80 bg-neutral-50/70 overflow-hidden">
+        <div className="max-w-6xl mx-auto px-6 sm:px-10 mb-6 text-center">
+          <div className="inline-flex items-center px-3.5 py-1 rounded-full bg-white border border-neutral-200 text-[11px] font-mono uppercase tracking-[0.16em] text-neutral-600 shadow-xs mb-2">
+            <span>Continuous Motion Stack</span>
           </div>
-          <h2 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-neutral-950">
-            Engineered with Modern Stacks
-          </h2>
-          <p className="mt-2 text-xs sm:text-sm text-neutral-500 max-w-md mx-auto">
-            Hover over any technology badge to pause motion and inspect details
+          <p className="text-xs text-neutral-500 font-mono">
+            Hover over any technology badge to pause marquee
           </p>
         </div>
 
         {/* Motion Track Container with subtle fade masks */}
-        <div className="space-y-4 [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]">
+        <div className="space-y-3.5 [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]">
           {/* Row 1: Moves Left Continuously */}
           <div className="animate-tech-left flex gap-3.5 sm:gap-4 py-1">
             {[...TECH_STACK_ROW_1, ...TECH_STACK_ROW_1, ...TECH_STACK_ROW_1].map((tech, idx) => (
@@ -544,114 +834,297 @@ export default function DeveloperTemplateThreeShowcase() {
       </section>
 
       {/* ========================================================================= */}
-      {/* FEATURED WORK / PROJECTS SECTION                                          */}
+      {/* SECTION 1: MY TECH STACK (Exact 6 Cards from User Screenshot 1)           */}
       {/* ========================================================================= */}
-      <section className="py-20 sm:py-28 max-w-6xl mx-auto px-6 sm:px-10 lg:px-12">
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 sm:mb-16">
-          <div>
-            <span className="text-xs font-mono uppercase tracking-widest text-neutral-400 block mb-2">
-              Selected Systems &amp; Software
-            </span>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-neutral-950">
-              Featured Work
-            </h2>
-          </div>
-          <p className="text-xs sm:text-sm text-neutral-500 max-w-sm">
-            Architecting fault-tolerant backend infrastructure and responsive client interfaces.
-          </p>
-        </div>
+      <section id="tech-stack" className="py-20 sm:py-28 max-w-6xl mx-auto px-6 sm:px-10 lg:px-12 text-center">
+        {/* Title */}
+        <h2 className="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight text-neutral-950 font-sans">
+          My Tech Stack
+        </h2>
+        {/* Subtitle */}
+        <p className="mt-3 mb-12 sm:mb-16 text-xs sm:text-sm text-neutral-500 max-w-lg mx-auto leading-relaxed">
+          The technologies, frameworks, and tools I use to build scalable, high-quality software.
+        </p>
 
-        {/* 2x2 Clean Project Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-10">
-          {FEATURED_PROJECTS.map((proj, idx) => (
+        {/* 6 Cards Grid (3 columns desktop, 2 tablet, 1 mobile) */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 text-left">
+          {TECH_STACK_PILLARS.map((pillar, idx) => (
             <div
               key={idx}
-              className="rounded-3xl border border-neutral-200/90 p-7 sm:p-9 hover:border-neutral-400 hover:shadow-lg transition-all flex flex-col justify-between group bg-white"
+              className="rounded-3xl border border-neutral-200/90 bg-white p-7 sm:p-9 shadow-xs hover:shadow-md hover:border-neutral-400 transition-all duration-300 flex flex-col justify-start group"
             >
-              <div>
-                <div className="flex items-center justify-between gap-4 mb-4">
-                  <h3 className="text-xl sm:text-2xl font-bold text-neutral-950 tracking-tight group-hover:text-black">
-                    {proj.title}
-                  </h3>
-                  <span className="w-8 h-8 rounded-full border border-neutral-200 flex items-center justify-center text-xs group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform">
-                    ↗
-                  </span>
-                </div>
-                <p className="text-xs sm:text-sm text-neutral-600 leading-relaxed mb-6">
-                  {proj.description}
-                </p>
-              </div>
-
-              <div>
-                {/* Metrics */}
-                <div className="text-xs font-mono font-semibold text-neutral-950 mb-4 pb-3 border-b border-neutral-100">
-                  {proj.metrics}
-                </div>
-
-                {/* Tech Tags */}
-                <div className="flex flex-wrap gap-2">
-                  {proj.tags.map((tag, tIdx) => (
-                    <span
-                      key={tIdx}
-                      className="px-3 py-1 rounded-full bg-neutral-100 text-neutral-700 font-mono text-[11px] font-medium"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-              </div>
+              <h3 className="text-lg sm:text-xl font-bold text-neutral-950 mb-3 tracking-tight group-hover:text-black">
+                {pillar.title}
+              </h3>
+              <p className="text-xs sm:text-sm text-neutral-600 leading-relaxed font-normal">
+                {pillar.description}
+              </p>
             </div>
           ))}
         </div>
       </section>
 
       {/* ========================================================================= */}
-      {/* WORK EXPERIENCE SECTION                                                   */}
+      {/* SECTION 2: PROFESSIONAL EXPERTISE (Exact Badges from User Screenshot 1)    */}
       {/* ========================================================================= */}
-      <section className="py-20 sm:py-28 border-t border-neutral-200/80 bg-neutral-50/50">
-        <div className="max-w-4xl mx-auto px-6 sm:px-10">
-          <div className="text-center mb-12 sm:mb-16">
-            <span className="text-xs font-mono uppercase tracking-widest text-neutral-400 block mb-2">
-              Career Timeline
-            </span>
-            <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-neutral-950">
-              Work Experience
-            </h2>
-          </div>
+      <section id="expertise" className="py-20 sm:py-28 border-t border-neutral-200/80 bg-neutral-50/40 text-center px-6 sm:px-10">
+        <div className="max-w-4xl mx-auto">
+          {/* Title */}
+          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight text-neutral-950 font-sans">
+            Professional Expertise
+          </h2>
+          {/* Subtitle */}
+          <p className="mt-3 mb-10 sm:mb-12 text-xs sm:text-sm text-neutral-500 max-w-md mx-auto leading-relaxed">
+            Focused on building secure, high-performance applications with clean architecture and modern development practices.
+          </p>
 
-          <div className="space-y-6">
-            {WORK_EXPERIENCE.map((exp, idx) => (
-              <div
-                key={idx}
-                className="rounded-3xl bg-white border border-neutral-200/90 p-6 sm:p-8 shadow-xs hover:border-neutral-400 transition-all"
-              >
-                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-3">
-                  <div className="flex items-center gap-3">
-                    <h3 className="text-lg sm:text-xl font-bold text-neutral-950">
-                      {exp.role}
-                    </h3>
-                    <span className="text-neutral-400">·</span>
-                    <span className="font-semibold text-neutral-800 text-sm sm:text-base">
-                      {exp.company}
-                    </span>
-                  </div>
-                  <span className="text-xs font-mono text-neutral-500 font-medium">
-                    {exp.period}
-                  </span>
+          {/* Badges Container: Row 1 & Row 2 Centered */}
+          <div className="flex flex-col items-center gap-3.5 sm:gap-4 max-w-3xl mx-auto">
+            {/* Row 1: React, Firebase, TypeScript, Node.JS, TailwindCSS, JavaScript */}
+            <div className="flex flex-wrap items-center justify-center gap-2.5 sm:gap-3">
+              {EXPERTISE_ROW_1.map((item, idx) => (
+                <div
+                  key={idx}
+                  className="px-5 py-2.5 rounded-full bg-neutral-950 text-white text-xs sm:text-sm font-semibold flex items-center gap-2.5 shadow-xs hover:bg-neutral-800 hover:scale-105 transition-all cursor-default select-none"
+                >
+                  <span className="shrink-0">{item.icon}</span>
+                  <span>{item.name}</span>
                 </div>
-                <p className="text-xs sm:text-sm text-neutral-600 leading-relaxed">
-                  {exp.description}
-                </p>
-              </div>
-            ))}
+              ))}
+            </div>
+
+            {/* Row 2: GSAP, Git */}
+            <div className="flex flex-wrap items-center justify-center gap-2.5 sm:gap-3">
+              {EXPERTISE_ROW_2.map((item, idx) => (
+                <div
+                  key={idx}
+                  className="px-5 py-2.5 rounded-full bg-neutral-950 text-white text-xs sm:text-sm font-semibold flex items-center gap-2.5 shadow-xs hover:bg-neutral-800 hover:scale-105 transition-all cursor-default select-none"
+                >
+                  <span className="shrink-0">{item.icon}</span>
+                  <span>{item.name}</span>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
 
       {/* ========================================================================= */}
-      {/* CALL TO ACTION & CONTACT SECTION                                         */}
+      {/* SECTION 3: WORK HISTORY (Exact Accordion from User Screenshot 1)          */}
       {/* ========================================================================= */}
-      <section className="py-20 sm:py-28 max-w-4xl mx-auto px-6 sm:px-10 text-center">
+      <section id="work-history" className="py-20 sm:py-28 border-t border-neutral-200/80 bg-white text-center px-6 sm:px-10">
+        <div className="max-w-3xl mx-auto">
+          {/* Title */}
+          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight text-neutral-950 font-sans">
+            Work History
+          </h2>
+          {/* Subtitle */}
+          <p className="mt-3 mb-12 sm:mb-16 text-xs sm:text-sm text-neutral-500 max-w-lg mx-auto leading-relaxed">
+            A record of my professional roles, key responsibilities, and contributions across software development projects.
+          </p>
+
+          {/* Accordion List */}
+          <div className="divide-y divide-neutral-200 text-left border-y border-neutral-200">
+            {WORK_HISTORY_ITEMS.map((item) => {
+              const isOpen = !!openWorkHistory[item.id];
+              return (
+                <div key={item.id} className="py-6 sm:py-7">
+                  <button
+                    type="button"
+                    onClick={() => toggleWorkHistory(item.id)}
+                    className="w-full flex items-start justify-between gap-4 text-left group cursor-pointer focus:outline-none"
+                    aria-expanded={isOpen}
+                  >
+                    <div>
+                      <h3 className="text-base sm:text-lg font-bold text-neutral-950 group-hover:text-neutral-700 transition-colors">
+                        {item.role}
+                      </h3>
+                      <p className="text-xs sm:text-sm text-neutral-500 font-medium mt-0.5">
+                        {item.company}
+                      </p>
+                    </div>
+
+                    <div className="flex items-center gap-4 shrink-0">
+                      <span className="text-xs sm:text-sm text-neutral-500 font-mono">
+                        {item.period}
+                      </span>
+                      <span
+                        className={`w-7 h-7 rounded-full border border-neutral-300 flex items-center justify-center text-sm font-semibold text-neutral-600 transition-all ${
+                          isOpen ? "bg-neutral-950 text-white border-neutral-950" : "group-hover:border-neutral-500"
+                        }`}
+                      >
+                        {isOpen ? "×" : "+"}
+                      </span>
+                    </div>
+                  </button>
+
+                  {/* Expandable Content */}
+                  {isOpen && (
+                    <div className="mt-4 pt-2 text-xs sm:text-sm text-neutral-600 leading-relaxed max-w-2xl pr-8 animate-fadeIn">
+                      {item.description}
+                    </div>
+                  )}
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* ========================================================================= */}
+      {/* SECTION 4: PROJECTS (Exact Accordion List from User Screenshot 2)         */}
+      {/* ========================================================================= */}
+      <section id="projects" className="py-20 sm:py-28 border-t border-neutral-200/80 bg-neutral-50/30 text-center px-6 sm:px-10">
+        <div className="max-w-3xl mx-auto">
+          {/* Title */}
+          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight text-neutral-950 font-sans">
+            Projects
+          </h2>
+          {/* Subtitle */}
+          <p className="mt-3 mb-12 sm:mb-16 text-xs sm:text-sm text-neutral-500 max-w-lg mx-auto leading-relaxed">
+            A record of my professional roles, key responsibilities, and contributions across software development projects.
+          </p>
+
+          {/* Projects Accordion with "+" and "−" toggles */}
+          <div className="divide-y divide-neutral-200 text-left border-y border-neutral-200 bg-white rounded-3xl p-6 sm:p-8 shadow-xs border">
+            {PROJECTS_ITEMS.map((project) => {
+              const isOpen = !!openProjects[project.id];
+              return (
+                <div key={project.id} className="py-5 sm:py-6 first:pt-2 last:pb-2">
+                  <button
+                    type="button"
+                    onClick={() => toggleProject(project.id)}
+                    className="w-full flex items-center justify-between gap-4 text-left group cursor-pointer focus:outline-none"
+                    aria-expanded={isOpen}
+                  >
+                    <span className="text-base sm:text-lg font-bold text-neutral-950 group-hover:text-neutral-700 transition-colors">
+                      {project.title}
+                    </span>
+
+                    <span
+                      className={`w-7 h-7 rounded-full border border-neutral-300 flex items-center justify-center text-sm font-semibold text-neutral-600 transition-all shrink-0 ${
+                        isOpen ? "bg-neutral-950 text-white border-neutral-950" : "group-hover:border-neutral-500"
+                      }`}
+                    >
+                      {isOpen ? "−" : "+"}
+                    </span>
+                  </button>
+
+                  {/* Expandable Project Details */}
+                  {isOpen && (
+                    <div className="mt-4 pt-3 space-y-4 animate-fadeIn">
+                      <p className="text-xs sm:text-sm text-neutral-600 leading-relaxed">
+                        {project.summary}
+                      </p>
+
+                      <div className="text-xs font-mono font-semibold text-neutral-900">
+                        {project.metrics}
+                      </div>
+
+                      {/* Tech Stack Pills */}
+                      <div className="flex flex-wrap gap-2 pt-1">
+                        {project.tech.map((tag, tIdx) => (
+                          <span
+                            key={tIdx}
+                            className="px-2.5 py-1 rounded-md bg-neutral-100 text-neutral-700 font-mono text-[11px]"
+                          >
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
+
+                      {/* Action Links */}
+                      <div className="flex items-center gap-4 pt-2">
+                        {project.liveUrl && (
+                          <a
+                            href={project.liveUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-xs font-bold text-neutral-950 hover:underline inline-flex items-center gap-1"
+                          >
+                            <span>Live Website</span>
+                            <span>→</span>
+                          </a>
+                        )}
+                        {project.githubUrl && (
+                          <a
+                            href={project.githubUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-xs font-medium text-neutral-600 hover:text-black inline-flex items-center gap-1"
+                          >
+                            <span>Source Code</span>
+                            <span>↗</span>
+                          </a>
+                        )}
+                      </div>
+                    </div>
+                  )}
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* ========================================================================= */}
+      {/* SECTION 5: ABOUT ME (Exact 2-Column from User Screenshot 2)               */}
+      {/* ========================================================================= */}
+      <section id="about-me" className="py-20 sm:py-28 border-t border-neutral-200/80 bg-white">
+        <div className="max-w-5xl mx-auto px-6 sm:px-10 lg:px-12">
+          {/* Centered Top Title & Subtitle */}
+          <div className="text-center mb-14 sm:mb-20">
+            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight text-neutral-950 font-sans">
+              About Me
+            </h2>
+            <p className="mt-3 text-xs sm:text-sm text-neutral-500 max-w-xl mx-auto leading-relaxed">
+              Passionate About Creating Modern Software That Powers Businesses and Great User Experiences
+            </p>
+          </div>
+
+          {/* 2-Column Grid: Text on Left, Portrait Image on Right */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-10 sm:gap-14 lg:gap-16 items-center">
+            {/* Left Column: Meet John Doe Text & Download CV */}
+            <div className="flex flex-col items-start justify-center">
+              <h3 className="text-2xl sm:text-3xl font-black text-neutral-950 tracking-tight mb-5 font-sans">
+                Meet John Doe
+              </h3>
+
+              <p className="text-xs sm:text-sm text-neutral-600 leading-relaxed mb-4">
+                Hi, I&apos;m <strong className="font-semibold text-neutral-950">John Doe</strong>, a software engineer with a passion for building reliable, scalable, and user-focused digital products. With years of experience across frontend and backend development, I enjoy turning complex ideas into clean, efficient solutions that make a real impact.
+              </p>
+
+              <p className="text-xs sm:text-sm text-neutral-600 leading-relaxed mb-8">
+                I specialize in modern web technologies, cloud-based applications, and performance optimization, always focusing on writing maintainable code and creating seamless user experiences. Whether I&apos;m developing a new product from the ground up or improving an existing platform, I believe great software comes from thoughtful design, collaboration, and continuous learning.
+              </p>
+
+              <button
+                type="button"
+                onClick={handleDownloadCV}
+                className="px-7 py-3 rounded-full bg-neutral-950 hover:bg-neutral-800 text-white font-semibold text-xs sm:text-sm transition-all active:scale-95 shadow-md cursor-pointer inline-flex items-center gap-2"
+              >
+                <span>{downloadSuccess ? "✓ CV Downloaded" : "Download CV"}</span>
+              </button>
+            </div>
+
+            {/* Right Column: Rectangular Portrait Photo of John Doe */}
+            <div className="relative w-full max-w-sm sm:max-w-md mx-auto aspect-[3/4] rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl bg-neutral-950 ring-1 ring-neutral-200 group">
+              <Image
+                src="/images/developers/johndoe-about.png"
+                alt="John Doe - About Portrait"
+                fill
+                sizes="(max-width: 768px) 100vw, 450px"
+                className="object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ========================================================================= */}
+      {/* SECTION 6: CALL TO ACTION BANNER                                          */}
+      {/* ========================================================================= */}
+      <section id="contact" className="py-20 sm:py-28 max-w-5xl mx-auto px-6 sm:px-10 text-center">
         <div className="rounded-[36px] sm:rounded-[44px] bg-neutral-950 text-white p-10 sm:p-16 lg:p-20 shadow-2xl relative overflow-hidden">
           <span className="text-xs font-mono uppercase tracking-widest text-neutral-400 block mb-4">
             Get in touch
@@ -682,21 +1155,149 @@ export default function DeveloperTemplateThreeShowcase() {
       </section>
 
       {/* ========================================================================= */}
-      {/* FOOTER BAR                                                                */}
+      {/* SECTION 7: FULL FOOTER (User Explicit Request: "also add a footer")       */}
       {/* ========================================================================= */}
-      <footer className="w-full border-t border-neutral-200/80 py-8 text-xs text-neutral-500">
-        <div className="max-w-6xl mx-auto px-6 sm:px-10 lg:px-12 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="font-medium text-neutral-600">
-            &copy; {new Date().getFullYear()} John Doe. All rights reserved.
-          </p>
-          <div className="flex items-center gap-4 text-neutral-700">
-            <button
-              type="button"
-              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-              className="hover:text-black font-semibold transition-colors cursor-pointer"
-            >
-              Back to Top ↑
-            </button>
+      <footer className="w-full border-t border-neutral-200 bg-neutral-950 text-neutral-300 pt-16 pb-12">
+        <div className="max-w-6xl mx-auto px-6 sm:px-10 lg:px-12">
+          {/* Top Footer Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-10 sm:gap-12 pb-14 border-b border-neutral-800">
+            {/* Col 1: Wordmark & Bio */}
+            <div className="md:col-span-2">
+              <Link
+                href="/developers-it/3"
+                className="text-2xl sm:text-3xl font-black tracking-tight text-white hover:text-neutral-300 transition-colors select-none font-sans"
+              >
+                John Doe
+              </Link>
+              <p className="mt-4 text-xs sm:text-sm text-neutral-400 max-w-sm leading-relaxed">
+                Senior Software Engineer &amp; Full-Stack Architect. Specializing in scalable backend systems, robust APIs, and modern responsive web experiences.
+              </p>
+
+              {/* Social icons */}
+              <div className="flex items-center gap-3.5 mt-6 text-neutral-400">
+                <a
+                  href="https://twitter.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Twitter / X"
+                  className="w-9 h-9 rounded-full bg-neutral-900 border border-neutral-800 flex items-center justify-center hover:text-white hover:border-neutral-600 transition-all cursor-pointer"
+                >
+                  <TwitterIcon className="w-4 h-4" />
+                </a>
+                <a
+                  href="https://github.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="GitHub"
+                  className="w-9 h-9 rounded-full bg-neutral-900 border border-neutral-800 flex items-center justify-center hover:text-white hover:border-neutral-600 transition-all cursor-pointer"
+                >
+                  <GithubIcon className="w-4 h-4" />
+                </a>
+                <a
+                  href="https://linkedin.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="LinkedIn"
+                  className="w-9 h-9 rounded-full bg-neutral-900 border border-neutral-800 flex items-center justify-center hover:text-white hover:border-neutral-600 transition-all cursor-pointer"
+                >
+                  <LinkedinIcon className="w-4 h-4" />
+                </a>
+                <a
+                  href="https://instagram.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Instagram"
+                  className="w-9 h-9 rounded-full bg-neutral-900 border border-neutral-800 flex items-center justify-center hover:text-white hover:border-neutral-600 transition-all cursor-pointer"
+                >
+                  <InstagramIcon className="w-4 h-4" />
+                </a>
+                <a
+                  href="https://facebook.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Facebook"
+                  className="w-9 h-9 rounded-full bg-neutral-900 border border-neutral-800 flex items-center justify-center hover:text-white hover:border-neutral-600 transition-all cursor-pointer"
+                >
+                  <FacebookIcon className="w-4 h-4" />
+                </a>
+              </div>
+            </div>
+
+            {/* Col 2: Navigation Links */}
+            <div>
+              <h4 className="text-xs font-mono uppercase tracking-widest text-neutral-400 mb-4">
+                Navigation
+              </h4>
+              <ul className="space-y-2.5 text-xs sm:text-sm">
+                <li>
+                  <a href="#hero" className="text-neutral-400 hover:text-white transition-colors">
+                    Home
+                  </a>
+                </li>
+                <li>
+                  <a href="#tech-stack" className="text-neutral-400 hover:text-white transition-colors">
+                    My Tech Stack
+                  </a>
+                </li>
+                <li>
+                  <a href="#expertise" className="text-neutral-400 hover:text-white transition-colors">
+                    Professional Expertise
+                  </a>
+                </li>
+                <li>
+                  <a href="#work-history" className="text-neutral-400 hover:text-white transition-colors">
+                    Work History
+                  </a>
+                </li>
+                <li>
+                  <a href="#projects" className="text-neutral-400 hover:text-white transition-colors">
+                    Projects
+                  </a>
+                </li>
+                <li>
+                  <a href="#about-me" className="text-neutral-400 hover:text-white transition-colors">
+                    About Me
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+            {/* Col 3: Contact & Info */}
+            <div>
+              <h4 className="text-xs font-mono uppercase tracking-widest text-neutral-400 mb-4">
+                Inquiries
+              </h4>
+              <p className="text-xs sm:text-sm text-neutral-400 mb-2">
+                Open for senior contracts &amp; technical advisory roles.
+              </p>
+              <a
+                href="mailto:contact.johndoe@example.com"
+                className="text-xs sm:text-sm font-semibold text-white hover:underline block mb-4"
+              >
+                contact.johndoe@example.com
+              </a>
+              <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-neutral-900 border border-neutral-800 text-[11px] text-emerald-400 font-mono">
+                <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                <span>Available for Q1/Q2</span>
+              </span>
+            </div>
+          </div>
+
+          {/* Bottom Copyright Bar */}
+          <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-neutral-500 font-medium">
+            <p>
+              &copy; {new Date().getFullYear()} John Doe. All rights reserved.
+            </p>
+            <div className="flex items-center gap-6">
+              <button
+                type="button"
+                onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+                className="hover:text-white transition-colors cursor-pointer inline-flex items-center gap-1 font-semibold"
+              >
+                <span>Back to Top</span>
+                <span>↑</span>
+              </button>
+            </div>
           </div>
         </div>
       </footer>
