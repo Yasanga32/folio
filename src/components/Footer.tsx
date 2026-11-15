@@ -267,7 +267,7 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="w-full max-w-7xl mx-auto px-6 sm:px-10 lg:px-14 pb-20 pt-6">
+    <footer id="contact" className="w-full max-w-7xl mx-auto px-6 sm:px-10 lg:px-14 pb-20 pt-6 scroll-mt-24">
       <div className="bg-[#fbfaf5] rounded-[28px] sm:rounded-[36px] border border-neutral-200/80 p-8 sm:p-12 lg:p-16 relative overflow-hidden shadow-xs">
         {/* Top 4-Column Links Grid */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 lg:gap-12">

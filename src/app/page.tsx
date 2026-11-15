@@ -21,7 +21,7 @@ export default function Home() {
       <Navbar />
 
       {/* Hero Section */}
-      <section className="max-w-7xl w-full mx-auto px-6 sm:px-10 lg:px-14 flex items-center py-6 sm:py-10 lg:py-12">
+      <section id="home" className="max-w-7xl w-full mx-auto px-6 sm:px-10 lg:px-14 flex items-center py-6 sm:py-10 lg:py-12 scroll-mt-24">
         <div className="w-full grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 items-center">
           {/* Left Column: Social Proof, Headline, Copy & CTA */}
           <div className="lg:col-span-5 flex flex-col justify-center max-w-xl">

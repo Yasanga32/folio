@@ -153,7 +153,7 @@ export default function OnePlatformSection() {
   ];
 
   return (
-    <section className="w-full max-w-7xl mx-auto px-6 sm:px-10 lg:px-14 py-16 sm:py-24">
+    <section id="pricing" className="w-full max-w-7xl mx-auto px-6 sm:px-10 lg:px-14 py-16 sm:py-24 scroll-mt-24">
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
         {/* Left Column: Heading & Value Proposition */}
         <div className="lg:col-span-6 flex flex-col justify-center">

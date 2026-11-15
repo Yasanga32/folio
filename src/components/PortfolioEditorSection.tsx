@@ -35,7 +35,7 @@ export default function PortfolioEditorSection() {
   ];
 
   return (
-    <section className="w-full max-w-7xl mx-auto px-6 sm:px-10 lg:px-14 pb-20 pt-6">
+    <section id="about" className="w-full max-w-7xl mx-auto px-6 sm:px-10 lg:px-14 pb-20 pt-6 scroll-mt-24">
       <div className="bg-[#eeedf5] rounded-[32px] sm:rounded-[44px] p-8 sm:p-12 lg:p-16 border border-neutral-200/50 relative overflow-hidden shadow-sm">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-14 items-center">
           {/* Left Column: Copy & Checklist */}

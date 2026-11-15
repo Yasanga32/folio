@@ -464,6 +464,34 @@ export default function Navbar({ dark = false }: { dark?: boolean }) {
     };
   }, []);
 
+  useEffect(() => {
+    if (typeof window !== "undefined" && window.location.hash) {
+      const id = window.location.hash.replace("#", "");
+      const element = document.getElementById(id);
+      if (element) {
+        const timer = setTimeout(() => {
+          element.scrollIntoView({ behavior: "smooth" });
+        }, 120);
+        return () => clearTimeout(timer);
+      }
+    }
+  }, [pathname]);
+
+  const handleNavClick = (
+    e: React.MouseEvent<HTMLAnchorElement>,
+    href: string
+  ) => {
+    if (href.startsWith("/#") && pathname === "/") {
+      e.preventDefault();
+      const id = href.replace("/#", "");
+      const element = document.getElementById(id);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+        window.history.pushState(null, "", href);
+      }
+    }
+  };
+
   const navLinks = [
     { label: "Home", href: "/" },
     { label: "Home#2", href: "/home2" },
@@ -847,6 +875,7 @@ export default function Navbar({ dark = false }: { dark?: boolean }) {
               <Link
                 key={link.label}
                 href={link.href}
+                onClick={(e) => handleNavClick(e, link.href)}
                 className={`text-[14px] lg:text-[15px] font-medium whitespace-nowrap transition-colors ${
                   isDark
                     ? isActive
@@ -1092,7 +1121,10 @@ export default function Navbar({ dark = false }: { dark?: boolean }) {
               <Link
                 key={link.label}
                 href={link.href}
-                onClick={() => setMobileMenuPath(null)}
+                onClick={(e) => {
+                  setMobileMenuPath(null);
+                  handleNavClick(e, link.href);
+                }}
                 className={`block text-base font-medium px-3 py-2 rounded-lg transition-colors ${
                   isDark
                     ? isActive
