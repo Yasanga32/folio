@@ -243,34 +243,87 @@ const TECH_STACK_ROW_3 = [
   { name: "Git", icon: GitIcon },
 ];
 
-/* --- Interactive Projects --- */
-const DEVELOPER_PROJECTS = [
+/* --- Projects I've Shipped (matching user reference screenshot) --- */
+const SHIPPED_PROJECTS = [
   {
-    title: "Nova Cloud Platform",
-    category: "Full Stack Dashboard",
+    id: "clouddesk",
+    title: "CloudDesk",
     description:
-      "Enterprise analytics dashboard built with Next.js 15, React Server Components, and Tailwind CSS with sub-100ms real-time metric streams.",
-    stack: ["Next.js", "TypeScript", "TailwindCSS", "React"],
-    stat: "140k+ DAU",
-    badge: "Featured",
+      "A modern dashboard interface designed to help teams manage tasks, track progress, and collaborate seamlessly in real time.",
+    image: "/images/developers/project-clouddesk.jpg",
+    alt: "CloudDesk 3D tablet dashboard mockup",
+    sourceUrl: "https://github.com",
+    liveUrl: "#",
   },
   {
-    title: "Aura Creative Studio",
-    category: "Interactive 3D Experience",
+    id: "matcha-haven",
+    title: "Matcha Haven",
     description:
-      "Award-winning agency website with physics-based GSAP kinetic typography, WebGL fluid shaders, and accessible keyboard navigation.",
-    stack: ["GSAP", "React", "WebGL", "TypeScript"],
-    stat: "Awwwards SOTD",
-    badge: "Case Study",
+      "A clean, calming website for a matcha brand, designed to showcase products, tell the brand story, and create a smooth, delightful shopping experience.",
+    image: "/images/developers/project-matcha.jpg",
+    alt: "Matcha Haven glass mockup with iced latte",
+    sourceUrl: "https://github.com",
+    liveUrl: "#",
   },
   {
-    title: "Pulse Design System",
-    category: "Component Architecture",
+    id: "finova",
+    title: "Finova",
     description:
-      "Comprehensive multi-brand design system with 60+ headless React components, automated token pipelines, and 100% WCAG AAA compliance.",
-    stack: ["React", "TypeScript", "TailwindCSS", "Redux"],
-    stat: "99.9% Test Coverage",
-    badge: "Open Source",
+      "A sleek fintech platform designed to simplify payments, track expenses, and give users clear insights into their financial activity.",
+    image: "/images/developers/project-finova.jpg",
+    alt: "Finova paper design brochure mockup with blue cone",
+    sourceUrl: "https://github.com",
+    liveUrl: "#",
+  },
+  {
+    id: "eventra",
+    title: "Eventra",
+    description:
+      "A modern event discovery platform that helps users find, explore, buy tickets, and stay updated on events happening around them.",
+    image: "/images/developers/project-eventra.jpg",
+    alt: "Eventra dual iPhone mobile event ticket app mockup",
+    sourceUrl: "https://github.com",
+    liveUrl: "#",
+  },
+];
+
+/* --- Where I've Worked (matching user reference screenshot) --- */
+const WORK_EXPERIENCES = [
+  {
+    role: "Frontend Engineer — Paystack",
+    period: "2023 — Present",
+    bullets: [
+      "Built and maintained responsive user interfaces using modern JavaScript frameworks",
+      "Collaborated with designers to deliver clean, user-focused experiences",
+      "Optimized performance and improved page load times across key products",
+    ],
+  },
+  {
+    role: "Frontend Engineer — Hubtel",
+    period: "2022 — 2023",
+    bullets: [
+      "Built and maintained responsive user interfaces using modern JavaScript frameworks",
+      "Collaborated with designers to deliver clean, user-focused experiences",
+      "Optimized performance and improved page load times across key products",
+    ],
+  },
+  {
+    role: "UI Engineer — Meta",
+    period: "2021 — 2022",
+    bullets: [
+      "Built and maintained responsive user interfaces using modern JavaScript frameworks",
+      "Collaborated with designers to deliver clean, user-focused experiences",
+      "Optimized performance and improved page load times across key products",
+    ],
+  },
+  {
+    role: "Frontend Lead — Google",
+    period: "2020 — 2021",
+    bullets: [
+      "Built and maintained responsive user interfaces using modern JavaScript frameworks",
+      "Collaborated with designers to deliver clean, user-focused experiences",
+      "Optimized performance and improved page load times across key products",
+    ],
   },
 ];
 
@@ -292,7 +345,8 @@ const DEVELOPER_TESTIMONIALS = [
 
 export default function DeveloperTemplateOneShowcase() {
   const [copiedEmail, setCopiedEmail] = useState(false);
-  const [activeProjectTab, setActiveProjectTab] = useState("ALL");
+  const [expandedExpIndex, setExpandedExpIndex] = useState<number | null>(0);
+  const [downloadingCV, setDownloadingCV] = useState(false);
 
   const handleCopyEmail = () => {
     navigator.clipboard?.writeText("snilloc@example.com");
@@ -588,142 +642,202 @@ export default function DeveloperTemplateOneShowcase() {
         </div>
       </section>
 
-      {/* Selected Projects Section */}
+      {/* Projects I've Shipped Section (matches reference screenshot) */}
       <section
         id="projects"
-        className="py-20 sm:py-28 border-t border-[#181820] max-w-6xl mx-auto px-6 sm:px-10 lg:px-12"
+        className="py-20 sm:py-28 border-t border-[#181820] max-w-5xl mx-auto px-6 sm:px-10 lg:px-12"
       >
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-12">
-          <div>
-            <div className="inline-flex items-center px-3 py-1 rounded-full bg-[#131317] border border-[#23232c] text-[10.5px] font-mono uppercase tracking-[0.16em] text-neutral-400 shadow-xs mb-3">
-              <span>SELECTED WORK</span>
-            </div>
-            <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-white">
-              Featured Projects
-            </h2>
-            <p className="mt-2 text-neutral-400 text-xs sm:text-sm max-w-lg">
-              High-performance web applications and design systems built with
-              modern standards.
-            </p>
+        <div className="flex flex-col items-center text-center mb-12 sm:mb-14">
+          <div className="inline-flex items-center px-3 py-1 rounded-full bg-[#131317] border border-[#23232c] text-[10.5px] font-mono uppercase tracking-[0.16em] text-neutral-400 shadow-xs mb-3">
+            <span>PROJECTS</span>
           </div>
-
-          <div className="flex items-center gap-2">
-            {["ALL", "NEXT.JS", "GSAP", "REACT"].map((tab) => (
-              <button
-                key={tab}
-                type="button"
-                onClick={() => setActiveProjectTab(tab)}
-                className={`px-3.5 py-1.5 rounded-full text-xs font-medium transition-all ${
-                  activeProjectTab === tab
-                    ? "bg-white text-neutral-950 font-semibold"
-                    : "bg-[#131317] border border-[#23232c] text-neutral-400 hover:text-white"
-                }`}
-              >
-                {tab}
-              </button>
-            ))}
-          </div>
+          <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-white">
+            Projects I&apos;ve Shipped
+          </h2>
+          <p className="mt-2 text-neutral-400 text-xs sm:text-sm max-w-md mx-auto leading-relaxed">
+            A range of projects demonstrating how I turn ideas into functional experiences
+          </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {DEVELOPER_PROJECTS.map((proj, idx) => (
+        {/* 2x2 Grid of Project Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-7">
+          {SHIPPED_PROJECTS.map((proj) => (
             <div
-              key={idx}
-              className="rounded-3xl bg-[#121217] border border-[#23232c] p-6 sm:p-7 flex flex-col justify-between hover:border-neutral-500 hover:bg-[#16161d] transition-all group shadow-md"
+              key={proj.id}
+              className="rounded-[28px] bg-[#121217] border border-[#22222a] p-4 sm:p-5 flex flex-col justify-between hover:border-neutral-500 hover:bg-[#15151c] transition-all group shadow-md"
             >
               <div>
-                <div className="flex items-center justify-between gap-3 mb-4">
-                  <span className="text-[11px] font-mono uppercase tracking-wider text-emerald-400 px-2.5 py-0.5 rounded-full bg-emerald-500/10 border border-emerald-500/20">
-                    {proj.badge}
-                  </span>
-                  <span className="text-xs font-mono text-neutral-400">
-                    {proj.stat}
-                  </span>
+                {/* Card Mockup Image */}
+                <div className="relative w-full aspect-[16/10] rounded-2xl overflow-hidden bg-[#181820]">
+                  <Image
+                    src={proj.image}
+                    alt={proj.alt}
+                    fill
+                    sizes="(max-width: 768px) 100vw, 500px"
+                    className="object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
                 </div>
 
-                <h3 className="text-xl font-bold text-white group-hover:text-emerald-300 transition-colors">
+                {/* Title & Description */}
+                <h3 className="text-xl sm:text-2xl font-bold text-white mt-5 tracking-tight">
                   {proj.title}
                 </h3>
-                <p className="text-xs font-medium text-neutral-400 mt-1">
-                  {proj.category}
-                </p>
-                <p className="text-xs sm:text-sm text-neutral-300 mt-3.5 leading-relaxed">
+                <p className="text-xs sm:text-sm text-neutral-400 mt-2 leading-relaxed min-h-[44px]">
                   {proj.description}
                 </p>
               </div>
 
-              <div className="mt-6 pt-5 border-t border-[#22222a] flex flex-wrap gap-2">
-                {proj.stack.map((item) => (
-                  <span
-                    key={item}
-                    className="text-[11px] font-mono px-2.5 py-1 rounded-md bg-[#191922] text-neutral-300 border border-[#2a2a35]"
+              {/* Action Buttons */}
+              <div className="mt-6 flex items-center gap-2.5">
+                <a
+                  href={proj.sourceUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-3.5 py-1.5 rounded-full border border-neutral-700 bg-neutral-900/80 hover:bg-neutral-800 text-white font-medium text-xs transition-colors cursor-pointer"
+                >
+                  Source Code
+                </a>
+                <a
+                  href={proj.liveUrl}
+                  className="px-4 py-1.5 rounded-full bg-white hover:bg-neutral-200 text-neutral-950 font-semibold text-xs inline-flex items-center gap-1.5 transition-colors cursor-pointer shadow-xs"
+                >
+                  <span>Live Website</span>
+                  <svg
+                    className="w-3 h-3"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2.4"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
                   >
-                    {item}
-                  </span>
-                ))}
+                    <line x1="5" y1="12" x2="19" y2="12" />
+                    <polyline points="12 5 19 12 12 19" />
+                  </svg>
+                </a>
               </div>
             </div>
           ))}
         </div>
       </section>
 
-      {/* Experience Timeline Section */}
+      {/* Where I've Worked Section (matches reference screenshot) */}
       <section
         id="experience"
-        className="py-20 sm:py-24 border-t border-[#181820] bg-[#0c0c0e]/50"
+        className="py-20 sm:py-28 border-t border-[#181820] max-w-4xl mx-auto px-6 sm:px-10"
       >
-        <div className="max-w-4xl mx-auto px-6 sm:px-10">
-          <div className="text-center mb-12">
-            <div className="inline-flex items-center px-3 py-1 rounded-full bg-[#131317] border border-[#23232c] text-[10.5px] font-mono uppercase tracking-[0.16em] text-neutral-400 shadow-xs mb-3">
-              <span>CAREER PATH</span>
-            </div>
-            <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-white">
-              Work Experience
-            </h2>
+        <div className="flex flex-col items-center text-center mb-12">
+          <div className="inline-flex items-center px-3 py-1 rounded-full bg-[#131317] border border-[#23232c] text-[10.5px] font-mono uppercase tracking-[0.16em] text-neutral-400 shadow-xs mb-3">
+            <span>EXPERIENCE</span>
           </div>
+          <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-white">
+            Where I&apos;ve Worked
+          </h2>
+          <p className="mt-2 text-neutral-400 text-xs sm:text-sm max-w-md mx-auto leading-relaxed">
+            A summary of my professional journey and the impact I&apos;ve made
+          </p>
+        </div>
 
-          <div className="space-y-4">
-            {[
-              {
-                period: "2023 — Present",
-                role: "Lead Frontend Engineer",
-                company: "Superscale Technologies",
-                desc: "Spearheaded frontend architecture migration to Next.js App Router, cutting cold compile cycles by 40% and optimizing bundle sizes.",
-              },
-              {
-                period: "2021 — 2023",
-                role: "Senior UI/UX Engineer",
-                company: "Hyperion Digital",
-                desc: "Engineered responsive interactive customer portals using TypeScript, GSAP, and Tailwind CSS with micro-interaction feedback.",
-              },
-              {
-                period: "2019 — 2021",
-                role: "Frontend Developer",
-                company: "PixelForge Studio",
-                desc: "Delivered 30+ client web applications with zero regression bugs, strict TypeScript typings, and comprehensive automated test suites.",
-              },
-            ].map((item, idx) => (
+        {/* Accordion Cards Stack */}
+        <div className="space-y-4">
+          {WORK_EXPERIENCES.map((exp, idx) => {
+            const isExpanded = expandedExpIndex === idx;
+            return (
               <div
                 key={idx}
-                className="rounded-2xl bg-[#121217] border border-[#22222a] p-5 sm:p-6 flex flex-col sm:flex-row sm:items-start justify-between gap-4 hover:border-neutral-500 transition-colors"
+                onClick={() =>
+                  setExpandedExpIndex((prev) => (prev === idx ? null : idx))
+                }
+                className={`rounded-2xl sm:rounded-3xl bg-[#111115] border transition-all cursor-pointer p-6 sm:p-7 ${
+                  isExpanded
+                    ? "border-neutral-500/70 bg-[#131318]"
+                    : "border-[#202028] hover:border-neutral-600 hover:bg-[#141419]"
+                }`}
               >
-                <div className="sm:w-1/3">
-                  <span className="text-xs font-mono text-emerald-400">
-                    {item.period}
+                {/* Header Row */}
+                <div className="flex items-center justify-between gap-4">
+                  <h3 className="text-base sm:text-lg font-semibold text-white tracking-tight">
+                    {exp.role}
+                  </h3>
+                  <span className="text-xs sm:text-sm font-mono text-neutral-400 shrink-0">
+                    {exp.period}
                   </span>
-                  <h4 className="text-base font-bold text-white mt-1">
-                    {item.role}
-                  </h4>
-                  <p className="text-xs text-neutral-400">{item.company}</p>
                 </div>
-                <div className="sm:w-2/3">
-                  <p className="text-xs sm:text-sm text-neutral-300 leading-relaxed">
-                    {item.desc}
-                  </p>
+
+                {/* Expanded Bullets */}
+                {isExpanded && (
+                  <ul className="mt-5 space-y-2.5 text-xs sm:text-sm text-neutral-300 leading-relaxed pl-1">
+                    {exp.bullets.map((bullet, bIdx) => (
+                      <li key={bIdx} className="flex items-start gap-2.5">
+                        <span className="w-1.5 h-1.5 rounded-full bg-neutral-400 mt-2 shrink-0" />
+                        <span>{bullet}</span>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+
+                {/* Toggle Circle Icon (at bottom-left matching screenshot) */}
+                <div className="mt-4 pt-1">
+                  <span className="w-6 h-6 rounded-full border border-neutral-600/90 flex items-center justify-center text-neutral-300 group-hover:border-white transition-colors">
+                    {isExpanded ? (
+                      <svg
+                        className="w-3 h-3"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2.4"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      >
+                        <line x1="12" y1="19" x2="12" y2="5" />
+                        <polyline points="5 12 12 5 19 12" />
+                      </svg>
+                    ) : (
+                      <svg
+                        className="w-3 h-3"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2.4"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      >
+                        <line x1="12" y1="5" x2="12" y2="19" />
+                        <polyline points="19 12 12 19 5 12" />
+                      </svg>
+                    )}
+                  </span>
                 </div>
               </div>
-            ))}
-          </div>
+            );
+          })}
+        </div>
+
+        {/* Download My CV CTA Button */}
+        <div className="mt-10 sm:mt-12 flex justify-center">
+          <button
+            type="button"
+            onClick={(e) => {
+              e.stopPropagation();
+              setDownloadingCV(true);
+              setTimeout(() => setDownloadingCV(false), 2000);
+            }}
+            className="px-6 py-2.5 rounded-full bg-white hover:bg-neutral-200 text-neutral-950 font-semibold text-sm inline-flex items-center gap-2 transition-all shadow-md active:scale-95 cursor-pointer"
+          >
+            <span>{downloadingCV ? "Downloading CV..." : "Download My CV"}</span>
+            <svg
+              className="w-4 h-4"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2.2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <line x1="5" y1="12" x2="19" y2="12" />
+              <polyline points="12 5 19 12 12 19" />
+            </svg>
+          </button>
         </div>
       </section>
 
