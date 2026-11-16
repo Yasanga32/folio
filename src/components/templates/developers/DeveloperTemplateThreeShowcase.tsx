@@ -1,5 +1,11 @@
 "use client";
 
+/**
+ * Developer & IT Template #3
+ * John Doe Minimalist Portfolio Showcase with Moving Tech Stack Marquee,
+ * My Tech Stack Grid, Professional Expertise, Work History, Projects, About Me & Footer.
+ */
+
 import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
